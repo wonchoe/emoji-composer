@@ -1,0 +1,5 @@
+assets/
+demo/
+demo-dist/
+node_modules/
+*.tgz

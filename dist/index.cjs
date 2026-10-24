@@ -1,0 +1,17640 @@
+"use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/index.ts
+var index_exports = {};
+__export(index_exports, {
+  EMOJI_ASSET_CDN_BASE_URL: () => EMOJI_ASSET_CDN_BASE_URL,
+  EMOJI_ASSET_SIZES: () => EMOJI_ASSET_SIZES,
+  EMOJI_ATTRIBUTION_URL: () => EMOJI_ATTRIBUTION_URL,
+  EmojiComposer: () => EmojiComposer,
+  EmojiPicker: () => EmojiPicker,
+  SKIN_TONES: () => SKIN_TONES,
+  getEmojiAssetUrl: () => getEmojiAssetUrl,
+  getEmojiById: () => getEmojiById,
+  getEmojiCatalog: () => getEmojiCatalog,
+  getEmojiCategories: () => getEmojiCategories,
+  getEmojiText: () => getEmojiText,
+  searchEmojis: () => searchEmojis
+});
+module.exports = __toCommonJS(index_exports);
+
+// src/EmojiComposer.tsx
+var import_react2 = require("react");
+
+// src/EmojiPicker.tsx
+var import_react = require("react");
+
+// data/emojis.json
+var emojis_default = [
+  {
+    id: "1f600",
+    emoji: "\u{1F600}",
+    name: "grinning face",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f600.png"
+  },
+  {
+    id: "1f603",
+    emoji: "\u{1F603}",
+    name: "grinning face with big eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f603.png"
+  },
+  {
+    id: "1f604",
+    emoji: "\u{1F604}",
+    name: "grinning face with smiling eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f604.png"
+  },
+  {
+    id: "1f601",
+    emoji: "\u{1F601}",
+    name: "beaming face with smiling eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f601.png"
+  },
+  {
+    id: "1f606",
+    emoji: "\u{1F606}",
+    name: "grinning squinting face",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f606.png"
+  },
+  {
+    id: "1f605",
+    emoji: "\u{1F605}",
+    name: "grinning face with sweat",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f605.png"
+  },
+  {
+    id: "1f923",
+    emoji: "\u{1F923}",
+    name: "rolling on the floor laughing",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f923.png"
+  },
+  {
+    id: "1f602",
+    emoji: "\u{1F602}",
+    name: "face with tears of joy",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f602.png"
+  },
+  {
+    id: "1f642",
+    emoji: "\u{1F642}",
+    name: "slightly smiling face",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f642.png"
+  },
+  {
+    id: "1f643",
+    emoji: "\u{1F643}",
+    name: "upside-down face",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f643.png"
+  },
+  {
+    id: "1fae0",
+    emoji: "\u{1FAE0}",
+    name: "melting face",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1fae0.png"
+  },
+  {
+    id: "1f609",
+    emoji: "\u{1F609}",
+    name: "winking face",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f609.png"
+  },
+  {
+    id: "1f60a",
+    emoji: "\u{1F60A}",
+    name: "smiling face with smiling eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f60a.png"
+  },
+  {
+    id: "1f607",
+    emoji: "\u{1F607}",
+    name: "smiling face with halo",
+    category: "Smileys & Emotion",
+    subcategory: "face-smiling",
+    supportsSkinTone: false,
+    file: "1f607.png"
+  },
+  {
+    id: "1f970",
+    emoji: "\u{1F970}",
+    name: "smiling face with hearts",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f970.png"
+  },
+  {
+    id: "1f60d",
+    emoji: "\u{1F60D}",
+    name: "smiling face with heart-eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f60d.png"
+  },
+  {
+    id: "1f929",
+    emoji: "\u{1F929}",
+    name: "star-struck",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f929.png"
+  },
+  {
+    id: "1f618",
+    emoji: "\u{1F618}",
+    name: "face blowing a kiss",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f618.png"
+  },
+  {
+    id: "1f617",
+    emoji: "\u{1F617}",
+    name: "kissing face",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f617.png"
+  },
+  {
+    id: "263a-fe0f",
+    emoji: "\u263A\uFE0F",
+    name: "smiling face",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "263a-fe0f.png"
+  },
+  {
+    id: "1f61a",
+    emoji: "\u{1F61A}",
+    name: "kissing face with closed eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f61a.png"
+  },
+  {
+    id: "1f619",
+    emoji: "\u{1F619}",
+    name: "kissing face with smiling eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f619.png"
+  },
+  {
+    id: "1f972",
+    emoji: "\u{1F972}",
+    name: "smiling face with tear",
+    category: "Smileys & Emotion",
+    subcategory: "face-affection",
+    supportsSkinTone: false,
+    file: "1f972.png"
+  },
+  {
+    id: "1f60b",
+    emoji: "\u{1F60B}",
+    name: "face savoring food",
+    category: "Smileys & Emotion",
+    subcategory: "face-tongue",
+    supportsSkinTone: false,
+    file: "1f60b.png"
+  },
+  {
+    id: "1f61b",
+    emoji: "\u{1F61B}",
+    name: "face with tongue",
+    category: "Smileys & Emotion",
+    subcategory: "face-tongue",
+    supportsSkinTone: false,
+    file: "1f61b.png"
+  },
+  {
+    id: "1f61c",
+    emoji: "\u{1F61C}",
+    name: "winking face with tongue",
+    category: "Smileys & Emotion",
+    subcategory: "face-tongue",
+    supportsSkinTone: false,
+    file: "1f61c.png"
+  },
+  {
+    id: "1f92a",
+    emoji: "\u{1F92A}",
+    name: "zany face",
+    category: "Smileys & Emotion",
+    subcategory: "face-tongue",
+    supportsSkinTone: false,
+    file: "1f92a.png"
+  },
+  {
+    id: "1f61d",
+    emoji: "\u{1F61D}",
+    name: "squinting face with tongue",
+    category: "Smileys & Emotion",
+    subcategory: "face-tongue",
+    supportsSkinTone: false,
+    file: "1f61d.png"
+  },
+  {
+    id: "1f911",
+    emoji: "\u{1F911}",
+    name: "money-mouth face",
+    category: "Smileys & Emotion",
+    subcategory: "face-tongue",
+    supportsSkinTone: false,
+    file: "1f911.png"
+  },
+  {
+    id: "1f917",
+    emoji: "\u{1F917}",
+    name: "smiling face with open hands",
+    category: "Smileys & Emotion",
+    subcategory: "face-hand",
+    supportsSkinTone: false,
+    file: "1f917.png"
+  },
+  {
+    id: "1f92d",
+    emoji: "\u{1F92D}",
+    name: "face with hand over mouth",
+    category: "Smileys & Emotion",
+    subcategory: "face-hand",
+    supportsSkinTone: false,
+    file: "1f92d.png"
+  },
+  {
+    id: "1fae2",
+    emoji: "\u{1FAE2}",
+    name: "face with open eyes and hand over mouth",
+    category: "Smileys & Emotion",
+    subcategory: "face-hand",
+    supportsSkinTone: false,
+    file: "1fae2.png"
+  },
+  {
+    id: "1fae3",
+    emoji: "\u{1FAE3}",
+    name: "face with peeking eye",
+    category: "Smileys & Emotion",
+    subcategory: "face-hand",
+    supportsSkinTone: false,
+    file: "1fae3.png"
+  },
+  {
+    id: "1f92b",
+    emoji: "\u{1F92B}",
+    name: "shushing face",
+    category: "Smileys & Emotion",
+    subcategory: "face-hand",
+    supportsSkinTone: false,
+    file: "1f92b.png"
+  },
+  {
+    id: "1f914",
+    emoji: "\u{1F914}",
+    name: "thinking face",
+    category: "Smileys & Emotion",
+    subcategory: "face-hand",
+    supportsSkinTone: false,
+    file: "1f914.png"
+  },
+  {
+    id: "1fae1",
+    emoji: "\u{1FAE1}",
+    name: "saluting face",
+    category: "Smileys & Emotion",
+    subcategory: "face-hand",
+    supportsSkinTone: false,
+    file: "1fae1.png"
+  },
+  {
+    id: "1f910",
+    emoji: "\u{1F910}",
+    name: "zipper-mouth face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f910.png"
+  },
+  {
+    id: "1f928",
+    emoji: "\u{1F928}",
+    name: "face with raised eyebrow",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f928.png"
+  },
+  {
+    id: "1f610",
+    emoji: "\u{1F610}",
+    name: "neutral face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f610.png"
+  },
+  {
+    id: "1f611",
+    emoji: "\u{1F611}",
+    name: "expressionless face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f611.png"
+  },
+  {
+    id: "1f636",
+    emoji: "\u{1F636}",
+    name: "face without mouth",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f636.png"
+  },
+  {
+    id: "1fae5",
+    emoji: "\u{1FAE5}",
+    name: "dotted line face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1fae5.png"
+  },
+  {
+    id: "1f636-200d-1f32b-fe0f",
+    emoji: "\u{1F636}\u200D\u{1F32B}\uFE0F",
+    name: "face in clouds",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f636-200d-1f32b-fe0f.png"
+  },
+  {
+    id: "1f60f",
+    emoji: "\u{1F60F}",
+    name: "smirking face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f60f.png"
+  },
+  {
+    id: "1f612",
+    emoji: "\u{1F612}",
+    name: "unamused face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f612.png"
+  },
+  {
+    id: "1f644",
+    emoji: "\u{1F644}",
+    name: "face with rolling eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f644.png"
+  },
+  {
+    id: "1f62c",
+    emoji: "\u{1F62C}",
+    name: "grimacing face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f62c.png"
+  },
+  {
+    id: "1f62e-200d-1f4a8",
+    emoji: "\u{1F62E}\u200D\u{1F4A8}",
+    name: "face exhaling",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f62e-200d-1f4a8.png"
+  },
+  {
+    id: "1f925",
+    emoji: "\u{1F925}",
+    name: "lying face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f925.png"
+  },
+  {
+    id: "1fae8",
+    emoji: "\u{1FAE8}",
+    name: "shaking face",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1fae8.png"
+  },
+  {
+    id: "1f642-200d-2194-fe0f",
+    emoji: "\u{1F642}\u200D\u2194\uFE0F",
+    name: "head shaking horizontally",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f642-200d-2194-fe0f.png"
+  },
+  {
+    id: "1f642-200d-2195-fe0f",
+    emoji: "\u{1F642}\u200D\u2195\uFE0F",
+    name: "head shaking vertically",
+    category: "Smileys & Emotion",
+    subcategory: "face-neutral-skeptical",
+    supportsSkinTone: false,
+    file: "1f642-200d-2195-fe0f.png"
+  },
+  {
+    id: "1f60c",
+    emoji: "\u{1F60C}",
+    name: "relieved face",
+    category: "Smileys & Emotion",
+    subcategory: "face-sleepy",
+    supportsSkinTone: false,
+    file: "1f60c.png"
+  },
+  {
+    id: "1f614",
+    emoji: "\u{1F614}",
+    name: "pensive face",
+    category: "Smileys & Emotion",
+    subcategory: "face-sleepy",
+    supportsSkinTone: false,
+    file: "1f614.png"
+  },
+  {
+    id: "1f62a",
+    emoji: "\u{1F62A}",
+    name: "sleepy face",
+    category: "Smileys & Emotion",
+    subcategory: "face-sleepy",
+    supportsSkinTone: false,
+    file: "1f62a.png"
+  },
+  {
+    id: "1f924",
+    emoji: "\u{1F924}",
+    name: "drooling face",
+    category: "Smileys & Emotion",
+    subcategory: "face-sleepy",
+    supportsSkinTone: false,
+    file: "1f924.png"
+  },
+  {
+    id: "1f634",
+    emoji: "\u{1F634}",
+    name: "sleeping face",
+    category: "Smileys & Emotion",
+    subcategory: "face-sleepy",
+    supportsSkinTone: false,
+    file: "1f634.png"
+  },
+  {
+    id: "1fae9",
+    emoji: "\u{1FAE9}",
+    name: "face with bags under eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-sleepy",
+    supportsSkinTone: false,
+    file: "1fae9.png"
+  },
+  {
+    id: "1f637",
+    emoji: "\u{1F637}",
+    name: "face with medical mask",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f637.png"
+  },
+  {
+    id: "1f912",
+    emoji: "\u{1F912}",
+    name: "face with thermometer",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f912.png"
+  },
+  {
+    id: "1f915",
+    emoji: "\u{1F915}",
+    name: "face with head-bandage",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f915.png"
+  },
+  {
+    id: "1f922",
+    emoji: "\u{1F922}",
+    name: "nauseated face",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f922.png"
+  },
+  {
+    id: "1f92e",
+    emoji: "\u{1F92E}",
+    name: "face vomiting",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f92e.png"
+  },
+  {
+    id: "1f927",
+    emoji: "\u{1F927}",
+    name: "sneezing face",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f927.png"
+  },
+  {
+    id: "1f975",
+    emoji: "\u{1F975}",
+    name: "hot face",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f975.png"
+  },
+  {
+    id: "1f976",
+    emoji: "\u{1F976}",
+    name: "cold face",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f976.png"
+  },
+  {
+    id: "1f974",
+    emoji: "\u{1F974}",
+    name: "woozy face",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f974.png"
+  },
+  {
+    id: "1f635",
+    emoji: "\u{1F635}",
+    name: "face with crossed-out eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f635.png"
+  },
+  {
+    id: "1f635-200d-1f4ab",
+    emoji: "\u{1F635}\u200D\u{1F4AB}",
+    name: "face with spiral eyes",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f635-200d-1f4ab.png"
+  },
+  {
+    id: "1f92f",
+    emoji: "\u{1F92F}",
+    name: "exploding head",
+    category: "Smileys & Emotion",
+    subcategory: "face-unwell",
+    supportsSkinTone: false,
+    file: "1f92f.png"
+  },
+  {
+    id: "1f920",
+    emoji: "\u{1F920}",
+    name: "cowboy hat face",
+    category: "Smileys & Emotion",
+    subcategory: "face-hat",
+    supportsSkinTone: false,
+    file: "1f920.png"
+  },
+  {
+    id: "1f973",
+    emoji: "\u{1F973}",
+    name: "partying face",
+    category: "Smileys & Emotion",
+    subcategory: "face-hat",
+    supportsSkinTone: false,
+    file: "1f973.png"
+  },
+  {
+    id: "1f978",
+    emoji: "\u{1F978}",
+    name: "disguised face",
+    category: "Smileys & Emotion",
+    subcategory: "face-hat",
+    supportsSkinTone: false,
+    file: "1f978.png"
+  },
+  {
+    id: "1f60e",
+    emoji: "\u{1F60E}",
+    name: "smiling face with sunglasses",
+    category: "Smileys & Emotion",
+    subcategory: "face-glasses",
+    supportsSkinTone: false,
+    file: "1f60e.png"
+  },
+  {
+    id: "1f913",
+    emoji: "\u{1F913}",
+    name: "nerd face",
+    category: "Smileys & Emotion",
+    subcategory: "face-glasses",
+    supportsSkinTone: false,
+    file: "1f913.png"
+  },
+  {
+    id: "1f9d0",
+    emoji: "\u{1F9D0}",
+    name: "face with monocle",
+    category: "Smileys & Emotion",
+    subcategory: "face-glasses",
+    supportsSkinTone: false,
+    file: "1f9d0.png"
+  },
+  {
+    id: "1f615",
+    emoji: "\u{1F615}",
+    name: "confused face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f615.png"
+  },
+  {
+    id: "1fae4",
+    emoji: "\u{1FAE4}",
+    name: "face with diagonal mouth",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1fae4.png"
+  },
+  {
+    id: "1f61f",
+    emoji: "\u{1F61F}",
+    name: "worried face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f61f.png"
+  },
+  {
+    id: "1f641",
+    emoji: "\u{1F641}",
+    name: "slightly frowning face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f641.png"
+  },
+  {
+    id: "2639-fe0f",
+    emoji: "\u2639\uFE0F",
+    name: "frowning face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "2639-fe0f.png"
+  },
+  {
+    id: "1f62e",
+    emoji: "\u{1F62E}",
+    name: "face with open mouth",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f62e.png"
+  },
+  {
+    id: "1f62f",
+    emoji: "\u{1F62F}",
+    name: "hushed face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f62f.png"
+  },
+  {
+    id: "1f632",
+    emoji: "\u{1F632}",
+    name: "astonished face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f632.png"
+  },
+  {
+    id: "1f633",
+    emoji: "\u{1F633}",
+    name: "flushed face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f633.png"
+  },
+  {
+    id: "1faea",
+    emoji: "\u{1FAEA}",
+    name: "distorted face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1faea.png"
+  },
+  {
+    id: "1f97a",
+    emoji: "\u{1F97A}",
+    name: "pleading face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f97a.png"
+  },
+  {
+    id: "1f979",
+    emoji: "\u{1F979}",
+    name: "face holding back tears",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f979.png"
+  },
+  {
+    id: "1f626",
+    emoji: "\u{1F626}",
+    name: "frowning face with open mouth",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f626.png"
+  },
+  {
+    id: "1f627",
+    emoji: "\u{1F627}",
+    name: "anguished face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f627.png"
+  },
+  {
+    id: "1f628",
+    emoji: "\u{1F628}",
+    name: "fearful face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f628.png"
+  },
+  {
+    id: "1f630",
+    emoji: "\u{1F630}",
+    name: "anxious face with sweat",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f630.png"
+  },
+  {
+    id: "1f625",
+    emoji: "\u{1F625}",
+    name: "sad but relieved face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f625.png"
+  },
+  {
+    id: "1f622",
+    emoji: "\u{1F622}",
+    name: "crying face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f622.png"
+  },
+  {
+    id: "1f62d",
+    emoji: "\u{1F62D}",
+    name: "loudly crying face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f62d.png"
+  },
+  {
+    id: "1f631",
+    emoji: "\u{1F631}",
+    name: "face screaming in fear",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f631.png"
+  },
+  {
+    id: "1f616",
+    emoji: "\u{1F616}",
+    name: "confounded face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f616.png"
+  },
+  {
+    id: "1f623",
+    emoji: "\u{1F623}",
+    name: "persevering face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f623.png"
+  },
+  {
+    id: "1f61e",
+    emoji: "\u{1F61E}",
+    name: "disappointed face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f61e.png"
+  },
+  {
+    id: "1f613",
+    emoji: "\u{1F613}",
+    name: "downcast face with sweat",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f613.png"
+  },
+  {
+    id: "1f629",
+    emoji: "\u{1F629}",
+    name: "weary face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f629.png"
+  },
+  {
+    id: "1f62b",
+    emoji: "\u{1F62B}",
+    name: "tired face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f62b.png"
+  },
+  {
+    id: "1f971",
+    emoji: "\u{1F971}",
+    name: "yawning face",
+    category: "Smileys & Emotion",
+    subcategory: "face-concerned",
+    supportsSkinTone: false,
+    file: "1f971.png"
+  },
+  {
+    id: "1f624",
+    emoji: "\u{1F624}",
+    name: "face with steam from nose",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "1f624.png"
+  },
+  {
+    id: "1f621",
+    emoji: "\u{1F621}",
+    name: "enraged face",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "1f621.png"
+  },
+  {
+    id: "1f620",
+    emoji: "\u{1F620}",
+    name: "angry face",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "1f620.png"
+  },
+  {
+    id: "1f92c",
+    emoji: "\u{1F92C}",
+    name: "face with symbols on mouth",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "1f92c.png"
+  },
+  {
+    id: "1f608",
+    emoji: "\u{1F608}",
+    name: "smiling face with horns",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "1f608.png"
+  },
+  {
+    id: "1f47f",
+    emoji: "\u{1F47F}",
+    name: "angry face with horns",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "1f47f.png"
+  },
+  {
+    id: "1f480",
+    emoji: "\u{1F480}",
+    name: "skull",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "1f480.png"
+  },
+  {
+    id: "2620-fe0f",
+    emoji: "\u2620\uFE0F",
+    name: "skull and crossbones",
+    category: "Smileys & Emotion",
+    subcategory: "face-negative",
+    supportsSkinTone: false,
+    file: "2620-fe0f.png"
+  },
+  {
+    id: "1f4a9",
+    emoji: "\u{1F4A9}",
+    name: "pile of poo",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f4a9.png"
+  },
+  {
+    id: "1f921",
+    emoji: "\u{1F921}",
+    name: "clown face",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f921.png"
+  },
+  {
+    id: "1f479",
+    emoji: "\u{1F479}",
+    name: "ogre",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f479.png"
+  },
+  {
+    id: "1f47a",
+    emoji: "\u{1F47A}",
+    name: "goblin",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f47a.png"
+  },
+  {
+    id: "1f47b",
+    emoji: "\u{1F47B}",
+    name: "ghost",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f47b.png"
+  },
+  {
+    id: "1f47d",
+    emoji: "\u{1F47D}",
+    name: "alien",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f47d.png"
+  },
+  {
+    id: "1f47e",
+    emoji: "\u{1F47E}",
+    name: "alien monster",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f47e.png"
+  },
+  {
+    id: "1f916",
+    emoji: "\u{1F916}",
+    name: "robot",
+    category: "Smileys & Emotion",
+    subcategory: "face-costume",
+    supportsSkinTone: false,
+    file: "1f916.png"
+  },
+  {
+    id: "1f63a",
+    emoji: "\u{1F63A}",
+    name: "grinning cat",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f63a.png"
+  },
+  {
+    id: "1f638",
+    emoji: "\u{1F638}",
+    name: "grinning cat with smiling eyes",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f638.png"
+  },
+  {
+    id: "1f639",
+    emoji: "\u{1F639}",
+    name: "cat with tears of joy",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f639.png"
+  },
+  {
+    id: "1f63b",
+    emoji: "\u{1F63B}",
+    name: "smiling cat with heart-eyes",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f63b.png"
+  },
+  {
+    id: "1f63c",
+    emoji: "\u{1F63C}",
+    name: "cat with wry smile",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f63c.png"
+  },
+  {
+    id: "1f63d",
+    emoji: "\u{1F63D}",
+    name: "kissing cat",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f63d.png"
+  },
+  {
+    id: "1f640",
+    emoji: "\u{1F640}",
+    name: "weary cat",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f640.png"
+  },
+  {
+    id: "1f63f",
+    emoji: "\u{1F63F}",
+    name: "crying cat",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f63f.png"
+  },
+  {
+    id: "1f63e",
+    emoji: "\u{1F63E}",
+    name: "pouting cat",
+    category: "Smileys & Emotion",
+    subcategory: "cat-face",
+    supportsSkinTone: false,
+    file: "1f63e.png"
+  },
+  {
+    id: "1f648",
+    emoji: "\u{1F648}",
+    name: "see-no-evil monkey",
+    category: "Smileys & Emotion",
+    subcategory: "monkey-face",
+    supportsSkinTone: false,
+    file: "1f648.png"
+  },
+  {
+    id: "1f649",
+    emoji: "\u{1F649}",
+    name: "hear-no-evil monkey",
+    category: "Smileys & Emotion",
+    subcategory: "monkey-face",
+    supportsSkinTone: false,
+    file: "1f649.png"
+  },
+  {
+    id: "1f64a",
+    emoji: "\u{1F64A}",
+    name: "speak-no-evil monkey",
+    category: "Smileys & Emotion",
+    subcategory: "monkey-face",
+    supportsSkinTone: false,
+    file: "1f64a.png"
+  },
+  {
+    id: "1f48c",
+    emoji: "\u{1F48C}",
+    name: "love letter",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f48c.png"
+  },
+  {
+    id: "1f498",
+    emoji: "\u{1F498}",
+    name: "heart with arrow",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f498.png"
+  },
+  {
+    id: "1f49d",
+    emoji: "\u{1F49D}",
+    name: "heart with ribbon",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f49d.png"
+  },
+  {
+    id: "1f496",
+    emoji: "\u{1F496}",
+    name: "sparkling heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f496.png"
+  },
+  {
+    id: "1f497",
+    emoji: "\u{1F497}",
+    name: "growing heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f497.png"
+  },
+  {
+    id: "1f493",
+    emoji: "\u{1F493}",
+    name: "beating heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f493.png"
+  },
+  {
+    id: "1f49e",
+    emoji: "\u{1F49E}",
+    name: "revolving hearts",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f49e.png"
+  },
+  {
+    id: "1f495",
+    emoji: "\u{1F495}",
+    name: "two hearts",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f495.png"
+  },
+  {
+    id: "1f49f",
+    emoji: "\u{1F49F}",
+    name: "heart decoration",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f49f.png"
+  },
+  {
+    id: "2763-fe0f",
+    emoji: "\u2763\uFE0F",
+    name: "heart exclamation",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "2763-fe0f.png"
+  },
+  {
+    id: "1f494",
+    emoji: "\u{1F494}",
+    name: "broken heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f494.png"
+  },
+  {
+    id: "2764-fe0f-200d-1f525",
+    emoji: "\u2764\uFE0F\u200D\u{1F525}",
+    name: "heart on fire",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "2764-fe0f-200d-1f525.png"
+  },
+  {
+    id: "2764-fe0f-200d-1fa79",
+    emoji: "\u2764\uFE0F\u200D\u{1FA79}",
+    name: "mending heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "2764-fe0f-200d-1fa79.png"
+  },
+  {
+    id: "2764-fe0f",
+    emoji: "\u2764\uFE0F",
+    name: "red heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "2764-fe0f.png"
+  },
+  {
+    id: "1fa77",
+    emoji: "\u{1FA77}",
+    name: "pink heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1fa77.png"
+  },
+  {
+    id: "1f9e1",
+    emoji: "\u{1F9E1}",
+    name: "orange heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f9e1.png"
+  },
+  {
+    id: "1f49b",
+    emoji: "\u{1F49B}",
+    name: "yellow heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f49b.png"
+  },
+  {
+    id: "1f49a",
+    emoji: "\u{1F49A}",
+    name: "green heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f49a.png"
+  },
+  {
+    id: "1f499",
+    emoji: "\u{1F499}",
+    name: "blue heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f499.png"
+  },
+  {
+    id: "1fa75",
+    emoji: "\u{1FA75}",
+    name: "light blue heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1fa75.png"
+  },
+  {
+    id: "1f49c",
+    emoji: "\u{1F49C}",
+    name: "purple heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f49c.png"
+  },
+  {
+    id: "1f90e",
+    emoji: "\u{1F90E}",
+    name: "brown heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f90e.png"
+  },
+  {
+    id: "1f5a4",
+    emoji: "\u{1F5A4}",
+    name: "black heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f5a4.png"
+  },
+  {
+    id: "1fa76",
+    emoji: "\u{1FA76}",
+    name: "grey heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1fa76.png"
+  },
+  {
+    id: "1f90d",
+    emoji: "\u{1F90D}",
+    name: "white heart",
+    category: "Smileys & Emotion",
+    subcategory: "heart",
+    supportsSkinTone: false,
+    file: "1f90d.png"
+  },
+  {
+    id: "1f48b",
+    emoji: "\u{1F48B}",
+    name: "kiss mark",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f48b.png"
+  },
+  {
+    id: "1f4af",
+    emoji: "\u{1F4AF}",
+    name: "hundred points",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4af.png"
+  },
+  {
+    id: "1f4a2",
+    emoji: "\u{1F4A2}",
+    name: "anger symbol",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4a2.png"
+  },
+  {
+    id: "1faef",
+    emoji: "\u{1FAEF}",
+    name: "fight cloud",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1faef.png"
+  },
+  {
+    id: "1f4a5",
+    emoji: "\u{1F4A5}",
+    name: "collision",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4a5.png"
+  },
+  {
+    id: "1f4ab",
+    emoji: "\u{1F4AB}",
+    name: "dizzy",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4ab.png"
+  },
+  {
+    id: "1f4a6",
+    emoji: "\u{1F4A6}",
+    name: "sweat droplets",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4a6.png"
+  },
+  {
+    id: "1f4a8",
+    emoji: "\u{1F4A8}",
+    name: "dashing away",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4a8.png"
+  },
+  {
+    id: "1f573-fe0f",
+    emoji: "\u{1F573}\uFE0F",
+    name: "hole",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f573-fe0f.png"
+  },
+  {
+    id: "1f4ac",
+    emoji: "\u{1F4AC}",
+    name: "speech balloon",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4ac.png"
+  },
+  {
+    id: "1f441-fe0f-200d-1f5e8-fe0f",
+    emoji: "\u{1F441}\uFE0F\u200D\u{1F5E8}\uFE0F",
+    name: "eye in speech bubble",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f441-fe0f-200d-1f5e8-fe0f.png"
+  },
+  {
+    id: "1f5e8-fe0f",
+    emoji: "\u{1F5E8}\uFE0F",
+    name: "left speech bubble",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f5e8-fe0f.png"
+  },
+  {
+    id: "1f5ef-fe0f",
+    emoji: "\u{1F5EF}\uFE0F",
+    name: "right anger bubble",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f5ef-fe0f.png"
+  },
+  {
+    id: "1f4ad",
+    emoji: "\u{1F4AD}",
+    name: "thought balloon",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4ad.png"
+  },
+  {
+    id: "1f4a4",
+    emoji: "\u{1F4A4}",
+    name: "ZZZ",
+    category: "Smileys & Emotion",
+    subcategory: "emotion",
+    supportsSkinTone: false,
+    file: "1f4a4.png"
+  },
+  {
+    id: "1f44b",
+    emoji: "\u{1F44B}",
+    name: "waving hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1f44b.png"
+  },
+  {
+    id: "1f91a",
+    emoji: "\u{1F91A}",
+    name: "raised back of hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1f91a.png"
+  },
+  {
+    id: "1f590-fe0f",
+    emoji: "\u{1F590}\uFE0F",
+    name: "hand with fingers splayed",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1f590-fe0f.png"
+  },
+  {
+    id: "270b",
+    emoji: "\u270B",
+    name: "raised hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "270b.png"
+  },
+  {
+    id: "1f596",
+    emoji: "\u{1F596}",
+    name: "vulcan salute",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1f596.png"
+  },
+  {
+    id: "1faf1",
+    emoji: "\u{1FAF1}",
+    name: "rightwards hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1faf1.png"
+  },
+  {
+    id: "1faf2",
+    emoji: "\u{1FAF2}",
+    name: "leftwards hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1faf2.png"
+  },
+  {
+    id: "1faf3",
+    emoji: "\u{1FAF3}",
+    name: "palm down hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1faf3.png"
+  },
+  {
+    id: "1faf4",
+    emoji: "\u{1FAF4}",
+    name: "palm up hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1faf4.png"
+  },
+  {
+    id: "1faf7",
+    emoji: "\u{1FAF7}",
+    name: "leftwards pushing hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1faf7.png"
+  },
+  {
+    id: "1faf8",
+    emoji: "\u{1FAF8}",
+    name: "rightwards pushing hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-open",
+    supportsSkinTone: true,
+    file: "1faf8.png"
+  },
+  {
+    id: "1f44c",
+    emoji: "\u{1F44C}",
+    name: "OK hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1f44c.png"
+  },
+  {
+    id: "1f90c",
+    emoji: "\u{1F90C}",
+    name: "pinched fingers",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1f90c.png"
+  },
+  {
+    id: "1f90f",
+    emoji: "\u{1F90F}",
+    name: "pinching hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1f90f.png"
+  },
+  {
+    id: "270c-fe0f",
+    emoji: "\u270C\uFE0F",
+    name: "victory hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "270c-fe0f.png"
+  },
+  {
+    id: "1f91e",
+    emoji: "\u{1F91E}",
+    name: "crossed fingers",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1f91e.png"
+  },
+  {
+    id: "1faf0",
+    emoji: "\u{1FAF0}",
+    name: "hand with index finger and thumb crossed",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1faf0.png"
+  },
+  {
+    id: "1f91f",
+    emoji: "\u{1F91F}",
+    name: "love-you gesture",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1f91f.png"
+  },
+  {
+    id: "1f918",
+    emoji: "\u{1F918}",
+    name: "sign of the horns",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1f918.png"
+  },
+  {
+    id: "1f919",
+    emoji: "\u{1F919}",
+    name: "call me hand",
+    category: "People & Body",
+    subcategory: "hand-fingers-partial",
+    supportsSkinTone: true,
+    file: "1f919.png"
+  },
+  {
+    id: "1f448",
+    emoji: "\u{1F448}",
+    name: "backhand index pointing left",
+    category: "People & Body",
+    subcategory: "hand-single-finger",
+    supportsSkinTone: true,
+    file: "1f448.png"
+  },
+  {
+    id: "1f449",
+    emoji: "\u{1F449}",
+    name: "backhand index pointing right",
+    category: "People & Body",
+    subcategory: "hand-single-finger",
+    supportsSkinTone: true,
+    file: "1f449.png"
+  },
+  {
+    id: "1f446",
+    emoji: "\u{1F446}",
+    name: "backhand index pointing up",
+    category: "People & Body",
+    subcategory: "hand-single-finger",
+    supportsSkinTone: true,
+    file: "1f446.png"
+  },
+  {
+    id: "1f595",
+    emoji: "\u{1F595}",
+    name: "middle finger",
+    category: "People & Body",
+    subcategory: "hand-single-finger",
+    supportsSkinTone: true,
+    file: "1f595.png"
+  },
+  {
+    id: "1f447",
+    emoji: "\u{1F447}",
+    name: "backhand index pointing down",
+    category: "People & Body",
+    subcategory: "hand-single-finger",
+    supportsSkinTone: true,
+    file: "1f447.png"
+  },
+  {
+    id: "261d-fe0f",
+    emoji: "\u261D\uFE0F",
+    name: "index pointing up",
+    category: "People & Body",
+    subcategory: "hand-single-finger",
+    supportsSkinTone: true,
+    file: "261d-fe0f.png"
+  },
+  {
+    id: "1faf5",
+    emoji: "\u{1FAF5}",
+    name: "index pointing at the viewer",
+    category: "People & Body",
+    subcategory: "hand-single-finger",
+    supportsSkinTone: true,
+    file: "1faf5.png"
+  },
+  {
+    id: "1f44d",
+    emoji: "\u{1F44D}",
+    name: "thumbs up",
+    category: "People & Body",
+    subcategory: "hand-fingers-closed",
+    supportsSkinTone: true,
+    file: "1f44d.png"
+  },
+  {
+    id: "1f44e",
+    emoji: "\u{1F44E}",
+    name: "thumbs down",
+    category: "People & Body",
+    subcategory: "hand-fingers-closed",
+    supportsSkinTone: true,
+    file: "1f44e.png"
+  },
+  {
+    id: "270a",
+    emoji: "\u270A",
+    name: "raised fist",
+    category: "People & Body",
+    subcategory: "hand-fingers-closed",
+    supportsSkinTone: true,
+    file: "270a.png"
+  },
+  {
+    id: "1f44a",
+    emoji: "\u{1F44A}",
+    name: "oncoming fist",
+    category: "People & Body",
+    subcategory: "hand-fingers-closed",
+    supportsSkinTone: true,
+    file: "1f44a.png"
+  },
+  {
+    id: "1f91b",
+    emoji: "\u{1F91B}",
+    name: "left-facing fist",
+    category: "People & Body",
+    subcategory: "hand-fingers-closed",
+    supportsSkinTone: true,
+    file: "1f91b.png"
+  },
+  {
+    id: "1f91c",
+    emoji: "\u{1F91C}",
+    name: "right-facing fist",
+    category: "People & Body",
+    subcategory: "hand-fingers-closed",
+    supportsSkinTone: true,
+    file: "1f91c.png"
+  },
+  {
+    id: "1f44f",
+    emoji: "\u{1F44F}",
+    name: "clapping hands",
+    category: "People & Body",
+    subcategory: "hands",
+    supportsSkinTone: true,
+    file: "1f44f.png"
+  },
+  {
+    id: "1f64c",
+    emoji: "\u{1F64C}",
+    name: "raising hands",
+    category: "People & Body",
+    subcategory: "hands",
+    supportsSkinTone: true,
+    file: "1f64c.png"
+  },
+  {
+    id: "1faf6",
+    emoji: "\u{1FAF6}",
+    name: "heart hands",
+    category: "People & Body",
+    subcategory: "hands",
+    supportsSkinTone: true,
+    file: "1faf6.png"
+  },
+  {
+    id: "1f450",
+    emoji: "\u{1F450}",
+    name: "open hands",
+    category: "People & Body",
+    subcategory: "hands",
+    supportsSkinTone: true,
+    file: "1f450.png"
+  },
+  {
+    id: "1f932",
+    emoji: "\u{1F932}",
+    name: "palms up together",
+    category: "People & Body",
+    subcategory: "hands",
+    supportsSkinTone: true,
+    file: "1f932.png"
+  },
+  {
+    id: "1f91d",
+    emoji: "\u{1F91D}",
+    name: "handshake",
+    category: "People & Body",
+    subcategory: "hands",
+    supportsSkinTone: true,
+    file: "1f91d.png"
+  },
+  {
+    id: "1f64f",
+    emoji: "\u{1F64F}",
+    name: "folded hands",
+    category: "People & Body",
+    subcategory: "hands",
+    supportsSkinTone: true,
+    file: "1f64f.png"
+  },
+  {
+    id: "270d-fe0f",
+    emoji: "\u270D\uFE0F",
+    name: "writing hand",
+    category: "People & Body",
+    subcategory: "hand-prop",
+    supportsSkinTone: true,
+    file: "270d-fe0f.png"
+  },
+  {
+    id: "1f485",
+    emoji: "\u{1F485}",
+    name: "nail polish",
+    category: "People & Body",
+    subcategory: "hand-prop",
+    supportsSkinTone: true,
+    file: "1f485.png"
+  },
+  {
+    id: "1f933",
+    emoji: "\u{1F933}",
+    name: "selfie",
+    category: "People & Body",
+    subcategory: "hand-prop",
+    supportsSkinTone: true,
+    file: "1f933.png"
+  },
+  {
+    id: "1f4aa",
+    emoji: "\u{1F4AA}",
+    name: "flexed biceps",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: true,
+    file: "1f4aa.png"
+  },
+  {
+    id: "1f9be",
+    emoji: "\u{1F9BE}",
+    name: "mechanical arm",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f9be.png"
+  },
+  {
+    id: "1f9bf",
+    emoji: "\u{1F9BF}",
+    name: "mechanical leg",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f9bf.png"
+  },
+  {
+    id: "1f9b5",
+    emoji: "\u{1F9B5}",
+    name: "leg",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: true,
+    file: "1f9b5.png"
+  },
+  {
+    id: "1f9b6",
+    emoji: "\u{1F9B6}",
+    name: "foot",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: true,
+    file: "1f9b6.png"
+  },
+  {
+    id: "1f442",
+    emoji: "\u{1F442}",
+    name: "ear",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: true,
+    file: "1f442.png"
+  },
+  {
+    id: "1f9bb",
+    emoji: "\u{1F9BB}",
+    name: "ear with hearing aid",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: true,
+    file: "1f9bb.png"
+  },
+  {
+    id: "1f443",
+    emoji: "\u{1F443}",
+    name: "nose",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: true,
+    file: "1f443.png"
+  },
+  {
+    id: "1f9e0",
+    emoji: "\u{1F9E0}",
+    name: "brain",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f9e0.png"
+  },
+  {
+    id: "1fac0",
+    emoji: "\u{1FAC0}",
+    name: "anatomical heart",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1fac0.png"
+  },
+  {
+    id: "1fac1",
+    emoji: "\u{1FAC1}",
+    name: "lungs",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1fac1.png"
+  },
+  {
+    id: "1f9b7",
+    emoji: "\u{1F9B7}",
+    name: "tooth",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f9b7.png"
+  },
+  {
+    id: "1f9b4",
+    emoji: "\u{1F9B4}",
+    name: "bone",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f9b4.png"
+  },
+  {
+    id: "1f440",
+    emoji: "\u{1F440}",
+    name: "eyes",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f440.png"
+  },
+  {
+    id: "1f441-fe0f",
+    emoji: "\u{1F441}\uFE0F",
+    name: "eye",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f441-fe0f.png"
+  },
+  {
+    id: "1f445",
+    emoji: "\u{1F445}",
+    name: "tongue",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f445.png"
+  },
+  {
+    id: "1f444",
+    emoji: "\u{1F444}",
+    name: "mouth",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1f444.png"
+  },
+  {
+    id: "1fae6",
+    emoji: "\u{1FAE6}",
+    name: "biting lip",
+    category: "People & Body",
+    subcategory: "body-parts",
+    supportsSkinTone: false,
+    file: "1fae6.png"
+  },
+  {
+    id: "1f476",
+    emoji: "\u{1F476}",
+    name: "baby",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f476.png"
+  },
+  {
+    id: "1f9d2",
+    emoji: "\u{1F9D2}",
+    name: "child",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d2.png"
+  },
+  {
+    id: "1f466",
+    emoji: "\u{1F466}",
+    name: "boy",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f466.png"
+  },
+  {
+    id: "1f467",
+    emoji: "\u{1F467}",
+    name: "girl",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f467.png"
+  },
+  {
+    id: "1f9d1",
+    emoji: "\u{1F9D1}",
+    name: "person",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d1.png"
+  },
+  {
+    id: "1f471",
+    emoji: "\u{1F471}",
+    name: "person: blond hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f471.png"
+  },
+  {
+    id: "1f468",
+    emoji: "\u{1F468}",
+    name: "man",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f468.png"
+  },
+  {
+    id: "1f9d4",
+    emoji: "\u{1F9D4}",
+    name: "person: beard",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d4.png"
+  },
+  {
+    id: "1f9d4-200d-2642-fe0f",
+    emoji: "\u{1F9D4}\u200D\u2642\uFE0F",
+    name: "man: beard",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d4-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9d4-200d-2640-fe0f",
+    emoji: "\u{1F9D4}\u200D\u2640\uFE0F",
+    name: "woman: beard",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d4-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f468-200d-1f9b0",
+    emoji: "\u{1F468}\u200D\u{1F9B0}",
+    name: "man: red hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9b0.png"
+  },
+  {
+    id: "1f468-200d-1f9b1",
+    emoji: "\u{1F468}\u200D\u{1F9B1}",
+    name: "man: curly hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9b1.png"
+  },
+  {
+    id: "1f468-200d-1f9b3",
+    emoji: "\u{1F468}\u200D\u{1F9B3}",
+    name: "man: white hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9b3.png"
+  },
+  {
+    id: "1f468-200d-1f9b2",
+    emoji: "\u{1F468}\u200D\u{1F9B2}",
+    name: "man: bald",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9b2.png"
+  },
+  {
+    id: "1f469",
+    emoji: "\u{1F469}",
+    name: "woman",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f469.png"
+  },
+  {
+    id: "1f469-200d-1f9b0",
+    emoji: "\u{1F469}\u200D\u{1F9B0}",
+    name: "woman: red hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9b0.png"
+  },
+  {
+    id: "1f9d1-200d-1f9b0",
+    emoji: "\u{1F9D1}\u200D\u{1F9B0}",
+    name: "person: red hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9b0.png"
+  },
+  {
+    id: "1f469-200d-1f9b1",
+    emoji: "\u{1F469}\u200D\u{1F9B1}",
+    name: "woman: curly hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9b1.png"
+  },
+  {
+    id: "1f9d1-200d-1f9b1",
+    emoji: "\u{1F9D1}\u200D\u{1F9B1}",
+    name: "person: curly hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9b1.png"
+  },
+  {
+    id: "1f469-200d-1f9b3",
+    emoji: "\u{1F469}\u200D\u{1F9B3}",
+    name: "woman: white hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9b3.png"
+  },
+  {
+    id: "1f9d1-200d-1f9b3",
+    emoji: "\u{1F9D1}\u200D\u{1F9B3}",
+    name: "person: white hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9b3.png"
+  },
+  {
+    id: "1f469-200d-1f9b2",
+    emoji: "\u{1F469}\u200D\u{1F9B2}",
+    name: "woman: bald",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9b2.png"
+  },
+  {
+    id: "1f9d1-200d-1f9b2",
+    emoji: "\u{1F9D1}\u200D\u{1F9B2}",
+    name: "person: bald",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9b2.png"
+  },
+  {
+    id: "1f471-200d-2640-fe0f",
+    emoji: "\u{1F471}\u200D\u2640\uFE0F",
+    name: "woman: blond hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f471-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f471-200d-2642-fe0f",
+    emoji: "\u{1F471}\u200D\u2642\uFE0F",
+    name: "man: blond hair",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f471-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9d3",
+    emoji: "\u{1F9D3}",
+    name: "older person",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f9d3.png"
+  },
+  {
+    id: "1f474",
+    emoji: "\u{1F474}",
+    name: "old man",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f474.png"
+  },
+  {
+    id: "1f475",
+    emoji: "\u{1F475}",
+    name: "old woman",
+    category: "People & Body",
+    subcategory: "person",
+    supportsSkinTone: true,
+    file: "1f475.png"
+  },
+  {
+    id: "1f64d",
+    emoji: "\u{1F64D}",
+    name: "person frowning",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64d.png"
+  },
+  {
+    id: "1f64d-200d-2642-fe0f",
+    emoji: "\u{1F64D}\u200D\u2642\uFE0F",
+    name: "man frowning",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64d-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f64d-200d-2640-fe0f",
+    emoji: "\u{1F64D}\u200D\u2640\uFE0F",
+    name: "woman frowning",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64d-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f64e",
+    emoji: "\u{1F64E}",
+    name: "person pouting",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64e.png"
+  },
+  {
+    id: "1f64e-200d-2642-fe0f",
+    emoji: "\u{1F64E}\u200D\u2642\uFE0F",
+    name: "man pouting",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64e-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f64e-200d-2640-fe0f",
+    emoji: "\u{1F64E}\u200D\u2640\uFE0F",
+    name: "woman pouting",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64e-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f645",
+    emoji: "\u{1F645}",
+    name: "person gesturing NO",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f645.png"
+  },
+  {
+    id: "1f645-200d-2642-fe0f",
+    emoji: "\u{1F645}\u200D\u2642\uFE0F",
+    name: "man gesturing NO",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f645-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f645-200d-2640-fe0f",
+    emoji: "\u{1F645}\u200D\u2640\uFE0F",
+    name: "woman gesturing NO",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f645-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f646",
+    emoji: "\u{1F646}",
+    name: "person gesturing OK",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f646.png"
+  },
+  {
+    id: "1f646-200d-2642-fe0f",
+    emoji: "\u{1F646}\u200D\u2642\uFE0F",
+    name: "man gesturing OK",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f646-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f646-200d-2640-fe0f",
+    emoji: "\u{1F646}\u200D\u2640\uFE0F",
+    name: "woman gesturing OK",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f646-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f481",
+    emoji: "\u{1F481}",
+    name: "person tipping hand",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f481.png"
+  },
+  {
+    id: "1f481-200d-2642-fe0f",
+    emoji: "\u{1F481}\u200D\u2642\uFE0F",
+    name: "man tipping hand",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f481-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f481-200d-2640-fe0f",
+    emoji: "\u{1F481}\u200D\u2640\uFE0F",
+    name: "woman tipping hand",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f481-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f64b",
+    emoji: "\u{1F64B}",
+    name: "person raising hand",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64b.png"
+  },
+  {
+    id: "1f64b-200d-2642-fe0f",
+    emoji: "\u{1F64B}\u200D\u2642\uFE0F",
+    name: "man raising hand",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64b-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f64b-200d-2640-fe0f",
+    emoji: "\u{1F64B}\u200D\u2640\uFE0F",
+    name: "woman raising hand",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f64b-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9cf",
+    emoji: "\u{1F9CF}",
+    name: "deaf person",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f9cf.png"
+  },
+  {
+    id: "1f9cf-200d-2642-fe0f",
+    emoji: "\u{1F9CF}\u200D\u2642\uFE0F",
+    name: "deaf man",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f9cf-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9cf-200d-2640-fe0f",
+    emoji: "\u{1F9CF}\u200D\u2640\uFE0F",
+    name: "deaf woman",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f9cf-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f647",
+    emoji: "\u{1F647}",
+    name: "person bowing",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f647.png"
+  },
+  {
+    id: "1f647-200d-2642-fe0f",
+    emoji: "\u{1F647}\u200D\u2642\uFE0F",
+    name: "man bowing",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f647-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f647-200d-2640-fe0f",
+    emoji: "\u{1F647}\u200D\u2640\uFE0F",
+    name: "woman bowing",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f647-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f926",
+    emoji: "\u{1F926}",
+    name: "person facepalming",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f926.png"
+  },
+  {
+    id: "1f926-200d-2642-fe0f",
+    emoji: "\u{1F926}\u200D\u2642\uFE0F",
+    name: "man facepalming",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f926-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f926-200d-2640-fe0f",
+    emoji: "\u{1F926}\u200D\u2640\uFE0F",
+    name: "woman facepalming",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f926-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f937",
+    emoji: "\u{1F937}",
+    name: "person shrugging",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f937.png"
+  },
+  {
+    id: "1f937-200d-2642-fe0f",
+    emoji: "\u{1F937}\u200D\u2642\uFE0F",
+    name: "man shrugging",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f937-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f937-200d-2640-fe0f",
+    emoji: "\u{1F937}\u200D\u2640\uFE0F",
+    name: "woman shrugging",
+    category: "People & Body",
+    subcategory: "person-gesture",
+    supportsSkinTone: true,
+    file: "1f937-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-2695-fe0f",
+    emoji: "\u{1F9D1}\u200D\u2695\uFE0F",
+    name: "health worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-2695-fe0f.png"
+  },
+  {
+    id: "1f468-200d-2695-fe0f",
+    emoji: "\u{1F468}\u200D\u2695\uFE0F",
+    name: "man health worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-2695-fe0f.png"
+  },
+  {
+    id: "1f469-200d-2695-fe0f",
+    emoji: "\u{1F469}\u200D\u2695\uFE0F",
+    name: "woman health worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-2695-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-1f393",
+    emoji: "\u{1F9D1}\u200D\u{1F393}",
+    name: "student",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f393.png"
+  },
+  {
+    id: "1f468-200d-1f393",
+    emoji: "\u{1F468}\u200D\u{1F393}",
+    name: "man student",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f393.png"
+  },
+  {
+    id: "1f469-200d-1f393",
+    emoji: "\u{1F469}\u200D\u{1F393}",
+    name: "woman student",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f393.png"
+  },
+  {
+    id: "1f9d1-200d-1f3eb",
+    emoji: "\u{1F9D1}\u200D\u{1F3EB}",
+    name: "teacher",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f3eb.png"
+  },
+  {
+    id: "1f468-200d-1f3eb",
+    emoji: "\u{1F468}\u200D\u{1F3EB}",
+    name: "man teacher",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f3eb.png"
+  },
+  {
+    id: "1f469-200d-1f3eb",
+    emoji: "\u{1F469}\u200D\u{1F3EB}",
+    name: "woman teacher",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f3eb.png"
+  },
+  {
+    id: "1f9d1-200d-2696-fe0f",
+    emoji: "\u{1F9D1}\u200D\u2696\uFE0F",
+    name: "judge",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-2696-fe0f.png"
+  },
+  {
+    id: "1f468-200d-2696-fe0f",
+    emoji: "\u{1F468}\u200D\u2696\uFE0F",
+    name: "man judge",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-2696-fe0f.png"
+  },
+  {
+    id: "1f469-200d-2696-fe0f",
+    emoji: "\u{1F469}\u200D\u2696\uFE0F",
+    name: "woman judge",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-2696-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-1f33e",
+    emoji: "\u{1F9D1}\u200D\u{1F33E}",
+    name: "farmer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f33e.png"
+  },
+  {
+    id: "1f468-200d-1f33e",
+    emoji: "\u{1F468}\u200D\u{1F33E}",
+    name: "man farmer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f33e.png"
+  },
+  {
+    id: "1f469-200d-1f33e",
+    emoji: "\u{1F469}\u200D\u{1F33E}",
+    name: "woman farmer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f33e.png"
+  },
+  {
+    id: "1f9d1-200d-1f373",
+    emoji: "\u{1F9D1}\u200D\u{1F373}",
+    name: "cook",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f373.png"
+  },
+  {
+    id: "1f468-200d-1f373",
+    emoji: "\u{1F468}\u200D\u{1F373}",
+    name: "man cook",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f373.png"
+  },
+  {
+    id: "1f469-200d-1f373",
+    emoji: "\u{1F469}\u200D\u{1F373}",
+    name: "woman cook",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f373.png"
+  },
+  {
+    id: "1f9d1-200d-1f527",
+    emoji: "\u{1F9D1}\u200D\u{1F527}",
+    name: "mechanic",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f527.png"
+  },
+  {
+    id: "1f468-200d-1f527",
+    emoji: "\u{1F468}\u200D\u{1F527}",
+    name: "man mechanic",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f527.png"
+  },
+  {
+    id: "1f469-200d-1f527",
+    emoji: "\u{1F469}\u200D\u{1F527}",
+    name: "woman mechanic",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f527.png"
+  },
+  {
+    id: "1f9d1-200d-1f3ed",
+    emoji: "\u{1F9D1}\u200D\u{1F3ED}",
+    name: "factory worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f3ed.png"
+  },
+  {
+    id: "1f468-200d-1f3ed",
+    emoji: "\u{1F468}\u200D\u{1F3ED}",
+    name: "man factory worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f3ed.png"
+  },
+  {
+    id: "1f469-200d-1f3ed",
+    emoji: "\u{1F469}\u200D\u{1F3ED}",
+    name: "woman factory worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f3ed.png"
+  },
+  {
+    id: "1f9d1-200d-1f4bc",
+    emoji: "\u{1F9D1}\u200D\u{1F4BC}",
+    name: "office worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f4bc.png"
+  },
+  {
+    id: "1f468-200d-1f4bc",
+    emoji: "\u{1F468}\u200D\u{1F4BC}",
+    name: "man office worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f4bc.png"
+  },
+  {
+    id: "1f469-200d-1f4bc",
+    emoji: "\u{1F469}\u200D\u{1F4BC}",
+    name: "woman office worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f4bc.png"
+  },
+  {
+    id: "1f9d1-200d-1f52c",
+    emoji: "\u{1F9D1}\u200D\u{1F52C}",
+    name: "scientist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f52c.png"
+  },
+  {
+    id: "1f468-200d-1f52c",
+    emoji: "\u{1F468}\u200D\u{1F52C}",
+    name: "man scientist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f52c.png"
+  },
+  {
+    id: "1f469-200d-1f52c",
+    emoji: "\u{1F469}\u200D\u{1F52C}",
+    name: "woman scientist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f52c.png"
+  },
+  {
+    id: "1f9d1-200d-1f4bb",
+    emoji: "\u{1F9D1}\u200D\u{1F4BB}",
+    name: "technologist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f4bb.png"
+  },
+  {
+    id: "1f468-200d-1f4bb",
+    emoji: "\u{1F468}\u200D\u{1F4BB}",
+    name: "man technologist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f4bb.png"
+  },
+  {
+    id: "1f469-200d-1f4bb",
+    emoji: "\u{1F469}\u200D\u{1F4BB}",
+    name: "woman technologist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f4bb.png"
+  },
+  {
+    id: "1f9d1-200d-1f3a4",
+    emoji: "\u{1F9D1}\u200D\u{1F3A4}",
+    name: "singer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f3a4.png"
+  },
+  {
+    id: "1f468-200d-1f3a4",
+    emoji: "\u{1F468}\u200D\u{1F3A4}",
+    name: "man singer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f3a4.png"
+  },
+  {
+    id: "1f469-200d-1f3a4",
+    emoji: "\u{1F469}\u200D\u{1F3A4}",
+    name: "woman singer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f3a4.png"
+  },
+  {
+    id: "1f9d1-200d-1f3a8",
+    emoji: "\u{1F9D1}\u200D\u{1F3A8}",
+    name: "artist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f3a8.png"
+  },
+  {
+    id: "1f468-200d-1f3a8",
+    emoji: "\u{1F468}\u200D\u{1F3A8}",
+    name: "man artist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f3a8.png"
+  },
+  {
+    id: "1f469-200d-1f3a8",
+    emoji: "\u{1F469}\u200D\u{1F3A8}",
+    name: "woman artist",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f3a8.png"
+  },
+  {
+    id: "1f9d1-200d-2708-fe0f",
+    emoji: "\u{1F9D1}\u200D\u2708\uFE0F",
+    name: "pilot",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-2708-fe0f.png"
+  },
+  {
+    id: "1f468-200d-2708-fe0f",
+    emoji: "\u{1F468}\u200D\u2708\uFE0F",
+    name: "man pilot",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-2708-fe0f.png"
+  },
+  {
+    id: "1f469-200d-2708-fe0f",
+    emoji: "\u{1F469}\u200D\u2708\uFE0F",
+    name: "woman pilot",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-2708-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-1f680",
+    emoji: "\u{1F9D1}\u200D\u{1F680}",
+    name: "astronaut",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f680.png"
+  },
+  {
+    id: "1f468-200d-1f680",
+    emoji: "\u{1F468}\u200D\u{1F680}",
+    name: "man astronaut",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f680.png"
+  },
+  {
+    id: "1f469-200d-1f680",
+    emoji: "\u{1F469}\u200D\u{1F680}",
+    name: "woman astronaut",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f680.png"
+  },
+  {
+    id: "1f9d1-200d-1f692",
+    emoji: "\u{1F9D1}\u200D\u{1F692}",
+    name: "firefighter",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f692.png"
+  },
+  {
+    id: "1f468-200d-1f692",
+    emoji: "\u{1F468}\u200D\u{1F692}",
+    name: "man firefighter",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f692.png"
+  },
+  {
+    id: "1f469-200d-1f692",
+    emoji: "\u{1F469}\u200D\u{1F692}",
+    name: "woman firefighter",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f692.png"
+  },
+  {
+    id: "1f46e",
+    emoji: "\u{1F46E}",
+    name: "police officer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f46e.png"
+  },
+  {
+    id: "1f46e-200d-2642-fe0f",
+    emoji: "\u{1F46E}\u200D\u2642\uFE0F",
+    name: "man police officer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f46e-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f46e-200d-2640-fe0f",
+    emoji: "\u{1F46E}\u200D\u2640\uFE0F",
+    name: "woman police officer",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f46e-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f575-fe0f",
+    emoji: "\u{1F575}\uFE0F",
+    name: "detective",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f575-fe0f.png"
+  },
+  {
+    id: "1f575-fe0f-200d-2642-fe0f",
+    emoji: "\u{1F575}\uFE0F\u200D\u2642\uFE0F",
+    name: "man detective",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f575-fe0f-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f575-fe0f-200d-2640-fe0f",
+    emoji: "\u{1F575}\uFE0F\u200D\u2640\uFE0F",
+    name: "woman detective",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f575-fe0f-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f482",
+    emoji: "\u{1F482}",
+    name: "guard",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f482.png"
+  },
+  {
+    id: "1f482-200d-2642-fe0f",
+    emoji: "\u{1F482}\u200D\u2642\uFE0F",
+    name: "man guard",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f482-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f482-200d-2640-fe0f",
+    emoji: "\u{1F482}\u200D\u2640\uFE0F",
+    name: "woman guard",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f482-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f977",
+    emoji: "\u{1F977}",
+    name: "ninja",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f977.png"
+  },
+  {
+    id: "1f477",
+    emoji: "\u{1F477}",
+    name: "construction worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f477.png"
+  },
+  {
+    id: "1f477-200d-2642-fe0f",
+    emoji: "\u{1F477}\u200D\u2642\uFE0F",
+    name: "man construction worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f477-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f477-200d-2640-fe0f",
+    emoji: "\u{1F477}\u200D\u2640\uFE0F",
+    name: "woman construction worker",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f477-200d-2640-fe0f.png"
+  },
+  {
+    id: "1fac5",
+    emoji: "\u{1FAC5}",
+    name: "person with crown",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1fac5.png"
+  },
+  {
+    id: "1f934",
+    emoji: "\u{1F934}",
+    name: "prince",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f934.png"
+  },
+  {
+    id: "1f478",
+    emoji: "\u{1F478}",
+    name: "princess",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f478.png"
+  },
+  {
+    id: "1f473",
+    emoji: "\u{1F473}",
+    name: "person wearing turban",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f473.png"
+  },
+  {
+    id: "1f473-200d-2642-fe0f",
+    emoji: "\u{1F473}\u200D\u2642\uFE0F",
+    name: "man wearing turban",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f473-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f473-200d-2640-fe0f",
+    emoji: "\u{1F473}\u200D\u2640\uFE0F",
+    name: "woman wearing turban",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f473-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f472",
+    emoji: "\u{1F472}",
+    name: "person with skullcap",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f472.png"
+  },
+  {
+    id: "1f9d5",
+    emoji: "\u{1F9D5}",
+    name: "woman with headscarf",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d5.png"
+  },
+  {
+    id: "1f935",
+    emoji: "\u{1F935}",
+    name: "person in tuxedo",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f935.png"
+  },
+  {
+    id: "1f935-200d-2642-fe0f",
+    emoji: "\u{1F935}\u200D\u2642\uFE0F",
+    name: "man in tuxedo",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f935-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f935-200d-2640-fe0f",
+    emoji: "\u{1F935}\u200D\u2640\uFE0F",
+    name: "woman in tuxedo",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f935-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f470",
+    emoji: "\u{1F470}",
+    name: "person with veil",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f470.png"
+  },
+  {
+    id: "1f470-200d-2642-fe0f",
+    emoji: "\u{1F470}\u200D\u2642\uFE0F",
+    name: "man with veil",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f470-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f470-200d-2640-fe0f",
+    emoji: "\u{1F470}\u200D\u2640\uFE0F",
+    name: "woman with veil",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f470-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f930",
+    emoji: "\u{1F930}",
+    name: "pregnant woman",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f930.png"
+  },
+  {
+    id: "1fac3",
+    emoji: "\u{1FAC3}",
+    name: "pregnant man",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1fac3.png"
+  },
+  {
+    id: "1fac4",
+    emoji: "\u{1FAC4}",
+    name: "pregnant person",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1fac4.png"
+  },
+  {
+    id: "1f931",
+    emoji: "\u{1F931}",
+    name: "breast-feeding",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f931.png"
+  },
+  {
+    id: "1f469-200d-1f37c",
+    emoji: "\u{1F469}\u200D\u{1F37C}",
+    name: "woman feeding baby",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f37c.png"
+  },
+  {
+    id: "1f468-200d-1f37c",
+    emoji: "\u{1F468}\u200D\u{1F37C}",
+    name: "man feeding baby",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f37c.png"
+  },
+  {
+    id: "1f9d1-200d-1f37c",
+    emoji: "\u{1F9D1}\u200D\u{1F37C}",
+    name: "person feeding baby",
+    category: "People & Body",
+    subcategory: "person-role",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f37c.png"
+  },
+  {
+    id: "1f47c",
+    emoji: "\u{1F47C}",
+    name: "baby angel",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f47c.png"
+  },
+  {
+    id: "1f385",
+    emoji: "\u{1F385}",
+    name: "Santa Claus",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f385.png"
+  },
+  {
+    id: "1f936",
+    emoji: "\u{1F936}",
+    name: "Mrs. Claus",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f936.png"
+  },
+  {
+    id: "1f9d1-200d-1f384",
+    emoji: "\u{1F9D1}\u200D\u{1F384}",
+    name: "Mx Claus",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f384.png"
+  },
+  {
+    id: "1f9b8",
+    emoji: "\u{1F9B8}",
+    name: "superhero",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9b8.png"
+  },
+  {
+    id: "1f9b8-200d-2642-fe0f",
+    emoji: "\u{1F9B8}\u200D\u2642\uFE0F",
+    name: "man superhero",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9b8-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9b8-200d-2640-fe0f",
+    emoji: "\u{1F9B8}\u200D\u2640\uFE0F",
+    name: "woman superhero",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9b8-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9b9",
+    emoji: "\u{1F9B9}",
+    name: "supervillain",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9b9.png"
+  },
+  {
+    id: "1f9b9-200d-2642-fe0f",
+    emoji: "\u{1F9B9}\u200D\u2642\uFE0F",
+    name: "man supervillain",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9b9-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9b9-200d-2640-fe0f",
+    emoji: "\u{1F9B9}\u200D\u2640\uFE0F",
+    name: "woman supervillain",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9b9-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9d9",
+    emoji: "\u{1F9D9}",
+    name: "mage",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9d9.png"
+  },
+  {
+    id: "1f9d9-200d-2642-fe0f",
+    emoji: "\u{1F9D9}\u200D\u2642\uFE0F",
+    name: "man mage",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9d9-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9d9-200d-2640-fe0f",
+    emoji: "\u{1F9D9}\u200D\u2640\uFE0F",
+    name: "woman mage",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9d9-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9da",
+    emoji: "\u{1F9DA}",
+    name: "fairy",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9da.png"
+  },
+  {
+    id: "1f9da-200d-2642-fe0f",
+    emoji: "\u{1F9DA}\u200D\u2642\uFE0F",
+    name: "man fairy",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9da-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9da-200d-2640-fe0f",
+    emoji: "\u{1F9DA}\u200D\u2640\uFE0F",
+    name: "woman fairy",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9da-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9db",
+    emoji: "\u{1F9DB}",
+    name: "vampire",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9db.png"
+  },
+  {
+    id: "1f9db-200d-2642-fe0f",
+    emoji: "\u{1F9DB}\u200D\u2642\uFE0F",
+    name: "man vampire",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9db-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9db-200d-2640-fe0f",
+    emoji: "\u{1F9DB}\u200D\u2640\uFE0F",
+    name: "woman vampire",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9db-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9dc",
+    emoji: "\u{1F9DC}",
+    name: "merperson",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9dc.png"
+  },
+  {
+    id: "1f9dc-200d-2642-fe0f",
+    emoji: "\u{1F9DC}\u200D\u2642\uFE0F",
+    name: "merman",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9dc-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9dc-200d-2640-fe0f",
+    emoji: "\u{1F9DC}\u200D\u2640\uFE0F",
+    name: "mermaid",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9dc-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9dd",
+    emoji: "\u{1F9DD}",
+    name: "elf",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9dd.png"
+  },
+  {
+    id: "1f9dd-200d-2642-fe0f",
+    emoji: "\u{1F9DD}\u200D\u2642\uFE0F",
+    name: "man elf",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9dd-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9dd-200d-2640-fe0f",
+    emoji: "\u{1F9DD}\u200D\u2640\uFE0F",
+    name: "woman elf",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: true,
+    file: "1f9dd-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9de",
+    emoji: "\u{1F9DE}",
+    name: "genie",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1f9de.png"
+  },
+  {
+    id: "1f9de-200d-2642-fe0f",
+    emoji: "\u{1F9DE}\u200D\u2642\uFE0F",
+    name: "man genie",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1f9de-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9de-200d-2640-fe0f",
+    emoji: "\u{1F9DE}\u200D\u2640\uFE0F",
+    name: "woman genie",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1f9de-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9df",
+    emoji: "\u{1F9DF}",
+    name: "zombie",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1f9df.png"
+  },
+  {
+    id: "1f9df-200d-2642-fe0f",
+    emoji: "\u{1F9DF}\u200D\u2642\uFE0F",
+    name: "man zombie",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1f9df-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9df-200d-2640-fe0f",
+    emoji: "\u{1F9DF}\u200D\u2640\uFE0F",
+    name: "woman zombie",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1f9df-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9cc",
+    emoji: "\u{1F9CC}",
+    name: "troll",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1f9cc.png"
+  },
+  {
+    id: "1fac8",
+    emoji: "\u{1FAC8}",
+    name: "hairy creature",
+    category: "People & Body",
+    subcategory: "person-fantasy",
+    supportsSkinTone: false,
+    file: "1fac8.png"
+  },
+  {
+    id: "1f486",
+    emoji: "\u{1F486}",
+    name: "person getting massage",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f486.png"
+  },
+  {
+    id: "1f486-200d-2642-fe0f",
+    emoji: "\u{1F486}\u200D\u2642\uFE0F",
+    name: "man getting massage",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f486-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f486-200d-2640-fe0f",
+    emoji: "\u{1F486}\u200D\u2640\uFE0F",
+    name: "woman getting massage",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f486-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f487",
+    emoji: "\u{1F487}",
+    name: "person getting haircut",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f487.png"
+  },
+  {
+    id: "1f487-200d-2642-fe0f",
+    emoji: "\u{1F487}\u200D\u2642\uFE0F",
+    name: "man getting haircut",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f487-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f487-200d-2640-fe0f",
+    emoji: "\u{1F487}\u200D\u2640\uFE0F",
+    name: "woman getting haircut",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f487-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f6b6",
+    emoji: "\u{1F6B6}",
+    name: "person walking",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f6b6.png"
+  },
+  {
+    id: "1f6b6-200d-2642-fe0f",
+    emoji: "\u{1F6B6}\u200D\u2642\uFE0F",
+    name: "man walking",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f6b6-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f6b6-200d-2640-fe0f",
+    emoji: "\u{1F6B6}\u200D\u2640\uFE0F",
+    name: "woman walking",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f6b6-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f6b6-200d-27a1-fe0f",
+    emoji: "\u{1F6B6}\u200D\u27A1\uFE0F",
+    name: "person walking: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f6b6-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f6b6-200d-2640-fe0f-200d-27a1-fe0f",
+    emoji: "\u{1F6B6}\u200D\u2640\uFE0F\u200D\u27A1\uFE0F",
+    name: "woman walking: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f6b6-200d-2640-fe0f-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f6b6-200d-2642-fe0f-200d-27a1-fe0f",
+    emoji: "\u{1F6B6}\u200D\u2642\uFE0F\u200D\u27A1\uFE0F",
+    name: "man walking: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f6b6-200d-2642-fe0f-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f9cd",
+    emoji: "\u{1F9CD}",
+    name: "person standing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9cd.png"
+  },
+  {
+    id: "1f9cd-200d-2642-fe0f",
+    emoji: "\u{1F9CD}\u200D\u2642\uFE0F",
+    name: "man standing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9cd-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9cd-200d-2640-fe0f",
+    emoji: "\u{1F9CD}\u200D\u2640\uFE0F",
+    name: "woman standing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9cd-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9ce",
+    emoji: "\u{1F9CE}",
+    name: "person kneeling",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9ce.png"
+  },
+  {
+    id: "1f9ce-200d-2642-fe0f",
+    emoji: "\u{1F9CE}\u200D\u2642\uFE0F",
+    name: "man kneeling",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9ce-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9ce-200d-2640-fe0f",
+    emoji: "\u{1F9CE}\u200D\u2640\uFE0F",
+    name: "woman kneeling",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9ce-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9ce-200d-27a1-fe0f",
+    emoji: "\u{1F9CE}\u200D\u27A1\uFE0F",
+    name: "person kneeling: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9ce-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f9ce-200d-2640-fe0f-200d-27a1-fe0f",
+    emoji: "\u{1F9CE}\u200D\u2640\uFE0F\u200D\u27A1\uFE0F",
+    name: "woman kneeling: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9ce-200d-2640-fe0f-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f9ce-200d-2642-fe0f-200d-27a1-fe0f",
+    emoji: "\u{1F9CE}\u200D\u2642\uFE0F\u200D\u27A1\uFE0F",
+    name: "man kneeling: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9ce-200d-2642-fe0f-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-1f9af",
+    emoji: "\u{1F9D1}\u200D\u{1F9AF}",
+    name: "person with white cane",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9af.png"
+  },
+  {
+    id: "1f9d1-200d-1f9af-200d-27a1-fe0f",
+    emoji: "\u{1F9D1}\u200D\u{1F9AF}\u200D\u27A1\uFE0F",
+    name: "person with white cane: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9af-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f468-200d-1f9af",
+    emoji: "\u{1F468}\u200D\u{1F9AF}",
+    name: "man with white cane",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9af.png"
+  },
+  {
+    id: "1f468-200d-1f9af-200d-27a1-fe0f",
+    emoji: "\u{1F468}\u200D\u{1F9AF}\u200D\u27A1\uFE0F",
+    name: "man with white cane: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9af-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f469-200d-1f9af",
+    emoji: "\u{1F469}\u200D\u{1F9AF}",
+    name: "woman with white cane",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9af.png"
+  },
+  {
+    id: "1f469-200d-1f9af-200d-27a1-fe0f",
+    emoji: "\u{1F469}\u200D\u{1F9AF}\u200D\u27A1\uFE0F",
+    name: "woman with white cane: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9af-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-1f9bc",
+    emoji: "\u{1F9D1}\u200D\u{1F9BC}",
+    name: "person in motorized wheelchair",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9bc.png"
+  },
+  {
+    id: "1f9d1-200d-1f9bc-200d-27a1-fe0f",
+    emoji: "\u{1F9D1}\u200D\u{1F9BC}\u200D\u27A1\uFE0F",
+    name: "person in motorized wheelchair: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9bc-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f468-200d-1f9bc",
+    emoji: "\u{1F468}\u200D\u{1F9BC}",
+    name: "man in motorized wheelchair",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9bc.png"
+  },
+  {
+    id: "1f468-200d-1f9bc-200d-27a1-fe0f",
+    emoji: "\u{1F468}\u200D\u{1F9BC}\u200D\u27A1\uFE0F",
+    name: "man in motorized wheelchair: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9bc-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f469-200d-1f9bc",
+    emoji: "\u{1F469}\u200D\u{1F9BC}",
+    name: "woman in motorized wheelchair",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9bc.png"
+  },
+  {
+    id: "1f469-200d-1f9bc-200d-27a1-fe0f",
+    emoji: "\u{1F469}\u200D\u{1F9BC}\u200D\u27A1\uFE0F",
+    name: "woman in motorized wheelchair: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9bc-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-1f9bd",
+    emoji: "\u{1F9D1}\u200D\u{1F9BD}",
+    name: "person in manual wheelchair",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9bd.png"
+  },
+  {
+    id: "1f9d1-200d-1f9bd-200d-27a1-fe0f",
+    emoji: "\u{1F9D1}\u200D\u{1F9BD}\u200D\u27A1\uFE0F",
+    name: "person in manual wheelchair: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f9bd-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f468-200d-1f9bd",
+    emoji: "\u{1F468}\u200D\u{1F9BD}",
+    name: "man in manual wheelchair",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9bd.png"
+  },
+  {
+    id: "1f468-200d-1f9bd-200d-27a1-fe0f",
+    emoji: "\u{1F468}\u200D\u{1F9BD}\u200D\u27A1\uFE0F",
+    name: "man in manual wheelchair: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f468-200d-1f9bd-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f469-200d-1f9bd",
+    emoji: "\u{1F469}\u200D\u{1F9BD}",
+    name: "woman in manual wheelchair",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9bd.png"
+  },
+  {
+    id: "1f469-200d-1f9bd-200d-27a1-fe0f",
+    emoji: "\u{1F469}\u200D\u{1F9BD}\u200D\u27A1\uFE0F",
+    name: "woman in manual wheelchair: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f469-200d-1f9bd-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f3c3",
+    emoji: "\u{1F3C3}",
+    name: "person running",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f3c3.png"
+  },
+  {
+    id: "1f3c3-200d-2642-fe0f",
+    emoji: "\u{1F3C3}\u200D\u2642\uFE0F",
+    name: "man running",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f3c3-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f3c3-200d-2640-fe0f",
+    emoji: "\u{1F3C3}\u200D\u2640\uFE0F",
+    name: "woman running",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f3c3-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f3c3-200d-27a1-fe0f",
+    emoji: "\u{1F3C3}\u200D\u27A1\uFE0F",
+    name: "person running: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f3c3-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f3c3-200d-2640-fe0f-200d-27a1-fe0f",
+    emoji: "\u{1F3C3}\u200D\u2640\uFE0F\u200D\u27A1\uFE0F",
+    name: "woman running: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f3c3-200d-2640-fe0f-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f3c3-200d-2642-fe0f-200d-27a1-fe0f",
+    emoji: "\u{1F3C3}\u200D\u2642\uFE0F\u200D\u27A1\uFE0F",
+    name: "man running: facing right",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f3c3-200d-2642-fe0f-200d-27a1-fe0f.png"
+  },
+  {
+    id: "1f9d1-200d-1fa70",
+    emoji: "\u{1F9D1}\u200D\u{1FA70}",
+    name: "ballet dancer",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1fa70.png"
+  },
+  {
+    id: "1f483",
+    emoji: "\u{1F483}",
+    name: "woman dancing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f483.png"
+  },
+  {
+    id: "1f57a",
+    emoji: "\u{1F57A}",
+    name: "man dancing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f57a.png"
+  },
+  {
+    id: "1f574-fe0f",
+    emoji: "\u{1F574}\uFE0F",
+    name: "person in suit levitating",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f574-fe0f.png"
+  },
+  {
+    id: "1f46f",
+    emoji: "\u{1F46F}",
+    name: "people with bunny ears",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f46f.png"
+  },
+  {
+    id: "1f46f-200d-2642-fe0f",
+    emoji: "\u{1F46F}\u200D\u2642\uFE0F",
+    name: "men with bunny ears",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f46f-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f46f-200d-2640-fe0f",
+    emoji: "\u{1F46F}\u200D\u2640\uFE0F",
+    name: "women with bunny ears",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f46f-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9d6",
+    emoji: "\u{1F9D6}",
+    name: "person in steamy room",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d6.png"
+  },
+  {
+    id: "1f9d6-200d-2642-fe0f",
+    emoji: "\u{1F9D6}\u200D\u2642\uFE0F",
+    name: "man in steamy room",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d6-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9d6-200d-2640-fe0f",
+    emoji: "\u{1F9D6}\u200D\u2640\uFE0F",
+    name: "woman in steamy room",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d6-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9d7",
+    emoji: "\u{1F9D7}",
+    name: "person climbing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d7.png"
+  },
+  {
+    id: "1f9d7-200d-2642-fe0f",
+    emoji: "\u{1F9D7}\u200D\u2642\uFE0F",
+    name: "man climbing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d7-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9d7-200d-2640-fe0f",
+    emoji: "\u{1F9D7}\u200D\u2640\uFE0F",
+    name: "woman climbing",
+    category: "People & Body",
+    subcategory: "person-activity",
+    supportsSkinTone: true,
+    file: "1f9d7-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f93a",
+    emoji: "\u{1F93A}",
+    name: "person fencing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: false,
+    file: "1f93a.png"
+  },
+  {
+    id: "1f3c7",
+    emoji: "\u{1F3C7}",
+    name: "horse racing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3c7.png"
+  },
+  {
+    id: "26f7-fe0f",
+    emoji: "\u26F7\uFE0F",
+    name: "skier",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: false,
+    file: "26f7-fe0f.png"
+  },
+  {
+    id: "1f3c2",
+    emoji: "\u{1F3C2}",
+    name: "snowboarder",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3c2.png"
+  },
+  {
+    id: "1f3cc-fe0f",
+    emoji: "\u{1F3CC}\uFE0F",
+    name: "person golfing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3cc-fe0f.png"
+  },
+  {
+    id: "1f3cc-fe0f-200d-2642-fe0f",
+    emoji: "\u{1F3CC}\uFE0F\u200D\u2642\uFE0F",
+    name: "man golfing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3cc-fe0f-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f3cc-fe0f-200d-2640-fe0f",
+    emoji: "\u{1F3CC}\uFE0F\u200D\u2640\uFE0F",
+    name: "woman golfing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3cc-fe0f-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f3c4",
+    emoji: "\u{1F3C4}",
+    name: "person surfing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3c4.png"
+  },
+  {
+    id: "1f3c4-200d-2642-fe0f",
+    emoji: "\u{1F3C4}\u200D\u2642\uFE0F",
+    name: "man surfing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3c4-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f3c4-200d-2640-fe0f",
+    emoji: "\u{1F3C4}\u200D\u2640\uFE0F",
+    name: "woman surfing",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3c4-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f6a3",
+    emoji: "\u{1F6A3}",
+    name: "person rowing boat",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6a3.png"
+  },
+  {
+    id: "1f6a3-200d-2642-fe0f",
+    emoji: "\u{1F6A3}\u200D\u2642\uFE0F",
+    name: "man rowing boat",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6a3-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f6a3-200d-2640-fe0f",
+    emoji: "\u{1F6A3}\u200D\u2640\uFE0F",
+    name: "woman rowing boat",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6a3-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f3ca",
+    emoji: "\u{1F3CA}",
+    name: "person swimming",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3ca.png"
+  },
+  {
+    id: "1f3ca-200d-2642-fe0f",
+    emoji: "\u{1F3CA}\u200D\u2642\uFE0F",
+    name: "man swimming",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3ca-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f3ca-200d-2640-fe0f",
+    emoji: "\u{1F3CA}\u200D\u2640\uFE0F",
+    name: "woman swimming",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3ca-200d-2640-fe0f.png"
+  },
+  {
+    id: "26f9-fe0f",
+    emoji: "\u26F9\uFE0F",
+    name: "person bouncing ball",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "26f9-fe0f.png"
+  },
+  {
+    id: "26f9-fe0f-200d-2642-fe0f",
+    emoji: "\u26F9\uFE0F\u200D\u2642\uFE0F",
+    name: "man bouncing ball",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "26f9-fe0f-200d-2642-fe0f.png"
+  },
+  {
+    id: "26f9-fe0f-200d-2640-fe0f",
+    emoji: "\u26F9\uFE0F\u200D\u2640\uFE0F",
+    name: "woman bouncing ball",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "26f9-fe0f-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f3cb-fe0f",
+    emoji: "\u{1F3CB}\uFE0F",
+    name: "person lifting weights",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3cb-fe0f.png"
+  },
+  {
+    id: "1f3cb-fe0f-200d-2642-fe0f",
+    emoji: "\u{1F3CB}\uFE0F\u200D\u2642\uFE0F",
+    name: "man lifting weights",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3cb-fe0f-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f3cb-fe0f-200d-2640-fe0f",
+    emoji: "\u{1F3CB}\uFE0F\u200D\u2640\uFE0F",
+    name: "woman lifting weights",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f3cb-fe0f-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f6b4",
+    emoji: "\u{1F6B4}",
+    name: "person biking",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6b4.png"
+  },
+  {
+    id: "1f6b4-200d-2642-fe0f",
+    emoji: "\u{1F6B4}\u200D\u2642\uFE0F",
+    name: "man biking",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6b4-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f6b4-200d-2640-fe0f",
+    emoji: "\u{1F6B4}\u200D\u2640\uFE0F",
+    name: "woman biking",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6b4-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f6b5",
+    emoji: "\u{1F6B5}",
+    name: "person mountain biking",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6b5.png"
+  },
+  {
+    id: "1f6b5-200d-2642-fe0f",
+    emoji: "\u{1F6B5}\u200D\u2642\uFE0F",
+    name: "man mountain biking",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6b5-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f6b5-200d-2640-fe0f",
+    emoji: "\u{1F6B5}\u200D\u2640\uFE0F",
+    name: "woman mountain biking",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f6b5-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f938",
+    emoji: "\u{1F938}",
+    name: "person cartwheeling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f938.png"
+  },
+  {
+    id: "1f938-200d-2642-fe0f",
+    emoji: "\u{1F938}\u200D\u2642\uFE0F",
+    name: "man cartwheeling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f938-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f938-200d-2640-fe0f",
+    emoji: "\u{1F938}\u200D\u2640\uFE0F",
+    name: "woman cartwheeling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f938-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f93c",
+    emoji: "\u{1F93C}",
+    name: "people wrestling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93c.png"
+  },
+  {
+    id: "1f93c-200d-2642-fe0f",
+    emoji: "\u{1F93C}\u200D\u2642\uFE0F",
+    name: "men wrestling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93c-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f93c-200d-2640-fe0f",
+    emoji: "\u{1F93C}\u200D\u2640\uFE0F",
+    name: "women wrestling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93c-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f93d",
+    emoji: "\u{1F93D}",
+    name: "person playing water polo",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93d.png"
+  },
+  {
+    id: "1f93d-200d-2642-fe0f",
+    emoji: "\u{1F93D}\u200D\u2642\uFE0F",
+    name: "man playing water polo",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93d-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f93d-200d-2640-fe0f",
+    emoji: "\u{1F93D}\u200D\u2640\uFE0F",
+    name: "woman playing water polo",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93d-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f93e",
+    emoji: "\u{1F93E}",
+    name: "person playing handball",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93e.png"
+  },
+  {
+    id: "1f93e-200d-2642-fe0f",
+    emoji: "\u{1F93E}\u200D\u2642\uFE0F",
+    name: "man playing handball",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93e-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f93e-200d-2640-fe0f",
+    emoji: "\u{1F93E}\u200D\u2640\uFE0F",
+    name: "woman playing handball",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f93e-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f939",
+    emoji: "\u{1F939}",
+    name: "person juggling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f939.png"
+  },
+  {
+    id: "1f939-200d-2642-fe0f",
+    emoji: "\u{1F939}\u200D\u2642\uFE0F",
+    name: "man juggling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f939-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f939-200d-2640-fe0f",
+    emoji: "\u{1F939}\u200D\u2640\uFE0F",
+    name: "woman juggling",
+    category: "People & Body",
+    subcategory: "person-sport",
+    supportsSkinTone: true,
+    file: "1f939-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f9d8",
+    emoji: "\u{1F9D8}",
+    name: "person in lotus position",
+    category: "People & Body",
+    subcategory: "person-resting",
+    supportsSkinTone: true,
+    file: "1f9d8.png"
+  },
+  {
+    id: "1f9d8-200d-2642-fe0f",
+    emoji: "\u{1F9D8}\u200D\u2642\uFE0F",
+    name: "man in lotus position",
+    category: "People & Body",
+    subcategory: "person-resting",
+    supportsSkinTone: true,
+    file: "1f9d8-200d-2642-fe0f.png"
+  },
+  {
+    id: "1f9d8-200d-2640-fe0f",
+    emoji: "\u{1F9D8}\u200D\u2640\uFE0F",
+    name: "woman in lotus position",
+    category: "People & Body",
+    subcategory: "person-resting",
+    supportsSkinTone: true,
+    file: "1f9d8-200d-2640-fe0f.png"
+  },
+  {
+    id: "1f6c0",
+    emoji: "\u{1F6C0}",
+    name: "person taking bath",
+    category: "People & Body",
+    subcategory: "person-resting",
+    supportsSkinTone: true,
+    file: "1f6c0.png"
+  },
+  {
+    id: "1f6cc",
+    emoji: "\u{1F6CC}",
+    name: "person in bed",
+    category: "People & Body",
+    subcategory: "person-resting",
+    supportsSkinTone: true,
+    file: "1f6cc.png"
+  },
+  {
+    id: "1f9d1-200d-1f91d-200d-1f9d1",
+    emoji: "\u{1F9D1}\u200D\u{1F91D}\u200D\u{1F9D1}",
+    name: "people holding hands",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f9d1-200d-1f91d-200d-1f9d1.png"
+  },
+  {
+    id: "1f46d",
+    emoji: "\u{1F46D}",
+    name: "women holding hands",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f46d.png"
+  },
+  {
+    id: "1f46b",
+    emoji: "\u{1F46B}",
+    name: "woman and man holding hands",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f46b.png"
+  },
+  {
+    id: "1f46c",
+    emoji: "\u{1F46C}",
+    name: "men holding hands",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f46c.png"
+  },
+  {
+    id: "1f48f",
+    emoji: "\u{1F48F}",
+    name: "kiss",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f48f.png"
+  },
+  {
+    id: "1f469-200d-2764-fe0f-200d-1f48b-200d-1f468",
+    emoji: "\u{1F469}\u200D\u2764\uFE0F\u200D\u{1F48B}\u200D\u{1F468}",
+    name: "kiss: woman, man",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f469-200d-2764-fe0f-200d-1f48b-200d-1f468.png"
+  },
+  {
+    id: "1f468-200d-2764-fe0f-200d-1f48b-200d-1f468",
+    emoji: "\u{1F468}\u200D\u2764\uFE0F\u200D\u{1F48B}\u200D\u{1F468}",
+    name: "kiss: man, man",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f468-200d-2764-fe0f-200d-1f48b-200d-1f468.png"
+  },
+  {
+    id: "1f469-200d-2764-fe0f-200d-1f48b-200d-1f469",
+    emoji: "\u{1F469}\u200D\u2764\uFE0F\u200D\u{1F48B}\u200D\u{1F469}",
+    name: "kiss: woman, woman",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f469-200d-2764-fe0f-200d-1f48b-200d-1f469.png"
+  },
+  {
+    id: "1f491",
+    emoji: "\u{1F491}",
+    name: "couple with heart",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f491.png"
+  },
+  {
+    id: "1f469-200d-2764-fe0f-200d-1f468",
+    emoji: "\u{1F469}\u200D\u2764\uFE0F\u200D\u{1F468}",
+    name: "couple with heart: woman, man",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f469-200d-2764-fe0f-200d-1f468.png"
+  },
+  {
+    id: "1f468-200d-2764-fe0f-200d-1f468",
+    emoji: "\u{1F468}\u200D\u2764\uFE0F\u200D\u{1F468}",
+    name: "couple with heart: man, man",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f468-200d-2764-fe0f-200d-1f468.png"
+  },
+  {
+    id: "1f469-200d-2764-fe0f-200d-1f469",
+    emoji: "\u{1F469}\u200D\u2764\uFE0F\u200D\u{1F469}",
+    name: "couple with heart: woman, woman",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: true,
+    file: "1f469-200d-2764-fe0f-200d-1f469.png"
+  },
+  {
+    id: "1f468-200d-1f469-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F469}\u200D\u{1F466}",
+    name: "family: man, woman, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f469-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f469-200d-1f467",
+    emoji: "\u{1F468}\u200D\u{1F469}\u200D\u{1F467}",
+    name: "family: man, woman, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f469-200d-1f467.png"
+  },
+  {
+    id: "1f468-200d-1f469-200d-1f467-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F466}",
+    name: "family: man, woman, girl, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f469-200d-1f467-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f469-200d-1f466-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F469}\u200D\u{1F466}\u200D\u{1F466}",
+    name: "family: man, woman, boy, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f469-200d-1f466-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f469-200d-1f467-200d-1f467",
+    emoji: "\u{1F468}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F467}",
+    name: "family: man, woman, girl, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f469-200d-1f467-200d-1f467.png"
+  },
+  {
+    id: "1f468-200d-1f468-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F468}\u200D\u{1F466}",
+    name: "family: man, man, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f468-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f468-200d-1f467",
+    emoji: "\u{1F468}\u200D\u{1F468}\u200D\u{1F467}",
+    name: "family: man, man, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f468-200d-1f467.png"
+  },
+  {
+    id: "1f468-200d-1f468-200d-1f467-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F468}\u200D\u{1F467}\u200D\u{1F466}",
+    name: "family: man, man, girl, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f468-200d-1f467-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f468-200d-1f466-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F468}\u200D\u{1F466}\u200D\u{1F466}",
+    name: "family: man, man, boy, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f468-200d-1f466-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f468-200d-1f467-200d-1f467",
+    emoji: "\u{1F468}\u200D\u{1F468}\u200D\u{1F467}\u200D\u{1F467}",
+    name: "family: man, man, girl, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f468-200d-1f467-200d-1f467.png"
+  },
+  {
+    id: "1f469-200d-1f469-200d-1f466",
+    emoji: "\u{1F469}\u200D\u{1F469}\u200D\u{1F466}",
+    name: "family: woman, woman, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f469-200d-1f466.png"
+  },
+  {
+    id: "1f469-200d-1f469-200d-1f467",
+    emoji: "\u{1F469}\u200D\u{1F469}\u200D\u{1F467}",
+    name: "family: woman, woman, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f469-200d-1f467.png"
+  },
+  {
+    id: "1f469-200d-1f469-200d-1f467-200d-1f466",
+    emoji: "\u{1F469}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F466}",
+    name: "family: woman, woman, girl, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f469-200d-1f467-200d-1f466.png"
+  },
+  {
+    id: "1f469-200d-1f469-200d-1f466-200d-1f466",
+    emoji: "\u{1F469}\u200D\u{1F469}\u200D\u{1F466}\u200D\u{1F466}",
+    name: "family: woman, woman, boy, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f469-200d-1f466-200d-1f466.png"
+  },
+  {
+    id: "1f469-200d-1f469-200d-1f467-200d-1f467",
+    emoji: "\u{1F469}\u200D\u{1F469}\u200D\u{1F467}\u200D\u{1F467}",
+    name: "family: woman, woman, girl, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f469-200d-1f467-200d-1f467.png"
+  },
+  {
+    id: "1f468-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F466}",
+    name: "family: man, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f466-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F466}\u200D\u{1F466}",
+    name: "family: man, boy, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f466-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f467",
+    emoji: "\u{1F468}\u200D\u{1F467}",
+    name: "family: man, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f467.png"
+  },
+  {
+    id: "1f468-200d-1f467-200d-1f466",
+    emoji: "\u{1F468}\u200D\u{1F467}\u200D\u{1F466}",
+    name: "family: man, girl, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f467-200d-1f466.png"
+  },
+  {
+    id: "1f468-200d-1f467-200d-1f467",
+    emoji: "\u{1F468}\u200D\u{1F467}\u200D\u{1F467}",
+    name: "family: man, girl, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f468-200d-1f467-200d-1f467.png"
+  },
+  {
+    id: "1f469-200d-1f466",
+    emoji: "\u{1F469}\u200D\u{1F466}",
+    name: "family: woman, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f466.png"
+  },
+  {
+    id: "1f469-200d-1f466-200d-1f466",
+    emoji: "\u{1F469}\u200D\u{1F466}\u200D\u{1F466}",
+    name: "family: woman, boy, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f466-200d-1f466.png"
+  },
+  {
+    id: "1f469-200d-1f467",
+    emoji: "\u{1F469}\u200D\u{1F467}",
+    name: "family: woman, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f467.png"
+  },
+  {
+    id: "1f469-200d-1f467-200d-1f466",
+    emoji: "\u{1F469}\u200D\u{1F467}\u200D\u{1F466}",
+    name: "family: woman, girl, boy",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f467-200d-1f466.png"
+  },
+  {
+    id: "1f469-200d-1f467-200d-1f467",
+    emoji: "\u{1F469}\u200D\u{1F467}\u200D\u{1F467}",
+    name: "family: woman, girl, girl",
+    category: "People & Body",
+    subcategory: "family",
+    supportsSkinTone: false,
+    file: "1f469-200d-1f467-200d-1f467.png"
+  },
+  {
+    id: "1f5e3-fe0f",
+    emoji: "\u{1F5E3}\uFE0F",
+    name: "speaking head",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f5e3-fe0f.png"
+  },
+  {
+    id: "1f464",
+    emoji: "\u{1F464}",
+    name: "bust in silhouette",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f464.png"
+  },
+  {
+    id: "1f465",
+    emoji: "\u{1F465}",
+    name: "busts in silhouette",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f465.png"
+  },
+  {
+    id: "1fac2",
+    emoji: "\u{1FAC2}",
+    name: "people hugging",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1fac2.png"
+  },
+  {
+    id: "1f46a",
+    emoji: "\u{1F46A}",
+    name: "family",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f46a.png"
+  },
+  {
+    id: "1f9d1-200d-1f9d1-200d-1f9d2",
+    emoji: "\u{1F9D1}\u200D\u{1F9D1}\u200D\u{1F9D2}",
+    name: "family: adult, adult, child",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f9d1-200d-1f9d1-200d-1f9d2.png"
+  },
+  {
+    id: "1f9d1-200d-1f9d1-200d-1f9d2-200d-1f9d2",
+    emoji: "\u{1F9D1}\u200D\u{1F9D1}\u200D\u{1F9D2}\u200D\u{1F9D2}",
+    name: "family: adult, adult, child, child",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f9d1-200d-1f9d1-200d-1f9d2-200d-1f9d2.png"
+  },
+  {
+    id: "1f9d1-200d-1f9d2",
+    emoji: "\u{1F9D1}\u200D\u{1F9D2}",
+    name: "family: adult, child",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f9d1-200d-1f9d2.png"
+  },
+  {
+    id: "1f9d1-200d-1f9d2-200d-1f9d2",
+    emoji: "\u{1F9D1}\u200D\u{1F9D2}\u200D\u{1F9D2}",
+    name: "family: adult, child, child",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f9d1-200d-1f9d2-200d-1f9d2.png"
+  },
+  {
+    id: "1f463",
+    emoji: "\u{1F463}",
+    name: "footprints",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1f463.png"
+  },
+  {
+    id: "1fac6",
+    emoji: "\u{1FAC6}",
+    name: "fingerprint",
+    category: "People & Body",
+    subcategory: "person-symbol",
+    supportsSkinTone: false,
+    file: "1fac6.png"
+  },
+  {
+    id: "1f435",
+    emoji: "\u{1F435}",
+    name: "monkey face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f435.png"
+  },
+  {
+    id: "1f412",
+    emoji: "\u{1F412}",
+    name: "monkey",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f412.png"
+  },
+  {
+    id: "1f98d",
+    emoji: "\u{1F98D}",
+    name: "gorilla",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f98d.png"
+  },
+  {
+    id: "1f9a7",
+    emoji: "\u{1F9A7}",
+    name: "orangutan",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9a7.png"
+  },
+  {
+    id: "1f436",
+    emoji: "\u{1F436}",
+    name: "dog face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f436.png"
+  },
+  {
+    id: "1f415",
+    emoji: "\u{1F415}",
+    name: "dog",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f415.png"
+  },
+  {
+    id: "1f9ae",
+    emoji: "\u{1F9AE}",
+    name: "guide dog",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9ae.png"
+  },
+  {
+    id: "1f415-200d-1f9ba",
+    emoji: "\u{1F415}\u200D\u{1F9BA}",
+    name: "service dog",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f415-200d-1f9ba.png"
+  },
+  {
+    id: "1f429",
+    emoji: "\u{1F429}",
+    name: "poodle",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f429.png"
+  },
+  {
+    id: "1f43a",
+    emoji: "\u{1F43A}",
+    name: "wolf",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f43a.png"
+  },
+  {
+    id: "1f98a",
+    emoji: "\u{1F98A}",
+    name: "fox",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f98a.png"
+  },
+  {
+    id: "1f99d",
+    emoji: "\u{1F99D}",
+    name: "raccoon",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f99d.png"
+  },
+  {
+    id: "1f431",
+    emoji: "\u{1F431}",
+    name: "cat face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f431.png"
+  },
+  {
+    id: "1f408",
+    emoji: "\u{1F408}",
+    name: "cat",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f408.png"
+  },
+  {
+    id: "1f408-200d-2b1b",
+    emoji: "\u{1F408}\u200D\u2B1B",
+    name: "black cat",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f408-200d-2b1b.png"
+  },
+  {
+    id: "1f981",
+    emoji: "\u{1F981}",
+    name: "lion",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f981.png"
+  },
+  {
+    id: "1f42f",
+    emoji: "\u{1F42F}",
+    name: "tiger face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f42f.png"
+  },
+  {
+    id: "1f405",
+    emoji: "\u{1F405}",
+    name: "tiger",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f405.png"
+  },
+  {
+    id: "1f406",
+    emoji: "\u{1F406}",
+    name: "leopard",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f406.png"
+  },
+  {
+    id: "1f434",
+    emoji: "\u{1F434}",
+    name: "horse face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f434.png"
+  },
+  {
+    id: "1face",
+    emoji: "\u{1FACE}",
+    name: "moose",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1face.png"
+  },
+  {
+    id: "1facf",
+    emoji: "\u{1FACF}",
+    name: "donkey",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1facf.png"
+  },
+  {
+    id: "1f40e",
+    emoji: "\u{1F40E}",
+    name: "horse",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f40e.png"
+  },
+  {
+    id: "1f984",
+    emoji: "\u{1F984}",
+    name: "unicorn",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f984.png"
+  },
+  {
+    id: "1f993",
+    emoji: "\u{1F993}",
+    name: "zebra",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f993.png"
+  },
+  {
+    id: "1f98c",
+    emoji: "\u{1F98C}",
+    name: "deer",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f98c.png"
+  },
+  {
+    id: "1f9ac",
+    emoji: "\u{1F9AC}",
+    name: "bison",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9ac.png"
+  },
+  {
+    id: "1f42e",
+    emoji: "\u{1F42E}",
+    name: "cow face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f42e.png"
+  },
+  {
+    id: "1f402",
+    emoji: "\u{1F402}",
+    name: "ox",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f402.png"
+  },
+  {
+    id: "1f403",
+    emoji: "\u{1F403}",
+    name: "water buffalo",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f403.png"
+  },
+  {
+    id: "1f404",
+    emoji: "\u{1F404}",
+    name: "cow",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f404.png"
+  },
+  {
+    id: "1f437",
+    emoji: "\u{1F437}",
+    name: "pig face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f437.png"
+  },
+  {
+    id: "1f416",
+    emoji: "\u{1F416}",
+    name: "pig",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f416.png"
+  },
+  {
+    id: "1f417",
+    emoji: "\u{1F417}",
+    name: "boar",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f417.png"
+  },
+  {
+    id: "1f43d",
+    emoji: "\u{1F43D}",
+    name: "pig nose",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f43d.png"
+  },
+  {
+    id: "1f40f",
+    emoji: "\u{1F40F}",
+    name: "ram",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f40f.png"
+  },
+  {
+    id: "1f411",
+    emoji: "\u{1F411}",
+    name: "ewe",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f411.png"
+  },
+  {
+    id: "1f410",
+    emoji: "\u{1F410}",
+    name: "goat",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f410.png"
+  },
+  {
+    id: "1f42a",
+    emoji: "\u{1F42A}",
+    name: "camel",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f42a.png"
+  },
+  {
+    id: "1f42b",
+    emoji: "\u{1F42B}",
+    name: "two-hump camel",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f42b.png"
+  },
+  {
+    id: "1f999",
+    emoji: "\u{1F999}",
+    name: "llama",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f999.png"
+  },
+  {
+    id: "1f992",
+    emoji: "\u{1F992}",
+    name: "giraffe",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f992.png"
+  },
+  {
+    id: "1f418",
+    emoji: "\u{1F418}",
+    name: "elephant",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f418.png"
+  },
+  {
+    id: "1f9a3",
+    emoji: "\u{1F9A3}",
+    name: "mammoth",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9a3.png"
+  },
+  {
+    id: "1f98f",
+    emoji: "\u{1F98F}",
+    name: "rhinoceros",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f98f.png"
+  },
+  {
+    id: "1f99b",
+    emoji: "\u{1F99B}",
+    name: "hippopotamus",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f99b.png"
+  },
+  {
+    id: "1f42d",
+    emoji: "\u{1F42D}",
+    name: "mouse face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f42d.png"
+  },
+  {
+    id: "1f401",
+    emoji: "\u{1F401}",
+    name: "mouse",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f401.png"
+  },
+  {
+    id: "1f400",
+    emoji: "\u{1F400}",
+    name: "rat",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f400.png"
+  },
+  {
+    id: "1f439",
+    emoji: "\u{1F439}",
+    name: "hamster",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f439.png"
+  },
+  {
+    id: "1f430",
+    emoji: "\u{1F430}",
+    name: "rabbit face",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f430.png"
+  },
+  {
+    id: "1f407",
+    emoji: "\u{1F407}",
+    name: "rabbit",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f407.png"
+  },
+  {
+    id: "1f43f-fe0f",
+    emoji: "\u{1F43F}\uFE0F",
+    name: "chipmunk",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f43f-fe0f.png"
+  },
+  {
+    id: "1f9ab",
+    emoji: "\u{1F9AB}",
+    name: "beaver",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9ab.png"
+  },
+  {
+    id: "1f994",
+    emoji: "\u{1F994}",
+    name: "hedgehog",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f994.png"
+  },
+  {
+    id: "1f987",
+    emoji: "\u{1F987}",
+    name: "bat",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f987.png"
+  },
+  {
+    id: "1f43b",
+    emoji: "\u{1F43B}",
+    name: "bear",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f43b.png"
+  },
+  {
+    id: "1f43b-200d-2744-fe0f",
+    emoji: "\u{1F43B}\u200D\u2744\uFE0F",
+    name: "polar bear",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f43b-200d-2744-fe0f.png"
+  },
+  {
+    id: "1f428",
+    emoji: "\u{1F428}",
+    name: "koala",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f428.png"
+  },
+  {
+    id: "1f43c",
+    emoji: "\u{1F43C}",
+    name: "panda",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f43c.png"
+  },
+  {
+    id: "1f9a5",
+    emoji: "\u{1F9A5}",
+    name: "sloth",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9a5.png"
+  },
+  {
+    id: "1f9a6",
+    emoji: "\u{1F9A6}",
+    name: "otter",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9a6.png"
+  },
+  {
+    id: "1f9a8",
+    emoji: "\u{1F9A8}",
+    name: "skunk",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9a8.png"
+  },
+  {
+    id: "1f998",
+    emoji: "\u{1F998}",
+    name: "kangaroo",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f998.png"
+  },
+  {
+    id: "1f9a1",
+    emoji: "\u{1F9A1}",
+    name: "badger",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f9a1.png"
+  },
+  {
+    id: "1f43e",
+    emoji: "\u{1F43E}",
+    name: "paw prints",
+    category: "Animals & Nature",
+    subcategory: "animal-mammal",
+    supportsSkinTone: false,
+    file: "1f43e.png"
+  },
+  {
+    id: "1f983",
+    emoji: "\u{1F983}",
+    name: "turkey",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f983.png"
+  },
+  {
+    id: "1f414",
+    emoji: "\u{1F414}",
+    name: "chicken",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f414.png"
+  },
+  {
+    id: "1f413",
+    emoji: "\u{1F413}",
+    name: "rooster",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f413.png"
+  },
+  {
+    id: "1f423",
+    emoji: "\u{1F423}",
+    name: "hatching chick",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f423.png"
+  },
+  {
+    id: "1f424",
+    emoji: "\u{1F424}",
+    name: "baby chick",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f424.png"
+  },
+  {
+    id: "1f425",
+    emoji: "\u{1F425}",
+    name: "front-facing baby chick",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f425.png"
+  },
+  {
+    id: "1f426",
+    emoji: "\u{1F426}",
+    name: "bird",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f426.png"
+  },
+  {
+    id: "1f427",
+    emoji: "\u{1F427}",
+    name: "penguin",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f427.png"
+  },
+  {
+    id: "1f54a-fe0f",
+    emoji: "\u{1F54A}\uFE0F",
+    name: "dove",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f54a-fe0f.png"
+  },
+  {
+    id: "1f985",
+    emoji: "\u{1F985}",
+    name: "eagle",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f985.png"
+  },
+  {
+    id: "1f986",
+    emoji: "\u{1F986}",
+    name: "duck",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f986.png"
+  },
+  {
+    id: "1f9a2",
+    emoji: "\u{1F9A2}",
+    name: "swan",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f9a2.png"
+  },
+  {
+    id: "1f989",
+    emoji: "\u{1F989}",
+    name: "owl",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f989.png"
+  },
+  {
+    id: "1f9a4",
+    emoji: "\u{1F9A4}",
+    name: "dodo",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f9a4.png"
+  },
+  {
+    id: "1fab6",
+    emoji: "\u{1FAB6}",
+    name: "feather",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1fab6.png"
+  },
+  {
+    id: "1f9a9",
+    emoji: "\u{1F9A9}",
+    name: "flamingo",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f9a9.png"
+  },
+  {
+    id: "1f99a",
+    emoji: "\u{1F99A}",
+    name: "peacock",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f99a.png"
+  },
+  {
+    id: "1f99c",
+    emoji: "\u{1F99C}",
+    name: "parrot",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f99c.png"
+  },
+  {
+    id: "1fabd",
+    emoji: "\u{1FABD}",
+    name: "wing",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1fabd.png"
+  },
+  {
+    id: "1f426-200d-2b1b",
+    emoji: "\u{1F426}\u200D\u2B1B",
+    name: "black bird",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f426-200d-2b1b.png"
+  },
+  {
+    id: "1fabf",
+    emoji: "\u{1FABF}",
+    name: "goose",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1fabf.png"
+  },
+  {
+    id: "1f426-200d-1f525",
+    emoji: "\u{1F426}\u200D\u{1F525}",
+    name: "phoenix",
+    category: "Animals & Nature",
+    subcategory: "animal-bird",
+    supportsSkinTone: false,
+    file: "1f426-200d-1f525.png"
+  },
+  {
+    id: "1f438",
+    emoji: "\u{1F438}",
+    name: "frog",
+    category: "Animals & Nature",
+    subcategory: "animal-amphibian",
+    supportsSkinTone: false,
+    file: "1f438.png"
+  },
+  {
+    id: "1f40a",
+    emoji: "\u{1F40A}",
+    name: "crocodile",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f40a.png"
+  },
+  {
+    id: "1f422",
+    emoji: "\u{1F422}",
+    name: "turtle",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f422.png"
+  },
+  {
+    id: "1f98e",
+    emoji: "\u{1F98E}",
+    name: "lizard",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f98e.png"
+  },
+  {
+    id: "1f40d",
+    emoji: "\u{1F40D}",
+    name: "snake",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f40d.png"
+  },
+  {
+    id: "1f432",
+    emoji: "\u{1F432}",
+    name: "dragon face",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f432.png"
+  },
+  {
+    id: "1f409",
+    emoji: "\u{1F409}",
+    name: "dragon",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f409.png"
+  },
+  {
+    id: "1f995",
+    emoji: "\u{1F995}",
+    name: "sauropod",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f995.png"
+  },
+  {
+    id: "1f996",
+    emoji: "\u{1F996}",
+    name: "T-Rex",
+    category: "Animals & Nature",
+    subcategory: "animal-reptile",
+    supportsSkinTone: false,
+    file: "1f996.png"
+  },
+  {
+    id: "1f433",
+    emoji: "\u{1F433}",
+    name: "spouting whale",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f433.png"
+  },
+  {
+    id: "1f40b",
+    emoji: "\u{1F40B}",
+    name: "whale",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f40b.png"
+  },
+  {
+    id: "1f42c",
+    emoji: "\u{1F42C}",
+    name: "dolphin",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f42c.png"
+  },
+  {
+    id: "1facd",
+    emoji: "\u{1FACD}",
+    name: "orca",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1facd.png"
+  },
+  {
+    id: "1f9ad",
+    emoji: "\u{1F9AD}",
+    name: "seal",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f9ad.png"
+  },
+  {
+    id: "1f41f",
+    emoji: "\u{1F41F}",
+    name: "fish",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f41f.png"
+  },
+  {
+    id: "1f420",
+    emoji: "\u{1F420}",
+    name: "tropical fish",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f420.png"
+  },
+  {
+    id: "1f421",
+    emoji: "\u{1F421}",
+    name: "blowfish",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f421.png"
+  },
+  {
+    id: "1f988",
+    emoji: "\u{1F988}",
+    name: "shark",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f988.png"
+  },
+  {
+    id: "1f419",
+    emoji: "\u{1F419}",
+    name: "octopus",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f419.png"
+  },
+  {
+    id: "1f41a",
+    emoji: "\u{1F41A}",
+    name: "spiral shell",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f41a.png"
+  },
+  {
+    id: "1fab8",
+    emoji: "\u{1FAB8}",
+    name: "coral",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1fab8.png"
+  },
+  {
+    id: "1fabc",
+    emoji: "\u{1FABC}",
+    name: "jellyfish",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1fabc.png"
+  },
+  {
+    id: "1f980",
+    emoji: "\u{1F980}",
+    name: "crab",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f980.png"
+  },
+  {
+    id: "1f99e",
+    emoji: "\u{1F99E}",
+    name: "lobster",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f99e.png"
+  },
+  {
+    id: "1f990",
+    emoji: "\u{1F990}",
+    name: "shrimp",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f990.png"
+  },
+  {
+    id: "1f991",
+    emoji: "\u{1F991}",
+    name: "squid",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f991.png"
+  },
+  {
+    id: "1f9aa",
+    emoji: "\u{1F9AA}",
+    name: "oyster",
+    category: "Animals & Nature",
+    subcategory: "animal-marine",
+    supportsSkinTone: false,
+    file: "1f9aa.png"
+  },
+  {
+    id: "1f40c",
+    emoji: "\u{1F40C}",
+    name: "snail",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f40c.png"
+  },
+  {
+    id: "1f98b",
+    emoji: "\u{1F98B}",
+    name: "butterfly",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f98b.png"
+  },
+  {
+    id: "1f41b",
+    emoji: "\u{1F41B}",
+    name: "bug",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f41b.png"
+  },
+  {
+    id: "1f41c",
+    emoji: "\u{1F41C}",
+    name: "ant",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f41c.png"
+  },
+  {
+    id: "1f41d",
+    emoji: "\u{1F41D}",
+    name: "honeybee",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f41d.png"
+  },
+  {
+    id: "1fab2",
+    emoji: "\u{1FAB2}",
+    name: "beetle",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1fab2.png"
+  },
+  {
+    id: "1f41e",
+    emoji: "\u{1F41E}",
+    name: "lady beetle",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f41e.png"
+  },
+  {
+    id: "1f997",
+    emoji: "\u{1F997}",
+    name: "cricket",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f997.png"
+  },
+  {
+    id: "1fab3",
+    emoji: "\u{1FAB3}",
+    name: "cockroach",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1fab3.png"
+  },
+  {
+    id: "1f577-fe0f",
+    emoji: "\u{1F577}\uFE0F",
+    name: "spider",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f577-fe0f.png"
+  },
+  {
+    id: "1f578-fe0f",
+    emoji: "\u{1F578}\uFE0F",
+    name: "spider web",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f578-fe0f.png"
+  },
+  {
+    id: "1f982",
+    emoji: "\u{1F982}",
+    name: "scorpion",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f982.png"
+  },
+  {
+    id: "1f99f",
+    emoji: "\u{1F99F}",
+    name: "mosquito",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f99f.png"
+  },
+  {
+    id: "1fab0",
+    emoji: "\u{1FAB0}",
+    name: "fly",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1fab0.png"
+  },
+  {
+    id: "1fab1",
+    emoji: "\u{1FAB1}",
+    name: "worm",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1fab1.png"
+  },
+  {
+    id: "1f9a0",
+    emoji: "\u{1F9A0}",
+    name: "microbe",
+    category: "Animals & Nature",
+    subcategory: "animal-bug",
+    supportsSkinTone: false,
+    file: "1f9a0.png"
+  },
+  {
+    id: "1f490",
+    emoji: "\u{1F490}",
+    name: "bouquet",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f490.png"
+  },
+  {
+    id: "1f338",
+    emoji: "\u{1F338}",
+    name: "cherry blossom",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f338.png"
+  },
+  {
+    id: "1f4ae",
+    emoji: "\u{1F4AE}",
+    name: "white flower",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f4ae.png"
+  },
+  {
+    id: "1fab7",
+    emoji: "\u{1FAB7}",
+    name: "lotus",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1fab7.png"
+  },
+  {
+    id: "1f3f5-fe0f",
+    emoji: "\u{1F3F5}\uFE0F",
+    name: "rosette",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f3f5-fe0f.png"
+  },
+  {
+    id: "1f339",
+    emoji: "\u{1F339}",
+    name: "rose",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f339.png"
+  },
+  {
+    id: "1f940",
+    emoji: "\u{1F940}",
+    name: "wilted flower",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f940.png"
+  },
+  {
+    id: "1f33a",
+    emoji: "\u{1F33A}",
+    name: "hibiscus",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f33a.png"
+  },
+  {
+    id: "1f33b",
+    emoji: "\u{1F33B}",
+    name: "sunflower",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f33b.png"
+  },
+  {
+    id: "1f33c",
+    emoji: "\u{1F33C}",
+    name: "blossom",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f33c.png"
+  },
+  {
+    id: "1f337",
+    emoji: "\u{1F337}",
+    name: "tulip",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1f337.png"
+  },
+  {
+    id: "1fabb",
+    emoji: "\u{1FABB}",
+    name: "hyacinth",
+    category: "Animals & Nature",
+    subcategory: "plant-flower",
+    supportsSkinTone: false,
+    file: "1fabb.png"
+  },
+  {
+    id: "1f331",
+    emoji: "\u{1F331}",
+    name: "seedling",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f331.png"
+  },
+  {
+    id: "1fab4",
+    emoji: "\u{1FAB4}",
+    name: "potted plant",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1fab4.png"
+  },
+  {
+    id: "1f332",
+    emoji: "\u{1F332}",
+    name: "evergreen tree",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f332.png"
+  },
+  {
+    id: "1f333",
+    emoji: "\u{1F333}",
+    name: "deciduous tree",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f333.png"
+  },
+  {
+    id: "1f334",
+    emoji: "\u{1F334}",
+    name: "palm tree",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f334.png"
+  },
+  {
+    id: "1f335",
+    emoji: "\u{1F335}",
+    name: "cactus",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f335.png"
+  },
+  {
+    id: "1f33e",
+    emoji: "\u{1F33E}",
+    name: "sheaf of rice",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f33e.png"
+  },
+  {
+    id: "1f33f",
+    emoji: "\u{1F33F}",
+    name: "herb",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f33f.png"
+  },
+  {
+    id: "2618-fe0f",
+    emoji: "\u2618\uFE0F",
+    name: "shamrock",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "2618-fe0f.png"
+  },
+  {
+    id: "1f340",
+    emoji: "\u{1F340}",
+    name: "four leaf clover",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f340.png"
+  },
+  {
+    id: "1f341",
+    emoji: "\u{1F341}",
+    name: "maple leaf",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f341.png"
+  },
+  {
+    id: "1f342",
+    emoji: "\u{1F342}",
+    name: "fallen leaf",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f342.png"
+  },
+  {
+    id: "1f343",
+    emoji: "\u{1F343}",
+    name: "leaf fluttering in wind",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f343.png"
+  },
+  {
+    id: "1fab9",
+    emoji: "\u{1FAB9}",
+    name: "empty nest",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1fab9.png"
+  },
+  {
+    id: "1faba",
+    emoji: "\u{1FABA}",
+    name: "nest with eggs",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1faba.png"
+  },
+  {
+    id: "1f344",
+    emoji: "\u{1F344}",
+    name: "mushroom",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1f344.png"
+  },
+  {
+    id: "1fabe",
+    emoji: "\u{1FABE}",
+    name: "leafless tree",
+    category: "Animals & Nature",
+    subcategory: "plant-other",
+    supportsSkinTone: false,
+    file: "1fabe.png"
+  },
+  {
+    id: "1f347",
+    emoji: "\u{1F347}",
+    name: "grapes",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f347.png"
+  },
+  {
+    id: "1f348",
+    emoji: "\u{1F348}",
+    name: "melon",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f348.png"
+  },
+  {
+    id: "1f349",
+    emoji: "\u{1F349}",
+    name: "watermelon",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f349.png"
+  },
+  {
+    id: "1f34a",
+    emoji: "\u{1F34A}",
+    name: "tangerine",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f34a.png"
+  },
+  {
+    id: "1f34b",
+    emoji: "\u{1F34B}",
+    name: "lemon",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f34b.png"
+  },
+  {
+    id: "1f34b-200d-1f7e9",
+    emoji: "\u{1F34B}\u200D\u{1F7E9}",
+    name: "lime",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f34b-200d-1f7e9.png"
+  },
+  {
+    id: "1f34c",
+    emoji: "\u{1F34C}",
+    name: "banana",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f34c.png"
+  },
+  {
+    id: "1f34d",
+    emoji: "\u{1F34D}",
+    name: "pineapple",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f34d.png"
+  },
+  {
+    id: "1f96d",
+    emoji: "\u{1F96D}",
+    name: "mango",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f96d.png"
+  },
+  {
+    id: "1f34e",
+    emoji: "\u{1F34E}",
+    name: "red apple",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f34e.png"
+  },
+  {
+    id: "1f34f",
+    emoji: "\u{1F34F}",
+    name: "green apple",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f34f.png"
+  },
+  {
+    id: "1f350",
+    emoji: "\u{1F350}",
+    name: "pear",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f350.png"
+  },
+  {
+    id: "1f351",
+    emoji: "\u{1F351}",
+    name: "peach",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f351.png"
+  },
+  {
+    id: "1f352",
+    emoji: "\u{1F352}",
+    name: "cherries",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f352.png"
+  },
+  {
+    id: "1f353",
+    emoji: "\u{1F353}",
+    name: "strawberry",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f353.png"
+  },
+  {
+    id: "1fad0",
+    emoji: "\u{1FAD0}",
+    name: "blueberries",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1fad0.png"
+  },
+  {
+    id: "1f95d",
+    emoji: "\u{1F95D}",
+    name: "kiwi fruit",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f95d.png"
+  },
+  {
+    id: "1f345",
+    emoji: "\u{1F345}",
+    name: "tomato",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f345.png"
+  },
+  {
+    id: "1fad2",
+    emoji: "\u{1FAD2}",
+    name: "olive",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1fad2.png"
+  },
+  {
+    id: "1f965",
+    emoji: "\u{1F965}",
+    name: "coconut",
+    category: "Food & Drink",
+    subcategory: "food-fruit",
+    supportsSkinTone: false,
+    file: "1f965.png"
+  },
+  {
+    id: "1f951",
+    emoji: "\u{1F951}",
+    name: "avocado",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f951.png"
+  },
+  {
+    id: "1f346",
+    emoji: "\u{1F346}",
+    name: "eggplant",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f346.png"
+  },
+  {
+    id: "1f954",
+    emoji: "\u{1F954}",
+    name: "potato",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f954.png"
+  },
+  {
+    id: "1f955",
+    emoji: "\u{1F955}",
+    name: "carrot",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f955.png"
+  },
+  {
+    id: "1f33d",
+    emoji: "\u{1F33D}",
+    name: "ear of corn",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f33d.png"
+  },
+  {
+    id: "1f336-fe0f",
+    emoji: "\u{1F336}\uFE0F",
+    name: "hot pepper",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f336-fe0f.png"
+  },
+  {
+    id: "1fad1",
+    emoji: "\u{1FAD1}",
+    name: "bell pepper",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1fad1.png"
+  },
+  {
+    id: "1f952",
+    emoji: "\u{1F952}",
+    name: "cucumber",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f952.png"
+  },
+  {
+    id: "1f96c",
+    emoji: "\u{1F96C}",
+    name: "leafy green",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f96c.png"
+  },
+  {
+    id: "1f966",
+    emoji: "\u{1F966}",
+    name: "broccoli",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f966.png"
+  },
+  {
+    id: "1f9c4",
+    emoji: "\u{1F9C4}",
+    name: "garlic",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f9c4.png"
+  },
+  {
+    id: "1f9c5",
+    emoji: "\u{1F9C5}",
+    name: "onion",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f9c5.png"
+  },
+  {
+    id: "1f95c",
+    emoji: "\u{1F95C}",
+    name: "peanuts",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f95c.png"
+  },
+  {
+    id: "1fad8",
+    emoji: "\u{1FAD8}",
+    name: "beans",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1fad8.png"
+  },
+  {
+    id: "1f330",
+    emoji: "\u{1F330}",
+    name: "chestnut",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f330.png"
+  },
+  {
+    id: "1fada",
+    emoji: "\u{1FADA}",
+    name: "ginger root",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1fada.png"
+  },
+  {
+    id: "1fadb",
+    emoji: "\u{1FADB}",
+    name: "pea pod",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1fadb.png"
+  },
+  {
+    id: "1f344-200d-1f7eb",
+    emoji: "\u{1F344}\u200D\u{1F7EB}",
+    name: "brown mushroom",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1f344-200d-1f7eb.png"
+  },
+  {
+    id: "1fadc",
+    emoji: "\u{1FADC}",
+    name: "root vegetable",
+    category: "Food & Drink",
+    subcategory: "food-vegetable",
+    supportsSkinTone: false,
+    file: "1fadc.png"
+  },
+  {
+    id: "1f35e",
+    emoji: "\u{1F35E}",
+    name: "bread",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f35e.png"
+  },
+  {
+    id: "1f950",
+    emoji: "\u{1F950}",
+    name: "croissant",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f950.png"
+  },
+  {
+    id: "1f956",
+    emoji: "\u{1F956}",
+    name: "baguette bread",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f956.png"
+  },
+  {
+    id: "1fad3",
+    emoji: "\u{1FAD3}",
+    name: "flatbread",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1fad3.png"
+  },
+  {
+    id: "1f968",
+    emoji: "\u{1F968}",
+    name: "pretzel",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f968.png"
+  },
+  {
+    id: "1f96f",
+    emoji: "\u{1F96F}",
+    name: "bagel",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f96f.png"
+  },
+  {
+    id: "1f95e",
+    emoji: "\u{1F95E}",
+    name: "pancakes",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f95e.png"
+  },
+  {
+    id: "1f9c7",
+    emoji: "\u{1F9C7}",
+    name: "waffle",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f9c7.png"
+  },
+  {
+    id: "1f9c0",
+    emoji: "\u{1F9C0}",
+    name: "cheese wedge",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f9c0.png"
+  },
+  {
+    id: "1f356",
+    emoji: "\u{1F356}",
+    name: "meat on bone",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f356.png"
+  },
+  {
+    id: "1f357",
+    emoji: "\u{1F357}",
+    name: "poultry leg",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f357.png"
+  },
+  {
+    id: "1f969",
+    emoji: "\u{1F969}",
+    name: "cut of meat",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f969.png"
+  },
+  {
+    id: "1f953",
+    emoji: "\u{1F953}",
+    name: "bacon",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f953.png"
+  },
+  {
+    id: "1f354",
+    emoji: "\u{1F354}",
+    name: "hamburger",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f354.png"
+  },
+  {
+    id: "1f35f",
+    emoji: "\u{1F35F}",
+    name: "french fries",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f35f.png"
+  },
+  {
+    id: "1f355",
+    emoji: "\u{1F355}",
+    name: "pizza",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f355.png"
+  },
+  {
+    id: "1f32d",
+    emoji: "\u{1F32D}",
+    name: "hot dog",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f32d.png"
+  },
+  {
+    id: "1f96a",
+    emoji: "\u{1F96A}",
+    name: "sandwich",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f96a.png"
+  },
+  {
+    id: "1f32e",
+    emoji: "\u{1F32E}",
+    name: "taco",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f32e.png"
+  },
+  {
+    id: "1f32f",
+    emoji: "\u{1F32F}",
+    name: "burrito",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f32f.png"
+  },
+  {
+    id: "1fad4",
+    emoji: "\u{1FAD4}",
+    name: "tamale",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1fad4.png"
+  },
+  {
+    id: "1f959",
+    emoji: "\u{1F959}",
+    name: "stuffed flatbread",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f959.png"
+  },
+  {
+    id: "1f9c6",
+    emoji: "\u{1F9C6}",
+    name: "falafel",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f9c6.png"
+  },
+  {
+    id: "1f95a",
+    emoji: "\u{1F95A}",
+    name: "egg",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f95a.png"
+  },
+  {
+    id: "1f373",
+    emoji: "\u{1F373}",
+    name: "cooking",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f373.png"
+  },
+  {
+    id: "1f958",
+    emoji: "\u{1F958}",
+    name: "shallow pan of food",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f958.png"
+  },
+  {
+    id: "1f372",
+    emoji: "\u{1F372}",
+    name: "pot of food",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f372.png"
+  },
+  {
+    id: "1fad5",
+    emoji: "\u{1FAD5}",
+    name: "fondue",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1fad5.png"
+  },
+  {
+    id: "1f963",
+    emoji: "\u{1F963}",
+    name: "bowl with spoon",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f963.png"
+  },
+  {
+    id: "1f957",
+    emoji: "\u{1F957}",
+    name: "green salad",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f957.png"
+  },
+  {
+    id: "1f37f",
+    emoji: "\u{1F37F}",
+    name: "popcorn",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f37f.png"
+  },
+  {
+    id: "1f9c8",
+    emoji: "\u{1F9C8}",
+    name: "butter",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f9c8.png"
+  },
+  {
+    id: "1f9c2",
+    emoji: "\u{1F9C2}",
+    name: "salt",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f9c2.png"
+  },
+  {
+    id: "1f96b",
+    emoji: "\u{1F96B}",
+    name: "canned food",
+    category: "Food & Drink",
+    subcategory: "food-prepared",
+    supportsSkinTone: false,
+    file: "1f96b.png"
+  },
+  {
+    id: "1f371",
+    emoji: "\u{1F371}",
+    name: "bento box",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f371.png"
+  },
+  {
+    id: "1f358",
+    emoji: "\u{1F358}",
+    name: "rice cracker",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f358.png"
+  },
+  {
+    id: "1f359",
+    emoji: "\u{1F359}",
+    name: "rice ball",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f359.png"
+  },
+  {
+    id: "1f35a",
+    emoji: "\u{1F35A}",
+    name: "cooked rice",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f35a.png"
+  },
+  {
+    id: "1f35b",
+    emoji: "\u{1F35B}",
+    name: "curry rice",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f35b.png"
+  },
+  {
+    id: "1f35c",
+    emoji: "\u{1F35C}",
+    name: "steaming bowl",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f35c.png"
+  },
+  {
+    id: "1f35d",
+    emoji: "\u{1F35D}",
+    name: "spaghetti",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f35d.png"
+  },
+  {
+    id: "1f360",
+    emoji: "\u{1F360}",
+    name: "roasted sweet potato",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f360.png"
+  },
+  {
+    id: "1f362",
+    emoji: "\u{1F362}",
+    name: "oden",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f362.png"
+  },
+  {
+    id: "1f363",
+    emoji: "\u{1F363}",
+    name: "sushi",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f363.png"
+  },
+  {
+    id: "1f364",
+    emoji: "\u{1F364}",
+    name: "fried shrimp",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f364.png"
+  },
+  {
+    id: "1f365",
+    emoji: "\u{1F365}",
+    name: "fish cake with swirl",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f365.png"
+  },
+  {
+    id: "1f96e",
+    emoji: "\u{1F96E}",
+    name: "moon cake",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f96e.png"
+  },
+  {
+    id: "1f361",
+    emoji: "\u{1F361}",
+    name: "dango",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f361.png"
+  },
+  {
+    id: "1f95f",
+    emoji: "\u{1F95F}",
+    name: "dumpling",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f95f.png"
+  },
+  {
+    id: "1f960",
+    emoji: "\u{1F960}",
+    name: "fortune cookie",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f960.png"
+  },
+  {
+    id: "1f961",
+    emoji: "\u{1F961}",
+    name: "takeout box",
+    category: "Food & Drink",
+    subcategory: "food-asian",
+    supportsSkinTone: false,
+    file: "1f961.png"
+  },
+  {
+    id: "1f366",
+    emoji: "\u{1F366}",
+    name: "soft ice cream",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f366.png"
+  },
+  {
+    id: "1f367",
+    emoji: "\u{1F367}",
+    name: "shaved ice",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f367.png"
+  },
+  {
+    id: "1f368",
+    emoji: "\u{1F368}",
+    name: "ice cream",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f368.png"
+  },
+  {
+    id: "1f369",
+    emoji: "\u{1F369}",
+    name: "doughnut",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f369.png"
+  },
+  {
+    id: "1f36a",
+    emoji: "\u{1F36A}",
+    name: "cookie",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f36a.png"
+  },
+  {
+    id: "1f382",
+    emoji: "\u{1F382}",
+    name: "birthday cake",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f382.png"
+  },
+  {
+    id: "1f370",
+    emoji: "\u{1F370}",
+    name: "shortcake",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f370.png"
+  },
+  {
+    id: "1f9c1",
+    emoji: "\u{1F9C1}",
+    name: "cupcake",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f9c1.png"
+  },
+  {
+    id: "1f967",
+    emoji: "\u{1F967}",
+    name: "pie",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f967.png"
+  },
+  {
+    id: "1f36b",
+    emoji: "\u{1F36B}",
+    name: "chocolate bar",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f36b.png"
+  },
+  {
+    id: "1f36c",
+    emoji: "\u{1F36C}",
+    name: "candy",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f36c.png"
+  },
+  {
+    id: "1f36d",
+    emoji: "\u{1F36D}",
+    name: "lollipop",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f36d.png"
+  },
+  {
+    id: "1f36e",
+    emoji: "\u{1F36E}",
+    name: "custard",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f36e.png"
+  },
+  {
+    id: "1f36f",
+    emoji: "\u{1F36F}",
+    name: "honey pot",
+    category: "Food & Drink",
+    subcategory: "food-sweet",
+    supportsSkinTone: false,
+    file: "1f36f.png"
+  },
+  {
+    id: "1f37c",
+    emoji: "\u{1F37C}",
+    name: "baby bottle",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f37c.png"
+  },
+  {
+    id: "1f95b",
+    emoji: "\u{1F95B}",
+    name: "glass of milk",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f95b.png"
+  },
+  {
+    id: "2615",
+    emoji: "\u2615",
+    name: "hot beverage",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "2615.png"
+  },
+  {
+    id: "1fad6",
+    emoji: "\u{1FAD6}",
+    name: "teapot",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1fad6.png"
+  },
+  {
+    id: "1f375",
+    emoji: "\u{1F375}",
+    name: "teacup without handle",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f375.png"
+  },
+  {
+    id: "1f376",
+    emoji: "\u{1F376}",
+    name: "sake",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f376.png"
+  },
+  {
+    id: "1f37e",
+    emoji: "\u{1F37E}",
+    name: "bottle with popping cork",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f37e.png"
+  },
+  {
+    id: "1f377",
+    emoji: "\u{1F377}",
+    name: "wine glass",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f377.png"
+  },
+  {
+    id: "1f378",
+    emoji: "\u{1F378}",
+    name: "cocktail glass",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f378.png"
+  },
+  {
+    id: "1f379",
+    emoji: "\u{1F379}",
+    name: "tropical drink",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f379.png"
+  },
+  {
+    id: "1f37a",
+    emoji: "\u{1F37A}",
+    name: "beer mug",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f37a.png"
+  },
+  {
+    id: "1f37b",
+    emoji: "\u{1F37B}",
+    name: "clinking beer mugs",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f37b.png"
+  },
+  {
+    id: "1f942",
+    emoji: "\u{1F942}",
+    name: "clinking glasses",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f942.png"
+  },
+  {
+    id: "1f943",
+    emoji: "\u{1F943}",
+    name: "tumbler glass",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f943.png"
+  },
+  {
+    id: "1fad7",
+    emoji: "\u{1FAD7}",
+    name: "pouring liquid",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1fad7.png"
+  },
+  {
+    id: "1f964",
+    emoji: "\u{1F964}",
+    name: "cup with straw",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f964.png"
+  },
+  {
+    id: "1f9cb",
+    emoji: "\u{1F9CB}",
+    name: "bubble tea",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f9cb.png"
+  },
+  {
+    id: "1f9c3",
+    emoji: "\u{1F9C3}",
+    name: "beverage box",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f9c3.png"
+  },
+  {
+    id: "1f9c9",
+    emoji: "\u{1F9C9}",
+    name: "mate",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f9c9.png"
+  },
+  {
+    id: "1f9ca",
+    emoji: "\u{1F9CA}",
+    name: "ice",
+    category: "Food & Drink",
+    subcategory: "drink",
+    supportsSkinTone: false,
+    file: "1f9ca.png"
+  },
+  {
+    id: "1f962",
+    emoji: "\u{1F962}",
+    name: "chopsticks",
+    category: "Food & Drink",
+    subcategory: "dishware",
+    supportsSkinTone: false,
+    file: "1f962.png"
+  },
+  {
+    id: "1f37d-fe0f",
+    emoji: "\u{1F37D}\uFE0F",
+    name: "fork and knife with plate",
+    category: "Food & Drink",
+    subcategory: "dishware",
+    supportsSkinTone: false,
+    file: "1f37d-fe0f.png"
+  },
+  {
+    id: "1f374",
+    emoji: "\u{1F374}",
+    name: "fork and knife",
+    category: "Food & Drink",
+    subcategory: "dishware",
+    supportsSkinTone: false,
+    file: "1f374.png"
+  },
+  {
+    id: "1f944",
+    emoji: "\u{1F944}",
+    name: "spoon",
+    category: "Food & Drink",
+    subcategory: "dishware",
+    supportsSkinTone: false,
+    file: "1f944.png"
+  },
+  {
+    id: "1f52a",
+    emoji: "\u{1F52A}",
+    name: "kitchen knife",
+    category: "Food & Drink",
+    subcategory: "dishware",
+    supportsSkinTone: false,
+    file: "1f52a.png"
+  },
+  {
+    id: "1fad9",
+    emoji: "\u{1FAD9}",
+    name: "jar",
+    category: "Food & Drink",
+    subcategory: "dishware",
+    supportsSkinTone: false,
+    file: "1fad9.png"
+  },
+  {
+    id: "1f3fa",
+    emoji: "\u{1F3FA}",
+    name: "amphora",
+    category: "Food & Drink",
+    subcategory: "dishware",
+    supportsSkinTone: false,
+    file: "1f3fa.png"
+  },
+  {
+    id: "1f30d",
+    emoji: "\u{1F30D}",
+    name: "globe showing Europe-Africa",
+    category: "Travel & Places",
+    subcategory: "place-map",
+    supportsSkinTone: false,
+    file: "1f30d.png"
+  },
+  {
+    id: "1f30e",
+    emoji: "\u{1F30E}",
+    name: "globe showing Americas",
+    category: "Travel & Places",
+    subcategory: "place-map",
+    supportsSkinTone: false,
+    file: "1f30e.png"
+  },
+  {
+    id: "1f30f",
+    emoji: "\u{1F30F}",
+    name: "globe showing Asia-Australia",
+    category: "Travel & Places",
+    subcategory: "place-map",
+    supportsSkinTone: false,
+    file: "1f30f.png"
+  },
+  {
+    id: "1f310",
+    emoji: "\u{1F310}",
+    name: "globe with meridians",
+    category: "Travel & Places",
+    subcategory: "place-map",
+    supportsSkinTone: false,
+    file: "1f310.png"
+  },
+  {
+    id: "1f5fa-fe0f",
+    emoji: "\u{1F5FA}\uFE0F",
+    name: "world map",
+    category: "Travel & Places",
+    subcategory: "place-map",
+    supportsSkinTone: false,
+    file: "1f5fa-fe0f.png"
+  },
+  {
+    id: "1f5fe",
+    emoji: "\u{1F5FE}",
+    name: "map of Japan",
+    category: "Travel & Places",
+    subcategory: "place-map",
+    supportsSkinTone: false,
+    file: "1f5fe.png"
+  },
+  {
+    id: "1f9ed",
+    emoji: "\u{1F9ED}",
+    name: "compass",
+    category: "Travel & Places",
+    subcategory: "place-map",
+    supportsSkinTone: false,
+    file: "1f9ed.png"
+  },
+  {
+    id: "1f3d4-fe0f",
+    emoji: "\u{1F3D4}\uFE0F",
+    name: "snow-capped mountain",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f3d4-fe0f.png"
+  },
+  {
+    id: "26f0-fe0f",
+    emoji: "\u26F0\uFE0F",
+    name: "mountain",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "26f0-fe0f.png"
+  },
+  {
+    id: "1f6d8",
+    emoji: "\u{1F6D8}",
+    name: "landslide",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f6d8.png"
+  },
+  {
+    id: "1f30b",
+    emoji: "\u{1F30B}",
+    name: "volcano",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f30b.png"
+  },
+  {
+    id: "1f5fb",
+    emoji: "\u{1F5FB}",
+    name: "mount fuji",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f5fb.png"
+  },
+  {
+    id: "1f3d5-fe0f",
+    emoji: "\u{1F3D5}\uFE0F",
+    name: "camping",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f3d5-fe0f.png"
+  },
+  {
+    id: "1f3d6-fe0f",
+    emoji: "\u{1F3D6}\uFE0F",
+    name: "beach with umbrella",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f3d6-fe0f.png"
+  },
+  {
+    id: "1f3dc-fe0f",
+    emoji: "\u{1F3DC}\uFE0F",
+    name: "desert",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f3dc-fe0f.png"
+  },
+  {
+    id: "1f3dd-fe0f",
+    emoji: "\u{1F3DD}\uFE0F",
+    name: "desert island",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f3dd-fe0f.png"
+  },
+  {
+    id: "1f3de-fe0f",
+    emoji: "\u{1F3DE}\uFE0F",
+    name: "national park",
+    category: "Travel & Places",
+    subcategory: "place-geographic",
+    supportsSkinTone: false,
+    file: "1f3de-fe0f.png"
+  },
+  {
+    id: "1f3df-fe0f",
+    emoji: "\u{1F3DF}\uFE0F",
+    name: "stadium",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3df-fe0f.png"
+  },
+  {
+    id: "1f3db-fe0f",
+    emoji: "\u{1F3DB}\uFE0F",
+    name: "classical building",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3db-fe0f.png"
+  },
+  {
+    id: "1f3d7-fe0f",
+    emoji: "\u{1F3D7}\uFE0F",
+    name: "building construction",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3d7-fe0f.png"
+  },
+  {
+    id: "1f9f1",
+    emoji: "\u{1F9F1}",
+    name: "brick",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f9f1.png"
+  },
+  {
+    id: "1faa8",
+    emoji: "\u{1FAA8}",
+    name: "rock",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1faa8.png"
+  },
+  {
+    id: "1fab5",
+    emoji: "\u{1FAB5}",
+    name: "wood",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1fab5.png"
+  },
+  {
+    id: "1f6d6",
+    emoji: "\u{1F6D6}",
+    name: "hut",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f6d6.png"
+  },
+  {
+    id: "1f3d8-fe0f",
+    emoji: "\u{1F3D8}\uFE0F",
+    name: "houses",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3d8-fe0f.png"
+  },
+  {
+    id: "1f3da-fe0f",
+    emoji: "\u{1F3DA}\uFE0F",
+    name: "derelict house",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3da-fe0f.png"
+  },
+  {
+    id: "1f3e0",
+    emoji: "\u{1F3E0}",
+    name: "house",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e0.png"
+  },
+  {
+    id: "1f3e1",
+    emoji: "\u{1F3E1}",
+    name: "house with garden",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e1.png"
+  },
+  {
+    id: "1f3e2",
+    emoji: "\u{1F3E2}",
+    name: "office building",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e2.png"
+  },
+  {
+    id: "1f3e3",
+    emoji: "\u{1F3E3}",
+    name: "Japanese post office",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e3.png"
+  },
+  {
+    id: "1f3e4",
+    emoji: "\u{1F3E4}",
+    name: "post office",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e4.png"
+  },
+  {
+    id: "1f3e5",
+    emoji: "\u{1F3E5}",
+    name: "hospital",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e5.png"
+  },
+  {
+    id: "1f3e6",
+    emoji: "\u{1F3E6}",
+    name: "bank",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e6.png"
+  },
+  {
+    id: "1f3e8",
+    emoji: "\u{1F3E8}",
+    name: "hotel",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e8.png"
+  },
+  {
+    id: "1f3e9",
+    emoji: "\u{1F3E9}",
+    name: "love hotel",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3e9.png"
+  },
+  {
+    id: "1f3ea",
+    emoji: "\u{1F3EA}",
+    name: "convenience store",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3ea.png"
+  },
+  {
+    id: "1f3eb",
+    emoji: "\u{1F3EB}",
+    name: "school",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3eb.png"
+  },
+  {
+    id: "1f3ec",
+    emoji: "\u{1F3EC}",
+    name: "department store",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3ec.png"
+  },
+  {
+    id: "1f3ed",
+    emoji: "\u{1F3ED}",
+    name: "factory",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3ed.png"
+  },
+  {
+    id: "1f3ef",
+    emoji: "\u{1F3EF}",
+    name: "Japanese castle",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3ef.png"
+  },
+  {
+    id: "1f3f0",
+    emoji: "\u{1F3F0}",
+    name: "castle",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f3f0.png"
+  },
+  {
+    id: "1f492",
+    emoji: "\u{1F492}",
+    name: "wedding",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f492.png"
+  },
+  {
+    id: "1f5fc",
+    emoji: "\u{1F5FC}",
+    name: "Tokyo tower",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f5fc.png"
+  },
+  {
+    id: "1f5fd",
+    emoji: "\u{1F5FD}",
+    name: "Statue of Liberty",
+    category: "Travel & Places",
+    subcategory: "place-building",
+    supportsSkinTone: false,
+    file: "1f5fd.png"
+  },
+  {
+    id: "26ea",
+    emoji: "\u26EA",
+    name: "church",
+    category: "Travel & Places",
+    subcategory: "place-religious",
+    supportsSkinTone: false,
+    file: "26ea.png"
+  },
+  {
+    id: "1f54c",
+    emoji: "\u{1F54C}",
+    name: "mosque",
+    category: "Travel & Places",
+    subcategory: "place-religious",
+    supportsSkinTone: false,
+    file: "1f54c.png"
+  },
+  {
+    id: "1f6d5",
+    emoji: "\u{1F6D5}",
+    name: "hindu temple",
+    category: "Travel & Places",
+    subcategory: "place-religious",
+    supportsSkinTone: false,
+    file: "1f6d5.png"
+  },
+  {
+    id: "1f54d",
+    emoji: "\u{1F54D}",
+    name: "synagogue",
+    category: "Travel & Places",
+    subcategory: "place-religious",
+    supportsSkinTone: false,
+    file: "1f54d.png"
+  },
+  {
+    id: "26e9-fe0f",
+    emoji: "\u26E9\uFE0F",
+    name: "shinto shrine",
+    category: "Travel & Places",
+    subcategory: "place-religious",
+    supportsSkinTone: false,
+    file: "26e9-fe0f.png"
+  },
+  {
+    id: "1f54b",
+    emoji: "\u{1F54B}",
+    name: "kaaba",
+    category: "Travel & Places",
+    subcategory: "place-religious",
+    supportsSkinTone: false,
+    file: "1f54b.png"
+  },
+  {
+    id: "26f2",
+    emoji: "\u26F2",
+    name: "fountain",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "26f2.png"
+  },
+  {
+    id: "26fa",
+    emoji: "\u26FA",
+    name: "tent",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "26fa.png"
+  },
+  {
+    id: "1f301",
+    emoji: "\u{1F301}",
+    name: "foggy",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f301.png"
+  },
+  {
+    id: "1f303",
+    emoji: "\u{1F303}",
+    name: "night with stars",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f303.png"
+  },
+  {
+    id: "1f3d9-fe0f",
+    emoji: "\u{1F3D9}\uFE0F",
+    name: "cityscape",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f3d9-fe0f.png"
+  },
+  {
+    id: "1f304",
+    emoji: "\u{1F304}",
+    name: "sunrise over mountains",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f304.png"
+  },
+  {
+    id: "1f305",
+    emoji: "\u{1F305}",
+    name: "sunrise",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f305.png"
+  },
+  {
+    id: "1f306",
+    emoji: "\u{1F306}",
+    name: "cityscape at dusk",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f306.png"
+  },
+  {
+    id: "1f307",
+    emoji: "\u{1F307}",
+    name: "sunset",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f307.png"
+  },
+  {
+    id: "1f309",
+    emoji: "\u{1F309}",
+    name: "bridge at night",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f309.png"
+  },
+  {
+    id: "2668-fe0f",
+    emoji: "\u2668\uFE0F",
+    name: "hot springs",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "2668-fe0f.png"
+  },
+  {
+    id: "1f3a0",
+    emoji: "\u{1F3A0}",
+    name: "carousel horse",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f3a0.png"
+  },
+  {
+    id: "1f6dd",
+    emoji: "\u{1F6DD}",
+    name: "playground slide",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f6dd.png"
+  },
+  {
+    id: "1f3a1",
+    emoji: "\u{1F3A1}",
+    name: "ferris wheel",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f3a1.png"
+  },
+  {
+    id: "1f3a2",
+    emoji: "\u{1F3A2}",
+    name: "roller coaster",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f3a2.png"
+  },
+  {
+    id: "1f488",
+    emoji: "\u{1F488}",
+    name: "barber pole",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f488.png"
+  },
+  {
+    id: "1f3aa",
+    emoji: "\u{1F3AA}",
+    name: "circus tent",
+    category: "Travel & Places",
+    subcategory: "place-other",
+    supportsSkinTone: false,
+    file: "1f3aa.png"
+  },
+  {
+    id: "1f682",
+    emoji: "\u{1F682}",
+    name: "locomotive",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f682.png"
+  },
+  {
+    id: "1f683",
+    emoji: "\u{1F683}",
+    name: "railway car",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f683.png"
+  },
+  {
+    id: "1f684",
+    emoji: "\u{1F684}",
+    name: "high-speed train",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f684.png"
+  },
+  {
+    id: "1f685",
+    emoji: "\u{1F685}",
+    name: "bullet train",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f685.png"
+  },
+  {
+    id: "1f686",
+    emoji: "\u{1F686}",
+    name: "train",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f686.png"
+  },
+  {
+    id: "1f687",
+    emoji: "\u{1F687}",
+    name: "metro",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f687.png"
+  },
+  {
+    id: "1f688",
+    emoji: "\u{1F688}",
+    name: "light rail",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f688.png"
+  },
+  {
+    id: "1f689",
+    emoji: "\u{1F689}",
+    name: "station",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f689.png"
+  },
+  {
+    id: "1f68a",
+    emoji: "\u{1F68A}",
+    name: "tram",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f68a.png"
+  },
+  {
+    id: "1f69d",
+    emoji: "\u{1F69D}",
+    name: "monorail",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f69d.png"
+  },
+  {
+    id: "1f69e",
+    emoji: "\u{1F69E}",
+    name: "mountain railway",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f69e.png"
+  },
+  {
+    id: "1f68b",
+    emoji: "\u{1F68B}",
+    name: "tram car",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f68b.png"
+  },
+  {
+    id: "1f68c",
+    emoji: "\u{1F68C}",
+    name: "bus",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f68c.png"
+  },
+  {
+    id: "1f68d",
+    emoji: "\u{1F68D}",
+    name: "oncoming bus",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f68d.png"
+  },
+  {
+    id: "1f68e",
+    emoji: "\u{1F68E}",
+    name: "trolleybus",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f68e.png"
+  },
+  {
+    id: "1f690",
+    emoji: "\u{1F690}",
+    name: "minibus",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f690.png"
+  },
+  {
+    id: "1f691",
+    emoji: "\u{1F691}",
+    name: "ambulance",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f691.png"
+  },
+  {
+    id: "1f692",
+    emoji: "\u{1F692}",
+    name: "fire engine",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f692.png"
+  },
+  {
+    id: "1f693",
+    emoji: "\u{1F693}",
+    name: "police car",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f693.png"
+  },
+  {
+    id: "1f694",
+    emoji: "\u{1F694}",
+    name: "oncoming police car",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f694.png"
+  },
+  {
+    id: "1f695",
+    emoji: "\u{1F695}",
+    name: "taxi",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f695.png"
+  },
+  {
+    id: "1f696",
+    emoji: "\u{1F696}",
+    name: "oncoming taxi",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f696.png"
+  },
+  {
+    id: "1f697",
+    emoji: "\u{1F697}",
+    name: "automobile",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f697.png"
+  },
+  {
+    id: "1f698",
+    emoji: "\u{1F698}",
+    name: "oncoming automobile",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f698.png"
+  },
+  {
+    id: "1f699",
+    emoji: "\u{1F699}",
+    name: "sport utility vehicle",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f699.png"
+  },
+  {
+    id: "1f6fb",
+    emoji: "\u{1F6FB}",
+    name: "pickup truck",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6fb.png"
+  },
+  {
+    id: "1f69a",
+    emoji: "\u{1F69A}",
+    name: "delivery truck",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f69a.png"
+  },
+  {
+    id: "1f69b",
+    emoji: "\u{1F69B}",
+    name: "articulated lorry",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f69b.png"
+  },
+  {
+    id: "1f69c",
+    emoji: "\u{1F69C}",
+    name: "tractor",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f69c.png"
+  },
+  {
+    id: "1f3ce-fe0f",
+    emoji: "\u{1F3CE}\uFE0F",
+    name: "racing car",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f3ce-fe0f.png"
+  },
+  {
+    id: "1f3cd-fe0f",
+    emoji: "\u{1F3CD}\uFE0F",
+    name: "motorcycle",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f3cd-fe0f.png"
+  },
+  {
+    id: "1f6f5",
+    emoji: "\u{1F6F5}",
+    name: "motor scooter",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6f5.png"
+  },
+  {
+    id: "1f9bd",
+    emoji: "\u{1F9BD}",
+    name: "manual wheelchair",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f9bd.png"
+  },
+  {
+    id: "1f9bc",
+    emoji: "\u{1F9BC}",
+    name: "motorized wheelchair",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f9bc.png"
+  },
+  {
+    id: "1f6fa",
+    emoji: "\u{1F6FA}",
+    name: "auto rickshaw",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6fa.png"
+  },
+  {
+    id: "1f6b2",
+    emoji: "\u{1F6B2}",
+    name: "bicycle",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6b2.png"
+  },
+  {
+    id: "1f6f4",
+    emoji: "\u{1F6F4}",
+    name: "kick scooter",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6f4.png"
+  },
+  {
+    id: "1f6f9",
+    emoji: "\u{1F6F9}",
+    name: "skateboard",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6f9.png"
+  },
+  {
+    id: "1f6fc",
+    emoji: "\u{1F6FC}",
+    name: "roller skate",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6fc.png"
+  },
+  {
+    id: "1f68f",
+    emoji: "\u{1F68F}",
+    name: "bus stop",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f68f.png"
+  },
+  {
+    id: "1f6e3-fe0f",
+    emoji: "\u{1F6E3}\uFE0F",
+    name: "motorway",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6e3-fe0f.png"
+  },
+  {
+    id: "1f6e4-fe0f",
+    emoji: "\u{1F6E4}\uFE0F",
+    name: "railway track",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6e4-fe0f.png"
+  },
+  {
+    id: "1f6e2-fe0f",
+    emoji: "\u{1F6E2}\uFE0F",
+    name: "oil drum",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6e2-fe0f.png"
+  },
+  {
+    id: "26fd",
+    emoji: "\u26FD",
+    name: "fuel pump",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "26fd.png"
+  },
+  {
+    id: "1f6de",
+    emoji: "\u{1F6DE}",
+    name: "wheel",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6de.png"
+  },
+  {
+    id: "1f6a8",
+    emoji: "\u{1F6A8}",
+    name: "police car light",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6a8.png"
+  },
+  {
+    id: "1f6a5",
+    emoji: "\u{1F6A5}",
+    name: "horizontal traffic light",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6a5.png"
+  },
+  {
+    id: "1f6a6",
+    emoji: "\u{1F6A6}",
+    name: "vertical traffic light",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6a6.png"
+  },
+  {
+    id: "1f6d1",
+    emoji: "\u{1F6D1}",
+    name: "stop sign",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6d1.png"
+  },
+  {
+    id: "1f6a7",
+    emoji: "\u{1F6A7}",
+    name: "construction",
+    category: "Travel & Places",
+    subcategory: "transport-ground",
+    supportsSkinTone: false,
+    file: "1f6a7.png"
+  },
+  {
+    id: "2693",
+    emoji: "\u2693",
+    name: "anchor",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "2693.png"
+  },
+  {
+    id: "1f6df",
+    emoji: "\u{1F6DF}",
+    name: "ring buoy",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "1f6df.png"
+  },
+  {
+    id: "26f5",
+    emoji: "\u26F5",
+    name: "sailboat",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "26f5.png"
+  },
+  {
+    id: "1f6f6",
+    emoji: "\u{1F6F6}",
+    name: "canoe",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "1f6f6.png"
+  },
+  {
+    id: "1f6a4",
+    emoji: "\u{1F6A4}",
+    name: "speedboat",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "1f6a4.png"
+  },
+  {
+    id: "1f6f3-fe0f",
+    emoji: "\u{1F6F3}\uFE0F",
+    name: "passenger ship",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "1f6f3-fe0f.png"
+  },
+  {
+    id: "26f4-fe0f",
+    emoji: "\u26F4\uFE0F",
+    name: "ferry",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "26f4-fe0f.png"
+  },
+  {
+    id: "1f6e5-fe0f",
+    emoji: "\u{1F6E5}\uFE0F",
+    name: "motor boat",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "1f6e5-fe0f.png"
+  },
+  {
+    id: "1f6a2",
+    emoji: "\u{1F6A2}",
+    name: "ship",
+    category: "Travel & Places",
+    subcategory: "transport-water",
+    supportsSkinTone: false,
+    file: "1f6a2.png"
+  },
+  {
+    id: "2708-fe0f",
+    emoji: "\u2708\uFE0F",
+    name: "airplane",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "2708-fe0f.png"
+  },
+  {
+    id: "1f6e9-fe0f",
+    emoji: "\u{1F6E9}\uFE0F",
+    name: "small airplane",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f6e9-fe0f.png"
+  },
+  {
+    id: "1f6eb",
+    emoji: "\u{1F6EB}",
+    name: "airplane departure",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f6eb.png"
+  },
+  {
+    id: "1f6ec",
+    emoji: "\u{1F6EC}",
+    name: "airplane arrival",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f6ec.png"
+  },
+  {
+    id: "1fa82",
+    emoji: "\u{1FA82}",
+    name: "parachute",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1fa82.png"
+  },
+  {
+    id: "1f4ba",
+    emoji: "\u{1F4BA}",
+    name: "seat",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f4ba.png"
+  },
+  {
+    id: "1f681",
+    emoji: "\u{1F681}",
+    name: "helicopter",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f681.png"
+  },
+  {
+    id: "1f69f",
+    emoji: "\u{1F69F}",
+    name: "suspension railway",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f69f.png"
+  },
+  {
+    id: "1f6a0",
+    emoji: "\u{1F6A0}",
+    name: "mountain cableway",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f6a0.png"
+  },
+  {
+    id: "1f6a1",
+    emoji: "\u{1F6A1}",
+    name: "aerial tramway",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f6a1.png"
+  },
+  {
+    id: "1f6f0-fe0f",
+    emoji: "\u{1F6F0}\uFE0F",
+    name: "satellite",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f6f0-fe0f.png"
+  },
+  {
+    id: "1f680",
+    emoji: "\u{1F680}",
+    name: "rocket",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f680.png"
+  },
+  {
+    id: "1f6f8",
+    emoji: "\u{1F6F8}",
+    name: "flying saucer",
+    category: "Travel & Places",
+    subcategory: "transport-air",
+    supportsSkinTone: false,
+    file: "1f6f8.png"
+  },
+  {
+    id: "1f6ce-fe0f",
+    emoji: "\u{1F6CE}\uFE0F",
+    name: "bellhop bell",
+    category: "Travel & Places",
+    subcategory: "hotel",
+    supportsSkinTone: false,
+    file: "1f6ce-fe0f.png"
+  },
+  {
+    id: "1f9f3",
+    emoji: "\u{1F9F3}",
+    name: "luggage",
+    category: "Travel & Places",
+    subcategory: "hotel",
+    supportsSkinTone: false,
+    file: "1f9f3.png"
+  },
+  {
+    id: "231b",
+    emoji: "\u231B",
+    name: "hourglass done",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "231b.png"
+  },
+  {
+    id: "23f3",
+    emoji: "\u23F3",
+    name: "hourglass not done",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "23f3.png"
+  },
+  {
+    id: "231a",
+    emoji: "\u231A",
+    name: "watch",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "231a.png"
+  },
+  {
+    id: "23f0",
+    emoji: "\u23F0",
+    name: "alarm clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "23f0.png"
+  },
+  {
+    id: "23f1-fe0f",
+    emoji: "\u23F1\uFE0F",
+    name: "stopwatch",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "23f1-fe0f.png"
+  },
+  {
+    id: "23f2-fe0f",
+    emoji: "\u23F2\uFE0F",
+    name: "timer clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "23f2-fe0f.png"
+  },
+  {
+    id: "1f570-fe0f",
+    emoji: "\u{1F570}\uFE0F",
+    name: "mantelpiece clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f570-fe0f.png"
+  },
+  {
+    id: "1f55b",
+    emoji: "\u{1F55B}",
+    name: "twelve o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f55b.png"
+  },
+  {
+    id: "1f567",
+    emoji: "\u{1F567}",
+    name: "twelve-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f567.png"
+  },
+  {
+    id: "1f550",
+    emoji: "\u{1F550}",
+    name: "one o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f550.png"
+  },
+  {
+    id: "1f55c",
+    emoji: "\u{1F55C}",
+    name: "one-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f55c.png"
+  },
+  {
+    id: "1f551",
+    emoji: "\u{1F551}",
+    name: "two o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f551.png"
+  },
+  {
+    id: "1f55d",
+    emoji: "\u{1F55D}",
+    name: "two-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f55d.png"
+  },
+  {
+    id: "1f552",
+    emoji: "\u{1F552}",
+    name: "three o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f552.png"
+  },
+  {
+    id: "1f55e",
+    emoji: "\u{1F55E}",
+    name: "three-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f55e.png"
+  },
+  {
+    id: "1f553",
+    emoji: "\u{1F553}",
+    name: "four o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f553.png"
+  },
+  {
+    id: "1f55f",
+    emoji: "\u{1F55F}",
+    name: "four-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f55f.png"
+  },
+  {
+    id: "1f554",
+    emoji: "\u{1F554}",
+    name: "five o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f554.png"
+  },
+  {
+    id: "1f560",
+    emoji: "\u{1F560}",
+    name: "five-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f560.png"
+  },
+  {
+    id: "1f555",
+    emoji: "\u{1F555}",
+    name: "six o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f555.png"
+  },
+  {
+    id: "1f561",
+    emoji: "\u{1F561}",
+    name: "six-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f561.png"
+  },
+  {
+    id: "1f556",
+    emoji: "\u{1F556}",
+    name: "seven o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f556.png"
+  },
+  {
+    id: "1f562",
+    emoji: "\u{1F562}",
+    name: "seven-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f562.png"
+  },
+  {
+    id: "1f557",
+    emoji: "\u{1F557}",
+    name: "eight o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f557.png"
+  },
+  {
+    id: "1f563",
+    emoji: "\u{1F563}",
+    name: "eight-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f563.png"
+  },
+  {
+    id: "1f558",
+    emoji: "\u{1F558}",
+    name: "nine o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f558.png"
+  },
+  {
+    id: "1f564",
+    emoji: "\u{1F564}",
+    name: "nine-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f564.png"
+  },
+  {
+    id: "1f559",
+    emoji: "\u{1F559}",
+    name: "ten o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f559.png"
+  },
+  {
+    id: "1f565",
+    emoji: "\u{1F565}",
+    name: "ten-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f565.png"
+  },
+  {
+    id: "1f55a",
+    emoji: "\u{1F55A}",
+    name: "eleven o\u2019clock",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f55a.png"
+  },
+  {
+    id: "1f566",
+    emoji: "\u{1F566}",
+    name: "eleven-thirty",
+    category: "Travel & Places",
+    subcategory: "time",
+    supportsSkinTone: false,
+    file: "1f566.png"
+  },
+  {
+    id: "1f311",
+    emoji: "\u{1F311}",
+    name: "new moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f311.png"
+  },
+  {
+    id: "1f312",
+    emoji: "\u{1F312}",
+    name: "waxing crescent moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f312.png"
+  },
+  {
+    id: "1f313",
+    emoji: "\u{1F313}",
+    name: "first quarter moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f313.png"
+  },
+  {
+    id: "1f314",
+    emoji: "\u{1F314}",
+    name: "waxing gibbous moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f314.png"
+  },
+  {
+    id: "1f315",
+    emoji: "\u{1F315}",
+    name: "full moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f315.png"
+  },
+  {
+    id: "1f316",
+    emoji: "\u{1F316}",
+    name: "waning gibbous moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f316.png"
+  },
+  {
+    id: "1f317",
+    emoji: "\u{1F317}",
+    name: "last quarter moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f317.png"
+  },
+  {
+    id: "1f318",
+    emoji: "\u{1F318}",
+    name: "waning crescent moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f318.png"
+  },
+  {
+    id: "1f319",
+    emoji: "\u{1F319}",
+    name: "crescent moon",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f319.png"
+  },
+  {
+    id: "1f31a",
+    emoji: "\u{1F31A}",
+    name: "new moon face",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f31a.png"
+  },
+  {
+    id: "1f31b",
+    emoji: "\u{1F31B}",
+    name: "first quarter moon face",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f31b.png"
+  },
+  {
+    id: "1f31c",
+    emoji: "\u{1F31C}",
+    name: "last quarter moon face",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f31c.png"
+  },
+  {
+    id: "1f321-fe0f",
+    emoji: "\u{1F321}\uFE0F",
+    name: "thermometer",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f321-fe0f.png"
+  },
+  {
+    id: "2600-fe0f",
+    emoji: "\u2600\uFE0F",
+    name: "sun",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2600-fe0f.png"
+  },
+  {
+    id: "1f31d",
+    emoji: "\u{1F31D}",
+    name: "full moon face",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f31d.png"
+  },
+  {
+    id: "1f31e",
+    emoji: "\u{1F31E}",
+    name: "sun with face",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f31e.png"
+  },
+  {
+    id: "1fa90",
+    emoji: "\u{1FA90}",
+    name: "ringed planet",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1fa90.png"
+  },
+  {
+    id: "2b50",
+    emoji: "\u2B50",
+    name: "star",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2b50.png"
+  },
+  {
+    id: "1f31f",
+    emoji: "\u{1F31F}",
+    name: "glowing star",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f31f.png"
+  },
+  {
+    id: "1f320",
+    emoji: "\u{1F320}",
+    name: "shooting star",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f320.png"
+  },
+  {
+    id: "1f30c",
+    emoji: "\u{1F30C}",
+    name: "milky way",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f30c.png"
+  },
+  {
+    id: "2601-fe0f",
+    emoji: "\u2601\uFE0F",
+    name: "cloud",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2601-fe0f.png"
+  },
+  {
+    id: "26c5",
+    emoji: "\u26C5",
+    name: "sun behind cloud",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "26c5.png"
+  },
+  {
+    id: "26c8-fe0f",
+    emoji: "\u26C8\uFE0F",
+    name: "cloud with lightning and rain",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "26c8-fe0f.png"
+  },
+  {
+    id: "1f324-fe0f",
+    emoji: "\u{1F324}\uFE0F",
+    name: "sun behind small cloud",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f324-fe0f.png"
+  },
+  {
+    id: "1f325-fe0f",
+    emoji: "\u{1F325}\uFE0F",
+    name: "sun behind large cloud",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f325-fe0f.png"
+  },
+  {
+    id: "1f326-fe0f",
+    emoji: "\u{1F326}\uFE0F",
+    name: "sun behind rain cloud",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f326-fe0f.png"
+  },
+  {
+    id: "1f327-fe0f",
+    emoji: "\u{1F327}\uFE0F",
+    name: "cloud with rain",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f327-fe0f.png"
+  },
+  {
+    id: "1f328-fe0f",
+    emoji: "\u{1F328}\uFE0F",
+    name: "cloud with snow",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f328-fe0f.png"
+  },
+  {
+    id: "1f329-fe0f",
+    emoji: "\u{1F329}\uFE0F",
+    name: "cloud with lightning",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f329-fe0f.png"
+  },
+  {
+    id: "1f32a-fe0f",
+    emoji: "\u{1F32A}\uFE0F",
+    name: "tornado",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f32a-fe0f.png"
+  },
+  {
+    id: "1f32b-fe0f",
+    emoji: "\u{1F32B}\uFE0F",
+    name: "fog",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f32b-fe0f.png"
+  },
+  {
+    id: "1f32c-fe0f",
+    emoji: "\u{1F32C}\uFE0F",
+    name: "wind face",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f32c-fe0f.png"
+  },
+  {
+    id: "1f300",
+    emoji: "\u{1F300}",
+    name: "cyclone",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f300.png"
+  },
+  {
+    id: "1f308",
+    emoji: "\u{1F308}",
+    name: "rainbow",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f308.png"
+  },
+  {
+    id: "1f302",
+    emoji: "\u{1F302}",
+    name: "closed umbrella",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f302.png"
+  },
+  {
+    id: "2602-fe0f",
+    emoji: "\u2602\uFE0F",
+    name: "umbrella",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2602-fe0f.png"
+  },
+  {
+    id: "2614",
+    emoji: "\u2614",
+    name: "umbrella with rain drops",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2614.png"
+  },
+  {
+    id: "26f1-fe0f",
+    emoji: "\u26F1\uFE0F",
+    name: "umbrella on ground",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "26f1-fe0f.png"
+  },
+  {
+    id: "26a1",
+    emoji: "\u26A1",
+    name: "high voltage",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "26a1.png"
+  },
+  {
+    id: "2744-fe0f",
+    emoji: "\u2744\uFE0F",
+    name: "snowflake",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2744-fe0f.png"
+  },
+  {
+    id: "2603-fe0f",
+    emoji: "\u2603\uFE0F",
+    name: "snowman",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2603-fe0f.png"
+  },
+  {
+    id: "26c4",
+    emoji: "\u26C4",
+    name: "snowman without snow",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "26c4.png"
+  },
+  {
+    id: "2604-fe0f",
+    emoji: "\u2604\uFE0F",
+    name: "comet",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "2604-fe0f.png"
+  },
+  {
+    id: "1f525",
+    emoji: "\u{1F525}",
+    name: "fire",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f525.png"
+  },
+  {
+    id: "1f4a7",
+    emoji: "\u{1F4A7}",
+    name: "droplet",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f4a7.png"
+  },
+  {
+    id: "1f30a",
+    emoji: "\u{1F30A}",
+    name: "water wave",
+    category: "Travel & Places",
+    subcategory: "sky & weather",
+    supportsSkinTone: false,
+    file: "1f30a.png"
+  },
+  {
+    id: "1f383",
+    emoji: "\u{1F383}",
+    name: "jack-o-lantern",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f383.png"
+  },
+  {
+    id: "1f384",
+    emoji: "\u{1F384}",
+    name: "Christmas tree",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f384.png"
+  },
+  {
+    id: "1f386",
+    emoji: "\u{1F386}",
+    name: "fireworks",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f386.png"
+  },
+  {
+    id: "1f387",
+    emoji: "\u{1F387}",
+    name: "sparkler",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f387.png"
+  },
+  {
+    id: "1f9e8",
+    emoji: "\u{1F9E8}",
+    name: "firecracker",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f9e8.png"
+  },
+  {
+    id: "2728",
+    emoji: "\u2728",
+    name: "sparkles",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "2728.png"
+  },
+  {
+    id: "1f388",
+    emoji: "\u{1F388}",
+    name: "balloon",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f388.png"
+  },
+  {
+    id: "1f389",
+    emoji: "\u{1F389}",
+    name: "party popper",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f389.png"
+  },
+  {
+    id: "1f38a",
+    emoji: "\u{1F38A}",
+    name: "confetti ball",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f38a.png"
+  },
+  {
+    id: "1f38b",
+    emoji: "\u{1F38B}",
+    name: "tanabata tree",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f38b.png"
+  },
+  {
+    id: "1f38d",
+    emoji: "\u{1F38D}",
+    name: "pine decoration",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f38d.png"
+  },
+  {
+    id: "1f38e",
+    emoji: "\u{1F38E}",
+    name: "Japanese dolls",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f38e.png"
+  },
+  {
+    id: "1f38f",
+    emoji: "\u{1F38F}",
+    name: "carp streamer",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f38f.png"
+  },
+  {
+    id: "1f390",
+    emoji: "\u{1F390}",
+    name: "wind chime",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f390.png"
+  },
+  {
+    id: "1f391",
+    emoji: "\u{1F391}",
+    name: "moon viewing ceremony",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f391.png"
+  },
+  {
+    id: "1f9e7",
+    emoji: "\u{1F9E7}",
+    name: "red envelope",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f9e7.png"
+  },
+  {
+    id: "1f380",
+    emoji: "\u{1F380}",
+    name: "ribbon",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f380.png"
+  },
+  {
+    id: "1f381",
+    emoji: "\u{1F381}",
+    name: "wrapped gift",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f381.png"
+  },
+  {
+    id: "1f397-fe0f",
+    emoji: "\u{1F397}\uFE0F",
+    name: "reminder ribbon",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f397-fe0f.png"
+  },
+  {
+    id: "1f39f-fe0f",
+    emoji: "\u{1F39F}\uFE0F",
+    name: "admission tickets",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f39f-fe0f.png"
+  },
+  {
+    id: "1f3ab",
+    emoji: "\u{1F3AB}",
+    name: "ticket",
+    category: "Activities",
+    subcategory: "event",
+    supportsSkinTone: false,
+    file: "1f3ab.png"
+  },
+  {
+    id: "1f396-fe0f",
+    emoji: "\u{1F396}\uFE0F",
+    name: "military medal",
+    category: "Activities",
+    subcategory: "award-medal",
+    supportsSkinTone: false,
+    file: "1f396-fe0f.png"
+  },
+  {
+    id: "1f3c6",
+    emoji: "\u{1F3C6}",
+    name: "trophy",
+    category: "Activities",
+    subcategory: "award-medal",
+    supportsSkinTone: false,
+    file: "1f3c6.png"
+  },
+  {
+    id: "1f3c5",
+    emoji: "\u{1F3C5}",
+    name: "sports medal",
+    category: "Activities",
+    subcategory: "award-medal",
+    supportsSkinTone: false,
+    file: "1f3c5.png"
+  },
+  {
+    id: "1f947",
+    emoji: "\u{1F947}",
+    name: "1st place medal",
+    category: "Activities",
+    subcategory: "award-medal",
+    supportsSkinTone: false,
+    file: "1f947.png"
+  },
+  {
+    id: "1f948",
+    emoji: "\u{1F948}",
+    name: "2nd place medal",
+    category: "Activities",
+    subcategory: "award-medal",
+    supportsSkinTone: false,
+    file: "1f948.png"
+  },
+  {
+    id: "1f949",
+    emoji: "\u{1F949}",
+    name: "3rd place medal",
+    category: "Activities",
+    subcategory: "award-medal",
+    supportsSkinTone: false,
+    file: "1f949.png"
+  },
+  {
+    id: "26bd",
+    emoji: "\u26BD",
+    name: "soccer ball",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "26bd.png"
+  },
+  {
+    id: "26be",
+    emoji: "\u26BE",
+    name: "baseball",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "26be.png"
+  },
+  {
+    id: "1f94e",
+    emoji: "\u{1F94E}",
+    name: "softball",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f94e.png"
+  },
+  {
+    id: "1f3c0",
+    emoji: "\u{1F3C0}",
+    name: "basketball",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3c0.png"
+  },
+  {
+    id: "1f3d0",
+    emoji: "\u{1F3D0}",
+    name: "volleyball",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3d0.png"
+  },
+  {
+    id: "1f3c8",
+    emoji: "\u{1F3C8}",
+    name: "american football",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3c8.png"
+  },
+  {
+    id: "1f3c9",
+    emoji: "\u{1F3C9}",
+    name: "rugby football",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3c9.png"
+  },
+  {
+    id: "1f3be",
+    emoji: "\u{1F3BE}",
+    name: "tennis",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3be.png"
+  },
+  {
+    id: "1f94f",
+    emoji: "\u{1F94F}",
+    name: "flying disc",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f94f.png"
+  },
+  {
+    id: "1f3b3",
+    emoji: "\u{1F3B3}",
+    name: "bowling",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3b3.png"
+  },
+  {
+    id: "1f3cf",
+    emoji: "\u{1F3CF}",
+    name: "cricket game",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3cf.png"
+  },
+  {
+    id: "1f3d1",
+    emoji: "\u{1F3D1}",
+    name: "field hockey",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3d1.png"
+  },
+  {
+    id: "1f3d2",
+    emoji: "\u{1F3D2}",
+    name: "ice hockey",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3d2.png"
+  },
+  {
+    id: "1f94d",
+    emoji: "\u{1F94D}",
+    name: "lacrosse",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f94d.png"
+  },
+  {
+    id: "1f3d3",
+    emoji: "\u{1F3D3}",
+    name: "ping pong",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3d3.png"
+  },
+  {
+    id: "1f3f8",
+    emoji: "\u{1F3F8}",
+    name: "badminton",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3f8.png"
+  },
+  {
+    id: "1f94a",
+    emoji: "\u{1F94A}",
+    name: "boxing glove",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f94a.png"
+  },
+  {
+    id: "1f94b",
+    emoji: "\u{1F94B}",
+    name: "martial arts uniform",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f94b.png"
+  },
+  {
+    id: "1f945",
+    emoji: "\u{1F945}",
+    name: "goal net",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f945.png"
+  },
+  {
+    id: "26f3",
+    emoji: "\u26F3",
+    name: "flag in hole",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "26f3.png"
+  },
+  {
+    id: "26f8-fe0f",
+    emoji: "\u26F8\uFE0F",
+    name: "ice skate",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "26f8-fe0f.png"
+  },
+  {
+    id: "1f3a3",
+    emoji: "\u{1F3A3}",
+    name: "fishing pole",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3a3.png"
+  },
+  {
+    id: "1f93f",
+    emoji: "\u{1F93F}",
+    name: "diving mask",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f93f.png"
+  },
+  {
+    id: "1f3bd",
+    emoji: "\u{1F3BD}",
+    name: "running shirt",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3bd.png"
+  },
+  {
+    id: "1f3bf",
+    emoji: "\u{1F3BF}",
+    name: "skis",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f3bf.png"
+  },
+  {
+    id: "1f6f7",
+    emoji: "\u{1F6F7}",
+    name: "sled",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f6f7.png"
+  },
+  {
+    id: "1f94c",
+    emoji: "\u{1F94C}",
+    name: "curling stone",
+    category: "Activities",
+    subcategory: "sport",
+    supportsSkinTone: false,
+    file: "1f94c.png"
+  },
+  {
+    id: "1f3af",
+    emoji: "\u{1F3AF}",
+    name: "bullseye",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f3af.png"
+  },
+  {
+    id: "1fa80",
+    emoji: "\u{1FA80}",
+    name: "yo-yo",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1fa80.png"
+  },
+  {
+    id: "1fa81",
+    emoji: "\u{1FA81}",
+    name: "kite",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1fa81.png"
+  },
+  {
+    id: "1f52b",
+    emoji: "\u{1F52B}",
+    name: "water pistol",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f52b.png"
+  },
+  {
+    id: "1f3b1",
+    emoji: "\u{1F3B1}",
+    name: "pool 8 ball",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f3b1.png"
+  },
+  {
+    id: "1f52e",
+    emoji: "\u{1F52E}",
+    name: "crystal ball",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f52e.png"
+  },
+  {
+    id: "1fa84",
+    emoji: "\u{1FA84}",
+    name: "magic wand",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1fa84.png"
+  },
+  {
+    id: "1f3ae",
+    emoji: "\u{1F3AE}",
+    name: "video game",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f3ae.png"
+  },
+  {
+    id: "1f579-fe0f",
+    emoji: "\u{1F579}\uFE0F",
+    name: "joystick",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f579-fe0f.png"
+  },
+  {
+    id: "1f3b0",
+    emoji: "\u{1F3B0}",
+    name: "slot machine",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f3b0.png"
+  },
+  {
+    id: "1f3b2",
+    emoji: "\u{1F3B2}",
+    name: "game die",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f3b2.png"
+  },
+  {
+    id: "1f9e9",
+    emoji: "\u{1F9E9}",
+    name: "puzzle piece",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f9e9.png"
+  },
+  {
+    id: "1f9f8",
+    emoji: "\u{1F9F8}",
+    name: "teddy bear",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f9f8.png"
+  },
+  {
+    id: "1fa85",
+    emoji: "\u{1FA85}",
+    name: "pi\xF1ata",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1fa85.png"
+  },
+  {
+    id: "1faa9",
+    emoji: "\u{1FAA9}",
+    name: "mirror ball",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1faa9.png"
+  },
+  {
+    id: "1fa86",
+    emoji: "\u{1FA86}",
+    name: "nesting dolls",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1fa86.png"
+  },
+  {
+    id: "2660-fe0f",
+    emoji: "\u2660\uFE0F",
+    name: "spade suit",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "2660-fe0f.png"
+  },
+  {
+    id: "2665-fe0f",
+    emoji: "\u2665\uFE0F",
+    name: "heart suit",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "2665-fe0f.png"
+  },
+  {
+    id: "2666-fe0f",
+    emoji: "\u2666\uFE0F",
+    name: "diamond suit",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "2666-fe0f.png"
+  },
+  {
+    id: "2663-fe0f",
+    emoji: "\u2663\uFE0F",
+    name: "club suit",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "2663-fe0f.png"
+  },
+  {
+    id: "265f-fe0f",
+    emoji: "\u265F\uFE0F",
+    name: "chess pawn",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "265f-fe0f.png"
+  },
+  {
+    id: "1f0cf",
+    emoji: "\u{1F0CF}",
+    name: "joker",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f0cf.png"
+  },
+  {
+    id: "1f004",
+    emoji: "\u{1F004}",
+    name: "mahjong red dragon",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f004.png"
+  },
+  {
+    id: "1f3b4",
+    emoji: "\u{1F3B4}",
+    name: "flower playing cards",
+    category: "Activities",
+    subcategory: "game",
+    supportsSkinTone: false,
+    file: "1f3b4.png"
+  },
+  {
+    id: "1f3ad",
+    emoji: "\u{1F3AD}",
+    name: "performing arts",
+    category: "Activities",
+    subcategory: "arts & crafts",
+    supportsSkinTone: false,
+    file: "1f3ad.png"
+  },
+  {
+    id: "1f5bc-fe0f",
+    emoji: "\u{1F5BC}\uFE0F",
+    name: "framed picture",
+    category: "Activities",
+    subcategory: "arts & crafts",
+    supportsSkinTone: false,
+    file: "1f5bc-fe0f.png"
+  },
+  {
+    id: "1f3a8",
+    emoji: "\u{1F3A8}",
+    name: "artist palette",
+    category: "Activities",
+    subcategory: "arts & crafts",
+    supportsSkinTone: false,
+    file: "1f3a8.png"
+  },
+  {
+    id: "1f9f5",
+    emoji: "\u{1F9F5}",
+    name: "thread",
+    category: "Activities",
+    subcategory: "arts & crafts",
+    supportsSkinTone: false,
+    file: "1f9f5.png"
+  },
+  {
+    id: "1faa1",
+    emoji: "\u{1FAA1}",
+    name: "sewing needle",
+    category: "Activities",
+    subcategory: "arts & crafts",
+    supportsSkinTone: false,
+    file: "1faa1.png"
+  },
+  {
+    id: "1f9f6",
+    emoji: "\u{1F9F6}",
+    name: "yarn",
+    category: "Activities",
+    subcategory: "arts & crafts",
+    supportsSkinTone: false,
+    file: "1f9f6.png"
+  },
+  {
+    id: "1faa2",
+    emoji: "\u{1FAA2}",
+    name: "knot",
+    category: "Activities",
+    subcategory: "arts & crafts",
+    supportsSkinTone: false,
+    file: "1faa2.png"
+  },
+  {
+    id: "1f453",
+    emoji: "\u{1F453}",
+    name: "glasses",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f453.png"
+  },
+  {
+    id: "1f576-fe0f",
+    emoji: "\u{1F576}\uFE0F",
+    name: "sunglasses",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f576-fe0f.png"
+  },
+  {
+    id: "1f97d",
+    emoji: "\u{1F97D}",
+    name: "goggles",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f97d.png"
+  },
+  {
+    id: "1f97c",
+    emoji: "\u{1F97C}",
+    name: "lab coat",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f97c.png"
+  },
+  {
+    id: "1f9ba",
+    emoji: "\u{1F9BA}",
+    name: "safety vest",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f9ba.png"
+  },
+  {
+    id: "1f454",
+    emoji: "\u{1F454}",
+    name: "necktie",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f454.png"
+  },
+  {
+    id: "1f455",
+    emoji: "\u{1F455}",
+    name: "t-shirt",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f455.png"
+  },
+  {
+    id: "1f456",
+    emoji: "\u{1F456}",
+    name: "jeans",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f456.png"
+  },
+  {
+    id: "1f9e3",
+    emoji: "\u{1F9E3}",
+    name: "scarf",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f9e3.png"
+  },
+  {
+    id: "1f9e4",
+    emoji: "\u{1F9E4}",
+    name: "gloves",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f9e4.png"
+  },
+  {
+    id: "1f9e5",
+    emoji: "\u{1F9E5}",
+    name: "coat",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f9e5.png"
+  },
+  {
+    id: "1f9e6",
+    emoji: "\u{1F9E6}",
+    name: "socks",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f9e6.png"
+  },
+  {
+    id: "1f457",
+    emoji: "\u{1F457}",
+    name: "dress",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f457.png"
+  },
+  {
+    id: "1f458",
+    emoji: "\u{1F458}",
+    name: "kimono",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f458.png"
+  },
+  {
+    id: "1f97b",
+    emoji: "\u{1F97B}",
+    name: "sari",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f97b.png"
+  },
+  {
+    id: "1fa71",
+    emoji: "\u{1FA71}",
+    name: "one-piece swimsuit",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1fa71.png"
+  },
+  {
+    id: "1fa72",
+    emoji: "\u{1FA72}",
+    name: "briefs",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1fa72.png"
+  },
+  {
+    id: "1fa73",
+    emoji: "\u{1FA73}",
+    name: "shorts",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1fa73.png"
+  },
+  {
+    id: "1f459",
+    emoji: "\u{1F459}",
+    name: "bikini",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f459.png"
+  },
+  {
+    id: "1f45a",
+    emoji: "\u{1F45A}",
+    name: "woman\u2019s clothes",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f45a.png"
+  },
+  {
+    id: "1faad",
+    emoji: "\u{1FAAD}",
+    name: "folding hand fan",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1faad.png"
+  },
+  {
+    id: "1f45b",
+    emoji: "\u{1F45B}",
+    name: "purse",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f45b.png"
+  },
+  {
+    id: "1f45c",
+    emoji: "\u{1F45C}",
+    name: "handbag",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f45c.png"
+  },
+  {
+    id: "1f45d",
+    emoji: "\u{1F45D}",
+    name: "clutch bag",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f45d.png"
+  },
+  {
+    id: "1f6cd-fe0f",
+    emoji: "\u{1F6CD}\uFE0F",
+    name: "shopping bags",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f6cd-fe0f.png"
+  },
+  {
+    id: "1f392",
+    emoji: "\u{1F392}",
+    name: "backpack",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f392.png"
+  },
+  {
+    id: "1fa74",
+    emoji: "\u{1FA74}",
+    name: "thong sandal",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1fa74.png"
+  },
+  {
+    id: "1f45e",
+    emoji: "\u{1F45E}",
+    name: "man\u2019s shoe",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f45e.png"
+  },
+  {
+    id: "1f45f",
+    emoji: "\u{1F45F}",
+    name: "running shoe",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f45f.png"
+  },
+  {
+    id: "1f97e",
+    emoji: "\u{1F97E}",
+    name: "hiking boot",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f97e.png"
+  },
+  {
+    id: "1f97f",
+    emoji: "\u{1F97F}",
+    name: "flat shoe",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f97f.png"
+  },
+  {
+    id: "1f460",
+    emoji: "\u{1F460}",
+    name: "high-heeled shoe",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f460.png"
+  },
+  {
+    id: "1f461",
+    emoji: "\u{1F461}",
+    name: "woman\u2019s sandal",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f461.png"
+  },
+  {
+    id: "1fa70",
+    emoji: "\u{1FA70}",
+    name: "ballet shoes",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1fa70.png"
+  },
+  {
+    id: "1f462",
+    emoji: "\u{1F462}",
+    name: "woman\u2019s boot",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f462.png"
+  },
+  {
+    id: "1faae",
+    emoji: "\u{1FAAE}",
+    name: "hair pick",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1faae.png"
+  },
+  {
+    id: "1f451",
+    emoji: "\u{1F451}",
+    name: "crown",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f451.png"
+  },
+  {
+    id: "1f452",
+    emoji: "\u{1F452}",
+    name: "woman\u2019s hat",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f452.png"
+  },
+  {
+    id: "1f3a9",
+    emoji: "\u{1F3A9}",
+    name: "top hat",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f3a9.png"
+  },
+  {
+    id: "1f393",
+    emoji: "\u{1F393}",
+    name: "graduation cap",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f393.png"
+  },
+  {
+    id: "1f9e2",
+    emoji: "\u{1F9E2}",
+    name: "billed cap",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f9e2.png"
+  },
+  {
+    id: "1fa96",
+    emoji: "\u{1FA96}",
+    name: "military helmet",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1fa96.png"
+  },
+  {
+    id: "26d1-fe0f",
+    emoji: "\u26D1\uFE0F",
+    name: "rescue worker\u2019s helmet",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "26d1-fe0f.png"
+  },
+  {
+    id: "1f4ff",
+    emoji: "\u{1F4FF}",
+    name: "prayer beads",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f4ff.png"
+  },
+  {
+    id: "1f484",
+    emoji: "\u{1F484}",
+    name: "lipstick",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f484.png"
+  },
+  {
+    id: "1f48d",
+    emoji: "\u{1F48D}",
+    name: "ring",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f48d.png"
+  },
+  {
+    id: "1f48e",
+    emoji: "\u{1F48E}",
+    name: "gem stone",
+    category: "Objects",
+    subcategory: "clothing",
+    supportsSkinTone: false,
+    file: "1f48e.png"
+  },
+  {
+    id: "1f507",
+    emoji: "\u{1F507}",
+    name: "muted speaker",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f507.png"
+  },
+  {
+    id: "1f508",
+    emoji: "\u{1F508}",
+    name: "speaker low volume",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f508.png"
+  },
+  {
+    id: "1f509",
+    emoji: "\u{1F509}",
+    name: "speaker medium volume",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f509.png"
+  },
+  {
+    id: "1f50a",
+    emoji: "\u{1F50A}",
+    name: "speaker high volume",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f50a.png"
+  },
+  {
+    id: "1f4e2",
+    emoji: "\u{1F4E2}",
+    name: "loudspeaker",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f4e2.png"
+  },
+  {
+    id: "1f4e3",
+    emoji: "\u{1F4E3}",
+    name: "megaphone",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f4e3.png"
+  },
+  {
+    id: "1f4ef",
+    emoji: "\u{1F4EF}",
+    name: "postal horn",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f4ef.png"
+  },
+  {
+    id: "1f514",
+    emoji: "\u{1F514}",
+    name: "bell",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f514.png"
+  },
+  {
+    id: "1f515",
+    emoji: "\u{1F515}",
+    name: "bell with slash",
+    category: "Objects",
+    subcategory: "sound",
+    supportsSkinTone: false,
+    file: "1f515.png"
+  },
+  {
+    id: "1f3bc",
+    emoji: "\u{1F3BC}",
+    name: "musical score",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f3bc.png"
+  },
+  {
+    id: "1f3b5",
+    emoji: "\u{1F3B5}",
+    name: "musical note",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f3b5.png"
+  },
+  {
+    id: "1f3b6",
+    emoji: "\u{1F3B6}",
+    name: "musical notes",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f3b6.png"
+  },
+  {
+    id: "1f399-fe0f",
+    emoji: "\u{1F399}\uFE0F",
+    name: "studio microphone",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f399-fe0f.png"
+  },
+  {
+    id: "1f39a-fe0f",
+    emoji: "\u{1F39A}\uFE0F",
+    name: "level slider",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f39a-fe0f.png"
+  },
+  {
+    id: "1f39b-fe0f",
+    emoji: "\u{1F39B}\uFE0F",
+    name: "control knobs",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f39b-fe0f.png"
+  },
+  {
+    id: "1f3a4",
+    emoji: "\u{1F3A4}",
+    name: "microphone",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f3a4.png"
+  },
+  {
+    id: "1f3a7",
+    emoji: "\u{1F3A7}",
+    name: "headphone",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f3a7.png"
+  },
+  {
+    id: "1f4fb",
+    emoji: "\u{1F4FB}",
+    name: "radio",
+    category: "Objects",
+    subcategory: "music",
+    supportsSkinTone: false,
+    file: "1f4fb.png"
+  },
+  {
+    id: "1f3b7",
+    emoji: "\u{1F3B7}",
+    name: "saxophone",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1f3b7.png"
+  },
+  {
+    id: "1f3ba",
+    emoji: "\u{1F3BA}",
+    name: "trumpet",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1f3ba.png"
+  },
+  {
+    id: "1fa8a",
+    emoji: "\u{1FA8A}",
+    name: "trombone",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1fa8a.png"
+  },
+  {
+    id: "1fa97",
+    emoji: "\u{1FA97}",
+    name: "accordion",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1fa97.png"
+  },
+  {
+    id: "1f3b8",
+    emoji: "\u{1F3B8}",
+    name: "guitar",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1f3b8.png"
+  },
+  {
+    id: "1f3b9",
+    emoji: "\u{1F3B9}",
+    name: "musical keyboard",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1f3b9.png"
+  },
+  {
+    id: "1f3bb",
+    emoji: "\u{1F3BB}",
+    name: "violin",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1f3bb.png"
+  },
+  {
+    id: "1fa95",
+    emoji: "\u{1FA95}",
+    name: "banjo",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1fa95.png"
+  },
+  {
+    id: "1f941",
+    emoji: "\u{1F941}",
+    name: "drum",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1f941.png"
+  },
+  {
+    id: "1fa98",
+    emoji: "\u{1FA98}",
+    name: "long drum",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1fa98.png"
+  },
+  {
+    id: "1fa87",
+    emoji: "\u{1FA87}",
+    name: "maracas",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1fa87.png"
+  },
+  {
+    id: "1fa88",
+    emoji: "\u{1FA88}",
+    name: "flute",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1fa88.png"
+  },
+  {
+    id: "1fa89",
+    emoji: "\u{1FA89}",
+    name: "harp",
+    category: "Objects",
+    subcategory: "musical-instrument",
+    supportsSkinTone: false,
+    file: "1fa89.png"
+  },
+  {
+    id: "1f4f1",
+    emoji: "\u{1F4F1}",
+    name: "mobile phone",
+    category: "Objects",
+    subcategory: "phone",
+    supportsSkinTone: false,
+    file: "1f4f1.png"
+  },
+  {
+    id: "1f4f2",
+    emoji: "\u{1F4F2}",
+    name: "mobile phone with arrow",
+    category: "Objects",
+    subcategory: "phone",
+    supportsSkinTone: false,
+    file: "1f4f2.png"
+  },
+  {
+    id: "260e-fe0f",
+    emoji: "\u260E\uFE0F",
+    name: "telephone",
+    category: "Objects",
+    subcategory: "phone",
+    supportsSkinTone: false,
+    file: "260e-fe0f.png"
+  },
+  {
+    id: "1f4de",
+    emoji: "\u{1F4DE}",
+    name: "telephone receiver",
+    category: "Objects",
+    subcategory: "phone",
+    supportsSkinTone: false,
+    file: "1f4de.png"
+  },
+  {
+    id: "1f4df",
+    emoji: "\u{1F4DF}",
+    name: "pager",
+    category: "Objects",
+    subcategory: "phone",
+    supportsSkinTone: false,
+    file: "1f4df.png"
+  },
+  {
+    id: "1f4e0",
+    emoji: "\u{1F4E0}",
+    name: "fax machine",
+    category: "Objects",
+    subcategory: "phone",
+    supportsSkinTone: false,
+    file: "1f4e0.png"
+  },
+  {
+    id: "1f50b",
+    emoji: "\u{1F50B}",
+    name: "battery",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f50b.png"
+  },
+  {
+    id: "1faab",
+    emoji: "\u{1FAAB}",
+    name: "low battery",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1faab.png"
+  },
+  {
+    id: "1f50c",
+    emoji: "\u{1F50C}",
+    name: "electric plug",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f50c.png"
+  },
+  {
+    id: "1f4bb",
+    emoji: "\u{1F4BB}",
+    name: "laptop",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f4bb.png"
+  },
+  {
+    id: "1f5a5-fe0f",
+    emoji: "\u{1F5A5}\uFE0F",
+    name: "desktop computer",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f5a5-fe0f.png"
+  },
+  {
+    id: "1f5a8-fe0f",
+    emoji: "\u{1F5A8}\uFE0F",
+    name: "printer",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f5a8-fe0f.png"
+  },
+  {
+    id: "2328-fe0f",
+    emoji: "\u2328\uFE0F",
+    name: "keyboard",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "2328-fe0f.png"
+  },
+  {
+    id: "1f5b1-fe0f",
+    emoji: "\u{1F5B1}\uFE0F",
+    name: "computer mouse",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f5b1-fe0f.png"
+  },
+  {
+    id: "1f5b2-fe0f",
+    emoji: "\u{1F5B2}\uFE0F",
+    name: "trackball",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f5b2-fe0f.png"
+  },
+  {
+    id: "1f4bd",
+    emoji: "\u{1F4BD}",
+    name: "computer disk",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f4bd.png"
+  },
+  {
+    id: "1f4be",
+    emoji: "\u{1F4BE}",
+    name: "floppy disk",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f4be.png"
+  },
+  {
+    id: "1f4bf",
+    emoji: "\u{1F4BF}",
+    name: "optical disk",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f4bf.png"
+  },
+  {
+    id: "1f4c0",
+    emoji: "\u{1F4C0}",
+    name: "dvd",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f4c0.png"
+  },
+  {
+    id: "1f9ee",
+    emoji: "\u{1F9EE}",
+    name: "abacus",
+    category: "Objects",
+    subcategory: "computer",
+    supportsSkinTone: false,
+    file: "1f9ee.png"
+  },
+  {
+    id: "1f3a5",
+    emoji: "\u{1F3A5}",
+    name: "movie camera",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f3a5.png"
+  },
+  {
+    id: "1f39e-fe0f",
+    emoji: "\u{1F39E}\uFE0F",
+    name: "film frames",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f39e-fe0f.png"
+  },
+  {
+    id: "1f4fd-fe0f",
+    emoji: "\u{1F4FD}\uFE0F",
+    name: "film projector",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f4fd-fe0f.png"
+  },
+  {
+    id: "1f3ac",
+    emoji: "\u{1F3AC}",
+    name: "clapper board",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f3ac.png"
+  },
+  {
+    id: "1f4fa",
+    emoji: "\u{1F4FA}",
+    name: "television",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f4fa.png"
+  },
+  {
+    id: "1f4f7",
+    emoji: "\u{1F4F7}",
+    name: "camera",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f4f7.png"
+  },
+  {
+    id: "1f4f8",
+    emoji: "\u{1F4F8}",
+    name: "camera with flash",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f4f8.png"
+  },
+  {
+    id: "1f4f9",
+    emoji: "\u{1F4F9}",
+    name: "video camera",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f4f9.png"
+  },
+  {
+    id: "1f4fc",
+    emoji: "\u{1F4FC}",
+    name: "videocassette",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f4fc.png"
+  },
+  {
+    id: "1f50d",
+    emoji: "\u{1F50D}",
+    name: "magnifying glass tilted left",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f50d.png"
+  },
+  {
+    id: "1f50e",
+    emoji: "\u{1F50E}",
+    name: "magnifying glass tilted right",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f50e.png"
+  },
+  {
+    id: "1f56f-fe0f",
+    emoji: "\u{1F56F}\uFE0F",
+    name: "candle",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f56f-fe0f.png"
+  },
+  {
+    id: "1f4a1",
+    emoji: "\u{1F4A1}",
+    name: "light bulb",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f4a1.png"
+  },
+  {
+    id: "1f526",
+    emoji: "\u{1F526}",
+    name: "flashlight",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f526.png"
+  },
+  {
+    id: "1f3ee",
+    emoji: "\u{1F3EE}",
+    name: "red paper lantern",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1f3ee.png"
+  },
+  {
+    id: "1fa94",
+    emoji: "\u{1FA94}",
+    name: "diya lamp",
+    category: "Objects",
+    subcategory: "light & video",
+    supportsSkinTone: false,
+    file: "1fa94.png"
+  },
+  {
+    id: "1f4d4",
+    emoji: "\u{1F4D4}",
+    name: "notebook with decorative cover",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d4.png"
+  },
+  {
+    id: "1f4d5",
+    emoji: "\u{1F4D5}",
+    name: "closed book",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d5.png"
+  },
+  {
+    id: "1f4d6",
+    emoji: "\u{1F4D6}",
+    name: "open book",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d6.png"
+  },
+  {
+    id: "1f4d7",
+    emoji: "\u{1F4D7}",
+    name: "green book",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d7.png"
+  },
+  {
+    id: "1f4d8",
+    emoji: "\u{1F4D8}",
+    name: "blue book",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d8.png"
+  },
+  {
+    id: "1f4d9",
+    emoji: "\u{1F4D9}",
+    name: "orange book",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d9.png"
+  },
+  {
+    id: "1f4da",
+    emoji: "\u{1F4DA}",
+    name: "books",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4da.png"
+  },
+  {
+    id: "1f4d3",
+    emoji: "\u{1F4D3}",
+    name: "notebook",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d3.png"
+  },
+  {
+    id: "1f4d2",
+    emoji: "\u{1F4D2}",
+    name: "ledger",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d2.png"
+  },
+  {
+    id: "1f4c3",
+    emoji: "\u{1F4C3}",
+    name: "page with curl",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4c3.png"
+  },
+  {
+    id: "1f4dc",
+    emoji: "\u{1F4DC}",
+    name: "scroll",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4dc.png"
+  },
+  {
+    id: "1f4c4",
+    emoji: "\u{1F4C4}",
+    name: "page facing up",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4c4.png"
+  },
+  {
+    id: "1f4f0",
+    emoji: "\u{1F4F0}",
+    name: "newspaper",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4f0.png"
+  },
+  {
+    id: "1f5de-fe0f",
+    emoji: "\u{1F5DE}\uFE0F",
+    name: "rolled-up newspaper",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f5de-fe0f.png"
+  },
+  {
+    id: "1f4d1",
+    emoji: "\u{1F4D1}",
+    name: "bookmark tabs",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f4d1.png"
+  },
+  {
+    id: "1f516",
+    emoji: "\u{1F516}",
+    name: "bookmark",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f516.png"
+  },
+  {
+    id: "1f3f7-fe0f",
+    emoji: "\u{1F3F7}\uFE0F",
+    name: "label",
+    category: "Objects",
+    subcategory: "book-paper",
+    supportsSkinTone: false,
+    file: "1f3f7-fe0f.png"
+  },
+  {
+    id: "1fa99",
+    emoji: "\u{1FA99}",
+    name: "coin",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1fa99.png"
+  },
+  {
+    id: "1f4b0",
+    emoji: "\u{1F4B0}",
+    name: "money bag",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b0.png"
+  },
+  {
+    id: "1fa8e",
+    emoji: "\u{1FA8E}",
+    name: "treasure chest",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1fa8e.png"
+  },
+  {
+    id: "1f4b4",
+    emoji: "\u{1F4B4}",
+    name: "yen banknote",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b4.png"
+  },
+  {
+    id: "1f4b5",
+    emoji: "\u{1F4B5}",
+    name: "dollar banknote",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b5.png"
+  },
+  {
+    id: "1f4b6",
+    emoji: "\u{1F4B6}",
+    name: "euro banknote",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b6.png"
+  },
+  {
+    id: "1f4b7",
+    emoji: "\u{1F4B7}",
+    name: "pound banknote",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b7.png"
+  },
+  {
+    id: "1f4b8",
+    emoji: "\u{1F4B8}",
+    name: "money with wings",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b8.png"
+  },
+  {
+    id: "1f4b3",
+    emoji: "\u{1F4B3}",
+    name: "credit card",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b3.png"
+  },
+  {
+    id: "1f9fe",
+    emoji: "\u{1F9FE}",
+    name: "receipt",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f9fe.png"
+  },
+  {
+    id: "1f4b9",
+    emoji: "\u{1F4B9}",
+    name: "chart increasing with yen",
+    category: "Objects",
+    subcategory: "money",
+    supportsSkinTone: false,
+    file: "1f4b9.png"
+  },
+  {
+    id: "2709-fe0f",
+    emoji: "\u2709\uFE0F",
+    name: "envelope",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "2709-fe0f.png"
+  },
+  {
+    id: "1f4e7",
+    emoji: "\u{1F4E7}",
+    name: "e-mail",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4e7.png"
+  },
+  {
+    id: "1f4e8",
+    emoji: "\u{1F4E8}",
+    name: "incoming envelope",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4e8.png"
+  },
+  {
+    id: "1f4e9",
+    emoji: "\u{1F4E9}",
+    name: "envelope with arrow",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4e9.png"
+  },
+  {
+    id: "1f4e4",
+    emoji: "\u{1F4E4}",
+    name: "outbox tray",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4e4.png"
+  },
+  {
+    id: "1f4e5",
+    emoji: "\u{1F4E5}",
+    name: "inbox tray",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4e5.png"
+  },
+  {
+    id: "1f4e6",
+    emoji: "\u{1F4E6}",
+    name: "package",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4e6.png"
+  },
+  {
+    id: "1f4eb",
+    emoji: "\u{1F4EB}",
+    name: "closed mailbox with raised flag",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4eb.png"
+  },
+  {
+    id: "1f4ea",
+    emoji: "\u{1F4EA}",
+    name: "closed mailbox with lowered flag",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4ea.png"
+  },
+  {
+    id: "1f4ec",
+    emoji: "\u{1F4EC}",
+    name: "open mailbox with raised flag",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4ec.png"
+  },
+  {
+    id: "1f4ed",
+    emoji: "\u{1F4ED}",
+    name: "open mailbox with lowered flag",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4ed.png"
+  },
+  {
+    id: "1f4ee",
+    emoji: "\u{1F4EE}",
+    name: "postbox",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f4ee.png"
+  },
+  {
+    id: "1f5f3-fe0f",
+    emoji: "\u{1F5F3}\uFE0F",
+    name: "ballot box with ballot",
+    category: "Objects",
+    subcategory: "mail",
+    supportsSkinTone: false,
+    file: "1f5f3-fe0f.png"
+  },
+  {
+    id: "270f-fe0f",
+    emoji: "\u270F\uFE0F",
+    name: "pencil",
+    category: "Objects",
+    subcategory: "writing",
+    supportsSkinTone: false,
+    file: "270f-fe0f.png"
+  },
+  {
+    id: "2712-fe0f",
+    emoji: "\u2712\uFE0F",
+    name: "black nib",
+    category: "Objects",
+    subcategory: "writing",
+    supportsSkinTone: false,
+    file: "2712-fe0f.png"
+  },
+  {
+    id: "1f58b-fe0f",
+    emoji: "\u{1F58B}\uFE0F",
+    name: "fountain pen",
+    category: "Objects",
+    subcategory: "writing",
+    supportsSkinTone: false,
+    file: "1f58b-fe0f.png"
+  },
+  {
+    id: "1f58a-fe0f",
+    emoji: "\u{1F58A}\uFE0F",
+    name: "pen",
+    category: "Objects",
+    subcategory: "writing",
+    supportsSkinTone: false,
+    file: "1f58a-fe0f.png"
+  },
+  {
+    id: "1f58c-fe0f",
+    emoji: "\u{1F58C}\uFE0F",
+    name: "paintbrush",
+    category: "Objects",
+    subcategory: "writing",
+    supportsSkinTone: false,
+    file: "1f58c-fe0f.png"
+  },
+  {
+    id: "1f58d-fe0f",
+    emoji: "\u{1F58D}\uFE0F",
+    name: "crayon",
+    category: "Objects",
+    subcategory: "writing",
+    supportsSkinTone: false,
+    file: "1f58d-fe0f.png"
+  },
+  {
+    id: "1f4dd",
+    emoji: "\u{1F4DD}",
+    name: "memo",
+    category: "Objects",
+    subcategory: "writing",
+    supportsSkinTone: false,
+    file: "1f4dd.png"
+  },
+  {
+    id: "1f4bc",
+    emoji: "\u{1F4BC}",
+    name: "briefcase",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4bc.png"
+  },
+  {
+    id: "1f4c1",
+    emoji: "\u{1F4C1}",
+    name: "file folder",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4c1.png"
+  },
+  {
+    id: "1f4c2",
+    emoji: "\u{1F4C2}",
+    name: "open file folder",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4c2.png"
+  },
+  {
+    id: "1f5c2-fe0f",
+    emoji: "\u{1F5C2}\uFE0F",
+    name: "card index dividers",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f5c2-fe0f.png"
+  },
+  {
+    id: "1f4c5",
+    emoji: "\u{1F4C5}",
+    name: "calendar",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4c5.png"
+  },
+  {
+    id: "1f4c6",
+    emoji: "\u{1F4C6}",
+    name: "tear-off calendar",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4c6.png"
+  },
+  {
+    id: "1f5d2-fe0f",
+    emoji: "\u{1F5D2}\uFE0F",
+    name: "spiral notepad",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f5d2-fe0f.png"
+  },
+  {
+    id: "1f5d3-fe0f",
+    emoji: "\u{1F5D3}\uFE0F",
+    name: "spiral calendar",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f5d3-fe0f.png"
+  },
+  {
+    id: "1f4c7",
+    emoji: "\u{1F4C7}",
+    name: "card index",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4c7.png"
+  },
+  {
+    id: "1f4c8",
+    emoji: "\u{1F4C8}",
+    name: "chart increasing",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4c8.png"
+  },
+  {
+    id: "1f4c9",
+    emoji: "\u{1F4C9}",
+    name: "chart decreasing",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4c9.png"
+  },
+  {
+    id: "1f4ca",
+    emoji: "\u{1F4CA}",
+    name: "bar chart",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4ca.png"
+  },
+  {
+    id: "1f4cb",
+    emoji: "\u{1F4CB}",
+    name: "clipboard",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4cb.png"
+  },
+  {
+    id: "1f4cc",
+    emoji: "\u{1F4CC}",
+    name: "pushpin",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4cc.png"
+  },
+  {
+    id: "1f4cd",
+    emoji: "\u{1F4CD}",
+    name: "round pushpin",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4cd.png"
+  },
+  {
+    id: "1f4ce",
+    emoji: "\u{1F4CE}",
+    name: "paperclip",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4ce.png"
+  },
+  {
+    id: "1f587-fe0f",
+    emoji: "\u{1F587}\uFE0F",
+    name: "linked paperclips",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f587-fe0f.png"
+  },
+  {
+    id: "1f4cf",
+    emoji: "\u{1F4CF}",
+    name: "straight ruler",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4cf.png"
+  },
+  {
+    id: "1f4d0",
+    emoji: "\u{1F4D0}",
+    name: "triangular ruler",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f4d0.png"
+  },
+  {
+    id: "2702-fe0f",
+    emoji: "\u2702\uFE0F",
+    name: "scissors",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "2702-fe0f.png"
+  },
+  {
+    id: "1f5c3-fe0f",
+    emoji: "\u{1F5C3}\uFE0F",
+    name: "card file box",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f5c3-fe0f.png"
+  },
+  {
+    id: "1f5c4-fe0f",
+    emoji: "\u{1F5C4}\uFE0F",
+    name: "file cabinet",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f5c4-fe0f.png"
+  },
+  {
+    id: "1f5d1-fe0f",
+    emoji: "\u{1F5D1}\uFE0F",
+    name: "wastebasket",
+    category: "Objects",
+    subcategory: "office",
+    supportsSkinTone: false,
+    file: "1f5d1-fe0f.png"
+  },
+  {
+    id: "1f512",
+    emoji: "\u{1F512}",
+    name: "locked",
+    category: "Objects",
+    subcategory: "lock",
+    supportsSkinTone: false,
+    file: "1f512.png"
+  },
+  {
+    id: "1f513",
+    emoji: "\u{1F513}",
+    name: "unlocked",
+    category: "Objects",
+    subcategory: "lock",
+    supportsSkinTone: false,
+    file: "1f513.png"
+  },
+  {
+    id: "1f50f",
+    emoji: "\u{1F50F}",
+    name: "locked with pen",
+    category: "Objects",
+    subcategory: "lock",
+    supportsSkinTone: false,
+    file: "1f50f.png"
+  },
+  {
+    id: "1f510",
+    emoji: "\u{1F510}",
+    name: "locked with key",
+    category: "Objects",
+    subcategory: "lock",
+    supportsSkinTone: false,
+    file: "1f510.png"
+  },
+  {
+    id: "1f511",
+    emoji: "\u{1F511}",
+    name: "key",
+    category: "Objects",
+    subcategory: "lock",
+    supportsSkinTone: false,
+    file: "1f511.png"
+  },
+  {
+    id: "1f5dd-fe0f",
+    emoji: "\u{1F5DD}\uFE0F",
+    name: "old key",
+    category: "Objects",
+    subcategory: "lock",
+    supportsSkinTone: false,
+    file: "1f5dd-fe0f.png"
+  },
+  {
+    id: "1f528",
+    emoji: "\u{1F528}",
+    name: "hammer",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f528.png"
+  },
+  {
+    id: "1fa93",
+    emoji: "\u{1FA93}",
+    name: "axe",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1fa93.png"
+  },
+  {
+    id: "26cf-fe0f",
+    emoji: "\u26CF\uFE0F",
+    name: "pick",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "26cf-fe0f.png"
+  },
+  {
+    id: "2692-fe0f",
+    emoji: "\u2692\uFE0F",
+    name: "hammer and pick",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "2692-fe0f.png"
+  },
+  {
+    id: "1f6e0-fe0f",
+    emoji: "\u{1F6E0}\uFE0F",
+    name: "hammer and wrench",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f6e0-fe0f.png"
+  },
+  {
+    id: "1f5e1-fe0f",
+    emoji: "\u{1F5E1}\uFE0F",
+    name: "dagger",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f5e1-fe0f.png"
+  },
+  {
+    id: "2694-fe0f",
+    emoji: "\u2694\uFE0F",
+    name: "crossed swords",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "2694-fe0f.png"
+  },
+  {
+    id: "1f4a3",
+    emoji: "\u{1F4A3}",
+    name: "bomb",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f4a3.png"
+  },
+  {
+    id: "1fa83",
+    emoji: "\u{1FA83}",
+    name: "boomerang",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1fa83.png"
+  },
+  {
+    id: "1f3f9",
+    emoji: "\u{1F3F9}",
+    name: "bow and arrow",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f3f9.png"
+  },
+  {
+    id: "1f6e1-fe0f",
+    emoji: "\u{1F6E1}\uFE0F",
+    name: "shield",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f6e1-fe0f.png"
+  },
+  {
+    id: "1fa9a",
+    emoji: "\u{1FA9A}",
+    name: "carpentry saw",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1fa9a.png"
+  },
+  {
+    id: "1f527",
+    emoji: "\u{1F527}",
+    name: "wrench",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f527.png"
+  },
+  {
+    id: "1fa9b",
+    emoji: "\u{1FA9B}",
+    name: "screwdriver",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1fa9b.png"
+  },
+  {
+    id: "1f529",
+    emoji: "\u{1F529}",
+    name: "nut and bolt",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f529.png"
+  },
+  {
+    id: "2699-fe0f",
+    emoji: "\u2699\uFE0F",
+    name: "gear",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "2699-fe0f.png"
+  },
+  {
+    id: "1f5dc-fe0f",
+    emoji: "\u{1F5DC}\uFE0F",
+    name: "clamp",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f5dc-fe0f.png"
+  },
+  {
+    id: "2696-fe0f",
+    emoji: "\u2696\uFE0F",
+    name: "balance scale",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "2696-fe0f.png"
+  },
+  {
+    id: "1f9af",
+    emoji: "\u{1F9AF}",
+    name: "white cane",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f9af.png"
+  },
+  {
+    id: "1f517",
+    emoji: "\u{1F517}",
+    name: "link",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f517.png"
+  },
+  {
+    id: "26d3-fe0f-200d-1f4a5",
+    emoji: "\u26D3\uFE0F\u200D\u{1F4A5}",
+    name: "broken chain",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "26d3-fe0f-200d-1f4a5.png"
+  },
+  {
+    id: "26d3-fe0f",
+    emoji: "\u26D3\uFE0F",
+    name: "chains",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "26d3-fe0f.png"
+  },
+  {
+    id: "1fa9d",
+    emoji: "\u{1FA9D}",
+    name: "hook",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1fa9d.png"
+  },
+  {
+    id: "1f9f0",
+    emoji: "\u{1F9F0}",
+    name: "toolbox",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f9f0.png"
+  },
+  {
+    id: "1f9f2",
+    emoji: "\u{1F9F2}",
+    name: "magnet",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1f9f2.png"
+  },
+  {
+    id: "1fa9c",
+    emoji: "\u{1FA9C}",
+    name: "ladder",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1fa9c.png"
+  },
+  {
+    id: "1fa8f",
+    emoji: "\u{1FA8F}",
+    name: "shovel",
+    category: "Objects",
+    subcategory: "tool",
+    supportsSkinTone: false,
+    file: "1fa8f.png"
+  },
+  {
+    id: "2697-fe0f",
+    emoji: "\u2697\uFE0F",
+    name: "alembic",
+    category: "Objects",
+    subcategory: "science",
+    supportsSkinTone: false,
+    file: "2697-fe0f.png"
+  },
+  {
+    id: "1f9ea",
+    emoji: "\u{1F9EA}",
+    name: "test tube",
+    category: "Objects",
+    subcategory: "science",
+    supportsSkinTone: false,
+    file: "1f9ea.png"
+  },
+  {
+    id: "1f9eb",
+    emoji: "\u{1F9EB}",
+    name: "petri dish",
+    category: "Objects",
+    subcategory: "science",
+    supportsSkinTone: false,
+    file: "1f9eb.png"
+  },
+  {
+    id: "1f9ec",
+    emoji: "\u{1F9EC}",
+    name: "dna",
+    category: "Objects",
+    subcategory: "science",
+    supportsSkinTone: false,
+    file: "1f9ec.png"
+  },
+  {
+    id: "1f52c",
+    emoji: "\u{1F52C}",
+    name: "microscope",
+    category: "Objects",
+    subcategory: "science",
+    supportsSkinTone: false,
+    file: "1f52c.png"
+  },
+  {
+    id: "1f52d",
+    emoji: "\u{1F52D}",
+    name: "telescope",
+    category: "Objects",
+    subcategory: "science",
+    supportsSkinTone: false,
+    file: "1f52d.png"
+  },
+  {
+    id: "1f4e1",
+    emoji: "\u{1F4E1}",
+    name: "satellite antenna",
+    category: "Objects",
+    subcategory: "science",
+    supportsSkinTone: false,
+    file: "1f4e1.png"
+  },
+  {
+    id: "1f489",
+    emoji: "\u{1F489}",
+    name: "syringe",
+    category: "Objects",
+    subcategory: "medical",
+    supportsSkinTone: false,
+    file: "1f489.png"
+  },
+  {
+    id: "1fa78",
+    emoji: "\u{1FA78}",
+    name: "drop of blood",
+    category: "Objects",
+    subcategory: "medical",
+    supportsSkinTone: false,
+    file: "1fa78.png"
+  },
+  {
+    id: "1f48a",
+    emoji: "\u{1F48A}",
+    name: "pill",
+    category: "Objects",
+    subcategory: "medical",
+    supportsSkinTone: false,
+    file: "1f48a.png"
+  },
+  {
+    id: "1fa79",
+    emoji: "\u{1FA79}",
+    name: "adhesive bandage",
+    category: "Objects",
+    subcategory: "medical",
+    supportsSkinTone: false,
+    file: "1fa79.png"
+  },
+  {
+    id: "1fa7c",
+    emoji: "\u{1FA7C}",
+    name: "crutch",
+    category: "Objects",
+    subcategory: "medical",
+    supportsSkinTone: false,
+    file: "1fa7c.png"
+  },
+  {
+    id: "1fa7a",
+    emoji: "\u{1FA7A}",
+    name: "stethoscope",
+    category: "Objects",
+    subcategory: "medical",
+    supportsSkinTone: false,
+    file: "1fa7a.png"
+  },
+  {
+    id: "1fa7b",
+    emoji: "\u{1FA7B}",
+    name: "x-ray",
+    category: "Objects",
+    subcategory: "medical",
+    supportsSkinTone: false,
+    file: "1fa7b.png"
+  },
+  {
+    id: "1f6aa",
+    emoji: "\u{1F6AA}",
+    name: "door",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6aa.png"
+  },
+  {
+    id: "1f6d7",
+    emoji: "\u{1F6D7}",
+    name: "elevator",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6d7.png"
+  },
+  {
+    id: "1fa9e",
+    emoji: "\u{1FA9E}",
+    name: "mirror",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1fa9e.png"
+  },
+  {
+    id: "1fa9f",
+    emoji: "\u{1FA9F}",
+    name: "window",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1fa9f.png"
+  },
+  {
+    id: "1f6cf-fe0f",
+    emoji: "\u{1F6CF}\uFE0F",
+    name: "bed",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6cf-fe0f.png"
+  },
+  {
+    id: "1f6cb-fe0f",
+    emoji: "\u{1F6CB}\uFE0F",
+    name: "couch and lamp",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6cb-fe0f.png"
+  },
+  {
+    id: "1fa91",
+    emoji: "\u{1FA91}",
+    name: "chair",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1fa91.png"
+  },
+  {
+    id: "1f6bd",
+    emoji: "\u{1F6BD}",
+    name: "toilet",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6bd.png"
+  },
+  {
+    id: "1faa0",
+    emoji: "\u{1FAA0}",
+    name: "plunger",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1faa0.png"
+  },
+  {
+    id: "1f6bf",
+    emoji: "\u{1F6BF}",
+    name: "shower",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6bf.png"
+  },
+  {
+    id: "1f6c1",
+    emoji: "\u{1F6C1}",
+    name: "bathtub",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6c1.png"
+  },
+  {
+    id: "1faa4",
+    emoji: "\u{1FAA4}",
+    name: "mouse trap",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1faa4.png"
+  },
+  {
+    id: "1fa92",
+    emoji: "\u{1FA92}",
+    name: "razor",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1fa92.png"
+  },
+  {
+    id: "1f9f4",
+    emoji: "\u{1F9F4}",
+    name: "lotion bottle",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9f4.png"
+  },
+  {
+    id: "1f9f7",
+    emoji: "\u{1F9F7}",
+    name: "safety pin",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9f7.png"
+  },
+  {
+    id: "1f9f9",
+    emoji: "\u{1F9F9}",
+    name: "broom",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9f9.png"
+  },
+  {
+    id: "1f9fa",
+    emoji: "\u{1F9FA}",
+    name: "basket",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9fa.png"
+  },
+  {
+    id: "1f9fb",
+    emoji: "\u{1F9FB}",
+    name: "roll of paper",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9fb.png"
+  },
+  {
+    id: "1faa3",
+    emoji: "\u{1FAA3}",
+    name: "bucket",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1faa3.png"
+  },
+  {
+    id: "1f9fc",
+    emoji: "\u{1F9FC}",
+    name: "soap",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9fc.png"
+  },
+  {
+    id: "1fae7",
+    emoji: "\u{1FAE7}",
+    name: "bubbles",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1fae7.png"
+  },
+  {
+    id: "1faa5",
+    emoji: "\u{1FAA5}",
+    name: "toothbrush",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1faa5.png"
+  },
+  {
+    id: "1f9fd",
+    emoji: "\u{1F9FD}",
+    name: "sponge",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9fd.png"
+  },
+  {
+    id: "1f9ef",
+    emoji: "\u{1F9EF}",
+    name: "fire extinguisher",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f9ef.png"
+  },
+  {
+    id: "1f6d2",
+    emoji: "\u{1F6D2}",
+    name: "shopping cart",
+    category: "Objects",
+    subcategory: "household",
+    supportsSkinTone: false,
+    file: "1f6d2.png"
+  },
+  {
+    id: "1f6ac",
+    emoji: "\u{1F6AC}",
+    name: "cigarette",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "1f6ac.png"
+  },
+  {
+    id: "26b0-fe0f",
+    emoji: "\u26B0\uFE0F",
+    name: "coffin",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "26b0-fe0f.png"
+  },
+  {
+    id: "1faa6",
+    emoji: "\u{1FAA6}",
+    name: "headstone",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "1faa6.png"
+  },
+  {
+    id: "26b1-fe0f",
+    emoji: "\u26B1\uFE0F",
+    name: "funeral urn",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "26b1-fe0f.png"
+  },
+  {
+    id: "1f9ff",
+    emoji: "\u{1F9FF}",
+    name: "nazar amulet",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "1f9ff.png"
+  },
+  {
+    id: "1faac",
+    emoji: "\u{1FAAC}",
+    name: "hamsa",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "1faac.png"
+  },
+  {
+    id: "1f5ff",
+    emoji: "\u{1F5FF}",
+    name: "moai",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "1f5ff.png"
+  },
+  {
+    id: "1faa7",
+    emoji: "\u{1FAA7}",
+    name: "placard",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "1faa7.png"
+  },
+  {
+    id: "1faaa",
+    emoji: "\u{1FAAA}",
+    name: "identification card",
+    category: "Objects",
+    subcategory: "other-object",
+    supportsSkinTone: false,
+    file: "1faaa.png"
+  },
+  {
+    id: "1f3e7",
+    emoji: "\u{1F3E7}",
+    name: "ATM sign",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f3e7.png"
+  },
+  {
+    id: "1f6ae",
+    emoji: "\u{1F6AE}",
+    name: "litter in bin sign",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6ae.png"
+  },
+  {
+    id: "1f6b0",
+    emoji: "\u{1F6B0}",
+    name: "potable water",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6b0.png"
+  },
+  {
+    id: "267f",
+    emoji: "\u267F",
+    name: "wheelchair symbol",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "267f.png"
+  },
+  {
+    id: "1f6b9",
+    emoji: "\u{1F6B9}",
+    name: "men\u2019s room",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6b9.png"
+  },
+  {
+    id: "1f6ba",
+    emoji: "\u{1F6BA}",
+    name: "women\u2019s room",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6ba.png"
+  },
+  {
+    id: "1f6bb",
+    emoji: "\u{1F6BB}",
+    name: "restroom",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6bb.png"
+  },
+  {
+    id: "1f6bc",
+    emoji: "\u{1F6BC}",
+    name: "baby symbol",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6bc.png"
+  },
+  {
+    id: "1f6be",
+    emoji: "\u{1F6BE}",
+    name: "water closet",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6be.png"
+  },
+  {
+    id: "1f6c2",
+    emoji: "\u{1F6C2}",
+    name: "passport control",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6c2.png"
+  },
+  {
+    id: "1f6c3",
+    emoji: "\u{1F6C3}",
+    name: "customs",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6c3.png"
+  },
+  {
+    id: "1f6c4",
+    emoji: "\u{1F6C4}",
+    name: "baggage claim",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6c4.png"
+  },
+  {
+    id: "1f6c5",
+    emoji: "\u{1F6C5}",
+    name: "left luggage",
+    category: "Symbols",
+    subcategory: "transport-sign",
+    supportsSkinTone: false,
+    file: "1f6c5.png"
+  },
+  {
+    id: "26a0-fe0f",
+    emoji: "\u26A0\uFE0F",
+    name: "warning",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "26a0-fe0f.png"
+  },
+  {
+    id: "1f6b8",
+    emoji: "\u{1F6B8}",
+    name: "children crossing",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f6b8.png"
+  },
+  {
+    id: "26d4",
+    emoji: "\u26D4",
+    name: "no entry",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "26d4.png"
+  },
+  {
+    id: "1f6ab",
+    emoji: "\u{1F6AB}",
+    name: "prohibited",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f6ab.png"
+  },
+  {
+    id: "1f6b3",
+    emoji: "\u{1F6B3}",
+    name: "no bicycles",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f6b3.png"
+  },
+  {
+    id: "1f6ad",
+    emoji: "\u{1F6AD}",
+    name: "no smoking",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f6ad.png"
+  },
+  {
+    id: "1f6af",
+    emoji: "\u{1F6AF}",
+    name: "no littering",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f6af.png"
+  },
+  {
+    id: "1f6b1",
+    emoji: "\u{1F6B1}",
+    name: "non-potable water",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f6b1.png"
+  },
+  {
+    id: "1f6b7",
+    emoji: "\u{1F6B7}",
+    name: "no pedestrians",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f6b7.png"
+  },
+  {
+    id: "1f4f5",
+    emoji: "\u{1F4F5}",
+    name: "no mobile phones",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f4f5.png"
+  },
+  {
+    id: "1f51e",
+    emoji: "\u{1F51E}",
+    name: "no one under eighteen",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "1f51e.png"
+  },
+  {
+    id: "2622-fe0f",
+    emoji: "\u2622\uFE0F",
+    name: "radioactive",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "2622-fe0f.png"
+  },
+  {
+    id: "2623-fe0f",
+    emoji: "\u2623\uFE0F",
+    name: "biohazard",
+    category: "Symbols",
+    subcategory: "warning",
+    supportsSkinTone: false,
+    file: "2623-fe0f.png"
+  },
+  {
+    id: "2b06-fe0f",
+    emoji: "\u2B06\uFE0F",
+    name: "up arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2b06-fe0f.png"
+  },
+  {
+    id: "2197-fe0f",
+    emoji: "\u2197\uFE0F",
+    name: "up-right arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2197-fe0f.png"
+  },
+  {
+    id: "27a1-fe0f",
+    emoji: "\u27A1\uFE0F",
+    name: "right arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "27a1-fe0f.png"
+  },
+  {
+    id: "2198-fe0f",
+    emoji: "\u2198\uFE0F",
+    name: "down-right arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2198-fe0f.png"
+  },
+  {
+    id: "2b07-fe0f",
+    emoji: "\u2B07\uFE0F",
+    name: "down arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2b07-fe0f.png"
+  },
+  {
+    id: "2199-fe0f",
+    emoji: "\u2199\uFE0F",
+    name: "down-left arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2199-fe0f.png"
+  },
+  {
+    id: "2b05-fe0f",
+    emoji: "\u2B05\uFE0F",
+    name: "left arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2b05-fe0f.png"
+  },
+  {
+    id: "2196-fe0f",
+    emoji: "\u2196\uFE0F",
+    name: "up-left arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2196-fe0f.png"
+  },
+  {
+    id: "2195-fe0f",
+    emoji: "\u2195\uFE0F",
+    name: "up-down arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2195-fe0f.png"
+  },
+  {
+    id: "2194-fe0f",
+    emoji: "\u2194\uFE0F",
+    name: "left-right arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2194-fe0f.png"
+  },
+  {
+    id: "21a9-fe0f",
+    emoji: "\u21A9\uFE0F",
+    name: "right arrow curving left",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "21a9-fe0f.png"
+  },
+  {
+    id: "21aa-fe0f",
+    emoji: "\u21AA\uFE0F",
+    name: "left arrow curving right",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "21aa-fe0f.png"
+  },
+  {
+    id: "2934-fe0f",
+    emoji: "\u2934\uFE0F",
+    name: "right arrow curving up",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2934-fe0f.png"
+  },
+  {
+    id: "2935-fe0f",
+    emoji: "\u2935\uFE0F",
+    name: "right arrow curving down",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "2935-fe0f.png"
+  },
+  {
+    id: "1f503",
+    emoji: "\u{1F503}",
+    name: "clockwise vertical arrows",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "1f503.png"
+  },
+  {
+    id: "1f504",
+    emoji: "\u{1F504}",
+    name: "counterclockwise arrows button",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "1f504.png"
+  },
+  {
+    id: "1f519",
+    emoji: "\u{1F519}",
+    name: "BACK arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "1f519.png"
+  },
+  {
+    id: "1f51a",
+    emoji: "\u{1F51A}",
+    name: "END arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "1f51a.png"
+  },
+  {
+    id: "1f51b",
+    emoji: "\u{1F51B}",
+    name: "ON! arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "1f51b.png"
+  },
+  {
+    id: "1f51c",
+    emoji: "\u{1F51C}",
+    name: "SOON arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "1f51c.png"
+  },
+  {
+    id: "1f51d",
+    emoji: "\u{1F51D}",
+    name: "TOP arrow",
+    category: "Symbols",
+    subcategory: "arrow",
+    supportsSkinTone: false,
+    file: "1f51d.png"
+  },
+  {
+    id: "1f6d0",
+    emoji: "\u{1F6D0}",
+    name: "place of worship",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "1f6d0.png"
+  },
+  {
+    id: "269b-fe0f",
+    emoji: "\u269B\uFE0F",
+    name: "atom symbol",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "269b-fe0f.png"
+  },
+  {
+    id: "1f549-fe0f",
+    emoji: "\u{1F549}\uFE0F",
+    name: "om",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "1f549-fe0f.png"
+  },
+  {
+    id: "2721-fe0f",
+    emoji: "\u2721\uFE0F",
+    name: "star of David",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "2721-fe0f.png"
+  },
+  {
+    id: "2638-fe0f",
+    emoji: "\u2638\uFE0F",
+    name: "wheel of dharma",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "2638-fe0f.png"
+  },
+  {
+    id: "262f-fe0f",
+    emoji: "\u262F\uFE0F",
+    name: "yin yang",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "262f-fe0f.png"
+  },
+  {
+    id: "271d-fe0f",
+    emoji: "\u271D\uFE0F",
+    name: "latin cross",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "271d-fe0f.png"
+  },
+  {
+    id: "2626-fe0f",
+    emoji: "\u2626\uFE0F",
+    name: "orthodox cross",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "2626-fe0f.png"
+  },
+  {
+    id: "262a-fe0f",
+    emoji: "\u262A\uFE0F",
+    name: "star and crescent",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "262a-fe0f.png"
+  },
+  {
+    id: "262e-fe0f",
+    emoji: "\u262E\uFE0F",
+    name: "peace symbol",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "262e-fe0f.png"
+  },
+  {
+    id: "1f54e",
+    emoji: "\u{1F54E}",
+    name: "menorah",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "1f54e.png"
+  },
+  {
+    id: "1f52f",
+    emoji: "\u{1F52F}",
+    name: "dotted six-pointed star",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "1f52f.png"
+  },
+  {
+    id: "1faaf",
+    emoji: "\u{1FAAF}",
+    name: "khanda",
+    category: "Symbols",
+    subcategory: "religion",
+    supportsSkinTone: false,
+    file: "1faaf.png"
+  },
+  {
+    id: "2648",
+    emoji: "\u2648",
+    name: "Aries",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "2648.png"
+  },
+  {
+    id: "2649",
+    emoji: "\u2649",
+    name: "Taurus",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "2649.png"
+  },
+  {
+    id: "264a",
+    emoji: "\u264A",
+    name: "Gemini",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "264a.png"
+  },
+  {
+    id: "264b",
+    emoji: "\u264B",
+    name: "Cancer",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "264b.png"
+  },
+  {
+    id: "264c",
+    emoji: "\u264C",
+    name: "Leo",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "264c.png"
+  },
+  {
+    id: "264d",
+    emoji: "\u264D",
+    name: "Virgo",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "264d.png"
+  },
+  {
+    id: "264e",
+    emoji: "\u264E",
+    name: "Libra",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "264e.png"
+  },
+  {
+    id: "264f",
+    emoji: "\u264F",
+    name: "Scorpio",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "264f.png"
+  },
+  {
+    id: "2650",
+    emoji: "\u2650",
+    name: "Sagittarius",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "2650.png"
+  },
+  {
+    id: "2651",
+    emoji: "\u2651",
+    name: "Capricorn",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "2651.png"
+  },
+  {
+    id: "2652",
+    emoji: "\u2652",
+    name: "Aquarius",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "2652.png"
+  },
+  {
+    id: "2653",
+    emoji: "\u2653",
+    name: "Pisces",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "2653.png"
+  },
+  {
+    id: "26ce",
+    emoji: "\u26CE",
+    name: "Ophiuchus",
+    category: "Symbols",
+    subcategory: "zodiac",
+    supportsSkinTone: false,
+    file: "26ce.png"
+  },
+  {
+    id: "1f500",
+    emoji: "\u{1F500}",
+    name: "shuffle tracks button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f500.png"
+  },
+  {
+    id: "1f501",
+    emoji: "\u{1F501}",
+    name: "repeat button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f501.png"
+  },
+  {
+    id: "1f502",
+    emoji: "\u{1F502}",
+    name: "repeat single button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f502.png"
+  },
+  {
+    id: "25b6-fe0f",
+    emoji: "\u25B6\uFE0F",
+    name: "play button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "25b6-fe0f.png"
+  },
+  {
+    id: "23e9",
+    emoji: "\u23E9",
+    name: "fast-forward button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23e9.png"
+  },
+  {
+    id: "23ed-fe0f",
+    emoji: "\u23ED\uFE0F",
+    name: "next track button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23ed-fe0f.png"
+  },
+  {
+    id: "23ef-fe0f",
+    emoji: "\u23EF\uFE0F",
+    name: "play or pause button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23ef-fe0f.png"
+  },
+  {
+    id: "25c0-fe0f",
+    emoji: "\u25C0\uFE0F",
+    name: "reverse button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "25c0-fe0f.png"
+  },
+  {
+    id: "23ea",
+    emoji: "\u23EA",
+    name: "fast reverse button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23ea.png"
+  },
+  {
+    id: "23ee-fe0f",
+    emoji: "\u23EE\uFE0F",
+    name: "last track button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23ee-fe0f.png"
+  },
+  {
+    id: "1f53c",
+    emoji: "\u{1F53C}",
+    name: "upwards button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f53c.png"
+  },
+  {
+    id: "23eb",
+    emoji: "\u23EB",
+    name: "fast up button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23eb.png"
+  },
+  {
+    id: "1f53d",
+    emoji: "\u{1F53D}",
+    name: "downwards button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f53d.png"
+  },
+  {
+    id: "23ec",
+    emoji: "\u23EC",
+    name: "fast down button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23ec.png"
+  },
+  {
+    id: "23f8-fe0f",
+    emoji: "\u23F8\uFE0F",
+    name: "pause button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23f8-fe0f.png"
+  },
+  {
+    id: "23f9-fe0f",
+    emoji: "\u23F9\uFE0F",
+    name: "stop button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23f9-fe0f.png"
+  },
+  {
+    id: "23fa-fe0f",
+    emoji: "\u23FA\uFE0F",
+    name: "record button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23fa-fe0f.png"
+  },
+  {
+    id: "23cf-fe0f",
+    emoji: "\u23CF\uFE0F",
+    name: "eject button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "23cf-fe0f.png"
+  },
+  {
+    id: "1f3a6",
+    emoji: "\u{1F3A6}",
+    name: "cinema",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f3a6.png"
+  },
+  {
+    id: "1f505",
+    emoji: "\u{1F505}",
+    name: "dim button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f505.png"
+  },
+  {
+    id: "1f506",
+    emoji: "\u{1F506}",
+    name: "bright button",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f506.png"
+  },
+  {
+    id: "1f4f6",
+    emoji: "\u{1F4F6}",
+    name: "antenna bars",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f4f6.png"
+  },
+  {
+    id: "1f6dc",
+    emoji: "\u{1F6DC}",
+    name: "wireless",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f6dc.png"
+  },
+  {
+    id: "1f4f3",
+    emoji: "\u{1F4F3}",
+    name: "vibration mode",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f4f3.png"
+  },
+  {
+    id: "1f4f4",
+    emoji: "\u{1F4F4}",
+    name: "mobile phone off",
+    category: "Symbols",
+    subcategory: "av-symbol",
+    supportsSkinTone: false,
+    file: "1f4f4.png"
+  },
+  {
+    id: "2640-fe0f",
+    emoji: "\u2640\uFE0F",
+    name: "female sign",
+    category: "Symbols",
+    subcategory: "gender",
+    supportsSkinTone: false,
+    file: "2640-fe0f.png"
+  },
+  {
+    id: "2642-fe0f",
+    emoji: "\u2642\uFE0F",
+    name: "male sign",
+    category: "Symbols",
+    subcategory: "gender",
+    supportsSkinTone: false,
+    file: "2642-fe0f.png"
+  },
+  {
+    id: "26a7-fe0f",
+    emoji: "\u26A7\uFE0F",
+    name: "transgender symbol",
+    category: "Symbols",
+    subcategory: "gender",
+    supportsSkinTone: false,
+    file: "26a7-fe0f.png"
+  },
+  {
+    id: "2716-fe0f",
+    emoji: "\u2716\uFE0F",
+    name: "multiply",
+    category: "Symbols",
+    subcategory: "math",
+    supportsSkinTone: false,
+    file: "2716-fe0f.png"
+  },
+  {
+    id: "2795",
+    emoji: "\u2795",
+    name: "plus",
+    category: "Symbols",
+    subcategory: "math",
+    supportsSkinTone: false,
+    file: "2795.png"
+  },
+  {
+    id: "2796",
+    emoji: "\u2796",
+    name: "minus",
+    category: "Symbols",
+    subcategory: "math",
+    supportsSkinTone: false,
+    file: "2796.png"
+  },
+  {
+    id: "2797",
+    emoji: "\u2797",
+    name: "divide",
+    category: "Symbols",
+    subcategory: "math",
+    supportsSkinTone: false,
+    file: "2797.png"
+  },
+  {
+    id: "1f7f0",
+    emoji: "\u{1F7F0}",
+    name: "heavy equals sign",
+    category: "Symbols",
+    subcategory: "math",
+    supportsSkinTone: false,
+    file: "1f7f0.png"
+  },
+  {
+    id: "267e-fe0f",
+    emoji: "\u267E\uFE0F",
+    name: "infinity",
+    category: "Symbols",
+    subcategory: "math",
+    supportsSkinTone: false,
+    file: "267e-fe0f.png"
+  },
+  {
+    id: "203c-fe0f",
+    emoji: "\u203C\uFE0F",
+    name: "double exclamation mark",
+    category: "Symbols",
+    subcategory: "punctuation",
+    supportsSkinTone: false,
+    file: "203c-fe0f.png"
+  },
+  {
+    id: "2049-fe0f",
+    emoji: "\u2049\uFE0F",
+    name: "exclamation question mark",
+    category: "Symbols",
+    subcategory: "punctuation",
+    supportsSkinTone: false,
+    file: "2049-fe0f.png"
+  },
+  {
+    id: "2753",
+    emoji: "\u2753",
+    name: "red question mark",
+    category: "Symbols",
+    subcategory: "punctuation",
+    supportsSkinTone: false,
+    file: "2753.png"
+  },
+  {
+    id: "2754",
+    emoji: "\u2754",
+    name: "white question mark",
+    category: "Symbols",
+    subcategory: "punctuation",
+    supportsSkinTone: false,
+    file: "2754.png"
+  },
+  {
+    id: "2755",
+    emoji: "\u2755",
+    name: "white exclamation mark",
+    category: "Symbols",
+    subcategory: "punctuation",
+    supportsSkinTone: false,
+    file: "2755.png"
+  },
+  {
+    id: "2757",
+    emoji: "\u2757",
+    name: "red exclamation mark",
+    category: "Symbols",
+    subcategory: "punctuation",
+    supportsSkinTone: false,
+    file: "2757.png"
+  },
+  {
+    id: "3030-fe0f",
+    emoji: "\u3030\uFE0F",
+    name: "wavy dash",
+    category: "Symbols",
+    subcategory: "punctuation",
+    supportsSkinTone: false,
+    file: "3030-fe0f.png"
+  },
+  {
+    id: "1f4b1",
+    emoji: "\u{1F4B1}",
+    name: "currency exchange",
+    category: "Symbols",
+    subcategory: "currency",
+    supportsSkinTone: false,
+    file: "1f4b1.png"
+  },
+  {
+    id: "1f4b2",
+    emoji: "\u{1F4B2}",
+    name: "heavy dollar sign",
+    category: "Symbols",
+    subcategory: "currency",
+    supportsSkinTone: false,
+    file: "1f4b2.png"
+  },
+  {
+    id: "2695-fe0f",
+    emoji: "\u2695\uFE0F",
+    name: "medical symbol",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2695-fe0f.png"
+  },
+  {
+    id: "267b-fe0f",
+    emoji: "\u267B\uFE0F",
+    name: "recycling symbol",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "267b-fe0f.png"
+  },
+  {
+    id: "269c-fe0f",
+    emoji: "\u269C\uFE0F",
+    name: "fleur-de-lis",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "269c-fe0f.png"
+  },
+  {
+    id: "1f531",
+    emoji: "\u{1F531}",
+    name: "trident emblem",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "1f531.png"
+  },
+  {
+    id: "1f4db",
+    emoji: "\u{1F4DB}",
+    name: "name badge",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "1f4db.png"
+  },
+  {
+    id: "1f530",
+    emoji: "\u{1F530}",
+    name: "Japanese symbol for beginner",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "1f530.png"
+  },
+  {
+    id: "2b55",
+    emoji: "\u2B55",
+    name: "hollow red circle",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2b55.png"
+  },
+  {
+    id: "2705",
+    emoji: "\u2705",
+    name: "check mark button",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2705.png"
+  },
+  {
+    id: "2611-fe0f",
+    emoji: "\u2611\uFE0F",
+    name: "check box with check",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2611-fe0f.png"
+  },
+  {
+    id: "2714-fe0f",
+    emoji: "\u2714\uFE0F",
+    name: "check mark",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2714-fe0f.png"
+  },
+  {
+    id: "274c",
+    emoji: "\u274C",
+    name: "cross mark",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "274c.png"
+  },
+  {
+    id: "274e",
+    emoji: "\u274E",
+    name: "cross mark button",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "274e.png"
+  },
+  {
+    id: "27b0",
+    emoji: "\u27B0",
+    name: "curly loop",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "27b0.png"
+  },
+  {
+    id: "27bf",
+    emoji: "\u27BF",
+    name: "double curly loop",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "27bf.png"
+  },
+  {
+    id: "303d-fe0f",
+    emoji: "\u303D\uFE0F",
+    name: "part alternation mark",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "303d-fe0f.png"
+  },
+  {
+    id: "2733-fe0f",
+    emoji: "\u2733\uFE0F",
+    name: "eight-spoked asterisk",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2733-fe0f.png"
+  },
+  {
+    id: "2734-fe0f",
+    emoji: "\u2734\uFE0F",
+    name: "eight-pointed star",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2734-fe0f.png"
+  },
+  {
+    id: "2747-fe0f",
+    emoji: "\u2747\uFE0F",
+    name: "sparkle",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2747-fe0f.png"
+  },
+  {
+    id: "00a9-fe0f",
+    emoji: "\xA9\uFE0F",
+    name: "copyright",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "00a9-fe0f.png"
+  },
+  {
+    id: "00ae-fe0f",
+    emoji: "\xAE\uFE0F",
+    name: "registered",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "00ae-fe0f.png"
+  },
+  {
+    id: "2122-fe0f",
+    emoji: "\u2122\uFE0F",
+    name: "trade mark",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "2122-fe0f.png"
+  },
+  {
+    id: "1fadf",
+    emoji: "\u{1FADF}",
+    name: "splatter",
+    category: "Symbols",
+    subcategory: "other-symbol",
+    supportsSkinTone: false,
+    file: "1fadf.png"
+  },
+  {
+    id: "0023-fe0f-20e3",
+    emoji: "#\uFE0F\u20E3",
+    name: "keycap: #",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0023-fe0f-20e3.png"
+  },
+  {
+    id: "002a-fe0f-20e3",
+    emoji: "*\uFE0F\u20E3",
+    name: "keycap: *",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "002a-fe0f-20e3.png"
+  },
+  {
+    id: "0030-fe0f-20e3",
+    emoji: "0\uFE0F\u20E3",
+    name: "keycap: 0",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0030-fe0f-20e3.png"
+  },
+  {
+    id: "0031-fe0f-20e3",
+    emoji: "1\uFE0F\u20E3",
+    name: "keycap: 1",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0031-fe0f-20e3.png"
+  },
+  {
+    id: "0032-fe0f-20e3",
+    emoji: "2\uFE0F\u20E3",
+    name: "keycap: 2",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0032-fe0f-20e3.png"
+  },
+  {
+    id: "0033-fe0f-20e3",
+    emoji: "3\uFE0F\u20E3",
+    name: "keycap: 3",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0033-fe0f-20e3.png"
+  },
+  {
+    id: "0034-fe0f-20e3",
+    emoji: "4\uFE0F\u20E3",
+    name: "keycap: 4",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0034-fe0f-20e3.png"
+  },
+  {
+    id: "0035-fe0f-20e3",
+    emoji: "5\uFE0F\u20E3",
+    name: "keycap: 5",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0035-fe0f-20e3.png"
+  },
+  {
+    id: "0036-fe0f-20e3",
+    emoji: "6\uFE0F\u20E3",
+    name: "keycap: 6",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0036-fe0f-20e3.png"
+  },
+  {
+    id: "0037-fe0f-20e3",
+    emoji: "7\uFE0F\u20E3",
+    name: "keycap: 7",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0037-fe0f-20e3.png"
+  },
+  {
+    id: "0038-fe0f-20e3",
+    emoji: "8\uFE0F\u20E3",
+    name: "keycap: 8",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0038-fe0f-20e3.png"
+  },
+  {
+    id: "0039-fe0f-20e3",
+    emoji: "9\uFE0F\u20E3",
+    name: "keycap: 9",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "0039-fe0f-20e3.png"
+  },
+  {
+    id: "1f51f",
+    emoji: "\u{1F51F}",
+    name: "keycap: 10",
+    category: "Symbols",
+    subcategory: "keycap",
+    supportsSkinTone: false,
+    file: "1f51f.png"
+  },
+  {
+    id: "1f520",
+    emoji: "\u{1F520}",
+    name: "input latin uppercase",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f520.png"
+  },
+  {
+    id: "1f521",
+    emoji: "\u{1F521}",
+    name: "input latin lowercase",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f521.png"
+  },
+  {
+    id: "1f522",
+    emoji: "\u{1F522}",
+    name: "input numbers",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f522.png"
+  },
+  {
+    id: "1f523",
+    emoji: "\u{1F523}",
+    name: "input symbols",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f523.png"
+  },
+  {
+    id: "1f524",
+    emoji: "\u{1F524}",
+    name: "input latin letters",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f524.png"
+  },
+  {
+    id: "1f170-fe0f",
+    emoji: "\u{1F170}\uFE0F",
+    name: "A button (blood type)",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f170-fe0f.png"
+  },
+  {
+    id: "1f18e",
+    emoji: "\u{1F18E}",
+    name: "AB button (blood type)",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f18e.png"
+  },
+  {
+    id: "1f171-fe0f",
+    emoji: "\u{1F171}\uFE0F",
+    name: "B button (blood type)",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f171-fe0f.png"
+  },
+  {
+    id: "1f191",
+    emoji: "\u{1F191}",
+    name: "CL button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f191.png"
+  },
+  {
+    id: "1f192",
+    emoji: "\u{1F192}",
+    name: "COOL button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f192.png"
+  },
+  {
+    id: "1f193",
+    emoji: "\u{1F193}",
+    name: "FREE button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f193.png"
+  },
+  {
+    id: "2139-fe0f",
+    emoji: "\u2139\uFE0F",
+    name: "information",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "2139-fe0f.png"
+  },
+  {
+    id: "1f194",
+    emoji: "\u{1F194}",
+    name: "ID button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f194.png"
+  },
+  {
+    id: "24c2-fe0f",
+    emoji: "\u24C2\uFE0F",
+    name: "circled M",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "24c2-fe0f.png"
+  },
+  {
+    id: "1f195",
+    emoji: "\u{1F195}",
+    name: "NEW button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f195.png"
+  },
+  {
+    id: "1f196",
+    emoji: "\u{1F196}",
+    name: "NG button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f196.png"
+  },
+  {
+    id: "1f17e-fe0f",
+    emoji: "\u{1F17E}\uFE0F",
+    name: "O button (blood type)",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f17e-fe0f.png"
+  },
+  {
+    id: "1f197",
+    emoji: "\u{1F197}",
+    name: "OK button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f197.png"
+  },
+  {
+    id: "1f17f-fe0f",
+    emoji: "\u{1F17F}\uFE0F",
+    name: "P button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f17f-fe0f.png"
+  },
+  {
+    id: "1f198",
+    emoji: "\u{1F198}",
+    name: "SOS button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f198.png"
+  },
+  {
+    id: "1f199",
+    emoji: "\u{1F199}",
+    name: "UP! button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f199.png"
+  },
+  {
+    id: "1f19a",
+    emoji: "\u{1F19A}",
+    name: "VS button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f19a.png"
+  },
+  {
+    id: "1f201",
+    emoji: "\u{1F201}",
+    name: "Japanese \u201Chere\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f201.png"
+  },
+  {
+    id: "1f202-fe0f",
+    emoji: "\u{1F202}\uFE0F",
+    name: "Japanese \u201Cservice charge\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f202-fe0f.png"
+  },
+  {
+    id: "1f237-fe0f",
+    emoji: "\u{1F237}\uFE0F",
+    name: "Japanese \u201Cmonthly amount\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f237-fe0f.png"
+  },
+  {
+    id: "1f236",
+    emoji: "\u{1F236}",
+    name: "Japanese \u201Cnot free of charge\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f236.png"
+  },
+  {
+    id: "1f22f",
+    emoji: "\u{1F22F}",
+    name: "Japanese \u201Creserved\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f22f.png"
+  },
+  {
+    id: "1f250",
+    emoji: "\u{1F250}",
+    name: "Japanese \u201Cbargain\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f250.png"
+  },
+  {
+    id: "1f239",
+    emoji: "\u{1F239}",
+    name: "Japanese \u201Cdiscount\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f239.png"
+  },
+  {
+    id: "1f21a",
+    emoji: "\u{1F21A}",
+    name: "Japanese \u201Cfree of charge\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f21a.png"
+  },
+  {
+    id: "1f232",
+    emoji: "\u{1F232}",
+    name: "Japanese \u201Cprohibited\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f232.png"
+  },
+  {
+    id: "1f251",
+    emoji: "\u{1F251}",
+    name: "Japanese \u201Cacceptable\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f251.png"
+  },
+  {
+    id: "1f238",
+    emoji: "\u{1F238}",
+    name: "Japanese \u201Capplication\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f238.png"
+  },
+  {
+    id: "1f234",
+    emoji: "\u{1F234}",
+    name: "Japanese \u201Cpassing grade\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f234.png"
+  },
+  {
+    id: "1f233",
+    emoji: "\u{1F233}",
+    name: "Japanese \u201Cvacancy\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f233.png"
+  },
+  {
+    id: "3297-fe0f",
+    emoji: "\u3297\uFE0F",
+    name: "Japanese \u201Ccongratulations\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "3297-fe0f.png"
+  },
+  {
+    id: "3299-fe0f",
+    emoji: "\u3299\uFE0F",
+    name: "Japanese \u201Csecret\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "3299-fe0f.png"
+  },
+  {
+    id: "1f23a",
+    emoji: "\u{1F23A}",
+    name: "Japanese \u201Copen for business\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f23a.png"
+  },
+  {
+    id: "1f235",
+    emoji: "\u{1F235}",
+    name: "Japanese \u201Cno vacancy\u201D button",
+    category: "Symbols",
+    subcategory: "alphanum",
+    supportsSkinTone: false,
+    file: "1f235.png"
+  },
+  {
+    id: "1f534",
+    emoji: "\u{1F534}",
+    name: "red circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f534.png"
+  },
+  {
+    id: "1f7e0",
+    emoji: "\u{1F7E0}",
+    name: "orange circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e0.png"
+  },
+  {
+    id: "1f7e1",
+    emoji: "\u{1F7E1}",
+    name: "yellow circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e1.png"
+  },
+  {
+    id: "1f7e2",
+    emoji: "\u{1F7E2}",
+    name: "green circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e2.png"
+  },
+  {
+    id: "1f535",
+    emoji: "\u{1F535}",
+    name: "blue circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f535.png"
+  },
+  {
+    id: "1f7e3",
+    emoji: "\u{1F7E3}",
+    name: "purple circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e3.png"
+  },
+  {
+    id: "1f7e4",
+    emoji: "\u{1F7E4}",
+    name: "brown circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e4.png"
+  },
+  {
+    id: "26ab",
+    emoji: "\u26AB",
+    name: "black circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "26ab.png"
+  },
+  {
+    id: "26aa",
+    emoji: "\u26AA",
+    name: "white circle",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "26aa.png"
+  },
+  {
+    id: "1f7e5",
+    emoji: "\u{1F7E5}",
+    name: "red square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e5.png"
+  },
+  {
+    id: "1f7e7",
+    emoji: "\u{1F7E7}",
+    name: "orange square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e7.png"
+  },
+  {
+    id: "1f7e8",
+    emoji: "\u{1F7E8}",
+    name: "yellow square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e8.png"
+  },
+  {
+    id: "1f7e9",
+    emoji: "\u{1F7E9}",
+    name: "green square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e9.png"
+  },
+  {
+    id: "1f7e6",
+    emoji: "\u{1F7E6}",
+    name: "blue square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7e6.png"
+  },
+  {
+    id: "1f7ea",
+    emoji: "\u{1F7EA}",
+    name: "purple square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7ea.png"
+  },
+  {
+    id: "1f7eb",
+    emoji: "\u{1F7EB}",
+    name: "brown square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f7eb.png"
+  },
+  {
+    id: "2b1b",
+    emoji: "\u2B1B",
+    name: "black large square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "2b1b.png"
+  },
+  {
+    id: "2b1c",
+    emoji: "\u2B1C",
+    name: "white large square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "2b1c.png"
+  },
+  {
+    id: "25fc-fe0f",
+    emoji: "\u25FC\uFE0F",
+    name: "black medium square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "25fc-fe0f.png"
+  },
+  {
+    id: "25fb-fe0f",
+    emoji: "\u25FB\uFE0F",
+    name: "white medium square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "25fb-fe0f.png"
+  },
+  {
+    id: "25fe",
+    emoji: "\u25FE",
+    name: "black medium-small square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "25fe.png"
+  },
+  {
+    id: "25fd",
+    emoji: "\u25FD",
+    name: "white medium-small square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "25fd.png"
+  },
+  {
+    id: "25aa-fe0f",
+    emoji: "\u25AA\uFE0F",
+    name: "black small square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "25aa-fe0f.png"
+  },
+  {
+    id: "25ab-fe0f",
+    emoji: "\u25AB\uFE0F",
+    name: "white small square",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "25ab-fe0f.png"
+  },
+  {
+    id: "1f536",
+    emoji: "\u{1F536}",
+    name: "large orange diamond",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f536.png"
+  },
+  {
+    id: "1f537",
+    emoji: "\u{1F537}",
+    name: "large blue diamond",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f537.png"
+  },
+  {
+    id: "1f538",
+    emoji: "\u{1F538}",
+    name: "small orange diamond",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f538.png"
+  },
+  {
+    id: "1f539",
+    emoji: "\u{1F539}",
+    name: "small blue diamond",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f539.png"
+  },
+  {
+    id: "1f53a",
+    emoji: "\u{1F53A}",
+    name: "red triangle pointed up",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f53a.png"
+  },
+  {
+    id: "1f53b",
+    emoji: "\u{1F53B}",
+    name: "red triangle pointed down",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f53b.png"
+  },
+  {
+    id: "1f4a0",
+    emoji: "\u{1F4A0}",
+    name: "diamond with a dot",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f4a0.png"
+  },
+  {
+    id: "1f518",
+    emoji: "\u{1F518}",
+    name: "radio button",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f518.png"
+  },
+  {
+    id: "1f533",
+    emoji: "\u{1F533}",
+    name: "white square button",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f533.png"
+  },
+  {
+    id: "1f532",
+    emoji: "\u{1F532}",
+    name: "black square button",
+    category: "Symbols",
+    subcategory: "geometric",
+    supportsSkinTone: false,
+    file: "1f532.png"
+  },
+  {
+    id: "1f3c1",
+    emoji: "\u{1F3C1}",
+    name: "chequered flag",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f3c1.png"
+  },
+  {
+    id: "1f6a9",
+    emoji: "\u{1F6A9}",
+    name: "triangular flag",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f6a9.png"
+  },
+  {
+    id: "1f38c",
+    emoji: "\u{1F38C}",
+    name: "crossed flags",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f38c.png"
+  },
+  {
+    id: "1f3f4",
+    emoji: "\u{1F3F4}",
+    name: "black flag",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f3f4.png"
+  },
+  {
+    id: "1f3f3-fe0f",
+    emoji: "\u{1F3F3}\uFE0F",
+    name: "white flag",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f3f3-fe0f.png"
+  },
+  {
+    id: "1f3f3-fe0f-200d-1f308",
+    emoji: "\u{1F3F3}\uFE0F\u200D\u{1F308}",
+    name: "rainbow flag",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f3f3-fe0f-200d-1f308.png"
+  },
+  {
+    id: "1f3f3-fe0f-200d-26a7-fe0f",
+    emoji: "\u{1F3F3}\uFE0F\u200D\u26A7\uFE0F",
+    name: "transgender flag",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f3f3-fe0f-200d-26a7-fe0f.png"
+  },
+  {
+    id: "1f3f4-200d-2620-fe0f",
+    emoji: "\u{1F3F4}\u200D\u2620\uFE0F",
+    name: "pirate flag",
+    category: "Flags",
+    subcategory: "flag",
+    supportsSkinTone: false,
+    file: "1f3f4-200d-2620-fe0f.png"
+  },
+  {
+    id: "1f1e6-1f1e8",
+    emoji: "\u{1F1E6}\u{1F1E8}",
+    name: "flag: Ascension Island",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1e8.png"
+  },
+  {
+    id: "1f1e6-1f1e9",
+    emoji: "\u{1F1E6}\u{1F1E9}",
+    name: "flag: Andorra",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1e9.png"
+  },
+  {
+    id: "1f1e6-1f1ea",
+    emoji: "\u{1F1E6}\u{1F1EA}",
+    name: "flag: United Arab Emirates",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1ea.png"
+  },
+  {
+    id: "1f1e6-1f1eb",
+    emoji: "\u{1F1E6}\u{1F1EB}",
+    name: "flag: Afghanistan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1eb.png"
+  },
+  {
+    id: "1f1e6-1f1ec",
+    emoji: "\u{1F1E6}\u{1F1EC}",
+    name: "flag: Antigua & Barbuda",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1ec.png"
+  },
+  {
+    id: "1f1e6-1f1ee",
+    emoji: "\u{1F1E6}\u{1F1EE}",
+    name: "flag: Anguilla",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1ee.png"
+  },
+  {
+    id: "1f1e6-1f1f1",
+    emoji: "\u{1F1E6}\u{1F1F1}",
+    name: "flag: Albania",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1f1.png"
+  },
+  {
+    id: "1f1e6-1f1f2",
+    emoji: "\u{1F1E6}\u{1F1F2}",
+    name: "flag: Armenia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1f2.png"
+  },
+  {
+    id: "1f1e6-1f1f4",
+    emoji: "\u{1F1E6}\u{1F1F4}",
+    name: "flag: Angola",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1f4.png"
+  },
+  {
+    id: "1f1e6-1f1f6",
+    emoji: "\u{1F1E6}\u{1F1F6}",
+    name: "flag: Antarctica",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1f6.png"
+  },
+  {
+    id: "1f1e6-1f1f7",
+    emoji: "\u{1F1E6}\u{1F1F7}",
+    name: "flag: Argentina",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1f7.png"
+  },
+  {
+    id: "1f1e6-1f1f8",
+    emoji: "\u{1F1E6}\u{1F1F8}",
+    name: "flag: American Samoa",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1f8.png"
+  },
+  {
+    id: "1f1e6-1f1f9",
+    emoji: "\u{1F1E6}\u{1F1F9}",
+    name: "flag: Austria",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1f9.png"
+  },
+  {
+    id: "1f1e6-1f1fa",
+    emoji: "\u{1F1E6}\u{1F1FA}",
+    name: "flag: Australia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1fa.png"
+  },
+  {
+    id: "1f1e6-1f1fc",
+    emoji: "\u{1F1E6}\u{1F1FC}",
+    name: "flag: Aruba",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1fc.png"
+  },
+  {
+    id: "1f1e6-1f1fd",
+    emoji: "\u{1F1E6}\u{1F1FD}",
+    name: "flag: \xC5land Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1fd.png"
+  },
+  {
+    id: "1f1e6-1f1ff",
+    emoji: "\u{1F1E6}\u{1F1FF}",
+    name: "flag: Azerbaijan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e6-1f1ff.png"
+  },
+  {
+    id: "1f1e7-1f1e6",
+    emoji: "\u{1F1E7}\u{1F1E6}",
+    name: "flag: Bosnia & Herzegovina",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1e6.png"
+  },
+  {
+    id: "1f1e7-1f1e7",
+    emoji: "\u{1F1E7}\u{1F1E7}",
+    name: "flag: Barbados",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1e7.png"
+  },
+  {
+    id: "1f1e7-1f1e9",
+    emoji: "\u{1F1E7}\u{1F1E9}",
+    name: "flag: Bangladesh",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1e9.png"
+  },
+  {
+    id: "1f1e7-1f1ea",
+    emoji: "\u{1F1E7}\u{1F1EA}",
+    name: "flag: Belgium",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1ea.png"
+  },
+  {
+    id: "1f1e7-1f1eb",
+    emoji: "\u{1F1E7}\u{1F1EB}",
+    name: "flag: Burkina Faso",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1eb.png"
+  },
+  {
+    id: "1f1e7-1f1ec",
+    emoji: "\u{1F1E7}\u{1F1EC}",
+    name: "flag: Bulgaria",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1ec.png"
+  },
+  {
+    id: "1f1e7-1f1ed",
+    emoji: "\u{1F1E7}\u{1F1ED}",
+    name: "flag: Bahrain",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1ed.png"
+  },
+  {
+    id: "1f1e7-1f1ee",
+    emoji: "\u{1F1E7}\u{1F1EE}",
+    name: "flag: Burundi",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1ee.png"
+  },
+  {
+    id: "1f1e7-1f1ef",
+    emoji: "\u{1F1E7}\u{1F1EF}",
+    name: "flag: Benin",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1ef.png"
+  },
+  {
+    id: "1f1e7-1f1f1",
+    emoji: "\u{1F1E7}\u{1F1F1}",
+    name: "flag: St. Barth\xE9lemy",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f1.png"
+  },
+  {
+    id: "1f1e7-1f1f2",
+    emoji: "\u{1F1E7}\u{1F1F2}",
+    name: "flag: Bermuda",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f2.png"
+  },
+  {
+    id: "1f1e7-1f1f3",
+    emoji: "\u{1F1E7}\u{1F1F3}",
+    name: "flag: Brunei",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f3.png"
+  },
+  {
+    id: "1f1e7-1f1f4",
+    emoji: "\u{1F1E7}\u{1F1F4}",
+    name: "flag: Bolivia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f4.png"
+  },
+  {
+    id: "1f1e7-1f1f6",
+    emoji: "\u{1F1E7}\u{1F1F6}",
+    name: "flag: Caribbean Netherlands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f6.png"
+  },
+  {
+    id: "1f1e7-1f1f7",
+    emoji: "\u{1F1E7}\u{1F1F7}",
+    name: "flag: Brazil",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f7.png"
+  },
+  {
+    id: "1f1e7-1f1f8",
+    emoji: "\u{1F1E7}\u{1F1F8}",
+    name: "flag: Bahamas",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f8.png"
+  },
+  {
+    id: "1f1e7-1f1f9",
+    emoji: "\u{1F1E7}\u{1F1F9}",
+    name: "flag: Bhutan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1f9.png"
+  },
+  {
+    id: "1f1e7-1f1fb",
+    emoji: "\u{1F1E7}\u{1F1FB}",
+    name: "flag: Bouvet Island",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1fb.png"
+  },
+  {
+    id: "1f1e7-1f1fc",
+    emoji: "\u{1F1E7}\u{1F1FC}",
+    name: "flag: Botswana",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1fc.png"
+  },
+  {
+    id: "1f1e7-1f1fe",
+    emoji: "\u{1F1E7}\u{1F1FE}",
+    name: "flag: Belarus",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1fe.png"
+  },
+  {
+    id: "1f1e7-1f1ff",
+    emoji: "\u{1F1E7}\u{1F1FF}",
+    name: "flag: Belize",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e7-1f1ff.png"
+  },
+  {
+    id: "1f1e8-1f1e6",
+    emoji: "\u{1F1E8}\u{1F1E6}",
+    name: "flag: Canada",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1e6.png"
+  },
+  {
+    id: "1f1e8-1f1e8",
+    emoji: "\u{1F1E8}\u{1F1E8}",
+    name: "flag: Cocos (Keeling) Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1e8.png"
+  },
+  {
+    id: "1f1e8-1f1e9",
+    emoji: "\u{1F1E8}\u{1F1E9}",
+    name: "flag: Congo - Kinshasa",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1e9.png"
+  },
+  {
+    id: "1f1e8-1f1eb",
+    emoji: "\u{1F1E8}\u{1F1EB}",
+    name: "flag: Central African Republic",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1eb.png"
+  },
+  {
+    id: "1f1e8-1f1ec",
+    emoji: "\u{1F1E8}\u{1F1EC}",
+    name: "flag: Congo - Brazzaville",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1ec.png"
+  },
+  {
+    id: "1f1e8-1f1ed",
+    emoji: "\u{1F1E8}\u{1F1ED}",
+    name: "flag: Switzerland",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1ed.png"
+  },
+  {
+    id: "1f1e8-1f1ee",
+    emoji: "\u{1F1E8}\u{1F1EE}",
+    name: "flag: C\xF4te d\u2019Ivoire",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1ee.png"
+  },
+  {
+    id: "1f1e8-1f1f0",
+    emoji: "\u{1F1E8}\u{1F1F0}",
+    name: "flag: Cook Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f0.png"
+  },
+  {
+    id: "1f1e8-1f1f1",
+    emoji: "\u{1F1E8}\u{1F1F1}",
+    name: "flag: Chile",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f1.png"
+  },
+  {
+    id: "1f1e8-1f1f2",
+    emoji: "\u{1F1E8}\u{1F1F2}",
+    name: "flag: Cameroon",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f2.png"
+  },
+  {
+    id: "1f1e8-1f1f3",
+    emoji: "\u{1F1E8}\u{1F1F3}",
+    name: "flag: China",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f3.png"
+  },
+  {
+    id: "1f1e8-1f1f4",
+    emoji: "\u{1F1E8}\u{1F1F4}",
+    name: "flag: Colombia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f4.png"
+  },
+  {
+    id: "1f1e8-1f1f5",
+    emoji: "\u{1F1E8}\u{1F1F5}",
+    name: "flag: Clipperton Island",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f5.png"
+  },
+  {
+    id: "1f1e8-1f1f6",
+    emoji: "\u{1F1E8}\u{1F1F6}",
+    name: "flag: Sark",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f6.png"
+  },
+  {
+    id: "1f1e8-1f1f7",
+    emoji: "\u{1F1E8}\u{1F1F7}",
+    name: "flag: Costa Rica",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1f7.png"
+  },
+  {
+    id: "1f1e8-1f1fa",
+    emoji: "\u{1F1E8}\u{1F1FA}",
+    name: "flag: Cuba",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1fa.png"
+  },
+  {
+    id: "1f1e8-1f1fb",
+    emoji: "\u{1F1E8}\u{1F1FB}",
+    name: "flag: Cape Verde",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1fb.png"
+  },
+  {
+    id: "1f1e8-1f1fc",
+    emoji: "\u{1F1E8}\u{1F1FC}",
+    name: "flag: Cura\xE7ao",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1fc.png"
+  },
+  {
+    id: "1f1e8-1f1fd",
+    emoji: "\u{1F1E8}\u{1F1FD}",
+    name: "flag: Christmas Island",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1fd.png"
+  },
+  {
+    id: "1f1e8-1f1fe",
+    emoji: "\u{1F1E8}\u{1F1FE}",
+    name: "flag: Cyprus",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1fe.png"
+  },
+  {
+    id: "1f1e8-1f1ff",
+    emoji: "\u{1F1E8}\u{1F1FF}",
+    name: "flag: Czechia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e8-1f1ff.png"
+  },
+  {
+    id: "1f1e9-1f1ea",
+    emoji: "\u{1F1E9}\u{1F1EA}",
+    name: "flag: Germany",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e9-1f1ea.png"
+  },
+  {
+    id: "1f1e9-1f1ec",
+    emoji: "\u{1F1E9}\u{1F1EC}",
+    name: "flag: Diego Garcia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e9-1f1ec.png"
+  },
+  {
+    id: "1f1e9-1f1ef",
+    emoji: "\u{1F1E9}\u{1F1EF}",
+    name: "flag: Djibouti",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e9-1f1ef.png"
+  },
+  {
+    id: "1f1e9-1f1f0",
+    emoji: "\u{1F1E9}\u{1F1F0}",
+    name: "flag: Denmark",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e9-1f1f0.png"
+  },
+  {
+    id: "1f1e9-1f1f2",
+    emoji: "\u{1F1E9}\u{1F1F2}",
+    name: "flag: Dominica",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e9-1f1f2.png"
+  },
+  {
+    id: "1f1e9-1f1f4",
+    emoji: "\u{1F1E9}\u{1F1F4}",
+    name: "flag: Dominican Republic",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e9-1f1f4.png"
+  },
+  {
+    id: "1f1e9-1f1ff",
+    emoji: "\u{1F1E9}\u{1F1FF}",
+    name: "flag: Algeria",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1e9-1f1ff.png"
+  },
+  {
+    id: "1f1ea-1f1e6",
+    emoji: "\u{1F1EA}\u{1F1E6}",
+    name: "flag: Ceuta & Melilla",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1e6.png"
+  },
+  {
+    id: "1f1ea-1f1e8",
+    emoji: "\u{1F1EA}\u{1F1E8}",
+    name: "flag: Ecuador",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1e8.png"
+  },
+  {
+    id: "1f1ea-1f1ea",
+    emoji: "\u{1F1EA}\u{1F1EA}",
+    name: "flag: Estonia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1ea.png"
+  },
+  {
+    id: "1f1ea-1f1ec",
+    emoji: "\u{1F1EA}\u{1F1EC}",
+    name: "flag: Egypt",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1ec.png"
+  },
+  {
+    id: "1f1ea-1f1ed",
+    emoji: "\u{1F1EA}\u{1F1ED}",
+    name: "flag: Western Sahara",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1ed.png"
+  },
+  {
+    id: "1f1ea-1f1f7",
+    emoji: "\u{1F1EA}\u{1F1F7}",
+    name: "flag: Eritrea",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1f7.png"
+  },
+  {
+    id: "1f1ea-1f1f8",
+    emoji: "\u{1F1EA}\u{1F1F8}",
+    name: "flag: Spain",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1f8.png"
+  },
+  {
+    id: "1f1ea-1f1f9",
+    emoji: "\u{1F1EA}\u{1F1F9}",
+    name: "flag: Ethiopia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1f9.png"
+  },
+  {
+    id: "1f1ea-1f1fa",
+    emoji: "\u{1F1EA}\u{1F1FA}",
+    name: "flag: European Union",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ea-1f1fa.png"
+  },
+  {
+    id: "1f1eb-1f1ee",
+    emoji: "\u{1F1EB}\u{1F1EE}",
+    name: "flag: Finland",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1eb-1f1ee.png"
+  },
+  {
+    id: "1f1eb-1f1ef",
+    emoji: "\u{1F1EB}\u{1F1EF}",
+    name: "flag: Fiji",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1eb-1f1ef.png"
+  },
+  {
+    id: "1f1eb-1f1f0",
+    emoji: "\u{1F1EB}\u{1F1F0}",
+    name: "flag: Falkland Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1eb-1f1f0.png"
+  },
+  {
+    id: "1f1eb-1f1f2",
+    emoji: "\u{1F1EB}\u{1F1F2}",
+    name: "flag: Micronesia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1eb-1f1f2.png"
+  },
+  {
+    id: "1f1eb-1f1f4",
+    emoji: "\u{1F1EB}\u{1F1F4}",
+    name: "flag: Faroe Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1eb-1f1f4.png"
+  },
+  {
+    id: "1f1eb-1f1f7",
+    emoji: "\u{1F1EB}\u{1F1F7}",
+    name: "flag: France",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1eb-1f1f7.png"
+  },
+  {
+    id: "1f1ec-1f1e6",
+    emoji: "\u{1F1EC}\u{1F1E6}",
+    name: "flag: Gabon",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1e6.png"
+  },
+  {
+    id: "1f1ec-1f1e7",
+    emoji: "\u{1F1EC}\u{1F1E7}",
+    name: "flag: United Kingdom",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1e7.png"
+  },
+  {
+    id: "1f1ec-1f1e9",
+    emoji: "\u{1F1EC}\u{1F1E9}",
+    name: "flag: Grenada",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1e9.png"
+  },
+  {
+    id: "1f1ec-1f1ea",
+    emoji: "\u{1F1EC}\u{1F1EA}",
+    name: "flag: Georgia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1ea.png"
+  },
+  {
+    id: "1f1ec-1f1eb",
+    emoji: "\u{1F1EC}\u{1F1EB}",
+    name: "flag: French Guiana",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1eb.png"
+  },
+  {
+    id: "1f1ec-1f1ec",
+    emoji: "\u{1F1EC}\u{1F1EC}",
+    name: "flag: Guernsey",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1ec.png"
+  },
+  {
+    id: "1f1ec-1f1ed",
+    emoji: "\u{1F1EC}\u{1F1ED}",
+    name: "flag: Ghana",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1ed.png"
+  },
+  {
+    id: "1f1ec-1f1ee",
+    emoji: "\u{1F1EC}\u{1F1EE}",
+    name: "flag: Gibraltar",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1ee.png"
+  },
+  {
+    id: "1f1ec-1f1f1",
+    emoji: "\u{1F1EC}\u{1F1F1}",
+    name: "flag: Greenland",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f1.png"
+  },
+  {
+    id: "1f1ec-1f1f2",
+    emoji: "\u{1F1EC}\u{1F1F2}",
+    name: "flag: Gambia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f2.png"
+  },
+  {
+    id: "1f1ec-1f1f3",
+    emoji: "\u{1F1EC}\u{1F1F3}",
+    name: "flag: Guinea",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f3.png"
+  },
+  {
+    id: "1f1ec-1f1f5",
+    emoji: "\u{1F1EC}\u{1F1F5}",
+    name: "flag: Guadeloupe",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f5.png"
+  },
+  {
+    id: "1f1ec-1f1f6",
+    emoji: "\u{1F1EC}\u{1F1F6}",
+    name: "flag: Equatorial Guinea",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f6.png"
+  },
+  {
+    id: "1f1ec-1f1f7",
+    emoji: "\u{1F1EC}\u{1F1F7}",
+    name: "flag: Greece",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f7.png"
+  },
+  {
+    id: "1f1ec-1f1f8",
+    emoji: "\u{1F1EC}\u{1F1F8}",
+    name: "flag: South Georgia & South Sandwich Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f8.png"
+  },
+  {
+    id: "1f1ec-1f1f9",
+    emoji: "\u{1F1EC}\u{1F1F9}",
+    name: "flag: Guatemala",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1f9.png"
+  },
+  {
+    id: "1f1ec-1f1fa",
+    emoji: "\u{1F1EC}\u{1F1FA}",
+    name: "flag: Guam",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1fa.png"
+  },
+  {
+    id: "1f1ec-1f1fc",
+    emoji: "\u{1F1EC}\u{1F1FC}",
+    name: "flag: Guinea-Bissau",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1fc.png"
+  },
+  {
+    id: "1f1ec-1f1fe",
+    emoji: "\u{1F1EC}\u{1F1FE}",
+    name: "flag: Guyana",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ec-1f1fe.png"
+  },
+  {
+    id: "1f1ed-1f1f0",
+    emoji: "\u{1F1ED}\u{1F1F0}",
+    name: "flag: Hong Kong SAR China",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ed-1f1f0.png"
+  },
+  {
+    id: "1f1ed-1f1f2",
+    emoji: "\u{1F1ED}\u{1F1F2}",
+    name: "flag: Heard & McDonald Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ed-1f1f2.png"
+  },
+  {
+    id: "1f1ed-1f1f3",
+    emoji: "\u{1F1ED}\u{1F1F3}",
+    name: "flag: Honduras",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ed-1f1f3.png"
+  },
+  {
+    id: "1f1ed-1f1f7",
+    emoji: "\u{1F1ED}\u{1F1F7}",
+    name: "flag: Croatia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ed-1f1f7.png"
+  },
+  {
+    id: "1f1ed-1f1f9",
+    emoji: "\u{1F1ED}\u{1F1F9}",
+    name: "flag: Haiti",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ed-1f1f9.png"
+  },
+  {
+    id: "1f1ed-1f1fa",
+    emoji: "\u{1F1ED}\u{1F1FA}",
+    name: "flag: Hungary",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ed-1f1fa.png"
+  },
+  {
+    id: "1f1ee-1f1e8",
+    emoji: "\u{1F1EE}\u{1F1E8}",
+    name: "flag: Canary Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1e8.png"
+  },
+  {
+    id: "1f1ee-1f1e9",
+    emoji: "\u{1F1EE}\u{1F1E9}",
+    name: "flag: Indonesia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1e9.png"
+  },
+  {
+    id: "1f1ee-1f1ea",
+    emoji: "\u{1F1EE}\u{1F1EA}",
+    name: "flag: Ireland",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1ea.png"
+  },
+  {
+    id: "1f1ee-1f1f1",
+    emoji: "\u{1F1EE}\u{1F1F1}",
+    name: "flag: Israel",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f1.png"
+  },
+  {
+    id: "1f1ee-1f1f2",
+    emoji: "\u{1F1EE}\u{1F1F2}",
+    name: "flag: Isle of Man",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f2.png"
+  },
+  {
+    id: "1f1ee-1f1f3",
+    emoji: "\u{1F1EE}\u{1F1F3}",
+    name: "flag: India",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f3.png"
+  },
+  {
+    id: "1f1ee-1f1f4",
+    emoji: "\u{1F1EE}\u{1F1F4}",
+    name: "flag: British Indian Ocean Territory",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f4.png"
+  },
+  {
+    id: "1f1ee-1f1f6",
+    emoji: "\u{1F1EE}\u{1F1F6}",
+    name: "flag: Iraq",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f6.png"
+  },
+  {
+    id: "1f1ee-1f1f7",
+    emoji: "\u{1F1EE}\u{1F1F7}",
+    name: "flag: Iran",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f7.png"
+  },
+  {
+    id: "1f1ee-1f1f8",
+    emoji: "\u{1F1EE}\u{1F1F8}",
+    name: "flag: Iceland",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f8.png"
+  },
+  {
+    id: "1f1ee-1f1f9",
+    emoji: "\u{1F1EE}\u{1F1F9}",
+    name: "flag: Italy",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ee-1f1f9.png"
+  },
+  {
+    id: "1f1ef-1f1ea",
+    emoji: "\u{1F1EF}\u{1F1EA}",
+    name: "flag: Jersey",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ef-1f1ea.png"
+  },
+  {
+    id: "1f1ef-1f1f2",
+    emoji: "\u{1F1EF}\u{1F1F2}",
+    name: "flag: Jamaica",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ef-1f1f2.png"
+  },
+  {
+    id: "1f1ef-1f1f4",
+    emoji: "\u{1F1EF}\u{1F1F4}",
+    name: "flag: Jordan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ef-1f1f4.png"
+  },
+  {
+    id: "1f1ef-1f1f5",
+    emoji: "\u{1F1EF}\u{1F1F5}",
+    name: "flag: Japan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ef-1f1f5.png"
+  },
+  {
+    id: "1f1f0-1f1ea",
+    emoji: "\u{1F1F0}\u{1F1EA}",
+    name: "flag: Kenya",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1ea.png"
+  },
+  {
+    id: "1f1f0-1f1ec",
+    emoji: "\u{1F1F0}\u{1F1EC}",
+    name: "flag: Kyrgyzstan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1ec.png"
+  },
+  {
+    id: "1f1f0-1f1ed",
+    emoji: "\u{1F1F0}\u{1F1ED}",
+    name: "flag: Cambodia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1ed.png"
+  },
+  {
+    id: "1f1f0-1f1ee",
+    emoji: "\u{1F1F0}\u{1F1EE}",
+    name: "flag: Kiribati",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1ee.png"
+  },
+  {
+    id: "1f1f0-1f1f2",
+    emoji: "\u{1F1F0}\u{1F1F2}",
+    name: "flag: Comoros",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1f2.png"
+  },
+  {
+    id: "1f1f0-1f1f3",
+    emoji: "\u{1F1F0}\u{1F1F3}",
+    name: "flag: St. Kitts & Nevis",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1f3.png"
+  },
+  {
+    id: "1f1f0-1f1f5",
+    emoji: "\u{1F1F0}\u{1F1F5}",
+    name: "flag: North Korea",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1f5.png"
+  },
+  {
+    id: "1f1f0-1f1f7",
+    emoji: "\u{1F1F0}\u{1F1F7}",
+    name: "flag: South Korea",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1f7.png"
+  },
+  {
+    id: "1f1f0-1f1fc",
+    emoji: "\u{1F1F0}\u{1F1FC}",
+    name: "flag: Kuwait",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1fc.png"
+  },
+  {
+    id: "1f1f0-1f1fe",
+    emoji: "\u{1F1F0}\u{1F1FE}",
+    name: "flag: Cayman Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1fe.png"
+  },
+  {
+    id: "1f1f0-1f1ff",
+    emoji: "\u{1F1F0}\u{1F1FF}",
+    name: "flag: Kazakhstan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f0-1f1ff.png"
+  },
+  {
+    id: "1f1f1-1f1e6",
+    emoji: "\u{1F1F1}\u{1F1E6}",
+    name: "flag: Laos",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1e6.png"
+  },
+  {
+    id: "1f1f1-1f1e7",
+    emoji: "\u{1F1F1}\u{1F1E7}",
+    name: "flag: Lebanon",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1e7.png"
+  },
+  {
+    id: "1f1f1-1f1e8",
+    emoji: "\u{1F1F1}\u{1F1E8}",
+    name: "flag: St. Lucia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1e8.png"
+  },
+  {
+    id: "1f1f1-1f1ee",
+    emoji: "\u{1F1F1}\u{1F1EE}",
+    name: "flag: Liechtenstein",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1ee.png"
+  },
+  {
+    id: "1f1f1-1f1f0",
+    emoji: "\u{1F1F1}\u{1F1F0}",
+    name: "flag: Sri Lanka",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1f0.png"
+  },
+  {
+    id: "1f1f1-1f1f7",
+    emoji: "\u{1F1F1}\u{1F1F7}",
+    name: "flag: Liberia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1f7.png"
+  },
+  {
+    id: "1f1f1-1f1f8",
+    emoji: "\u{1F1F1}\u{1F1F8}",
+    name: "flag: Lesotho",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1f8.png"
+  },
+  {
+    id: "1f1f1-1f1f9",
+    emoji: "\u{1F1F1}\u{1F1F9}",
+    name: "flag: Lithuania",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1f9.png"
+  },
+  {
+    id: "1f1f1-1f1fa",
+    emoji: "\u{1F1F1}\u{1F1FA}",
+    name: "flag: Luxembourg",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1fa.png"
+  },
+  {
+    id: "1f1f1-1f1fb",
+    emoji: "\u{1F1F1}\u{1F1FB}",
+    name: "flag: Latvia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1fb.png"
+  },
+  {
+    id: "1f1f1-1f1fe",
+    emoji: "\u{1F1F1}\u{1F1FE}",
+    name: "flag: Libya",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f1-1f1fe.png"
+  },
+  {
+    id: "1f1f2-1f1e6",
+    emoji: "\u{1F1F2}\u{1F1E6}",
+    name: "flag: Morocco",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1e6.png"
+  },
+  {
+    id: "1f1f2-1f1e8",
+    emoji: "\u{1F1F2}\u{1F1E8}",
+    name: "flag: Monaco",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1e8.png"
+  },
+  {
+    id: "1f1f2-1f1e9",
+    emoji: "\u{1F1F2}\u{1F1E9}",
+    name: "flag: Moldova",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1e9.png"
+  },
+  {
+    id: "1f1f2-1f1ea",
+    emoji: "\u{1F1F2}\u{1F1EA}",
+    name: "flag: Montenegro",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1ea.png"
+  },
+  {
+    id: "1f1f2-1f1eb",
+    emoji: "\u{1F1F2}\u{1F1EB}",
+    name: "flag: St. Martin",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1eb.png"
+  },
+  {
+    id: "1f1f2-1f1ec",
+    emoji: "\u{1F1F2}\u{1F1EC}",
+    name: "flag: Madagascar",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1ec.png"
+  },
+  {
+    id: "1f1f2-1f1ed",
+    emoji: "\u{1F1F2}\u{1F1ED}",
+    name: "flag: Marshall Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1ed.png"
+  },
+  {
+    id: "1f1f2-1f1f0",
+    emoji: "\u{1F1F2}\u{1F1F0}",
+    name: "flag: North Macedonia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f0.png"
+  },
+  {
+    id: "1f1f2-1f1f1",
+    emoji: "\u{1F1F2}\u{1F1F1}",
+    name: "flag: Mali",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f1.png"
+  },
+  {
+    id: "1f1f2-1f1f2",
+    emoji: "\u{1F1F2}\u{1F1F2}",
+    name: "flag: Myanmar (Burma)",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f2.png"
+  },
+  {
+    id: "1f1f2-1f1f3",
+    emoji: "\u{1F1F2}\u{1F1F3}",
+    name: "flag: Mongolia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f3.png"
+  },
+  {
+    id: "1f1f2-1f1f4",
+    emoji: "\u{1F1F2}\u{1F1F4}",
+    name: "flag: Macao SAR China",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f4.png"
+  },
+  {
+    id: "1f1f2-1f1f5",
+    emoji: "\u{1F1F2}\u{1F1F5}",
+    name: "flag: Northern Mariana Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f5.png"
+  },
+  {
+    id: "1f1f2-1f1f6",
+    emoji: "\u{1F1F2}\u{1F1F6}",
+    name: "flag: Martinique",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f6.png"
+  },
+  {
+    id: "1f1f2-1f1f7",
+    emoji: "\u{1F1F2}\u{1F1F7}",
+    name: "flag: Mauritania",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f7.png"
+  },
+  {
+    id: "1f1f2-1f1f8",
+    emoji: "\u{1F1F2}\u{1F1F8}",
+    name: "flag: Montserrat",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f8.png"
+  },
+  {
+    id: "1f1f2-1f1f9",
+    emoji: "\u{1F1F2}\u{1F1F9}",
+    name: "flag: Malta",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1f9.png"
+  },
+  {
+    id: "1f1f2-1f1fa",
+    emoji: "\u{1F1F2}\u{1F1FA}",
+    name: "flag: Mauritius",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1fa.png"
+  },
+  {
+    id: "1f1f2-1f1fb",
+    emoji: "\u{1F1F2}\u{1F1FB}",
+    name: "flag: Maldives",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1fb.png"
+  },
+  {
+    id: "1f1f2-1f1fc",
+    emoji: "\u{1F1F2}\u{1F1FC}",
+    name: "flag: Malawi",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1fc.png"
+  },
+  {
+    id: "1f1f2-1f1fd",
+    emoji: "\u{1F1F2}\u{1F1FD}",
+    name: "flag: Mexico",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1fd.png"
+  },
+  {
+    id: "1f1f2-1f1fe",
+    emoji: "\u{1F1F2}\u{1F1FE}",
+    name: "flag: Malaysia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1fe.png"
+  },
+  {
+    id: "1f1f2-1f1ff",
+    emoji: "\u{1F1F2}\u{1F1FF}",
+    name: "flag: Mozambique",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f2-1f1ff.png"
+  },
+  {
+    id: "1f1f3-1f1e6",
+    emoji: "\u{1F1F3}\u{1F1E6}",
+    name: "flag: Namibia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1e6.png"
+  },
+  {
+    id: "1f1f3-1f1e8",
+    emoji: "\u{1F1F3}\u{1F1E8}",
+    name: "flag: New Caledonia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1e8.png"
+  },
+  {
+    id: "1f1f3-1f1ea",
+    emoji: "\u{1F1F3}\u{1F1EA}",
+    name: "flag: Niger",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1ea.png"
+  },
+  {
+    id: "1f1f3-1f1eb",
+    emoji: "\u{1F1F3}\u{1F1EB}",
+    name: "flag: Norfolk Island",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1eb.png"
+  },
+  {
+    id: "1f1f3-1f1ec",
+    emoji: "\u{1F1F3}\u{1F1EC}",
+    name: "flag: Nigeria",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1ec.png"
+  },
+  {
+    id: "1f1f3-1f1ee",
+    emoji: "\u{1F1F3}\u{1F1EE}",
+    name: "flag: Nicaragua",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1ee.png"
+  },
+  {
+    id: "1f1f3-1f1f1",
+    emoji: "\u{1F1F3}\u{1F1F1}",
+    name: "flag: Netherlands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1f1.png"
+  },
+  {
+    id: "1f1f3-1f1f4",
+    emoji: "\u{1F1F3}\u{1F1F4}",
+    name: "flag: Norway",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1f4.png"
+  },
+  {
+    id: "1f1f3-1f1f5",
+    emoji: "\u{1F1F3}\u{1F1F5}",
+    name: "flag: Nepal",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1f5.png"
+  },
+  {
+    id: "1f1f3-1f1f7",
+    emoji: "\u{1F1F3}\u{1F1F7}",
+    name: "flag: Nauru",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1f7.png"
+  },
+  {
+    id: "1f1f3-1f1fa",
+    emoji: "\u{1F1F3}\u{1F1FA}",
+    name: "flag: Niue",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1fa.png"
+  },
+  {
+    id: "1f1f3-1f1ff",
+    emoji: "\u{1F1F3}\u{1F1FF}",
+    name: "flag: New Zealand",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f3-1f1ff.png"
+  },
+  {
+    id: "1f1f4-1f1f2",
+    emoji: "\u{1F1F4}\u{1F1F2}",
+    name: "flag: Oman",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f4-1f1f2.png"
+  },
+  {
+    id: "1f1f5-1f1e6",
+    emoji: "\u{1F1F5}\u{1F1E6}",
+    name: "flag: Panama",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1e6.png"
+  },
+  {
+    id: "1f1f5-1f1ea",
+    emoji: "\u{1F1F5}\u{1F1EA}",
+    name: "flag: Peru",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1ea.png"
+  },
+  {
+    id: "1f1f5-1f1eb",
+    emoji: "\u{1F1F5}\u{1F1EB}",
+    name: "flag: French Polynesia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1eb.png"
+  },
+  {
+    id: "1f1f5-1f1ec",
+    emoji: "\u{1F1F5}\u{1F1EC}",
+    name: "flag: Papua New Guinea",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1ec.png"
+  },
+  {
+    id: "1f1f5-1f1ed",
+    emoji: "\u{1F1F5}\u{1F1ED}",
+    name: "flag: Philippines",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1ed.png"
+  },
+  {
+    id: "1f1f5-1f1f0",
+    emoji: "\u{1F1F5}\u{1F1F0}",
+    name: "flag: Pakistan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1f0.png"
+  },
+  {
+    id: "1f1f5-1f1f1",
+    emoji: "\u{1F1F5}\u{1F1F1}",
+    name: "flag: Poland",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1f1.png"
+  },
+  {
+    id: "1f1f5-1f1f2",
+    emoji: "\u{1F1F5}\u{1F1F2}",
+    name: "flag: St. Pierre & Miquelon",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1f2.png"
+  },
+  {
+    id: "1f1f5-1f1f3",
+    emoji: "\u{1F1F5}\u{1F1F3}",
+    name: "flag: Pitcairn Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1f3.png"
+  },
+  {
+    id: "1f1f5-1f1f7",
+    emoji: "\u{1F1F5}\u{1F1F7}",
+    name: "flag: Puerto Rico",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1f7.png"
+  },
+  {
+    id: "1f1f5-1f1f8",
+    emoji: "\u{1F1F5}\u{1F1F8}",
+    name: "flag: Palestinian Territories",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1f8.png"
+  },
+  {
+    id: "1f1f5-1f1f9",
+    emoji: "\u{1F1F5}\u{1F1F9}",
+    name: "flag: Portugal",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1f9.png"
+  },
+  {
+    id: "1f1f5-1f1fc",
+    emoji: "\u{1F1F5}\u{1F1FC}",
+    name: "flag: Palau",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1fc.png"
+  },
+  {
+    id: "1f1f5-1f1fe",
+    emoji: "\u{1F1F5}\u{1F1FE}",
+    name: "flag: Paraguay",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f5-1f1fe.png"
+  },
+  {
+    id: "1f1f6-1f1e6",
+    emoji: "\u{1F1F6}\u{1F1E6}",
+    name: "flag: Qatar",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f6-1f1e6.png"
+  },
+  {
+    id: "1f1f7-1f1ea",
+    emoji: "\u{1F1F7}\u{1F1EA}",
+    name: "flag: R\xE9union",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f7-1f1ea.png"
+  },
+  {
+    id: "1f1f7-1f1f4",
+    emoji: "\u{1F1F7}\u{1F1F4}",
+    name: "flag: Romania",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f7-1f1f4.png"
+  },
+  {
+    id: "1f1f7-1f1f8",
+    emoji: "\u{1F1F7}\u{1F1F8}",
+    name: "flag: Serbia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f7-1f1f8.png"
+  },
+  {
+    id: "1f1f7-1f1fa",
+    emoji: "\u{1F1F7}\u{1F1FA}",
+    name: "flag: Russia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f7-1f1fa.png"
+  },
+  {
+    id: "1f1f7-1f1fc",
+    emoji: "\u{1F1F7}\u{1F1FC}",
+    name: "flag: Rwanda",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f7-1f1fc.png"
+  },
+  {
+    id: "1f1f8-1f1e6",
+    emoji: "\u{1F1F8}\u{1F1E6}",
+    name: "flag: Saudi Arabia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1e6.png"
+  },
+  {
+    id: "1f1f8-1f1e7",
+    emoji: "\u{1F1F8}\u{1F1E7}",
+    name: "flag: Solomon Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1e7.png"
+  },
+  {
+    id: "1f1f8-1f1e8",
+    emoji: "\u{1F1F8}\u{1F1E8}",
+    name: "flag: Seychelles",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1e8.png"
+  },
+  {
+    id: "1f1f8-1f1e9",
+    emoji: "\u{1F1F8}\u{1F1E9}",
+    name: "flag: Sudan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1e9.png"
+  },
+  {
+    id: "1f1f8-1f1ea",
+    emoji: "\u{1F1F8}\u{1F1EA}",
+    name: "flag: Sweden",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1ea.png"
+  },
+  {
+    id: "1f1f8-1f1ec",
+    emoji: "\u{1F1F8}\u{1F1EC}",
+    name: "flag: Singapore",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1ec.png"
+  },
+  {
+    id: "1f1f8-1f1ed",
+    emoji: "\u{1F1F8}\u{1F1ED}",
+    name: "flag: St. Helena",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1ed.png"
+  },
+  {
+    id: "1f1f8-1f1ee",
+    emoji: "\u{1F1F8}\u{1F1EE}",
+    name: "flag: Slovenia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1ee.png"
+  },
+  {
+    id: "1f1f8-1f1ef",
+    emoji: "\u{1F1F8}\u{1F1EF}",
+    name: "flag: Svalbard & Jan Mayen",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1ef.png"
+  },
+  {
+    id: "1f1f8-1f1f0",
+    emoji: "\u{1F1F8}\u{1F1F0}",
+    name: "flag: Slovakia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f0.png"
+  },
+  {
+    id: "1f1f8-1f1f1",
+    emoji: "\u{1F1F8}\u{1F1F1}",
+    name: "flag: Sierra Leone",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f1.png"
+  },
+  {
+    id: "1f1f8-1f1f2",
+    emoji: "\u{1F1F8}\u{1F1F2}",
+    name: "flag: San Marino",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f2.png"
+  },
+  {
+    id: "1f1f8-1f1f3",
+    emoji: "\u{1F1F8}\u{1F1F3}",
+    name: "flag: Senegal",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f3.png"
+  },
+  {
+    id: "1f1f8-1f1f4",
+    emoji: "\u{1F1F8}\u{1F1F4}",
+    name: "flag: Somalia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f4.png"
+  },
+  {
+    id: "1f1f8-1f1f7",
+    emoji: "\u{1F1F8}\u{1F1F7}",
+    name: "flag: Suriname",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f7.png"
+  },
+  {
+    id: "1f1f8-1f1f8",
+    emoji: "\u{1F1F8}\u{1F1F8}",
+    name: "flag: South Sudan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f8.png"
+  },
+  {
+    id: "1f1f8-1f1f9",
+    emoji: "\u{1F1F8}\u{1F1F9}",
+    name: "flag: S\xE3o Tom\xE9 & Pr\xEDncipe",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1f9.png"
+  },
+  {
+    id: "1f1f8-1f1fb",
+    emoji: "\u{1F1F8}\u{1F1FB}",
+    name: "flag: El Salvador",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1fb.png"
+  },
+  {
+    id: "1f1f8-1f1fd",
+    emoji: "\u{1F1F8}\u{1F1FD}",
+    name: "flag: Sint Maarten",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1fd.png"
+  },
+  {
+    id: "1f1f8-1f1fe",
+    emoji: "\u{1F1F8}\u{1F1FE}",
+    name: "flag: Syria",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1fe.png"
+  },
+  {
+    id: "1f1f8-1f1ff",
+    emoji: "\u{1F1F8}\u{1F1FF}",
+    name: "flag: Eswatini",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f8-1f1ff.png"
+  },
+  {
+    id: "1f1f9-1f1e6",
+    emoji: "\u{1F1F9}\u{1F1E6}",
+    name: "flag: Tristan da Cunha",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1e6.png"
+  },
+  {
+    id: "1f1f9-1f1e8",
+    emoji: "\u{1F1F9}\u{1F1E8}",
+    name: "flag: Turks & Caicos Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1e8.png"
+  },
+  {
+    id: "1f1f9-1f1e9",
+    emoji: "\u{1F1F9}\u{1F1E9}",
+    name: "flag: Chad",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1e9.png"
+  },
+  {
+    id: "1f1f9-1f1eb",
+    emoji: "\u{1F1F9}\u{1F1EB}",
+    name: "flag: French Southern Territories",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1eb.png"
+  },
+  {
+    id: "1f1f9-1f1ec",
+    emoji: "\u{1F1F9}\u{1F1EC}",
+    name: "flag: Togo",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1ec.png"
+  },
+  {
+    id: "1f1f9-1f1ed",
+    emoji: "\u{1F1F9}\u{1F1ED}",
+    name: "flag: Thailand",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1ed.png"
+  },
+  {
+    id: "1f1f9-1f1ef",
+    emoji: "\u{1F1F9}\u{1F1EF}",
+    name: "flag: Tajikistan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1ef.png"
+  },
+  {
+    id: "1f1f9-1f1f0",
+    emoji: "\u{1F1F9}\u{1F1F0}",
+    name: "flag: Tokelau",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1f0.png"
+  },
+  {
+    id: "1f1f9-1f1f1",
+    emoji: "\u{1F1F9}\u{1F1F1}",
+    name: "flag: Timor-Leste",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1f1.png"
+  },
+  {
+    id: "1f1f9-1f1f2",
+    emoji: "\u{1F1F9}\u{1F1F2}",
+    name: "flag: Turkmenistan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1f2.png"
+  },
+  {
+    id: "1f1f9-1f1f3",
+    emoji: "\u{1F1F9}\u{1F1F3}",
+    name: "flag: Tunisia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1f3.png"
+  },
+  {
+    id: "1f1f9-1f1f4",
+    emoji: "\u{1F1F9}\u{1F1F4}",
+    name: "flag: Tonga",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1f4.png"
+  },
+  {
+    id: "1f1f9-1f1f7",
+    emoji: "\u{1F1F9}\u{1F1F7}",
+    name: "flag: T\xFCrkiye",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1f7.png"
+  },
+  {
+    id: "1f1f9-1f1f9",
+    emoji: "\u{1F1F9}\u{1F1F9}",
+    name: "flag: Trinidad & Tobago",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1f9.png"
+  },
+  {
+    id: "1f1f9-1f1fb",
+    emoji: "\u{1F1F9}\u{1F1FB}",
+    name: "flag: Tuvalu",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1fb.png"
+  },
+  {
+    id: "1f1f9-1f1fc",
+    emoji: "\u{1F1F9}\u{1F1FC}",
+    name: "flag: Taiwan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1fc.png"
+  },
+  {
+    id: "1f1f9-1f1ff",
+    emoji: "\u{1F1F9}\u{1F1FF}",
+    name: "flag: Tanzania",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1f9-1f1ff.png"
+  },
+  {
+    id: "1f1fa-1f1e6",
+    emoji: "\u{1F1FA}\u{1F1E6}",
+    name: "flag: Ukraine",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fa-1f1e6.png"
+  },
+  {
+    id: "1f1fa-1f1ec",
+    emoji: "\u{1F1FA}\u{1F1EC}",
+    name: "flag: Uganda",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fa-1f1ec.png"
+  },
+  {
+    id: "1f1fa-1f1f2",
+    emoji: "\u{1F1FA}\u{1F1F2}",
+    name: "flag: U.S. Outlying Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fa-1f1f2.png"
+  },
+  {
+    id: "1f1fa-1f1f3",
+    emoji: "\u{1F1FA}\u{1F1F3}",
+    name: "flag: United Nations",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fa-1f1f3.png"
+  },
+  {
+    id: "1f1fa-1f1f8",
+    emoji: "\u{1F1FA}\u{1F1F8}",
+    name: "flag: United States",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fa-1f1f8.png"
+  },
+  {
+    id: "1f1fa-1f1fe",
+    emoji: "\u{1F1FA}\u{1F1FE}",
+    name: "flag: Uruguay",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fa-1f1fe.png"
+  },
+  {
+    id: "1f1fa-1f1ff",
+    emoji: "\u{1F1FA}\u{1F1FF}",
+    name: "flag: Uzbekistan",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fa-1f1ff.png"
+  },
+  {
+    id: "1f1fb-1f1e6",
+    emoji: "\u{1F1FB}\u{1F1E6}",
+    name: "flag: Vatican City",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fb-1f1e6.png"
+  },
+  {
+    id: "1f1fb-1f1e8",
+    emoji: "\u{1F1FB}\u{1F1E8}",
+    name: "flag: St. Vincent & Grenadines",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fb-1f1e8.png"
+  },
+  {
+    id: "1f1fb-1f1ea",
+    emoji: "\u{1F1FB}\u{1F1EA}",
+    name: "flag: Venezuela",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fb-1f1ea.png"
+  },
+  {
+    id: "1f1fb-1f1ec",
+    emoji: "\u{1F1FB}\u{1F1EC}",
+    name: "flag: British Virgin Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fb-1f1ec.png"
+  },
+  {
+    id: "1f1fb-1f1ee",
+    emoji: "\u{1F1FB}\u{1F1EE}",
+    name: "flag: U.S. Virgin Islands",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fb-1f1ee.png"
+  },
+  {
+    id: "1f1fb-1f1f3",
+    emoji: "\u{1F1FB}\u{1F1F3}",
+    name: "flag: Vietnam",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fb-1f1f3.png"
+  },
+  {
+    id: "1f1fb-1f1fa",
+    emoji: "\u{1F1FB}\u{1F1FA}",
+    name: "flag: Vanuatu",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fb-1f1fa.png"
+  },
+  {
+    id: "1f1fc-1f1eb",
+    emoji: "\u{1F1FC}\u{1F1EB}",
+    name: "flag: Wallis & Futuna",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fc-1f1eb.png"
+  },
+  {
+    id: "1f1fc-1f1f8",
+    emoji: "\u{1F1FC}\u{1F1F8}",
+    name: "flag: Samoa",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fc-1f1f8.png"
+  },
+  {
+    id: "1f1fd-1f1f0",
+    emoji: "\u{1F1FD}\u{1F1F0}",
+    name: "flag: Kosovo",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fd-1f1f0.png"
+  },
+  {
+    id: "1f1fe-1f1ea",
+    emoji: "\u{1F1FE}\u{1F1EA}",
+    name: "flag: Yemen",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fe-1f1ea.png"
+  },
+  {
+    id: "1f1fe-1f1f9",
+    emoji: "\u{1F1FE}\u{1F1F9}",
+    name: "flag: Mayotte",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1fe-1f1f9.png"
+  },
+  {
+    id: "1f1ff-1f1e6",
+    emoji: "\u{1F1FF}\u{1F1E6}",
+    name: "flag: South Africa",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ff-1f1e6.png"
+  },
+  {
+    id: "1f1ff-1f1f2",
+    emoji: "\u{1F1FF}\u{1F1F2}",
+    name: "flag: Zambia",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ff-1f1f2.png"
+  },
+  {
+    id: "1f1ff-1f1fc",
+    emoji: "\u{1F1FF}\u{1F1FC}",
+    name: "flag: Zimbabwe",
+    category: "Flags",
+    subcategory: "country-flag",
+    supportsSkinTone: false,
+    file: "1f1ff-1f1fc.png"
+  },
+  {
+    id: "1f3f4-e0067-e0062-e0065-e006e-e0067-e007f",
+    emoji: "\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}",
+    name: "flag: England",
+    category: "Flags",
+    subcategory: "subdivision-flag",
+    supportsSkinTone: false,
+    file: "1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.png"
+  },
+  {
+    id: "1f3f4-e0067-e0062-e0073-e0063-e0074-e007f",
+    emoji: "\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}",
+    name: "flag: Scotland",
+    category: "Flags",
+    subcategory: "subdivision-flag",
+    supportsSkinTone: false,
+    file: "1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.png"
+  },
+  {
+    id: "1f3f4-e0067-e0062-e0077-e006c-e0073-e007f",
+    emoji: "\u{1F3F4}\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}",
+    name: "flag: Wales",
+    category: "Flags",
+    subcategory: "subdivision-flag",
+    supportsSkinTone: false,
+    file: "1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.png"
+  }
+];
+
+// src/catalog.ts
+var SKIN_TONES = [
+  { id: "light", label: "Light skin tone", hex: "#F3D1B9", modifier: "\u{1F3FB}" },
+  { id: "medium-light", label: "Medium-light skin tone", hex: "#E6B58C", modifier: "\u{1F3FC}" },
+  { id: "medium", label: "Medium skin tone", hex: "#C98A5B", modifier: "\u{1F3FD}" },
+  { id: "medium-dark", label: "Medium-dark skin tone", hex: "#95613F", modifier: "\u{1F3FE}" },
+  { id: "dark", label: "Dark skin tone", hex: "#593A2D", modifier: "\u{1F3FF}" }
+];
+var EMOJI_ASSET_SIZES = [16, 24, 32, 64, 128, 256, 512, 1024];
+var EMOJI_ATTRIBUTION_URL = "https://cursor.style/?utm_source=emoji-composer&utm_medium=package&utm_campaign=emoji-catalog";
+var EMOJI_ASSET_CDN_BASE_URL = "https://cdn.cursor.style/emoji-composer/v1.0.0/assets/webp";
+var catalog = emojis_default;
+var byId = new Map(catalog.map((item) => [normalizeEmojiId(item.id), item]));
+var searchable = catalog.map((item) => ({
+  item,
+  text: `${item.name} ${item.category} ${item.subcategory} ${item.id} ${item.emoji}`.toLocaleLowerCase()
+}));
+function normalizeEmojiId(id) {
+  return id.toLowerCase().replace(/^emoji-/, "").replace(/_/g, "-");
+}
+function shardForEmojiId(id) {
+  return normalizeEmojiId(id).split("-")[0].slice(0, 3);
+}
+function getEmojiCatalog() {
+  return catalog;
+}
+function getEmojiById(id) {
+  return byId.get(normalizeEmojiId(id));
+}
+function getEmojiCategories() {
+  return [...new Set(catalog.map((item) => item.category))];
+}
+function searchEmojis(query, category) {
+  const needle = query.trim().toLocaleLowerCase();
+  return searchable.filter(({ item, text }) => (!category || item.category === category) && (!needle || text.includes(needle))).map(({ item }) => item);
+}
+function getEmojiAssetUrl(emoji, options = {}) {
+  const id = normalizeEmojiId(typeof emoji === "string" ? emoji : emoji.id);
+  const record = typeof emoji === "string" ? byId.get(id) : emoji;
+  const size = options.size ?? 64;
+  if (!EMOJI_ASSET_SIZES.includes(size)) throw new RangeError(`Unsupported emoji asset size: ${size}`);
+  const tone = record?.supportsSkinTone ? options.skinTone : null;
+  const suffix = tone ? `--${tone}` : "";
+  const base = (options.baseUrl ?? EMOJI_ASSET_CDN_BASE_URL).replace(/\/+$/, "");
+  return `${base}/${size}/${shardForEmojiId(id)}/${id}${suffix}.webp`;
+}
+function getEmojiText(item, skinTone) {
+  if (!skinTone || !item.supportsSkinTone) return item.emoji;
+  const tone = SKIN_TONES.find((entry) => entry.id === skinTone);
+  if (!tone) return item.emoji;
+  const characters = Array.from(item.emoji);
+  const alreadyModified = characters.some((character) => {
+    const codePoint = character.codePointAt(0) ?? 0;
+    return codePoint >= 127995 && codePoint <= 127999;
+  });
+  if (alreadyModified || characters.length === 0) return item.emoji;
+  characters.splice(1, 0, tone.modifier);
+  return characters.join("");
+}
+
+// src/EmojiPicker.tsx
+var import_jsx_runtime = require("react/jsx-runtime");
+var toneChoices = [
+  { id: null, label: "Default yellow", swatch: "#ffd34e" },
+  ...SKIN_TONES.map((tone) => ({ id: tone.id, label: tone.label, swatch: tone.hex }))
+];
+function EmojiPicker({
+  onSelect,
+  assetBaseUrl = EMOJI_ASSET_CDN_BASE_URL,
+  size = 64,
+  initialCategory,
+  skinTone,
+  onSkinToneChange,
+  showSkinTonePicker = true,
+  showBranding = true,
+  className = "",
+  label = "Emoji picker",
+  pageSize = 96
+}) {
+  const catalog2 = getEmojiCatalog();
+  const categories = (0, import_react.useMemo)(() => getEmojiCategories(), []);
+  const [query, setQuery] = (0, import_react.useState)("");
+  const [category, setCategory] = (0, import_react.useState)(initialCategory ?? "All");
+  const [visibleCount, setVisibleCount] = (0, import_react.useState)(pageSize);
+  const [localTone, setLocalTone] = (0, import_react.useState)(null);
+  const searchRef = (0, import_react.useRef)(null);
+  const activeTone = skinTone === void 0 ? localTone : skinTone;
+  (0, import_react.useEffect)(() => {
+    const focusSearch = (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        searchRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", focusSearch);
+    searchRef.current?.focus();
+    return () => window.removeEventListener("keydown", focusSearch);
+  }, []);
+  const filtered = (0, import_react.useMemo)(() => {
+    const needle = query.trim().toLocaleLowerCase();
+    return catalog2.filter((item) => {
+      const categoryMatches = category === "All" || item.category === category;
+      const searchMatches = !needle || `${item.name} ${item.category} ${item.subcategory} ${item.id} ${item.emoji}`.toLocaleLowerCase().includes(needle);
+      return categoryMatches && searchMatches;
+    });
+  }, [catalog2, category, query]);
+  const setTone = (tone) => {
+    if (skinTone === void 0) setLocalTone(tone);
+    onSkinToneChange?.(tone);
+  };
+  const choose = (item) => {
+    onSelect({
+      ...item,
+      skinTone: item.supportsSkinTone ? activeTone : null,
+      text: getEmojiText(item, activeTone),
+      assetUrl: getEmojiAssetUrl(item, { size, skinTone: activeTone, baseUrl: assetBaseUrl })
+    });
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", { className: `ec-picker ${className}`.trim(), "aria-label": label, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "ec-search-wrap", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", { className: "ec-search-icon", viewBox: "0 0 24 24", "aria-hidden": "true", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", { cx: "10.8", cy: "10.8", r: "6.5" }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "m16 16 4.3 4.3" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+        "input",
+        {
+          ref: searchRef,
+          className: "ec-search",
+          type: "search",
+          value: query,
+          onChange: (event) => {
+            setQuery(event.target.value);
+            setVisibleCount(pageSize);
+          },
+          placeholder: "Search 1,914 emojis",
+          "aria-label": "Search emojis",
+          autoComplete: "off"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("kbd", { className: "ec-shortcut", children: "Ctrl / \u2318 K" })
+    ] }),
+    showSkinTonePicker && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "ec-tone-row", "aria-label": "Skin tone", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "ec-tone-caption", children: "Skin tone" }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "ec-tone-options", role: "group", "aria-label": "Choose skin tone", children: toneChoices.map((choice) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+        "button",
+        {
+          type: "button",
+          className: `ec-tone-chip${activeTone === choice.id ? " is-active" : ""}`,
+          title: choice.label,
+          "aria-label": choice.label,
+          "aria-pressed": activeTone === choice.id,
+          onClick: () => setTone(choice.id),
+          children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { style: { background: choice.swatch } })
+        },
+        choice.id ?? "default"
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", { className: "ec-categories", "aria-label": "Emoji categories", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+        "button",
+        {
+          type: "button",
+          className: `ec-category${category === "All" ? " is-active" : ""}`,
+          onClick: () => {
+            setCategory("All");
+            setVisibleCount(pageSize);
+          },
+          children: "All"
+        }
+      ),
+      categories.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+        "button",
+        {
+          type: "button",
+          className: `ec-category${category === entry ? " is-active" : ""}`,
+          onClick: () => {
+            setCategory(entry);
+            setVisibleCount(pageSize);
+          },
+          title: entry,
+          children: [
+            categoryGlyph(entry),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: entry })
+          ]
+        },
+        entry
+      ))
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "ec-results-heading", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: query ? `Results for \u201C${query}\u201D` : category === "All" ? "All emojis" : category }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "ec-result-count", children: filtered.length.toLocaleString() })
+    ] }),
+    filtered.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "ec-empty", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { "aria-hidden": "true", children: "\u{1FAE7}" }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("strong", { children: "No matches yet" }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("small", { children: "Try another word or browse a category." })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "ec-grid", role: "list", "aria-label": "Emoji results", children: filtered.slice(0, visibleCount).map((item) => {
+        const url = getEmojiAssetUrl(item, { size, skinTone: activeTone, baseUrl: assetBaseUrl });
+        return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+          "button",
+          {
+            type: "button",
+            className: "ec-emoji",
+            onClick: () => choose(item),
+            title: `${item.name}${item.supportsSkinTone && activeTone ? ` \xB7 ${activeTone}` : ""}`,
+            "aria-label": `${item.name}${item.supportsSkinTone && activeTone ? `, ${activeTone} skin tone` : ""}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+                "img",
+                {
+                  src: url,
+                  alt: "",
+                  "aria-hidden": "true",
+                  loading: "lazy",
+                  width: size,
+                  height: size,
+                  onError: (event) => {
+                    event.currentTarget.style.display = "none";
+                    event.currentTarget.nextElementSibling?.classList.add("is-visible");
+                  }
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "ec-emoji-fallback", "aria-hidden": "true", children: getEmojiText(item, activeTone) })
+            ]
+          },
+          item.id
+        );
+      }) }),
+      visibleCount < filtered.length && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", { className: "ec-load-more", type: "button", onClick: () => setVisibleCount((count) => count + pageSize), children: [
+        "Show more (",
+        (filtered.length - visibleCount).toLocaleString(),
+        " left)"
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", { className: "ec-footer", children: [
+      showBranding ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { className: "ec-credit", href: EMOJI_ATTRIBUTION_URL, target: "_blank", rel: "noopener noreferrer", children: "Emoji by Cursor Style \u2197" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {}),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("i", {}),
+        " ",
+        catalog2.length.toLocaleString(),
+        " icons"
+      ] })
+    ] })
+  ] });
+}
+function categoryGlyph(category) {
+  const normalized = category.toLowerCase();
+  if (normalized.includes("smiley")) return "\u263A";
+  if (normalized.includes("people")) return "\u263B";
+  if (normalized.includes("animal")) return "\u2667";
+  if (normalized.includes("food")) return "\u25C9";
+  if (normalized.includes("travel")) return "\u2316";
+  if (normalized.includes("activit")) return "\u2726";
+  if (normalized.includes("object")) return "\u25A3";
+  if (normalized.includes("symbol")) return "\u25C8";
+  if (normalized.includes("flag")) return "\u2691";
+  return "\u25CC";
+}
+
+// src/EmojiComposer.tsx
+var import_jsx_runtime2 = require("react/jsx-runtime");
+function EmojiComposer({
+  value,
+  defaultValue = "",
+  onChange,
+  onEmojiSelect,
+  placeholder = "Write a message\u2026",
+  assetBaseUrl,
+  showBranding,
+  className = "",
+  label = "Message composer",
+  rows = 3
+}) {
+  const [internalValue, setInternalValue] = (0, import_react2.useState)(defaultValue);
+  const [open, setOpen] = (0, import_react2.useState)(false);
+  const textareaRef = (0, import_react2.useRef)(null);
+  const rootRef = (0, import_react2.useRef)(null);
+  const pickerId = (0, import_react2.useId)();
+  const text = value ?? internalValue;
+  (0, import_react2.useEffect)(() => {
+    if (!open) return;
+    const closeOnOutsidePointer = (event) => {
+      if (event.target instanceof Node && !rootRef.current?.contains(event.target)) setOpen(false);
+    };
+    window.addEventListener("pointerdown", closeOnOutsidePointer);
+    return () => window.removeEventListener("pointerdown", closeOnOutsidePointer);
+  }, [open]);
+  const updateValue = (next) => {
+    if (value === void 0) setInternalValue(next);
+    onChange?.(next);
+  };
+  const handleChange = (event) => updateValue(event.target.value);
+  const insertEmoji = (selection) => {
+    const area = textareaRef.current;
+    const start = area?.selectionStart ?? text.length;
+    const end = area?.selectionEnd ?? text.length;
+    const next = `${text.slice(0, start)}${selection.text}${text.slice(end)}`;
+    updateValue(next);
+    onEmojiSelect?.(selection);
+    setOpen(false);
+    requestAnimationFrame(() => {
+      if (!area) return;
+      area.focus();
+      const cursor = start + selection.text.length;
+      area.setSelectionRange(cursor, cursor);
+    });
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(
+    "div",
+    {
+      ref: rootRef,
+      className: `ec-composer ${className}`.trim(),
+      onKeyDown: (event) => {
+        if (event.key === "Escape" && open) setOpen(false);
+      },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "ec-composer-field", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+            "textarea",
+            {
+              ref: textareaRef,
+              value: text,
+              onChange: handleChange,
+              rows,
+              placeholder,
+              "aria-label": label
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "ec-composer-tools", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "ec-composer-hint", children: "Add a little feeling" }),
+            /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+              "button",
+              {
+                type: "button",
+                className: `ec-trigger${open ? " is-active" : ""}`,
+                onClick: () => setOpen((current) => !current),
+                "aria-label": open ? "Close emoji picker" : "Open emoji picker",
+                "aria-expanded": open,
+                "aria-controls": pickerId,
+                children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { "aria-hidden": "true", children: "\u263A" })
+              }
+            )
+          ] })
+        ] }),
+        open && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "ec-popover", id: pickerId, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(EmojiPicker, { onSelect: insertEmoji, assetBaseUrl, showBranding, label: "Choose an emoji" }) })
+      ]
+    }
+  );
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  EMOJI_ASSET_CDN_BASE_URL,
+  EMOJI_ASSET_SIZES,
+  EMOJI_ATTRIBUTION_URL,
+  EmojiComposer,
+  EmojiPicker,
+  SKIN_TONES,
+  getEmojiAssetUrl,
+  getEmojiById,
+  getEmojiCatalog,
+  getEmojiCategories,
+  getEmojiText,
+  searchEmojis
+});
+//# sourceMappingURL=index.cjs.map

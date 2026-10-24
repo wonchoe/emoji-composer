@@ -1,0 +1,11 @@
+node_modules/
+demo-dist/
+assets/webp/
+asset-build-summary.json
+cdn-upload-summary.json
+*.tgz
+.env
+.env.*
+.npmrc
+.DS_Store
+Thumbs.db
