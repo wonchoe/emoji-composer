@@ -14,6 +14,7 @@
 <p align="center">
   <a href="https://cursor.style/emoji/"><img src="https://img.shields.io/badge/EXPLORE-THE_COLLECTION-d6ef78?style=flat-square&labelColor=252820&color=d6ef78" alt="Explore the collection"></a>
   <a href="https://github.com/wonchoe/emoji-composer/releases"><img src="https://img.shields.io/github/v/release/wonchoe/emoji-composer?style=flat-square&labelColor=252820&color=d6ef78" alt="Latest release"></a>
+  <a href="https://www.npmjs.com/package/emoji-composer"><img src="https://img.shields.io/npm/v/emoji-composer?style=flat-square&labelColor=252820&color=d6ef78" alt="npm version"></a>
   <a href="https://packagist.org/packages/cursor-style/emoji"><img src="https://img.shields.io/packagist/v/cursor-style/emoji?style=flat-square&labelColor=252820&color=d6ef78" alt="Packagist version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-d6ef78?style=flat-square&labelColor=252820" alt="MIT license"></a>
 </p>
@@ -21,6 +22,8 @@
 <p align="center">
   <a href="https://cursor.style/emoji/">Live collection</a> &nbsp; · &nbsp;
   <a href="https://cursor.style/emoji/#playground">Try the composer</a> &nbsp; · &nbsp;
+  <a href="https://www.npmjs.com/package/emoji-composer">npm</a> &nbsp; · &nbsp;
+  <a href="https://packagist.org/packages/cursor-style/emoji">Packagist</a> &nbsp; · &nbsp;
   <a href="docs/usage.md">Usage guide</a> &nbsp; · &nbsp;
   <a href="https://github.com/wonchoe/emoji-composer/releases/tag/v1.0.0">Downloads</a>
 </p>
