@@ -175,6 +175,12 @@ getEmojiVariantById("1faf1-1f3fb-200d-1faf2-1f3fc");
 
 The packages contain code and searchable metadata; PNGs load on demand from the CDN. To use your own asset host, set `assetBaseUrl` on the React components, `baseUrl` in the URL helper, or pass the base URL to PHP's `EmojiCatalog` constructor.
 
+### Download the complete artwork
+
+The **[artwork v2.0.0 release](https://github.com/wonchoe/emoji-composer/releases/tag/assets-v2.0.0)** contains all **31,704 PNGs** in eight sizes, including the **3,963 original 1024px masters**. Archives are grouped by size; the 1024px set has five independent ZIP parts. Download every release asset, verify `SHA256SUMS.txt`, and extract all ZIPs into the same directory to restore `v2.0.0/assets/png/`.
+
+The release includes a restoration guide, the MIT license, and a SHA-256 manifest for every PNG. You can also download only the size you need. Artwork releases use `assets-*` tags; package versions retain their existing `v*` tags.
+
 ## Make it yours
 
 - **[Usage guide](https://github.com/wonchoe/emoji-composer/blob/main/docs/usage.md)** - picker props, data helpers, theme variables, focus behavior, tones, and local development.
