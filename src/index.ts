@@ -10,9 +10,13 @@ export {
   getEmojiCatalog,
   getEmojiCategories,
   getEmojiText,
+  getEmojiToneVariant,
+  getEmojiToneVariants,
+  getEmojiVariantById,
   searchEmojis,
   type EmojiAssetSize,
   type EmojiRecord,
   type EmojiSelection,
+  type EmojiToneVariant,
   type SkinTone,
 } from "./catalog.js";

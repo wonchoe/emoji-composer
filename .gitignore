@@ -9,3 +9,5 @@ cdn-upload-summary.json
 .npmrc
 .DS_Store
 Thumbs.db
+design-*.png
+hover-border-preview.png

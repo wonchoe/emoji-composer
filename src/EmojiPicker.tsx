@@ -5,6 +5,7 @@ import {
   getEmojiAssetUrl,
   getEmojiCategories,
   getEmojiCatalog,
+  getEmojiToneVariant,
   getEmojiText,
   SKIN_TONES,
   type EmojiAssetSize,
@@ -25,6 +26,9 @@ export interface EmojiPickerProps {
   className?: string;
   label?: string;
   pageSize?: number;
+  autoFocus?: boolean;
+  enableSearchShortcut?: boolean;
+  selectedId?: string;
 }
 
 const toneChoices: Array<{ id: SkinTone | null; label: string; swatch: string }> = [
@@ -44,6 +48,9 @@ export function EmojiPicker({
   className = "",
   label = "Emoji picker",
   pageSize = 96,
+  autoFocus = false,
+  enableSearchShortcut = true,
+  selectedId,
 }: EmojiPickerProps) {
   const catalog = getEmojiCatalog();
   const categories = useMemo(() => getEmojiCategories(), []);
@@ -52,19 +59,30 @@ export function EmojiPicker({
   const [visibleCount, setVisibleCount] = useState(pageSize);
   const [localTone, setLocalTone] = useState<SkinTone | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const activeTone = skinTone === undefined ? localTone : skinTone;
 
   useEffect(() => {
+    if (!enableSearchShortcut) return;
     const focusSearch = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault();
-        searchRef.current?.focus();
-      }
+      if (event.defaultPrevented || !(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "k") return;
+      const searches = Array.from(document.querySelectorAll<HTMLInputElement>('input[data-ec-shortcut="true"]'))
+        .filter((input) => input.getClientRects().length > 0);
+      const activePicker = document.activeElement?.closest(".ec-picker");
+      const target = searches.find((input) => input.closest(".ec-popover"))
+        ?? searches.find((input) => activePicker?.contains(input))
+        ?? searches[0];
+      if (target !== searchRef.current) return;
+      event.preventDefault();
+      target.focus();
     };
     window.addEventListener("keydown", focusSearch);
-    searchRef.current?.focus();
     return () => window.removeEventListener("keydown", focusSearch);
-  }, []);
+  }, [enableSearchShortcut]);
+
+  useEffect(() => {
+    if (gridRef.current) gridRef.current.scrollTop = 0;
+  }, [query, category]);
 
   const filtered = useMemo(() => {
     const needle = query.trim().toLocaleLowerCase();
@@ -84,10 +102,11 @@ export function EmojiPicker({
   };
 
   const choose = (item: EmojiRecord) => {
+    const toneVariant = activeTone ? getEmojiToneVariant(item, activeTone) : undefined;
     onSelect({
       ...item,
-      skinTone: item.supportsSkinTone ? activeTone : null,
-      text: getEmojiText(item, activeTone),
+      skinTone: toneVariant ? activeTone : null,
+      text: getEmojiText(item, toneVariant ? activeTone : null),
       assetUrl: getEmojiAssetUrl(item, { size, skinTone: activeTone, baseUrl: assetBaseUrl }),
     });
   };
@@ -105,11 +124,13 @@ export function EmojiPicker({
           type="search"
           value={query}
           onChange={(event) => { setQuery(event.target.value); setVisibleCount(pageSize); }}
-          placeholder="Search 1,914 emojis"
+          placeholder={`Search ${catalog.length.toLocaleString()} emojis`}
           aria-label="Search emojis"
           autoComplete="off"
+          autoFocus={autoFocus}
+          data-ec-shortcut={enableSearchShortcut}
         />
-        <kbd className="ec-shortcut">Ctrl / ⌘ K</kbd>
+        {enableSearchShortcut && <kbd className="ec-shortcut">Ctrl / ⌘ K</kbd>}
       </div>
 
       {showSkinTonePicker && (
@@ -137,6 +158,7 @@ export function EmojiPicker({
         <button
           type="button"
           className={`ec-category${category === "All" ? " is-active" : ""}`}
+          aria-pressed={category === "All"}
           onClick={() => { setCategory("All"); setVisibleCount(pageSize); }}
         >All</button>
         {categories.map((entry) => (
@@ -146,9 +168,10 @@ export function EmojiPicker({
             className={`ec-category${category === entry ? " is-active" : ""}`}
             onClick={() => { setCategory(entry); setVisibleCount(pageSize); }}
             title={entry}
+            aria-pressed={category === entry}
           >
-            {categoryGlyph(entry)}
-            <span>{entry}</span>
+            <span className="ec-category-icon" aria-hidden="true">{categoryGlyph(entry)}</span>
+            <span className="ec-category-label">{entry}</span>
           </button>
         ))}
       </nav>
@@ -166,17 +189,21 @@ export function EmojiPicker({
         </div>
       ) : (
         <>
-          <div className="ec-grid" role="list" aria-label="Emoji results">
+          <div ref={gridRef} className="ec-grid-scroll">
+          <div className="ec-grid" role="group" aria-label="Emoji results">
             {filtered.slice(0, visibleCount).map((item) => {
-              const url = getEmojiAssetUrl(item, { size, skinTone: activeTone, baseUrl: assetBaseUrl });
+              const toneVariant = activeTone ? getEmojiToneVariant(item, activeTone) : undefined;
+              const renderedTone = toneVariant ? activeTone : null;
+              const url = getEmojiAssetUrl(item, { size, skinTone: renderedTone, baseUrl: assetBaseUrl });
               return (
                 <button
                   type="button"
-                  className="ec-emoji"
+                  className={`ec-emoji${selectedId === item.id ? " is-selected" : ""}`}
                   key={item.id}
                   onClick={() => choose(item)}
-                  title={`${item.name}${item.supportsSkinTone && activeTone ? ` · ${activeTone}` : ""}`}
-                  aria-label={`${item.name}${item.supportsSkinTone && activeTone ? `, ${activeTone} skin tone` : ""}`}
+                  title={`${item.name}${renderedTone ? ` · ${renderedTone}` : ""}`}
+                  aria-label={`${item.name}${renderedTone ? `, ${renderedTone} skin tone` : ""}`}
+                  aria-pressed={selectedId === undefined ? undefined : selectedId === item.id}
                 >
                   <img
                     src={url}
@@ -185,12 +212,14 @@ export function EmojiPicker({
                     loading="lazy"
                     width={size}
                     height={size}
+                    onLoad={(event) => { event.currentTarget.style.display = ""; event.currentTarget.nextElementSibling?.classList.remove("is-visible"); }}
                     onError={(event) => { event.currentTarget.style.display = "none"; event.currentTarget.nextElementSibling?.classList.add("is-visible"); }}
                   />
-                  <span className="ec-emoji-fallback" aria-hidden="true">{getEmojiText(item, activeTone)}</span>
+                  <span className="ec-emoji-fallback" aria-hidden="true">{getEmojiText(item, renderedTone)}</span>
                 </button>
               );
             })}
+          </div>
           </div>
           {visibleCount < filtered.length && (
             <button className="ec-load-more" type="button" onClick={() => setVisibleCount((count) => count + pageSize)}>

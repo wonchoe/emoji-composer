@@ -1,0 +1,13 @@
+{
+  "name": "cursor-style/emoji",
+  "description": "Original Cursor Style 3D emoji catalog with exact Unicode skin-tone variants and PNG URLs from 16 to 1024 pixels.",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://cursor.style/emoji/",
+  "keywords": ["emoji", "unicode", "skin-tone", "cursor-style", "png"],
+  "authors": [{"name": "Cursor Style", "homepage": "https://cursor.style/"}],
+  "require": {"php": ">=8.1", "ext-json": "*"},
+  "autoload": {"psr-4": {"CursorStyle\\Emoji\\": "php/src/"}},
+  "support": {"source": "https://github.com/wonchoe/emoji-composer", "issues": "https://github.com/wonchoe/emoji-composer/issues"},
+  "archive": {"exclude": ["/node_modules", "/demo", "/demo-dist", "/dist", "/src", "/deploy", "/tools", "/.github", "/*.png", "/package-lock.json"]}
+}

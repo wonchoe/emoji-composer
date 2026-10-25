@@ -16,14 +16,16 @@
       "require": "./dist/index.cjs"
     },
     "./styles.css": "./dist/styles.css",
-    "./catalog": "./data/emojis.json"
+    "./catalog": "./data/emojis.json",
+    "./tone-variants": "./data/tone-variants.json",
+    "./tone-aliases": "./data/tone-aliases.json"
   },
   "files": ["dist", "data", "README.md", "LICENSE"],
   "repository": {
     "type": "git",
     "url": "https://github.com/wonchoe/emoji-composer.git"
   },
-  "homepage": "https://cursor.style/",
+  "homepage": "https://cursor.style/emoji/",
   "bugs": {
     "url": "https://github.com/wonchoe/emoji-composer/issues"
   },
@@ -45,12 +47,14 @@
   "scripts": {
     "build": "tsup && node -e \"require('node:fs').copyFileSync('src/styles.css','dist/styles.css')\"",
     "dev": "vite --config vite.config.ts",
+    "build:site": "vite build --config vite.config.ts --base=/emoji/",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/node": "^22.0.0",
     "@vitejs/plugin-react": "^4.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

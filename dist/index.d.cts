@@ -4,12 +4,23 @@ type SkinTone = "light" | "medium-light" | "medium" | "medium-dark" | "dark";
 type EmojiAssetSize = 16 | 24 | 32 | 64 | 128 | 256 | 512 | 1024;
 interface EmojiRecord {
     id: string;
+    unicode: string;
     emoji: string;
     name: string;
     category: string;
     subcategory: string;
     supportsSkinTone: boolean;
     file: string;
+}
+interface EmojiToneVariant {
+    emoji: string;
+    unicode: string;
+    baseUnicode: string;
+    skinTones: SkinTone[];
+    file: string;
+    name: string;
+    category: string;
+    subcategory: string;
 }
 interface EmojiSelection extends EmojiRecord {
     skinTone: SkinTone | null;
@@ -24,9 +35,12 @@ declare const SKIN_TONES: ReadonlyArray<{
 }>;
 declare const EMOJI_ASSET_SIZES: ReadonlyArray<EmojiAssetSize>;
 declare const EMOJI_ATTRIBUTION_URL = "https://cursor.style/?utm_source=emoji-composer&utm_medium=package&utm_campaign=emoji-catalog";
-declare const EMOJI_ASSET_CDN_BASE_URL = "https://cdn.cursor.style/emoji-composer/v1.0.0/assets/webp";
+declare const EMOJI_ASSET_CDN_BASE_URL = "https://cursor.style/emoji/v2.0.0/png";
 declare function getEmojiCatalog(): readonly EmojiRecord[];
 declare function getEmojiById(id: string): EmojiRecord | undefined;
+declare function getEmojiVariantById(id: string): EmojiToneVariant | undefined;
+declare function getEmojiToneVariants(): readonly EmojiToneVariant[];
+declare function getEmojiToneVariant(emoji: EmojiRecord | string, tone: SkinTone): EmojiToneVariant | undefined;
 declare function getEmojiCategories(): string[];
 declare function searchEmojis(query: string, category?: string): EmojiRecord[];
 declare function getEmojiAssetUrl(emoji: EmojiRecord | string, options?: {
@@ -62,7 +76,10 @@ interface EmojiPickerProps {
     className?: string;
     label?: string;
     pageSize?: number;
+    autoFocus?: boolean;
+    enableSearchShortcut?: boolean;
+    selectedId?: string;
 }
-declare function EmojiPicker({ onSelect, assetBaseUrl, size, initialCategory, skinTone, onSkinToneChange, showSkinTonePicker, showBranding, className, label, pageSize, }: EmojiPickerProps): react.JSX.Element;
+declare function EmojiPicker({ onSelect, assetBaseUrl, size, initialCategory, skinTone, onSkinToneChange, showSkinTonePicker, showBranding, className, label, pageSize, autoFocus, enableSearchShortcut, selectedId, }: EmojiPickerProps): react.JSX.Element;
 
-export { EMOJI_ASSET_CDN_BASE_URL, EMOJI_ASSET_SIZES, EMOJI_ATTRIBUTION_URL, type EmojiAssetSize, EmojiComposer, type EmojiComposerProps, EmojiPicker, type EmojiPickerProps, type EmojiRecord, type EmojiSelection, SKIN_TONES, type SkinTone, getEmojiAssetUrl, getEmojiById, getEmojiCatalog, getEmojiCategories, getEmojiText, searchEmojis };
+export { EMOJI_ASSET_CDN_BASE_URL, EMOJI_ASSET_SIZES, EMOJI_ATTRIBUTION_URL, type EmojiAssetSize, EmojiComposer, type EmojiComposerProps, EmojiPicker, type EmojiPickerProps, type EmojiRecord, type EmojiSelection, type EmojiToneVariant, SKIN_TONES, type SkinTone, getEmojiAssetUrl, getEmojiById, getEmojiCatalog, getEmojiCategories, getEmojiText, getEmojiToneVariant, getEmojiToneVariants, getEmojiVariantById, searchEmojis };

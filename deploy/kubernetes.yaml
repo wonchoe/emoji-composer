@@ -1,0 +1,146 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cursor-style-emoji-nginx
+  namespace: cursor-style
+data:
+  nginx.conf: |
+    worker_processes auto;
+    pid /tmp/nginx.pid;
+    error_log /dev/stderr warn;
+    events { worker_connections 512; }
+    http {
+      include /etc/nginx/mime.types;
+      default_type application/octet-stream;
+      access_log /dev/stdout;
+      server_tokens off;
+      resolver 10.43.0.10 valid=300s ipv6=off;
+      proxy_cache_path /tmp/emoji-cache levels=1:2 keys_zone=emoji:8m max_size=128m inactive=24h use_temp_path=off;
+      proxy_temp_path /tmp/proxy;
+      client_body_temp_path /tmp/client;
+      fastcgi_temp_path /tmp/fastcgi;
+      uwsgi_temp_path /tmp/uwsgi;
+      scgi_temp_path /tmp/scgi;
+      gzip on;
+      gzip_types application/javascript text/css application/json image/svg+xml;
+      map $uri $emoji_object {
+        default $uri;
+        /emoji/ /emoji/index.html;
+      }
+      map $uri $emoji_cache_control {
+        default "public, max-age=300, s-maxage=300";
+        ~^/emoji/v2\.0\.0/ "public, max-age=31536000, immutable";
+        ~^/emoji/assets/ "public, max-age=31536000, immutable";
+      }
+      server {
+        listen 8080;
+        proxy_ssl_server_name on;
+        proxy_ssl_name cdn.cursor.style;
+        proxy_ssl_verify on;
+        proxy_ssl_trusted_certificate /etc/ssl/certs/ca-certificates.crt;
+        proxy_set_header Host cdn.cursor.style;
+        proxy_set_header Cookie "";
+        proxy_set_header Authorization "";
+        proxy_hide_header Set-Cookie;
+        proxy_hide_header Cache-Control;
+        proxy_hide_header Access-Control-Allow-Origin;
+        proxy_hide_header Access-Control-Expose-Headers;
+        proxy_hide_header Cross-Origin-Resource-Policy;
+        proxy_cache emoji;
+        proxy_cache_key $emoji_object;
+        proxy_cache_valid 200 1h;
+        proxy_cache_valid 404 0s;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout 30s;
+        add_header Cache-Control $emoji_cache_control;
+        add_header Access-Control-Allow-Origin "*" always;
+        add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
+        add_header Access-Control-Expose-Headers "ETag, Content-Length" always;
+        add_header Cross-Origin-Resource-Policy cross-origin always;
+        add_header X-Content-Type-Options nosniff always;
+        add_header X-Emoji-Origin-Cache $upstream_cache_status always;
+        location = /healthz { access_log off; return 200 "ok\n"; }
+        location = /emoji { return 308 https://cursor.style/emoji/; }
+        location = /emoji/ {
+          limit_except GET HEAD { deny all; }
+          proxy_cache_valid 200 5m;
+          proxy_pass https://cdn.cursor.style$emoji_object;
+        }
+        location ~ ^/emoji/(v2\.0\.0/(png/(16|24|32|64|128|256|512|1024)/((skin|fix|clean2)-)?[0-9a-f-]+\.png|manifest\.json)|assets/[A-Za-z0-9_-]+\.(js|css)|social\.png|LICENSE|index\.html)$ {
+          if ($request_method = OPTIONS) { return 204; }
+          limit_except GET HEAD OPTIONS { deny all; }
+          proxy_pass https://cdn.cursor.style$emoji_object;
+        }
+        location / { add_header Cache-Control "no-store" always; return 404; }
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cursor-style-emoji
+  namespace: cursor-style
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels: {app: cursor-style-emoji}
+  template:
+    metadata:
+      annotations: {emoji.cursor.style/config-revision: "2026-10-25-2"}
+      labels: {app: cursor-style-emoji}
+    spec:
+      automountServiceAccountToken: false
+      securityContext: {runAsNonRoot: true, runAsUser: 101, runAsGroup: 101, fsGroup: 101}
+      containers:
+      - name: nginx
+        image: nginx:stable-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+        command: [nginx, -g, "daemon off;"]
+        ports: [{containerPort: 8080}]
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities: {drop: [ALL]}
+        resources:
+          requests: {cpu: 10m, memory: 32Mi}
+          limits: {cpu: 250m, memory: 128Mi}
+        readinessProbe:
+          httpGet: {path: /healthz, port: 8080}
+          initialDelaySeconds: 2
+          periodSeconds: 5
+        livenessProbe:
+          httpGet: {path: /healthz, port: 8080}
+          initialDelaySeconds: 5
+          periodSeconds: 15
+        volumeMounts:
+        - {name: nginx-config, mountPath: /etc/nginx/nginx.conf, subPath: nginx.conf, readOnly: true}
+        - {name: temporary, mountPath: /tmp}
+      volumes:
+      - name: nginx-config
+        configMap: {name: cursor-style-emoji-nginx}
+      - name: temporary
+        emptyDir: {sizeLimit: 256Mi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cursor-style-emoji
+  namespace: cursor-style
+spec:
+  selector: {app: cursor-style-emoji}
+  ports: [{port: 80, targetPort: 8080}]
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: cursor-style-emoji
+  namespace: cursor-style
+spec:
+  entryPoints: [web, websecure]
+  routes:
+  - match: Host(`cursor.style`) && (Path(`/emoji`) || PathPrefix(`/emoji/`))
+    kind: Rule
+    priority: 100
+    services: [{name: cursor-style-emoji, port: 80}]
+  tls:
+    certResolver: cloudflare
