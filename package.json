@@ -1,11 +1,11 @@
 {
   "name": "emoji-composer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A searchable React emoji composer by Cursor Style with original 3D emoji artwork and skin-tone variants.",
   "author": "Cursor Style",
   "license": "MIT",
   "type": "module",
-  "sideEffects": ["**/*.css"],
+  "sideEffects": ["**/*.css", "./dist/element.js", "./dist/element.cjs"],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,6 +14,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./element": {
+      "types": "./dist/element.d.ts",
+      "import": "./dist/element.js",
+      "require": "./dist/element.cjs"
     },
     "./styles.css": "./dist/styles.css",
     "./catalog": "./data/emojis.json",
@@ -43,6 +48,10 @@
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "react-dom": { "optional": true }
   },
   "scripts": {
     "build": "tsup && node -e \"require('node:fs').copyFileSync('src/styles.css','dist/styles.css')\"",

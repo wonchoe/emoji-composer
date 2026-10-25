@@ -63,6 +63,11 @@ export function EmojiPicker({
   const activeTone = skinTone === undefined ? localTone : skinTone;
 
   useEffect(() => {
+    // Wait until the portal parent's ref exists before moving focus into it.
+    if (autoFocus) searchRef.current?.focus({ preventScroll: true });
+  }, [autoFocus]);
+
+  useEffect(() => {
     if (!enableSearchShortcut) return;
     const focusSearch = (event: KeyboardEvent) => {
       if (event.defaultPrevented || !(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "k") return;
@@ -127,7 +132,6 @@ export function EmojiPicker({
           placeholder={`Search ${catalog.length.toLocaleString()} emojis`}
           aria-label="Search emojis"
           autoComplete="off"
-          autoFocus={autoFocus}
           data-ec-shortcut={enableSearchShortcut}
         />
         {enableSearchShortcut && <kbd className="ec-shortcut">Ctrl / ⌘ K</kbd>}

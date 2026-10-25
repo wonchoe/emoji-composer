@@ -1,4 +1,6 @@
 export { EmojiComposer, type EmojiComposerProps } from "./EmojiComposer.js";
+export { Emoji, type EmojiProps } from "./Emoji.js";
+export { getEmojiByName, getEmojiSlug } from "./image.js";
 export { EmojiPicker, type EmojiPickerProps } from "./EmojiPicker.js";
 export {
   EMOJI_ASSET_CDN_BASE_URL,

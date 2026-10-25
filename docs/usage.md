@@ -8,6 +8,45 @@ A searchable React emoji composer by [Cursor Style](https://cursor.style/), back
 npm install emoji-composer
 ```
 
+## Single emoji images and tags (1.1+)
+
+For a direct image, use `getEmojiAssetUrl()` or PHP's `imageUrl()`. For reusable tags, connect the package once:
+
+```html
+<script type="module" src="https://cursor.style/emoji/assets/emoji-element-v1-1-0.js"></script>
+<cs-emoji name="waving-hand" size="32" tone="medium"></cs-emoji>
+```
+
+In an npm application, use `import "emoji-composer/element"` instead of the script tag. This DOM entry has no React dependency and can also be imported during server rendering. It registers `cs-emoji` when a browser DOM is available. Attributes update the rendered image without a page reload.
+
+| Attribute | Default | Purpose |
+| --- | --- | --- |
+| `name` | Required | A readable base name (`waving-hand`), glyph, or exact Unicode ID. |
+| `size` | `32` | One of 16, 24, 32, 64, 128, 256, 512, 1024; both PNG resolution and display size. |
+| `tone` | `original` | `light`, `medium-light`, `medium`, `medium-dark`, or `dark`. |
+| `base-url` | Cursor Style CDN | Custom PNG host. |
+| `label` | Catalog name | Accessible image label. |
+
+Unknown names and unsupported sizes/tones expose a `data-error` attribute and hide the image. Exact tone IDs determine their own tone. If a readable name is ambiguous, use its Unicode ID.
+
+React has a dedicated image component and does not need the element loader or CSS:
+
+```tsx
+import { Emoji } from "emoji-composer";
+<Emoji name="waving-hand" size={32} skinTone="medium" alt="Hello" />;
+```
+
+`Emoji` also accepts standard image props such as `className`, `style`, `loading`, and `onClick`, plus `assetBaseUrl`. Its image source and dimensions come from the catalog. Invalid names or sizes throw a `RangeError`. React and React DOM remain necessary for the React entries; the web element entry works without them.
+
+PHP can generate the complete tag, with safely escaped URL and alternative text:
+
+```php
+echo $emoji->imageTag('👋', 32, 'medium');
+echo $emoji->imageTag('👋', 32, 'medium', 'Hello');
+```
+
+The catalog's live preview displays the selected size at 1:1. Oversized images scroll inside the preview. **Direct image** copies a URL or an image tag; **Package tag** provides one-time setup and HTML, React, and PHP usage snippets.
+
 ## Add the composer
 
 ```tsx

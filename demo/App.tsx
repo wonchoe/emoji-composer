@@ -1,6 +1,7 @@
-import { useState, type CSSProperties } from "react";
+import { createElement, useEffect, useRef, useState, type CSSProperties } from "react";
+import "../src/element.js";
 import {
-  EmojiComposer, EmojiPicker, EMOJI_ASSET_SIZES, EMOJI_ASSET_CDN_BASE_URL, SKIN_TONES,
+  Emoji, EmojiComposer, EmojiPicker, EMOJI_ASSET_SIZES, EMOJI_ASSET_CDN_BASE_URL, SKIN_TONES, getEmojiByName, getEmojiSlug,
   getEmojiAssetUrl, getEmojiById, getEmojiCatalog, getEmojiText, getEmojiToneVariant,
   getEmojiToneVariants, type EmojiAssetSize, type EmojiRecord, type EmojiSelection, type SkinTone,
 } from "../src/index.js";
@@ -10,7 +11,9 @@ const catalog = getEmojiCatalog();
 const toneCount = getEmojiToneVariants().length;
 const toneChoices = [{ id: null, label: "Original yellow" }, ...SKIN_TONES] as const;
 const copyFormats = ["HTML", "React", "URL", "Unicode"] as const;
-type CopyFormat = typeof copyFormats[number];
+const packageFormats = ["HTML", "React", "PHP"] as const;
+type CopyFormat = typeof copyFormats[number] | "PHP";
+const elementScript = "https://cursor.style/emoji/assets/emoji-element-v1-1-0.js";
 const htmlEntities: Record<string, string> = { "&": "&amp;", '"': "&quot;", "<": "&lt;", ">": "&gt;" };
 const featured = [
   { id: "1f60e", label: "Stay cool", color: "#eff0de" },
@@ -42,11 +45,13 @@ function CopyIcon() {
 export function App() {
   const [selected, setSelected] = useState<EmojiRecord>(() => getEmojiById("1f44b")!);
   const [tone, setTone] = useState<SkinTone | null>(null);
-  const [size, setSize] = useState<EmojiAssetSize>(256);
+  const [size, setSize] = useState<EmojiAssetSize>(128);
   const [darkPreview, setDarkPreview] = useState(false);
   const [message, setMessage] = useState("Hey! A little something to brighten your day ");
   const [copyStatus, setCopyStatus] = useState("");
   const [copyFormat, setCopyFormat] = useState<CopyFormat>("HTML");
+  const [copyMethod, setCopyMethod] = useState<"direct" | "package">("direct");
+  const previewRef = useRef<HTMLDivElement>(null);
   const [codeCopied, setCodeCopied] = useState(false);
   const selectedTone = selected.supportsSkinTone ? tone : null;
   const variant = selectedTone ? getEmojiToneVariant(selected, selectedTone) : undefined;
@@ -55,12 +60,31 @@ export function App() {
   const publicAssetUrl = getEmojiAssetUrl(selected, { size, skinTone: selectedTone, baseUrl: EMOJI_ASSET_CDN_BASE_URL });
   const selectedName = variant?.name ?? selected.name;
   const imageAlt = selectedName.replace(/[&"<>]/g, character => htmlEntities[character]!);
-  const copyValues: Record<CopyFormat, string> = {
+  const slug = getEmojiSlug(selected);
+  const tagName = getEmojiByName(slug)?.id === selected.id ? slug : selected.id;
+  const directValues: Partial<Record<CopyFormat, string>> = {
     HTML: `<img src="${publicAssetUrl}"\n  width="${size}" height="${size}"\n  alt="${imageAlt}" />`,
     React: `<img src="${publicAssetUrl}"\n  width={${size}} height={${size}}\n  alt={${JSON.stringify(selectedName)}} />`,
     URL: publicAssetUrl,
     Unicode: selectedText,
   };
+  const packageValues: Partial<Record<CopyFormat, string>> = {
+    HTML: `<cs-emoji name="${tagName}" size="${size}"${selectedTone ? ` tone="${selectedTone}"` : ""}></cs-emoji>`,
+    React: `<Emoji name="${tagName}" size={${size}}${selectedTone ? ` skinTone="${selectedTone}"` : ""} />`,
+    PHP: `<?= $emoji->imageTag('${selected.id}', ${size}, '${selectedTone ?? "original"}') ?>`,
+  };
+  const setupValues: Partial<Record<CopyFormat, string>> = {
+    HTML: `<script type="module"\n  src="${elementScript}"></script>`,
+    React: `// npm install emoji-composer@^1.1.0 react react-dom\nimport { Emoji } from "emoji-composer";`,
+    PHP: `<?php\n// composer require cursor-style/emoji:^1.1\nrequire __DIR__ . '/vendor/autoload.php';\n$emoji = new \\CursorStyle\\Emoji\\EmojiCatalog();\n?>`,
+  };
+  const usageCode = (copyMethod === "direct" ? directValues : packageValues)[copyFormat] ?? "";
+  useEffect(() => {
+    const preview = previewRef.current;
+    if (!preview) return;
+    preview.scrollLeft = Math.max(0, (preview.scrollWidth - preview.clientWidth) / 2);
+    preview.scrollTop = Math.max(0, (preview.scrollHeight - preview.clientHeight) / 2);
+  }, [size, selected.id, selectedTone, copyMethod, copyFormat]);
 
   function selectEmoji(selection: EmojiSelection) {
     setSelected(selection);
@@ -75,11 +99,16 @@ export function App() {
 
   async function copyEmoji() {
     try {
-      await navigator.clipboard.writeText(copyValues[copyFormat]);
+      await navigator.clipboard.writeText(usageCode);
       setCopyStatus(copyFormat === "Unicode" ? "Unicode copied. Its appearance depends on your device." : `${copyFormat} copied. Ready to use your Cursor Style artwork.`);
     } catch {
       setCopyStatus("Could not copy automatically. Select the code above and copy it.");
     }
+  }
+
+  async function copySetup() {
+    try { await navigator.clipboard.writeText(setupValues[copyFormat] ?? ""); setCopyStatus("Setup copied. Add it once, then use the emoji tag."); }
+    catch { setCopyStatus("Could not copy automatically. Select the setup code to copy it."); }
   }
 
   async function copyCode() {
@@ -135,8 +164,12 @@ export function App() {
               <div className={`detail-stage${darkPreview ? " is-dark" : ""}`}>
                 <span className="detail-stage-label">A CLOSER LOOK</span>
                 <button className="preview-theme" type="button" onClick={() => setDarkPreview(!darkPreview)} aria-label={darkPreview ? "Use light preview background" : "Use dark preview background"} title="Change preview background"><span aria-hidden="true">{darkPreview ? "☀" : "◐"}</span></button>
-                <img key={`${selected.id}:${selectedTone}`} src={asset(selected, 512, selectedTone)} alt={variant?.name ?? selected.name}/>
-                <span className="transparency-label"><span/> Transparent PNG</span>
+                <div className="detail-image-viewport" ref={previewRef}><div className="detail-image-canvas">
+                  {copyMethod === "package" && copyFormat === "HTML"
+                    ? createElement("cs-emoji", { name: selected.id, size: String(size), tone: selectedTone ?? "original", "base-url": LOCAL_ASSETS })
+                    : <Emoji name={selected.id} size={size} skinTone={selectedTone} assetBaseUrl={LOCAL_ASSETS} />}
+                </div></div>
+                <span className="transparency-label"><span/> {size} × {size} px · 1:1{size > 128 ? " · scroll to explore" : ""}</span>
               </div>
               <div className="detail-content">
                 <div className="detail-category">{selected.category}</div>
@@ -149,9 +182,14 @@ export function App() {
                 <div className="size-options" aria-label="PNG image size">{EMOJI_ASSET_SIZES.map(option => <button type="button" key={option} aria-pressed={size === option} onClick={() => { setSize(option); setCopyStatus(""); }}>{option}</button>)}</div>
                 <div className="embed-options">
                   <span className="field-label">USE THIS EMOJI</span>
-                  <div className="copy-formats" role="group" aria-label="Copy format">{copyFormats.map(format => <button type="button" key={format} aria-pressed={copyFormat === format} onClick={() => { setCopyFormat(format); setCopyStatus(""); }}>{format}</button>)}</div>
-                  <pre className="embed-code" aria-label={`${copyFormat} to copy`} tabIndex={0}><code>{copyValues[copyFormat]}</code></pre>
-                  <p className="embed-help">{copyFormat === "Unicode" ? "Plain text emoji. Your device chooses its appearance." : copyFormat === "URL" ? "A direct PNG link for apps that accept image URLs." : "Paste into your page to display this exact artwork."}</p>
+                  <div className="embed-methods" role="group" aria-label="Integration method">
+                    <button type="button" aria-pressed={copyMethod === "direct"} onClick={() => { setCopyMethod("direct"); setCopyFormat("HTML"); setCopyStatus(""); }}>Direct image</button>
+                    <button type="button" aria-pressed={copyMethod === "package"} onClick={() => { setCopyMethod("package"); setCopyFormat("HTML"); setCopyStatus(""); }}>Package tag</button>
+                  </div>
+                  <div className="copy-formats" style={{ gridTemplateColumns: `repeat(${copyMethod === "direct" ? 4 : 3}, minmax(0, 1fr))` }} role="group" aria-label="Copy format">{(copyMethod === "direct" ? copyFormats : packageFormats).map(format => <button type="button" key={format} aria-pressed={copyFormat === format} onClick={() => { setCopyFormat(format); setCopyStatus(""); }}>{format}</button>)}</div>
+                  {copyMethod === "package" && <details className="embed-setup"><summary>1. One-time setup</summary><pre className="embed-code"><code>{setupValues[copyFormat]}</code></pre><button type="button" onClick={copySetup}>Copy setup <CopyIcon/></button></details>}
+                  <pre className="embed-code" aria-label={`${copyFormat} to copy`} tabIndex={0}><code>{usageCode}</code></pre>
+                  <p className="embed-help">{copyMethod === "package" ? "Add the setup once, then use this tag anywhere on your page." : copyFormat === "Unicode" ? "Plain text emoji. Your device chooses its appearance." : copyFormat === "URL" ? "A direct PNG link for apps that accept image URLs." : "No setup needed. Paste this image tag into your page."}</p>
                 </div>
                 <div className="detail-actions"><button className="button copy-button" type="button" onClick={copyEmoji}><CopyIcon/> Copy {copyFormat}</button><a className="button download-button" href={asset(selected, size, selectedTone)} download={`cursor-style-${size}-${selectedFile}`} aria-label={`Download ${selected.name} PNG at ${size} pixels`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg> PNG</a></div>
                 <div className="copy-status" role="status">{copyStatus || "Tiny in pixels. Big on personality."}</div>

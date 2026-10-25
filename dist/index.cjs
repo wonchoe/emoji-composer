@@ -23,13 +23,16 @@ __export(index_exports, {
   EMOJI_ASSET_CDN_BASE_URL: () => EMOJI_ASSET_CDN_BASE_URL,
   EMOJI_ASSET_SIZES: () => EMOJI_ASSET_SIZES,
   EMOJI_ATTRIBUTION_URL: () => EMOJI_ATTRIBUTION_URL,
+  Emoji: () => Emoji,
   EmojiComposer: () => EmojiComposer,
   EmojiPicker: () => EmojiPicker,
   SKIN_TONES: () => SKIN_TONES,
   getEmojiAssetUrl: () => getEmojiAssetUrl,
   getEmojiById: () => getEmojiById,
+  getEmojiByName: () => getEmojiByName,
   getEmojiCatalog: () => getEmojiCatalog,
   getEmojiCategories: () => getEmojiCategories,
+  getEmojiSlug: () => getEmojiSlug,
   getEmojiText: () => getEmojiText,
   getEmojiToneVariant: () => getEmojiToneVariant,
   getEmojiToneVariants: () => getEmojiToneVariants,
@@ -172,6 +175,9 @@ function EmojiPicker({
   const gridRef = (0, import_react.useRef)(null);
   const activeTone = skinTone === void 0 ? localTone : skinTone;
   (0, import_react.useEffect)(() => {
+    if (autoFocus) searchRef.current?.focus({ preventScroll: true });
+  }, [autoFocus]);
+  (0, import_react.useEffect)(() => {
     if (!enableSearchShortcut) return;
     const focusSearch = (event) => {
       if (event.defaultPrevented || !(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "k") return;
@@ -229,7 +235,6 @@ function EmojiPicker({
           placeholder: `Search ${catalog2.length.toLocaleString()} emojis`,
           "aria-label": "Search emojis",
           autoComplete: "off",
-          autoFocus,
           "data-ec-shortcut": enableSearchShortcut
         }
       ),
@@ -514,18 +519,52 @@ function EmojiComposer({
     }
   );
 }
+
+// src/image.ts
+function getEmojiSlug(emoji) {
+  return emoji.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+var names = /* @__PURE__ */ new Map();
+for (const emoji of getEmojiCatalog()) {
+  const slug = getEmojiSlug(emoji);
+  names.set(slug, names.has(slug) ? null : emoji);
+}
+function getEmojiByName(name) {
+  return getEmojiById(name) ?? names.get(name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")) ?? void 0;
+}
+function getEmojiImage({ name, size = 32, skinTone, baseUrl }) {
+  const exact = getEmojiVariantById(name);
+  const record = getEmojiByName(name);
+  const variant = exact ?? (record && skinTone ? getEmojiToneVariant(record, skinTone) : void 0);
+  return {
+    src: getEmojiAssetUrl(exact ? exact.unicode : record ?? name, { size, skinTone, baseUrl }),
+    width: size,
+    height: size,
+    alt: variant?.name ?? record?.name ?? name
+  };
+}
+
+// src/Emoji.tsx
+var import_jsx_runtime3 = require("react/jsx-runtime");
+function Emoji({ name, size = 32, skinTone, assetBaseUrl, alt, style, ...props }) {
+  const image = getEmojiImage({ name, size, skinTone, baseUrl: assetBaseUrl });
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("img", { ...props, ...image, alt: alt ?? image.alt, style: { display: "inline-block", verticalAlign: "-0.15em", objectFit: "contain", ...style } });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   EMOJI_ASSET_CDN_BASE_URL,
   EMOJI_ASSET_SIZES,
   EMOJI_ATTRIBUTION_URL,
+  Emoji,
   EmojiComposer,
   EmojiPicker,
   SKIN_TONES,
   getEmojiAssetUrl,
   getEmojiById,
+  getEmojiByName,
   getEmojiCatalog,
   getEmojiCategories,
+  getEmojiSlug,
   getEmojiText,
   getEmojiToneVariant,
   getEmojiToneVariants,

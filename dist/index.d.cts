@@ -1,4 +1,5 @@
 import * as react from 'react';
+import { ImgHTMLAttributes } from 'react';
 
 type SkinTone = "light" | "medium-light" | "medium" | "medium-dark" | "dark";
 type EmojiAssetSize = 16 | 24 | 32 | 64 | 128 | 256 | 512 | 1024;
@@ -64,6 +65,18 @@ interface EmojiComposerProps {
 }
 declare function EmojiComposer({ value, defaultValue, onChange, onEmojiSelect, placeholder, assetBaseUrl, showBranding, className, label, rows, }: EmojiComposerProps): react.JSX.Element;
 
+interface EmojiProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "srcSet" | "width" | "height" | "size"> {
+    name: string;
+    size?: EmojiAssetSize;
+    skinTone?: SkinTone | null;
+    assetBaseUrl?: string;
+}
+/** An inline image; accepts a readable name, Unicode glyph, or catalog ID. */
+declare function Emoji({ name, size, skinTone, assetBaseUrl, alt, style, ...props }: EmojiProps): react.JSX.Element;
+
+declare function getEmojiSlug(emoji: EmojiRecord): string;
+declare function getEmojiByName(name: string): EmojiRecord | undefined;
+
 interface EmojiPickerProps {
     onSelect: (selection: EmojiSelection) => void;
     assetBaseUrl?: string;
@@ -82,4 +95,4 @@ interface EmojiPickerProps {
 }
 declare function EmojiPicker({ onSelect, assetBaseUrl, size, initialCategory, skinTone, onSkinToneChange, showSkinTonePicker, showBranding, className, label, pageSize, autoFocus, enableSearchShortcut, selectedId, }: EmojiPickerProps): react.JSX.Element;
 
-export { EMOJI_ASSET_CDN_BASE_URL, EMOJI_ASSET_SIZES, EMOJI_ATTRIBUTION_URL, type EmojiAssetSize, EmojiComposer, type EmojiComposerProps, EmojiPicker, type EmojiPickerProps, type EmojiRecord, type EmojiSelection, type EmojiToneVariant, SKIN_TONES, type SkinTone, getEmojiAssetUrl, getEmojiById, getEmojiCatalog, getEmojiCategories, getEmojiText, getEmojiToneVariant, getEmojiToneVariants, getEmojiVariantById, searchEmojis };
+export { EMOJI_ASSET_CDN_BASE_URL, EMOJI_ASSET_SIZES, EMOJI_ATTRIBUTION_URL, Emoji, type EmojiAssetSize, EmojiComposer, type EmojiComposerProps, EmojiPicker, type EmojiPickerProps, type EmojiProps, type EmojiRecord, type EmojiSelection, type EmojiToneVariant, SKIN_TONES, type SkinTone, getEmojiAssetUrl, getEmojiById, getEmojiByName, getEmojiCatalog, getEmojiCategories, getEmojiSlug, getEmojiText, getEmojiToneVariant, getEmojiToneVariants, getEmojiVariantById, searchEmojis };

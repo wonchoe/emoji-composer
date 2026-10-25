@@ -24,7 +24,7 @@
   <a href="https://cursor.style/emoji/#playground">Try the composer</a> &nbsp; · &nbsp;
   <a href="https://www.npmjs.com/package/emoji-composer">npm</a> &nbsp; · &nbsp;
   <a href="https://packagist.org/packages/cursor-style/emoji">Packagist</a> &nbsp; · &nbsp;
-  <a href="docs/usage.md">Usage guide</a> &nbsp; · &nbsp;
+  <a href="https://github.com/wonchoe/emoji-composer/blob/main/docs/usage.md">Usage guide</a> &nbsp; · &nbsp;
   <a href="https://github.com/wonchoe/emoji-composer/releases/tag/v1.0.0">Downloads</a>
 </p>
 
@@ -47,6 +47,38 @@ A searchable picker with categories, real tone variants, lazy image loading, and
   <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f47b.png" width="80" height="80" alt="Just boo — ghost"></a>
   <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f525.png" width="80" height="80" alt="Fire"></a>
 </p>
+
+## One setup. An emoji tag anywhere.
+
+Use the artwork directly with an image URL, or connect the package once and use readable emoji tags.
+
+**HTML — no framework or build step:**
+
+```html
+<script type="module"
+  src="https://cursor.style/emoji/assets/emoji-element-v1-1-0.js"></script>
+
+<cs-emoji name="waving-hand" size="32" tone="medium"></cs-emoji>
+```
+
+For an npm app, install `emoji-composer` and import `emoji-composer/element` once instead of adding the script tag. This entry works without React. The element reacts to changes in `name`, `size`, and `tone`; you can also set `label` and `base-url`.
+
+**React:**
+
+```tsx
+import { Emoji } from "emoji-composer";
+
+<Emoji name="waving-hand" size={32} skinTone="medium" />;
+```
+
+**PHP:**
+
+```php
+$emoji = new \CursorStyle\Emoji\EmojiCatalog();
+echo $emoji->imageTag('👋', 32, 'medium');
+```
+
+The React component and HTML element accept names such as `waving-hand`, glyphs such as `👋`, and exact Unicode IDs. Use an ID for an ambiguous readable name. All eight image sizes and exact mixed-tone sequences are supported. The PHP helper accepts glyphs and IDs, and generates an escaped `<img>` without JavaScript.
 
 ## React, meet a little personality
 
@@ -145,8 +177,8 @@ The packages contain code and searchable metadata; PNGs load on demand from the 
 
 ## Make it yours
 
-- **[Usage guide](docs/usage.md)** — picker props, data helpers, theme variables, focus behavior, tones, and local development.
-- **[Deployment guide](deploy/README.md)** — static origin, versioned paths, Cloudflare caching, and GitOps.
+- **[Usage guide](https://github.com/wonchoe/emoji-composer/blob/main/docs/usage.md)** — picker props, data helpers, theme variables, focus behavior, tones, and local development.
+- **[Deployment guide](https://github.com/wonchoe/emoji-composer/blob/main/deploy/README.md)** — static origin, versioned paths, Cloudflare caching, and GitOps.
 - **[Catalog manifest](https://cursor.style/emoji/v2.0.0/manifest.json)** — the published artwork inventory.
 - **[Releases](https://github.com/wonchoe/emoji-composer/releases)** — tagged source, package archives, and checksums.
 

@@ -95,6 +95,15 @@ final class EmojiCatalog
         return rtrim($this->baseUrl, '/') . '/' . $size . '/' . rawurlencode($record['file']);
     }
 
+    /** Render a safe image tag without JavaScript or framework dependencies. */
+    public function imageTag(string $emoji, int $size = 32, string $tone = 'original', ?string $alt = null): string
+    {
+        $url = $this->imageUrl($emoji, $size, $tone);
+        $label = $alt ?? ($this->get($emoji)['name'] ?? $emoji);
+        $escape = static fn(string $value): string => htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        return '<img src="' . $escape($url) . '" width="' . $size . '" height="' . $size . '" alt="' . $escape($label) . '">';
+    }
+
     private static function readJson(string $path): array
     {
         $json = file_get_contents($path);
