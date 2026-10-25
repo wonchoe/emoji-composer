@@ -412,7 +412,7 @@ function EmojiComposer({
       const below = viewportTop + viewportHeight - margin - anchor.bottom - gap;
       const preferBelow = below >= 540 || below > above;
       const available = preferBelow ? below : above;
-      const height = Math.min(540, viewportHeight - margin * 2, Math.max(320, available));
+      const height = Math.min(540, viewportHeight - margin * 2, Math.max(440, available));
       const top = preferBelow ? anchor.bottom + gap : anchor.top - gap - height;
       setPopoverStyle({
         width,

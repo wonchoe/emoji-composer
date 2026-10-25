@@ -25,7 +25,7 @@
   <a href="https://www.npmjs.com/package/emoji-composer">npm</a> &nbsp; · &nbsp;
   <a href="https://packagist.org/packages/cursor-style/emoji">Packagist</a> &nbsp; · &nbsp;
   <a href="https://github.com/wonchoe/emoji-composer/blob/main/docs/usage.md">Usage guide</a> &nbsp; · &nbsp;
-  <a href="https://github.com/wonchoe/emoji-composer/releases/tag/v1.0.0">Downloads</a>
+  <a href="https://github.com/wonchoe/emoji-composer/releases/latest">Downloads</a>
 </p>
 
 ---
