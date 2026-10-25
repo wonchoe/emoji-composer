@@ -10,6 +10,6 @@ Build the site with `npm run build:site`. Upload `demo-dist/index.html` to R2 ke
 
 The production GitOps resource lives in `wonchoe/k3s-cursor.style`, `cursor.style/overlays/prod/emoji-catalog.yaml`. Keep this reference manifest aligned when changing the origin. A ConfigMap edit requires a new pod because nginx reads its configuration at startup; increment the pod's config revision annotation when updating it.
 
-The existing zone cache rules cache PNGs, CSS, and JavaScript. The origin also sends `Cache-Control: public, max-age=31536000, immutable` for versioned PNGs and hashed build files. HTML has a five-minute TTL. Error responses are not cached by the origin, and the zone's image rule gives 4xx/5xx a zero edge TTL.
+Cloudflare has a dedicated `cursor_style_emoji_immutable_v2` cache rule for GET/HEAD requests on `cursor.style`: versioned v2 PNGs, the v2 manifest, and hashed JavaScript/CSS under `/emoji/assets/` receive a one-year edge TTL. Browsers respect origin headers. The origin sends `Cache-Control: public, max-age=31536000, immutable` for these assets. HTML has a five-minute TTL. Both the edge rule and origin avoid caching 4xx/5xx responses. The rule was appended without changing the zone's eight existing cache rules.
 
 Rollback the publication by reverting the two GitOps additions (the resource file and its kustomization entry). Stored R2 files and local masters remain available for recovery.

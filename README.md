@@ -1,15 +1,57 @@
-# Emoji Composer
+<p align="center">
+  <a href="https://cursor.style/emoji/">
+    <img src="https://raw.githubusercontent.com/wonchoe/emoji-composer/main/docs/images/cover.png" alt="Emoji Composer by Cursor Style — Life’s better with a little feeling. Original 3D emoji in a warm ivory and lime catalog." width="1200">
+  </a>
+</p>
 
-A searchable React emoji composer by [Cursor Style](https://cursor.style/), backed by an original Unicode 18.0 3D emoji catalog. It includes category browsing, five skin-tone choices, cursor-aware message insertion, and PNG assets from 16 px through 1024 px. The picker includes a small, clickable Cursor Style credit by default.
+<h1 align="center">Little icons. All the feelings.</h1>
 
-## Install
+<p align="center">
+  Original 3D emoji, a React picker & message composer, and a PHP catalog.<br>
+  Made with feeling by <a href="https://cursor.style/">Cursor Style</a>.
+</p>
+
+<p align="center">
+  <a href="https://cursor.style/emoji/"><img src="https://img.shields.io/badge/EXPLORE-THE_COLLECTION-d6ef78?style=flat-square&labelColor=252820&color=d6ef78" alt="Explore the collection"></a>
+  <a href="https://github.com/wonchoe/emoji-composer/releases"><img src="https://img.shields.io/github/v/release/wonchoe/emoji-composer?style=flat-square&labelColor=252820&color=d6ef78" alt="Latest release"></a>
+  <a href="https://packagist.org/packages/cursor-style/emoji"><img src="https://img.shields.io/packagist/v/cursor-style/emoji?style=flat-square&labelColor=252820&color=d6ef78" alt="Packagist version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-d6ef78?style=flat-square&labelColor=252820" alt="MIT license"></a>
+</p>
+
+<p align="center">
+  <a href="https://cursor.style/emoji/">Live collection</a> &nbsp; · &nbsp;
+  <a href="https://cursor.style/emoji/#playground">Try the composer</a> &nbsp; · &nbsp;
+  <a href="docs/usage.md">Usage guide</a> &nbsp; · &nbsp;
+  <a href="https://github.com/wonchoe/emoji-composer/releases/tag/v1.0.0">Downloads</a>
+</p>
+
+---
+
+| A whole world of expression | Every shade, every little detail | From tiny to extra expressive |
+| :---: | :---: | :---: |
+| **3,963 artworks** | **5 skin tones + original** | **8 PNG sizes** |
+| 1,923 base emoji · Unicode Emoji 18.0 | 2,040 exact tone sequences | 16 · 24 · 32 · 64 · 128 · 256 · 512 · 1024 px |
+
+## Pick your mood
+
+A searchable picker with categories, real tone variants, lazy image loading, and a friendly keyboard shortcut. Drop the composer into a chat, comment box, or editor: the chosen emoji lands at the text cursor.
+
+<p align="center">
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f60e.png" width="80" height="80" alt="Stay cool — sunglasses"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f496.png" width="80" height="80" alt="A little love — sparkling heart"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f44b.png" width="80" height="80" alt="Hello there — waving hand"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f951.png" width="80" height="80" alt="Good taste — avocado"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f47b.png" width="80" height="80" alt="Just boo — ghost"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f525.png" width="80" height="80" alt="Fire"></a>
+</p>
+
+## React, meet a little personality
+
+Requires React 18+ and React DOM 18+.
 
 ```bash
-# Available after the first public release.
 npm install emoji-composer
 ```
-
-## Add the composer
 
 ```tsx
 import { useState } from "react";
@@ -23,127 +65,95 @@ export function MessageBox() {
     <EmojiComposer
       value={message}
       onChange={setMessage}
-      onEmojiSelect={(selection) => console.log(selection.name, selection.skinTone)}
-      placeholder="Write a message…"
+      placeholder="Say it with a little feeling…"
     />
   );
 }
 ```
 
-`EmojiComposer` inserts the chosen emoji at the current cursor position. It supports controlled and uncontrolled values.
-
-The composer's picker opens in a React portal attached to `document.body`. It chooses space above or below the composer and follows viewport changes, including the mobile keyboard. This keeps it clear of ancestor containers with `overflow: hidden`. The search field receives focus when opened. Escape closes it and returns focus to the smile button; selecting an emoji restores the text cursor. Clicking or moving keyboard focus outside the composer and picker also closes it. This is a non-modal popover, so it does not trap keyboard focus.
-
-Apply picker theme variables on `:root` or `body` when customizing the popover, since it lives outside the composer's DOM subtree. The standalone picker stays in its normal parent container.
-
-## Use the picker by itself
+Just need the picker?
 
 ```tsx
-import { useState } from "react";
-import { EmojiPicker, type EmojiSelection } from "emoji-composer";
+import { EmojiPicker } from "emoji-composer";
 import "emoji-composer/styles.css";
 
-function PickerExample() {
-  const [selected, setSelected] = useState<EmojiSelection | null>(null);
-  const handleSelect = (selection: EmojiSelection) => {
-    setSelected(selection);
-    console.log(selection.text); // Unicode text, with a tone modifier when supported
-    console.log(selection.assetUrl); // matching custom PNG artwork
-  };
-
-  return <EmojiPicker onSelect={handleSelect} selectedId={selected?.id} />;
-}
+<EmojiPicker onSelect={({ text, assetUrl }) => console.log(text, assetUrl)} />;
 ```
 
-The standalone picker preserves the page's existing focus when it mounts. These optional props control selection and search behavior:
+The composer supports controlled and uncontrolled values. Its popover follows the viewport, closes on Escape or outside interaction, and restores the text cursor after selection. The standalone picker also supports Ctrl/⌘ K search.
 
-| Prop | Default | Behavior |
-| --- | --- | --- |
-| `selectedId` | Unset | Highlights the matching base emoji ID and exposes its pressed state. Update this from `onSelect` to keep a persistent selection. |
-| `autoFocus` | `false` | Focuses the search input when the picker mounts. The composer sets this to `true` when opening its popover. |
-| `enableSearchShortcut` | `true` | Enables Ctrl+K / ⌘K and its keyboard hint. Set to `false` when your application owns that shortcut. |
+## PHP feels included
 
-When several pickers are mounted, the shortcut targets the open composer popover, then the picker containing the current focus, then the first visible picker. It focuses only one search field per keypress.
-
-## Browse data and assets
-
-```ts
-import {
-  getEmojiCatalog,
-  getEmojiById,
-  getEmojiAssetUrl,
-  getEmojiVariantById,
-  getEmojiToneVariants,
-  searchEmojis,
-} from "emoji-composer";
-
-const heart = getEmojiById("2764-fe0f");
-const people = searchEmojis("waving", "People & Body");
-const iconUrl = heart && getEmojiAssetUrl(heart, { size: 128 });
-const allEmojis = getEmojiCatalog();
-const allUnicodeVariants = getEmojiToneVariants();
-const mixedToneHandshake = getEmojiVariantById("1faf1-1f3fb-200d-1faf2-1f3fc");
-```
-
-Supported asset sizes are `16`, `24`, `32`, `64`, `128`, `256`, `512`, and `1024`. Images load from Cursor Style's versioned PNG path, `https://cursor.style/emoji/v2.0.0/png`. Cloudflare caches these public URLs on the main Cursor Style domain. Set `assetBaseUrl` on either component or `baseUrl` in `getEmojiAssetUrl` to use your own CDN or local asset host.
-
-```tsx
-<EmojiPicker
-  onSelect={handleSelect}
-  assetBaseUrl="https://static.example.com/emoji/png"
-  showBranding={true}
-  size={128}
-/>
-```
-
-The picker loads the first 96 matches and reveals more on demand, which keeps a large searchable catalog responsive. Images are lazy-loaded. Selecting a tone chooses its exact Unicode variant PNG, and mixed-tone sequences are available by their full Unicode value. `showBranding` defaults to `true` and displays a small “Emoji by Cursor Style” link in the picker footer; set it to `false` to hide the credit.
-
-## Skin tones
-
-The Unicode 18.0 catalog contains all 1,923 base emoji and all 2,040 fully-qualified skin-tone sequences. Every shade is a separate generated PNG; the picker never recolors artwork with masks. Original masters remain unchanged. Exact sequences, including mixed-tone combinations, are available through `getEmojiVariantById()` and the `emoji-composer/tone-variants` data export. All tone PNGs passed Unicode, image-format, alpha, and canvas-edge checks. The corrected waving-hand set and 34 repaired variants also received side-by-side visual review; automated silhouette analysis compared the full tone set and flagged outliers for visual inspection. The CDN hosts the eight PNG sizes, while the npm tarball contains searchable metadata and component code.
-
-The local preview serves catalog masters from the workspace. Run `python tools/sync_catalog.py` to sync all 1,923 base records and 2,040 exact tone sequences into this package.
-
-## PHP / Composer
-
-The same repository also provides the `cursor-style/emoji` Composer package for PHP 8.1 and later. It uses the same catalog, exact tone mapping, artwork URLs, and MIT License as the React package.
+Requires PHP 8.1+ and `ext-json`. Works with Laravel, Symfony, or plain PHP.
 
 ```bash
 composer require cursor-style/emoji
 ```
 
 ```php
+require __DIR__ . '/vendor/autoload.php';
+
 use CursorStyle\Emoji\EmojiCatalog;
 
 $emoji = new EmojiCatalog();
+
 $url = $emoji->imageUrl('👋', 128, 'medium');
-// https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fd.png
-
 $matches = $emoji->find('waving');
-$allBaseEmojis = $emoji->all();
-$allExactToneSequences = $emoji->toneVariants();
-$mixedToneUrl = $emoji->imageUrl('1faf1-1f3fb-200d-1faf2-1f3fc', 256);
 ```
 
-Pass a custom URL to `new EmojiCatalog('https://static.example.com/emoji/png')` to self-host the assets. The helper produces URLs and catalog data; it does not download images or require a framework.
+Both packages share the same catalog, exact Unicode tone mapping, and artwork URLs.
 
-## Public website and CDN
+## Every shade is its own artwork
 
-The collection and live composer are at [cursor.style/emoji](https://cursor.style/emoji/). Image URLs remain on the main Cursor Style domain and are cached by Cloudflare. PNGs have a transparent background and support cross-origin image use. A versioned asset URL is immutable: future artwork changes use a new version path.
+Each supported tone is a separately generated transparent PNG. Original masters are preserved. Mixed-tone Unicode sequences are available by their full sequence ID.
 
-To build the website for its `/emoji/` path, run `npm run build:site`. Development uses local artwork; production uses the public asset URL. `deploy/kubernetes.yaml` contains the static origin and the path-specific ingress. The artwork is stored separately in R2 and is not bundled into npm or Composer downloads.
+<p align="center">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/1f44b.png" width="72" height="72" alt="Waving hand — original">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fb.png" width="72" height="72" alt="Waving hand — light skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fc.png" width="72" height="72" alt="Waving hand — medium-light skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fd.png" width="72" height="72" alt="Waving hand — medium skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fe.png" width="72" height="72" alt="Waving hand — medium-dark skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3ff.png" width="72" height="72" alt="Waving hand — dark skin tone">
+</p>
 
-## Development
+## One URL. Ready anywhere.
 
-```bash
-npm install
-python tools/sync_catalog.py
-npm run dev
-npm run build
+Artwork is delivered through Cloudflare on the main **cursor.style** domain. Versioned PNGs are immutable, support cross-origin use, and have transparent backgrounds.
+
+```html
+<img
+  src="https://cursor.style/emoji/v2.0.0/png/128/1f44b.png"
+  width="64"
+  height="64"
+  alt="Waving hand"
+/>
 ```
 
-The published component uses Cursor Style's versioned CDN path above. The local demo serves images from the catalog workspace. Run it at `http://localhost:5173` after `npm run dev`.
+Use the helper for tones and exact variants:
 
-## License
+```ts
+import { getEmojiAssetUrl, getEmojiVariantById } from "emoji-composer";
 
-The repository uses the MIT License. The artwork is original catalog artwork generated for this project; it does not reproduce any platform's exact emoji artwork.
+getEmojiAssetUrl("👋", { size: 256, skinTone: "medium" });
+getEmojiVariantById("1faf1-1f3fb-200d-1faf2-1f3fc");
+```
+
+The packages contain code and searchable metadata; PNGs load on demand from the CDN. To use your own asset host, set `assetBaseUrl` on the React components, `baseUrl` in the URL helper, or pass the base URL to PHP's `EmojiCatalog` constructor.
+
+## Make it yours
+
+- **[Usage guide](docs/usage.md)** — picker props, data helpers, theme variables, focus behavior, tones, and local development.
+- **[Deployment guide](deploy/README.md)** — static origin, versioned paths, Cloudflare caching, and GitOps.
+- **[Catalog manifest](https://cursor.style/emoji/v2.0.0/manifest.json)** — the published artwork inventory.
+- **[Releases](https://github.com/wonchoe/emoji-composer/releases)** — tagged source, package archives, and checksums.
+
+The picker includes an “Emoji by Cursor Style” link by default. You can hide it with `showBranding={false}`; attribution is appreciated and optional under the MIT License.
+
+---
+
+<p align="center">
+  <b>Free to use. Full of feeling.</b><br>
+  <a href="LICENSE">MIT licensed</a> code and original AI-generated catalog artwork.<br>
+  Created for this collection; no platform's exact emoji artwork is reproduced.<br><br>
+  A little more personality, by <a href="https://cursor.style/">Cursor Style ↗</a>
+</p>
