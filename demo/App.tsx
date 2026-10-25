@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import {
-  EmojiComposer, EmojiPicker, EMOJI_ASSET_SIZES, SKIN_TONES,
+  EmojiComposer, EmojiPicker, EMOJI_ASSET_SIZES, EMOJI_ASSET_CDN_BASE_URL, SKIN_TONES,
   getEmojiAssetUrl, getEmojiById, getEmojiCatalog, getEmojiText, getEmojiToneVariant,
   getEmojiToneVariants, type EmojiAssetSize, type EmojiRecord, type EmojiSelection, type SkinTone,
 } from "../src/index.js";
@@ -9,6 +9,9 @@ const LOCAL_ASSETS = import.meta.env.VITE_EMOJI_ASSET_BASE_URL || (import.meta.e
 const catalog = getEmojiCatalog();
 const toneCount = getEmojiToneVariants().length;
 const toneChoices = [{ id: null, label: "Original yellow" }, ...SKIN_TONES] as const;
+const copyFormats = ["HTML", "React", "URL", "Unicode"] as const;
+type CopyFormat = typeof copyFormats[number];
+const htmlEntities: Record<string, string> = { "&": "&amp;", '"': "&quot;", "<": "&lt;", ">": "&gt;" };
 const featured = [
   { id: "1f60e", label: "Stay cool", color: "#eff0de" },
   { id: "1f496", label: "A little love", color: "#f6e8eb" },
@@ -43,11 +46,21 @@ export function App() {
   const [darkPreview, setDarkPreview] = useState(false);
   const [message, setMessage] = useState("Hey! A little something to brighten your day ");
   const [copyStatus, setCopyStatus] = useState("");
+  const [copyFormat, setCopyFormat] = useState<CopyFormat>("HTML");
   const [codeCopied, setCodeCopied] = useState(false);
   const selectedTone = selected.supportsSkinTone ? tone : null;
   const variant = selectedTone ? getEmojiToneVariant(selected, selectedTone) : undefined;
   const selectedText = getEmojiText(selected, selectedTone);
   const selectedFile = variant?.file ?? selected.file;
+  const publicAssetUrl = getEmojiAssetUrl(selected, { size, skinTone: selectedTone, baseUrl: EMOJI_ASSET_CDN_BASE_URL });
+  const selectedName = variant?.name ?? selected.name;
+  const imageAlt = selectedName.replace(/[&"<>]/g, character => htmlEntities[character]!);
+  const copyValues: Record<CopyFormat, string> = {
+    HTML: `<img src="${publicAssetUrl}"\n  width="${size}" height="${size}"\n  alt="${imageAlt}" />`,
+    React: `<img src="${publicAssetUrl}"\n  width={${size}} height={${size}}\n  alt={${JSON.stringify(selectedName)}} />`,
+    URL: publicAssetUrl,
+    Unicode: selectedText,
+  };
 
   function selectEmoji(selection: EmojiSelection) {
     setSelected(selection);
@@ -62,10 +75,10 @@ export function App() {
 
   async function copyEmoji() {
     try {
-      await navigator.clipboard.writeText(selectedText);
-      setCopyStatus("Copied. Ready for your next message.");
+      await navigator.clipboard.writeText(copyValues[copyFormat]);
+      setCopyStatus(copyFormat === "Unicode" ? "Unicode copied. Its appearance depends on your device." : `${copyFormat} copied. Ready to use your Cursor Style artwork.`);
     } catch {
-      setCopyStatus("Could not copy. You can select the emoji beside its name.");
+      setCopyStatus("Could not copy automatically. Select the code above and copy it.");
     }
   }
 
@@ -133,8 +146,14 @@ export function App() {
                   {selected.supportsSkinTone ? <div className="tone-thumbnails" aria-label="Preview skin tones">{toneChoices.map(choice => <button type="button" key={choice.id ?? "original"} aria-label={`Preview ${choice.label.toLowerCase()}`} aria-pressed={tone === choice.id} onClick={() => { setTone(choice.id); setCopyStatus(""); }}><img src={asset(selected, 64, choice.id)} alt=""/></button>)}</div> : <p className="no-tones">This emoji is already its colorful self.</p>}
                 </div>
                 <div className="size-heading"><span className="field-label">IMAGE SIZE</span><span>{size} × {size} px</span></div>
-                <div className="size-options" aria-label="Download image size">{EMOJI_ASSET_SIZES.map(option => <button type="button" key={option} aria-pressed={size === option} onClick={() => setSize(option)}>{option}</button>)}</div>
-                <div className="detail-actions"><button className="button copy-button" type="button" onClick={copyEmoji}><CopyIcon/> Copy emoji</button><a className="button download-button" href={asset(selected, size, selectedTone)} download={`cursor-style-${size}-${selectedFile}`} aria-label={`Download ${selected.name} PNG at ${size} pixels`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg> PNG</a></div>
+                <div className="size-options" aria-label="PNG image size">{EMOJI_ASSET_SIZES.map(option => <button type="button" key={option} aria-pressed={size === option} onClick={() => { setSize(option); setCopyStatus(""); }}>{option}</button>)}</div>
+                <div className="embed-options">
+                  <span className="field-label">USE THIS EMOJI</span>
+                  <div className="copy-formats" role="group" aria-label="Copy format">{copyFormats.map(format => <button type="button" key={format} aria-pressed={copyFormat === format} onClick={() => { setCopyFormat(format); setCopyStatus(""); }}>{format}</button>)}</div>
+                  <pre className="embed-code" aria-label={`${copyFormat} to copy`} tabIndex={0}><code>{copyValues[copyFormat]}</code></pre>
+                  <p className="embed-help">{copyFormat === "Unicode" ? "Plain text emoji. Your device chooses its appearance." : copyFormat === "URL" ? "A direct PNG link for apps that accept image URLs." : "Paste into your page to display this exact artwork."}</p>
+                </div>
+                <div className="detail-actions"><button className="button copy-button" type="button" onClick={copyEmoji}><CopyIcon/> Copy {copyFormat}</button><a className="button download-button" href={asset(selected, size, selectedTone)} download={`cursor-style-${size}-${selectedFile}`} aria-label={`Download ${selected.name} PNG at ${size} pixels`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg> PNG</a></div>
                 <div className="copy-status" role="status">{copyStatus || "Tiny in pixels. Big on personality."}</div>
               </div>
             </aside>

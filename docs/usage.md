@@ -128,7 +128,7 @@ Pass a custom URL to `new EmojiCatalog('https://static.example.com/emoji/png')` 
 
 ## Public website and CDN
 
-The collection and live composer are at [cursor.style/emoji](https://cursor.style/emoji/). Image URLs remain on the main Cursor Style domain and are cached by Cloudflare. PNGs have a transparent background and support cross-origin image use. A versioned asset URL is immutable: future artwork changes use a new version path.
+The collection and live composer are at [cursor.style/emoji](https://cursor.style/emoji/). The collection can copy an HTML image tag, a React image element, a direct PNG URL, or Unicode text. HTML is the default and preserves the selected artwork, size, and skin tone. Unicode text uses the receiving device's emoji font. Image URLs remain on the main Cursor Style domain and are cached by Cloudflare. PNGs have a transparent background and support cross-origin image use. A versioned asset URL is immutable: future artwork changes use a new version path.
 
 To build the website for its `/emoji/` path, run `npm run build:site`. Development uses local artwork; production uses the public asset URL. `deploy/kubernetes.yaml` contains the static origin and the path-specific ingress. The artwork is stored separately in R2 and is not bundled into npm or Composer downloads.
 
