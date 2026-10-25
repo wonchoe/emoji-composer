@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor Style Emoji — plain HTML example</title>
+<script type="module" src="https://cursor.style/emoji/assets/emoji-element-v1-1-0.js"></script>
+<style>
+  body{margin:0;padding:48px 24px;font:16px/1.7 system-ui,sans-serif;color:#252820;background:#fafaf6}
+  main{max-width:780px;margin:auto}h1{font-size:36px;line-height:1.2;letter-spacing:-1px}
+  .card{padding:24px;margin:24px 0;background:white;border:1px solid #e1e5d8;border-radius:20px}
+  .samples{display:flex;align-items:center;gap:28px;flex-wrap:wrap}.pill{background:#d6ef78;border-radius:20px;padding:5px 12px;font-size:12px}
+  pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef2e5;padding:20px;border-radius:12px;font-size:13px}
+  a{color:#526d2e}small{color:#7b8470}
+</style>
+<main>
+  <span class="pill">Plain HTML · no React · no build step</span>
+  <h1>One setup. A little feeling anywhere.</h1>
+  <p>Hi <cs-emoji name="waving-hand" size="24" tone="medium"></cs-emoji> — these are Cursor Style PNGs rendered by the package's HTML tag.</p>
+  <div class="card samples">
+    <cs-emoji name="grinning-face" size="32"></cs-emoji>
+    <cs-emoji name="waving-hand" size="64" tone="medium"></cs-emoji>
+    <cs-emoji name="fire" size="128"></cs-emoji>
+  </div>
+  <h2>Add once</h2>
+  <pre>&lt;script type="module"
+  src="https://cursor.style/emoji/assets/emoji-element-v1-1-0.js"&gt;&lt;/script&gt;</pre>
+  <h2>Use anywhere</h2>
+  <pre>&lt;cs-emoji name="waving-hand" size="32" tone="medium"&gt;&lt;/cs-emoji&gt;</pre>
+  <p><small>Supported sizes: 16, 24, 32, 64, 128, 256, 512, 1024. Unicode IDs work too.</small></p>
+  <a href="https://cursor.style/emoji/">Explore the full Cursor Style collection ↗</a>
+</main>
+</html>
