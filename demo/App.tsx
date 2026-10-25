@@ -1,5 +1,6 @@
 import { createElement, useEffect, useRef, useState, type CSSProperties } from "react";
 import "../src/element.js";
+import { faq } from "./seo.js";
 import {
   Emoji, EmojiComposer, EmojiPicker, EMOJI_ASSET_SIZES, EMOJI_ASSET_CDN_BASE_URL, SKIN_TONES, getEmojiByName, getEmojiSlug,
   getEmojiAssetUrl, getEmojiById, getEmojiCatalog, getEmojiText, getEmojiToneVariant,
@@ -131,16 +132,16 @@ export function App() {
       <main>
         <section className="demo-hero wrap" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <div className="eyebrow"><span className="tiny-star">✳</span> LITTLE ICONS. ALL THE FEELINGS.</div>
-            <h1 id="hero-title">Life’s better<br/>with a little <span>feeling<span className="period">.</span><svg viewBox="0 0 370 17" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12C110 0 265 1 365 9"/></svg></span></h1>
-            <p>A whole world of expressive 3D emoji.<br className="desktop-break"/> Find your favorite. Make it yours. Say more.</p>
+            <div className="eyebrow"><span className="tiny-star">✳</span> FREE 3D EMOJI PNG COLLECTION</div>
+            <h1 id="hero-title">Free 3D emoji.<br/>Full of <span>feeling<span className="period">.</span><svg viewBox="0 0 370 17" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12C110 0 265 1 365 9"/></svg></span></h1>
+            <p>Download transparent emoji PNGs in eight sizes.<br className="desktop-break"/> Original artwork. Five skin tones. Free under MIT.</p>
             <div className="hero-actions"><a className="button button-dark" href="#library">Explore the collection <Arrow /></a><a className="text-link" href="#playground">Try the composer <span>↗</span></a></div>
             <div className="hero-footnote"><span className="stack-dots"><i/><i/><i/><i/><i/></span><span>Every shade. Every little detail.</span></div>
           </div>
           <div className="hero-art" aria-label="A few favorites from the collection">
             <div className="art-orbit"/><span className="art-spark art-spark-one" aria-hidden="true">✳</span><span className="art-spark art-spark-two" aria-hidden="true">+</span>
             <span className="art-note">pick your mood ↘</span>
-            {featured.map((item, index) => <button type="button" key={item.id} className={`art-tile art-tile-${index}`} style={{ "--tile-color": item.color } as CSSProperties} onClick={() => selectFeatured(item.id)} aria-label={`Explore ${getEmojiById(item.id)!.name}`}><img src={asset(item.id)} alt=""/><span>{item.label}</span></button>)}
+            {featured.map((item, index) => <button type="button" key={item.id} className={`art-tile art-tile-${index}`} style={{ "--tile-color": item.color } as CSSProperties} onClick={() => selectFeatured(item.id)} aria-label={`Explore ${getEmojiById(item.id)!.name}`}><img src={asset(item.id)} width="256" height="256" alt=""/><span>{item.label}</span></button>)}
             <span className="art-sticker"><span>100%</span> personality</span>
           </div>
         </section>
@@ -153,7 +154,7 @@ export function App() {
         </div>
 
         <section className="library-section wrap" id="library" aria-labelledby="library-title">
-          <div className="section-heading"><div><div className="eyebrow">THE COLLECTION</div><h2 id="library-title">Find your kind of happy.</h2></div><p>One for every mood. <br/>Click an emoji to get a closer look.</p></div>
+          <div className="section-heading"><div><div className="eyebrow">TRANSPARENT EMOJI PNG DOWNLOADS</div><h2 id="library-title">Find your 3D emoji.</h2></div><p>Browse 1,923 base emoji and their skin tones.<br/>Choose a size from 16 to 1024 px and download.</p></div>
           <div className="library-workbench">
             <div className="library-browser">
               <div className="browser-title"><span>All the little things</span><span className="count-pill">{catalog.length.toLocaleString("en-US")} base emoji</span></div>
@@ -176,7 +177,7 @@ export function App() {
                 <h3>{selected.name}<span className="unicode-glyph" title="Unicode character">{selectedText}</span></h3>
                 <div className="detail-tones">
                   <span className="field-label">{selected.supportsSkinTone ? "MAKE IT YOURS" : "ORIGINAL COLOR"}</span>
-                  {selected.supportsSkinTone ? <div className="tone-thumbnails" aria-label="Preview skin tones">{toneChoices.map(choice => <button type="button" key={choice.id ?? "original"} aria-label={`Preview ${choice.label.toLowerCase()}`} aria-pressed={tone === choice.id} onClick={() => { setTone(choice.id); setCopyStatus(""); }}><img src={asset(selected, 64, choice.id)} alt=""/></button>)}</div> : <p className="no-tones">This emoji is already its colorful self.</p>}
+                  {selected.supportsSkinTone ? <div className="tone-thumbnails" aria-label="Preview skin tones">{toneChoices.map(choice => <button type="button" key={choice.id ?? "original"} aria-label={`Preview ${choice.label.toLowerCase()}`} aria-pressed={tone === choice.id} onClick={() => { setTone(choice.id); setCopyStatus(""); }}><img src={asset(selected, 64, choice.id)} width="64" height="64" alt=""/></button>)}</div> : <p className="no-tones">This emoji is already its colorful self.</p>}
                 </div>
                 <div className="size-heading"><span className="field-label">IMAGE SIZE</span><span>{size} × {size} px</span></div>
                 <div className="size-options" aria-label="PNG image size">{EMOJI_ASSET_SIZES.map(option => <button type="button" key={option} aria-pressed={size === option} onClick={() => { setSize(option); setCopyStatus(""); }}>{option}</button>)}</div>
@@ -199,11 +200,22 @@ export function App() {
         </section>
 
         <section className="playground-section wrap" id="playground" aria-labelledby="playground-title">
-          <div className="playground-copy"><div className="eyebrow">TAKE THEM FOR A SPIN</div><h2 id="playground-title">Good words.<br/>Great company.</h2><p>A hello, a thank you, a just-because.<br/>Give your next message a little personality.</p><div className="mini-emoji-row" aria-hidden="true">{["1f60a", "1f44b", "1f496", "1f389"].map(id => <img key={id} src={asset(id,128)} alt="" loading="lazy"/>)}</div></div>
-          <div className="composer-card"><div className="composer-card-top"><span className="conversation-avatar">Y</span><div><strong>Your little corner</strong><span>Go on, say something nice.</span></div><span className="live-label"><i/> Live playground</span></div><div className="conversation-bubble">Some things are better said with an emoji.<img src={asset("1f60a",64)} alt="smile"/></div><EmojiComposer value={message} onChange={setMessage} assetBaseUrl={LOCAL_ASSETS} placeholder="Write something nice…" rows={3}/><div className="composer-note"><span>Click the smile to find your finishing touch.</span><span>↵ Make it yours</span></div></div>
+          <div className="playground-copy"><div className="eyebrow">TAKE THEM FOR A SPIN</div><h2 id="playground-title">Good words.<br/>Great company.</h2><p>A hello, a thank you, a just-because.<br/>Give your next message a little personality.</p><div className="mini-emoji-row" aria-hidden="true">{["1f60a", "1f44b", "1f496", "1f389"].map(id => <img key={id} src={asset(id,128)} width="128" height="128" alt="" loading="lazy"/>)}</div></div>
+          <div className="composer-card"><div className="composer-card-top"><span className="conversation-avatar">Y</span><div><strong>Your little corner</strong><span>Go on, say something nice.</span></div><span className="live-label"><i/> Live playground</span></div><div className="conversation-bubble">Some things are better said with an emoji.<img src={asset("1f60a",64)} width="64" height="64" alt="smile"/></div><EmojiComposer value={message} onChange={setMessage} assetBaseUrl={LOCAL_ASSETS} placeholder="Write something nice…" rows={3}/><div className="composer-note"><span>Click the smile to find your finishing touch.</span><span>↵ Make it yours</span></div></div>
         </section>
 
         <section className="integrate-section wrap" id="integrate" aria-labelledby="integrate-title"><div><div className="eyebrow">SMALL COMPONENT. SO MANY POSSIBILITIES.</div><h2 id="integrate-title">A little joy,<br/>in your next project.</h2><p>A searchable picker. A ready-to-use composer.<br/>Original artwork, right at your fingertips.</p><div className="integration-tags"><span>React</span><span>TypeScript</span><span>Custom asset host</span></div><small className="release-note">Free to use · MIT licensed · Made by Cursor Style.</small></div><div className="code-card"><div className="code-title"><span><i/><i/><i/></span><span>YourNextIdea.tsx</span><button type="button" onClick={copyCode} aria-label="Copy React example">{codeCopied ? "Copied ✓" : <CopyIcon/>}</button></div><pre><code><span className="code-keyword">import</span> {"{ EmojiPicker } "}<span className="code-keyword">from</span> <span className="code-string">"emoji-composer"</span>;{"\n"}<span className="code-keyword">import</span> <span className="code-string">"emoji-composer/styles.css"</span>;{"\n\n"}<span className="code-tag">&lt;EmojiPicker</span>{"\n  "}<span className="code-prop">onSelect</span>{"={(emoji) => console.log(emoji.text)}\n"}<span className="code-tag">/&gt;</span></code></pre><div className="code-bottom"><span className="code-dot"/> A few lines. A lot more expression.</div></div></section>
+        <section className="emoji-guide wrap" aria-labelledby="guide-title">
+          <div className="eyebrow">FREE EMOJI ASSETS FOR YOUR NEXT PROJECT</div>
+          <h2 id="guide-title">Transparent PNGs. Simple integration.</h2>
+          <p>Use the Cursor Style emoji library in websites, apps, presentations and designs. Download individual transparent PNGs, copy a direct CDN image URL, or connect the open source package and add emoji with a tag. The Unicode Emoji 18.0 catalog includes 3,963 original artworks, including exact skin-tone sequences.</p>
+          <div className="guide-cards">
+            <article><h3>React emoji picker</h3><p>Install <code>emoji-composer</code> for a searchable React emoji picker, message composer and inline <code>Emoji</code> image component.</p><code>npm install emoji-composer</code><a href="https://www.npmjs.com/package/emoji-composer">Get the npm package ↗</a></article>
+            <article><h3>Emoji in HTML</h3><p>Use a standard <code>img</code> tag without setup, or load the web component once and add <code>cs-emoji</code> tags with a name, size and skin tone.</p><code>&lt;cs-emoji name="waving-hand"&gt;&lt;/cs-emoji&gt;</code><a href="https://github.com/wonchoe/emoji-composer/blob/main/docs/usage.md">Read the HTML and React guide ↗</a></article>
+            <article><h3>PHP and Laravel</h3><p>The Composer package provides catalog lookup, PNG URLs and escaped image tags for PHP 8.1+, including Laravel projects.</p><code>composer require cursor-style/emoji</code><a href="https://packagist.org/packages/cursor-style/emoji">Get the Composer package ↗</a></article>
+          </div>
+        </section>
+        <section className="emoji-faq wrap" id="faq" aria-labelledby="faq-title"><div className="eyebrow">A FEW HELPFUL ANSWERS</div><h2 id="faq-title">Using the emoji collection</h2>{faq.map(item => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}<div className="seo-links"><a href="https://github.com/wonchoe/emoji-composer/blob/main/LICENSE">MIT License ↗</a><a href="/emoji/guide.md">Plain-text integration guide</a><a href="/emoji/sitemap.xml">Sitemap</a></div></section>
       </main>
 
       <footer className="demo-footer wrap"><a className="footer-brand" href="#top">emoji composer<span>Made to make you smile.</span></a><span>A little creation by <a href="https://cursor.style/?utm_source=emoji-composer&utm_medium=demo&utm_campaign=emoji-catalog" target="_blank" rel="noopener noreferrer">Cursor Style <Arrow diagonal/></a></span><a href="#top" className="back-top">Back to top ↑</a></footer>

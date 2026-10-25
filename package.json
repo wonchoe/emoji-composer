@@ -56,7 +56,7 @@
   "scripts": {
     "build": "tsup && node -e \"require('node:fs').copyFileSync('src/styles.css','dist/styles.css')\"",
     "dev": "vite --config vite.config.ts",
-    "build:site": "vite build --config vite.config.ts --base=/emoji/",
+    "build:site": "vite build --config vite.config.ts --base=/emoji/ && node tools/prerender.mjs",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },

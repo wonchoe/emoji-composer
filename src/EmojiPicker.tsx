@@ -129,7 +129,7 @@ export function EmojiPicker({
           type="search"
           value={query}
           onChange={(event) => { setQuery(event.target.value); setVisibleCount(pageSize); }}
-          placeholder={`Search ${catalog.length.toLocaleString()} emojis`}
+          placeholder={`Search ${catalog.length.toLocaleString("en-US")} emojis`}
           aria-label="Search emojis"
           autoComplete="off"
           data-ec-shortcut={enableSearchShortcut}
@@ -182,7 +182,7 @@ export function EmojiPicker({
 
       <div className="ec-results-heading">
         <span>{query ? `Results for “${query}”` : category === "All" ? "All emojis" : category}</span>
-        <span className="ec-result-count">{filtered.length.toLocaleString()}</span>
+        <span className="ec-result-count">{filtered.length.toLocaleString("en-US")}</span>
       </div>
 
       {filtered.length === 0 ? (
@@ -227,14 +227,14 @@ export function EmojiPicker({
           </div>
           {visibleCount < filtered.length && (
             <button className="ec-load-more" type="button" onClick={() => setVisibleCount((count) => count + pageSize)}>
-              Show more ({(filtered.length - visibleCount).toLocaleString()} left)
+              Show more ({(filtered.length - visibleCount).toLocaleString("en-US")} left)
             </button>
           )}
         </>
       )}
       <footer className="ec-footer">
         {showBranding ? <a className="ec-credit" href={EMOJI_ATTRIBUTION_URL} target="_blank" rel="noopener noreferrer">Emoji by Cursor Style ↗</a> : <span />}
-        <span><i /> {catalog.length.toLocaleString()} icons</span>
+        <span><i /> {catalog.length.toLocaleString("en-US")} icons</span>
       </footer>
     </section>
   );

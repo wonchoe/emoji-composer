@@ -61,12 +61,13 @@ data:
         add_header X-Emoji-Origin-Cache $upstream_cache_status always;
         location = /healthz { access_log off; return 200 "ok\n"; }
         location = /emoji { return 308 https://cursor.style/emoji/; }
+        location = /emoji/index.html { return 308 https://cursor.style/emoji/; }
         location = /emoji/ {
           limit_except GET HEAD { deny all; }
           proxy_cache_valid 200 5m;
           proxy_pass https://cdn.cursor.style$emoji_object;
         }
-        location ~ ^/emoji/(v2\.0\.0/(png/(16|24|32|64|128|256|512|1024)/((skin|fix|clean2)-)?[0-9a-f-]+\.png|manifest\.json)|assets/[A-Za-z0-9_-]+\.(js|css)|social\.png|LICENSE|index\.html)$ {
+        location ~ ^/emoji/(v2\.0\.0/(png/(16|24|32|64|128|256|512|1024)/((skin|fix|clean2)-)?[0-9a-f-]+\.png|manifest\.json)|assets/[A-Za-z0-9_-]+\.(js|css|png|svg)|social\.png|LICENSE|sitemap\.xml|guide\.md)$ {
           if ($request_method = OPTIONS) { return 204; }
           limit_except GET HEAD OPTIONS { deny all; }
           proxy_pass https://cdn.cursor.style$emoji_object;
@@ -87,7 +88,7 @@ spec:
     matchLabels: {app: cursor-style-emoji}
   template:
     metadata:
-      annotations: {emoji.cursor.style/config-revision: "2026-10-25-2"}
+      annotations: {emoji.cursor.style/config-revision: "2026-10-25-3"}
       labels: {app: cursor-style-emoji}
     spec:
       automountServiceAccountToken: false
