@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://cursor.style/emoji/">
-    <img src="https://raw.githubusercontent.com/wonchoe/emoji-composer/main/docs/images/cover.png" alt="Emoji Composer by Cursor Style — Life’s better with a little feeling. Original 3D emoji in a warm ivory and lime catalog." width="1200">
+    <img src="https://raw.githubusercontent.com/wonchoe/emoji-composer/main/docs/images/cover.png" alt="Emoji Composer by Cursor Style - Life’s better with a little feeling. Original 3D emoji in a warm ivory and lime catalog." width="1200">
   </a>
 </p>
 
@@ -40,11 +40,11 @@
 A searchable picker with categories, real tone variants, lazy image loading, and a friendly keyboard shortcut. Drop the composer into a chat, comment box, or editor: the chosen emoji lands at the text cursor.
 
 <p align="center">
-  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f60e.png" width="80" height="80" alt="Stay cool — sunglasses"></a>
-  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f496.png" width="80" height="80" alt="A little love — sparkling heart"></a>
-  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f44b.png" width="80" height="80" alt="Hello there — waving hand"></a>
-  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f951.png" width="80" height="80" alt="Good taste — avocado"></a>
-  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f47b.png" width="80" height="80" alt="Just boo — ghost"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f60e.png" width="80" height="80" alt="Stay cool - sunglasses"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f496.png" width="80" height="80" alt="A little love - sparkling heart"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f44b.png" width="80" height="80" alt="Hello there - waving hand"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f951.png" width="80" height="80" alt="Good taste - avocado"></a>
+  <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f47b.png" width="80" height="80" alt="Just boo - ghost"></a>
   <a href="https://cursor.style/emoji/"><img src="https://cursor.style/emoji/v2.0.0/png/128/1f525.png" width="80" height="80" alt="Fire"></a>
 </p>
 
@@ -52,7 +52,7 @@ A searchable picker with categories, real tone variants, lazy image loading, and
 
 Use the artwork directly with an image URL, or connect the package once and use readable emoji tags.
 
-**HTML — no framework or build step:**
+**HTML - no framework or build step:**
 
 ```html
 <script type="module"
@@ -143,12 +143,12 @@ Both packages share the same catalog, exact Unicode tone mapping, and artwork UR
 Each supported tone is a separately generated transparent PNG. Original masters are preserved. Mixed-tone Unicode sequences are available by their full sequence ID.
 
 <p align="center">
-  <img src="https://cursor.style/emoji/v2.0.0/png/128/1f44b.png" width="72" height="72" alt="Waving hand — original">
-  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fb.png" width="72" height="72" alt="Waving hand — light skin tone">
-  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fc.png" width="72" height="72" alt="Waving hand — medium-light skin tone">
-  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fd.png" width="72" height="72" alt="Waving hand — medium skin tone">
-  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fe.png" width="72" height="72" alt="Waving hand — medium-dark skin tone">
-  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3ff.png" width="72" height="72" alt="Waving hand — dark skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/1f44b.png" width="72" height="72" alt="Waving hand - original">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fb.png" width="72" height="72" alt="Waving hand - light skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fc.png" width="72" height="72" alt="Waving hand - medium-light skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fd.png" width="72" height="72" alt="Waving hand - medium skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3fe.png" width="72" height="72" alt="Waving hand - medium-dark skin tone">
+  <img src="https://cursor.style/emoji/v2.0.0/png/128/skin-1f44b-1f3ff.png" width="72" height="72" alt="Waving hand - dark skin tone">
 </p>
 
 ## One URL. Ready anywhere.
@@ -177,10 +177,10 @@ The packages contain code and searchable metadata; PNGs load on demand from the 
 
 ## Make it yours
 
-- **[Usage guide](https://github.com/wonchoe/emoji-composer/blob/main/docs/usage.md)** — picker props, data helpers, theme variables, focus behavior, tones, and local development.
-- **[Deployment guide](https://github.com/wonchoe/emoji-composer/blob/main/deploy/README.md)** — static origin, versioned paths, Cloudflare caching, and GitOps.
-- **[Catalog manifest](https://cursor.style/emoji/v2.0.0/manifest.json)** — the published artwork inventory.
-- **[Releases](https://github.com/wonchoe/emoji-composer/releases)** — tagged source, package archives, and checksums.
+- **[Usage guide](https://github.com/wonchoe/emoji-composer/blob/main/docs/usage.md)** - picker props, data helpers, theme variables, focus behavior, tones, and local development.
+- **[Deployment guide](https://github.com/wonchoe/emoji-composer/blob/main/deploy/README.md)** - static origin, versioned paths, Cloudflare caching, and GitOps.
+- **[Catalog manifest](https://cursor.style/emoji/v2.0.0/manifest.json)** - the published artwork inventory.
+- **[Releases](https://github.com/wonchoe/emoji-composer/releases)** - tagged source, package archives, and checksums.
 
 The picker includes an “Emoji by Cursor Style” link by default. You can hide it with `showBranding={false}`; attribution is appreciated and optional under the MIT License.
 

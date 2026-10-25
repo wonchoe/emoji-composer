@@ -148,7 +148,7 @@ export function App() {
         <div className="collection-facts wrap" aria-label="Collection details">
           <div><strong>{(catalog.length + toneCount).toLocaleString("en-US")}</strong><span>individual artworks</span></div>
           <div><strong>5</strong><span>skin tones + original</span></div>
-          <div><strong>16—1024<span>px</span></strong><span>8 ready-to-use sizes</span></div>
+          <div><strong>16-1024<span>px</span></strong><span>8 ready-to-use sizes</span></div>
           <div className="fact-unicode"><span className="fact-check">✓</span><span><strong>Unicode 18.0</strong><span>The complete collection</span></span></div>
         </div>
 
